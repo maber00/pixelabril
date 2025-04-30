@@ -1,0 +1,528 @@
+---
+// Importar el componente LightboxModal
+import LightboxModal from '../components/LightboxModal.astro';
+
+interface Caracteristica {
+  icono: string;
+  texto: string;
+}
+
+
+// Definición de tipos
+// Definimos interfaces para tener tipos correctos
+interface Estudio {
+  id: string;
+  nombre: string;
+  color: string;
+  imagen: string;
+  descripcion: string;
+  metros: string;
+  precio: string;
+  galeria: string[];
+  caracteristicas: string[];
+  incluye: string[];
+}
+
+// Definimos un tipo con índice para permitir acceso usando string como índice
+interface EstudiosRecord {
+  [key: string]: Estudio;
+}
+
+// Ahora definimos estudiosCompletos con el tipo correcto
+const estudiosCompletos: EstudiosRecord = {
+  'jade': {
+    id: 'jade',
+    nombre: 'Estudio Jade',
+    color: 'bg-green-500',
+    imagen: '/images/estudios/f1.jpg',
+    descripcion: 'Espacio luminoso con toques de verde que evocan naturaleza y tranquilidad.',
+    metros: '28m²',
+    precio: 'Desde $1.800.000',
+    galeria: [
+      '/images/estudios/indigo/f1.jpg', 
+      '/images/estudios/indigo/f2.jpg', 
+      '/images/estudios/indigo/f3.jpg', 
+      '/images/estudios/indigo/f4.jpg', 
+      '/images/estudios/indigo/f5.jpg'
+    ],
+    caracteristicas: [
+      'Cama doble con colchón ortopédico',
+      'Escritorio amplio con silla ergonómica',
+      'Kitchenette equipada',
+      'Baño privado con ducha',
+      'Armario empotrado',
+      'Iluminación LED regulable'
+    ],
+    incluye: [
+      'Wifi de alta velocidad',
+      'Servicios básicos (agua, luz, gas)',
+      'Limpieza quincenal',
+      'Acceso a zonas comunes',
+      'Smart TV con Netflix',
+      'Ropa de cama y toallas'
+    ]
+  },
+  'zian': {
+    id: 'zian',
+    nombre: 'Estudio Zian',
+    color: 'bg-blue-500',
+    imagen: '/images/estudios/f2.jpg',
+    descripcion: 'Colores azules que transmiten calma y concentración, ideal para trabajo remoto.',
+    metros: '32m²',
+    precio: 'Desde $2.100.000',
+    galeria: [
+      '/images/estudios/indigo/f1.jpg', 
+      '/images/estudios/indigo/f2.jpg', 
+      '/images/estudios/indigo/f3.jpg', 
+      '/images/estudios/indigo/f4.jpg', 
+      '/images/estudios/indigo/f5.jpg'
+      
+    ],
+    caracteristicas: [
+      'Cama doble premium con almacenamiento',
+      'Estación de trabajo completa',
+      'Cocina equipada con microondas',
+      'Baño con ducha de lluvia',
+      'Closet con organización modular',
+      'Sistema de sonido bluetooth'
+    ],
+    incluye: [
+      'Wifi de alta velocidad (200 Mbps)',
+      'Servicios básicos premium',
+      'Limpieza semanal',
+      'Acceso completo a coworking',
+      'Smart TV 43" con apps de streaming',
+      'Amenities premium de baño'
+    ]
+  },
+  'indigo': {
+    id: 'indigo',
+    nombre: 'Estudio Índigo',
+    color: 'bg-indigo-500',
+    imagen: '/images/estudios/f3.jpg',
+    descripcion: 'Tonos violetas que inspiran creatividad y reflexión en un ambiente acogedor.',
+    metros: '35m²',
+    precio: 'Desde $2.300.000',
+    galeria: [
+      '/images/estudios/indigo/f6.jpg', 
+      '/images/estudios/indigo/f7.jpg', 
+      '/images/estudios/indigo/f8.jpg'
+    ],
+    caracteristicas: [
+      'Cama queen con colchón premium',
+      'Área de trabajo separada',
+      'Cocina completa con barra desayunador',
+      'Baño completo con amenities',
+      'Walk-in closet',
+      'Zona de estar con sofá'
+    ],
+    incluye: [
+      'Wifi dedicado de alta velocidad',
+      'Servicios básicos premium',
+      'Limpieza semanal con cambio de sábanas',
+      'Acceso premium a todas las áreas comunes',
+      'Smart TV 50" con todas las plataformas',
+      'Caja de seguridad digital'
+    ]
+  },
+  'ambar': {
+    id: 'ambar',
+    nombre: 'Estudio Ámbar',
+    color: 'bg-amber-500',
+    imagen: '/images/estudios/f4.jpg',
+    descripcion: 'Cálidos tonos ámbar que crean un ambiente acogedor y energético.',
+    metros: '30m²',
+    precio: 'Desde $2.000.000',
+    galeria: [
+      '/images/estudios/indigo/f1.jpg', 
+      '/images/estudios/indigo/f2.jpg', 
+      '/images/estudios/indigo/f3.jpg', 
+      '/images/estudios/indigo/f4.jpg', 
+      '/images/estudios/indigo/f5.jpg'
+    ],
+    caracteristicas: [
+      'Cama doble con ropa de algodón orgánico',
+      'Escritorio creativo con iluminación especial',
+      'Electrodomésticos',
+      'Baño con ducha italiana',
+      'Sistema de almacenamiento personalizado',
+      'Iluminación ambiental con control por app'
+    ],
+    incluye: [
+      'Wifi de alta velocidad',
+      'Servicios básicos incluidos',
+      'Limpieza bisemanal',
+      'Smart TV'
+    ]
+  }
+};
+
+const caracteristicas: Caracteristica[] = [
+  {
+    icono: 'M12 6.75a2.25 2.25 0 0 1 0 4.5 2.25 2.25 0 0 1 0-4.5M12 3a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9M3.6 8.1a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75m16.05-.75a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5M6.112 5.565a.75.75 0 0 1 0 1.061l-1.06 1.061a.75.75 0 1 1-1.06-1.06l1.06-1.062a.75.75 0 0 1 1.06 0m13.323 1.06a.75.75 0 0 1-1.06 1.062l-1.06-1.06a.75.75 0 0 1 1.06-1.062l1.06 1.06M6.112 14.516a.75.75 0 0 1-1.06 0l-1.06-1.06a.75.75 0 1 1 1.06-1.062l1.06 1.06a.75.75 0 0 1 0 1.062m13.323-1.06a.75.75 0 1 1-1.06 1.06l-1.06-1.06a.75.75 0 1 1 1.06-1.06l1.06 1.06M3.6 16a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75m16.05-.75a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5m-6.9-7.354a.75.75 0 0 1 .645-.405h9a.75.75 0 0 1 0 1.5h-9a.75.75 0 0 1-.645-1.095m0 3.75a.75.75 0 0 1 .645-.405h9a.75.75 0 0 1 0 1.5h-9a.75.75 0 0 1-.645-1.095',
+    texto: 'Cama doble'
+  },
+  {
+    icono: 'M15.98 1.804A1 1 0 0 0 15 1H7.62c-.376 0-.72.211-.895.553L4.184 5.5h15.652l-2.457-3.946zM2 7v1a2 2 0 0 0 2 2h1v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V10h1a2 2 0 0 0 2-2V7H2zm5.5 4a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0v-6a.5.5 0 0 1 .5-.5m3 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0v-6a.5.5 0 0 1 .5-.5m3 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0v-6a.5.5 0 0 1 .5-.5',
+    texto: 'Cocina equipada'
+  },
+  {
+    icono: 'M2.25 5.25a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-9a3 3 0 0 1-3-3v-9m3.75 6v3h3v-3a.75.75 0 0 0-.75-.75h-1.5a.75.75 0 0 0-.75.75m0-3v.75H9v-.75a.75.75 0 0 0-.75-.75h-1.5a.75.75 0 0 0-.75.75',
+    texto: 'Escritorio de trabajo'
+  },
+  {
+    icono: 'M8.288 15.038a5.25 5.25 0 0 1 7.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 0 1 1.06 0',
+    texto: 'WiFi de alta velocidad'
+  },
+  {
+    icono: 'M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.055 2.264-.22 2.938a4.49 4.49 0 0 0-.363 1.8V7.5',
+    texto: 'Servicios incluidos'
+  },
+  {
+    icono: 'M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0M4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632',
+    texto: 'Espacio privado y tranquilo'
+  }
+];
+
+// Definimos tipos para los datos derivados
+interface EstudioSimplificado {
+  id: string;
+  nombre: string;
+  color: string;
+  imagen: string;
+  descripcion: string;
+  metros: string;
+  precio: string;
+}
+
+interface LightboxEstudio {
+  nombre: string;
+  imagenPrincipal: string;
+  imagenes: string[];
+  color: string;
+}
+
+interface LightboxData {
+  [key: string]: LightboxEstudio;
+}
+
+// A partir de esta estructura unificada, generamos los arreglos con tipos correctos
+const estudios: EstudioSimplificado[] = Object.values(estudiosCompletos).map(estudio => ({
+  id: estudio.id,
+  nombre: estudio.nombre,
+  color: estudio.color,
+  imagen: estudio.imagen,
+  descripcion: estudio.descripcion,
+  metros: estudio.metros,
+  precio: estudio.precio
+}));
+
+// Para el lightbox, creamos un objeto que tiene el formato esperado
+const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((result, estudio) => {
+  result[estudio.id] = {
+    nombre: estudio.nombre,
+    imagenPrincipal: estudio.imagen,
+    imagenes: estudio.galeria,
+    color: estudio.color
+  };
+  return result;
+}, {} as LightboxData);
+---
+
+<section id="espacios" class="section bg-pixel-blue/5">
+  <div class="container ">
+    <div class="text-center bg-pixel-blue rounded-t-2xl ">
+      <span class="inline-block text-pixel-blue font-semibold text-sm uppercase tracking-wider mb-2">Nuestros espacios</span>
+      <h2 class="text-4xl md:text-7xl font-normal px-18">Espacios diseñados para vivir con <span class="text-blue-100">intención</span></h2>
+      
+      <p class="text-lg text-blue-100 max-w-5xl pb-10 mx-auto mt-6">
+        Cada uno de nuestros apartaestudios está completamente amoblado y listo para recibirte.
+        Con diseño moderno, luz natural y todo lo necesario para que te sientas en casa desde el primer día.
+      </p>
+    </div>
+    
+    <!-- Carrusel de apartaestudios -->
+    <div class="relative mx-auto bg-pixel-blue max-w-7xl px-4 overflow-hidden" id="carousel-container">
+      <!-- Botones de navegación -->
+      <button 
+        class="absolute left-0 top-1/2 z-10 -translate-y-1/2 bg-white rounded-md p-3 shadow-lg hover:bg-gray-100 focus:outline-none disabled:opacity-30 disabled:cursor-not-allowed border border-pixel-blue" 
+        id="prev-btn"
+        aria-label="Ver apartaestudio anterior"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pixel-blue">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+      </button>
+      
+      <button 
+        class="absolute right-0 top-1/2 z-10 -translate-y-1/2 bg-white rounded-md p-3 shadow-lg hover:bg-gray-100 focus:outline-none disabled:opacity-30 disabled:cursor-not-allowed border border-pixel-blue" 
+        id="next-btn"
+        aria-label="Ver apartaestudio siguiente"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pixel-blue">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </button>
+      
+      <!-- Carrusel -->
+      <div class="flex transition-transform duration-500 ease-in-out" id="carousel-slides">
+        {estudios.map((estudio, index) => (
+          <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-2 transition-opacity duration-300" data-slide-index={index} data-estudio-id={estudio.id}>
+            <div class="bg-white rounded-md overflow-hidden shadow-lg h-full flex flex-col transform transition duration-300 hover:-translate-y-2 hover:shadow-xl border-2 border-pixel-blue pixel-hover">
+              <div class="relative">
+                <img src={estudio.imagen} alt={estudio.nombre} class="w-full h-64 object-cover main-image" data-estudio-id={estudio.id} />
+                <div class="absolute top-4 right-4 bg-white py-1 px-3 rounded-md shadow-md border border-pixel-blue">
+                  <span class="font-medium text-sm">{estudio.metros}</span>
+                </div>
+                
+                <!-- Botón para abrir galería -->
+                <button 
+                  class="absolute bottom-4 right-4 bg-black bg-opacity-60 p-2 rounded-full text-white hover:bg-opacity-80 open-gallery-btn" 
+                  data-estudio-id={estudio.id}
+                  aria-label={`Ver galería de ${estudio.nombre}`}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+                  </svg>
+                </button>
+                
+                <!-- Miniaturas de galería (versión compacta) -->
+                <div class="absolute bottom-4 left-4 flex space-x-1">
+  <!-- Imagen principal como primera miniatura -->
+  <div 
+    class="w-8 h-8 rounded-md overflow-hidden border border-white cursor-pointer gallery-thumb" 
+    data-estudio-id={estudio.id}
+    data-img-index={-1}
+  >
+    <img src={estudio.imagen} alt={`${estudio.nombre} imagen principal`} class="w-full h-full object-cover" />
+  </div>
+  
+  <!-- Imágenes de la galería (máximo 3 miniaturas adicionales) -->
+  {estudiosCompletos[estudio.id].galeria.slice(0, 3).map((img: string, imgIndex: number) => (
+    <div 
+      class="w-8 h-8 rounded-md overflow-hidden border border-white cursor-pointer gallery-thumb" 
+      data-estudio-id={estudio.id}
+      data-img-index={imgIndex}
+    >
+      <img src={img} alt={`${estudio.nombre} imagen ${imgIndex + 1}`} class="w-full h-full object-cover" />
+    </div>
+  ))}
+</div>
+
+              </div>
+              
+              <div class="p-4 flex-grow">
+                <h3 class="text-xl font-bold mb-2 text-pixel-blue">{estudio.nombre}</h3>
+                <p class="text-gray-600 mb-3">{estudio.descripcion}</p>
+                
+                <div class="mt-auto">
+                  <div class="flex justify-between items-center">
+                    <span class="text-xl font-bold text-pixel-blue">{estudio.precio}</span>
+                    <a href={`/estudio/${estudio.id}`} class="text-pixel-blue font-medium inline-flex items-center group ver-detalles-btn">
+                      Ver detalles
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-1 transform transition-transform group-hover:translate-x-1">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <!-- Indicadores -->
+      <div class="flex justify-center mt-8 mb-8 space-x-2" id="carousel-indicators">
+        {estudios.map((_, index) => (
+          <button 
+            class="w-4 h-4 bg-gray-200 focus:outline-none transition-colors duration-300 rounded-sm border border-pixel-blue" 
+            data-index={index}
+            aria-label={`Ver apartaestudio ${index + 1}`}
+          ></button>
+        ))}
+      </div>
+    </div>
+    
+    <!-- Características -->
+    <div class="bg-white rounded-md shadow-lg p-8 max-w-4xl mx-auto mt-16 border-2 border-pixel-blue">
+      <h3 class="text-2xl font-bold mb-6 text-center text-pixel-blue">Características de nuestros espacios</h3>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+        {caracteristicas.map((item: { icono: string; texto: string }) => (
+  <div class="flex items-start space-x-3">
+    <div class="flex-shrink-0 bg-pixel-blue/10 p-2 rounded-md border border-pixel-blue">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pixel-blue">
+        <path stroke-linecap="round" stroke-linejoin="round" d={item.icono} />
+      </svg>
+    </div>
+    <div>
+      <p class="font-medium">{item.texto}</p>
+    </div>
+  </div>
+))}
+      </div>
+      
+      <div class="mt-8 text-center">
+        <a href="#reservas" class="btn bg-pixel-blue hover:bg-blue-600 text-white inline-flex items-center border border-blue-700 pixel-hover">
+          👉 Solicita disponibilidad
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Importar el componente de lightbox compartido -->
+  <LightboxModal id="espacios-lightbox" showDetailsButton={true} showReservaButton={true} />
+</section>
+
+<!-- Script para el carrusel y lightbox -->
+<script is:inline src="/scripts/lightbox.js"></script>
+<script define:vars={{ lightboxData }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log("Espacios script loaded");
+    
+    // Elementos del carrusel
+    const container = document.getElementById('carousel-container');
+    const slides = document.getElementById('carousel-slides');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const indicators = document.querySelectorAll('#carousel-indicators button');
+    
+    if (!container || !slides || !prevBtn || !nextBtn) return;
+    
+    // Variables
+    let currentIndex = 0;
+    let slidesPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+    const totalSlides = indicators.length;
+    
+    // ===== FUNCIONES DEL CARRUSEL =====
+    function updateCarousel() {
+      if (!container || !slides || !prevBtn || !nextBtn) return;
+      
+      // Actualizar la posición del carrusel
+      const slideWidth = container.clientWidth / slidesPerView;
+      slides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+      
+      // Actualizar visibilidad de botones
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex === totalSlides - slidesPerView;
+      
+      // Actualizar indicadores
+      indicators.forEach((indicator, index) => {
+        if (index === currentIndex) {
+          indicator.classList.add('bg-pixel-blue');
+          indicator.classList.remove('bg-gray-200');
+        } else {
+          indicator.classList.add('bg-gray-200');
+          indicator.classList.remove('bg-pixel-blue');
+        }
+      });
+      
+      // Actualizar visibilidad de slides
+      const slideElements = document.querySelectorAll('[data-slide-index]');
+      slideElements.forEach((slide, index) => {
+        if (index >= currentIndex && index < currentIndex + slidesPerView) {
+          slide.classList.remove('opacity-50');
+        } else {
+          slide.classList.add('opacity-50');
+        }
+      });
+    }
+    
+    // Inicializar carrusel
+    updateCarousel();
+    
+    // Event listeners del carrusel
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+      }
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < totalSlides - slidesPerView) {
+        currentIndex++;
+        updateCarousel();
+      }
+    });
+    
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        currentIndex = Math.min(index, totalSlides - slidesPerView);
+        updateCarousel();
+      });
+    });
+    
+    // Actualizar en cambio de tamaño de ventana
+    window.addEventListener('resize', () => {
+      const newSlidesPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+      if (newSlidesPerView !== slidesPerView) {
+        slidesPerView = newSlidesPerView;
+        currentIndex = Math.min(currentIndex, totalSlides - slidesPerView);
+        updateCarousel();
+      }
+    });
+    
+    // ===== INICIALIZAR EL LIGHTBOX =====
+    // Crear instancia de PixelLightbox
+    const lightbox = new PixelLightbox({
+      modalId: 'espacios-lightbox',
+      dataSource: lightboxData,
+      detailsPath: '/estudio/',
+      reservaPath: '#reservas',
+      onReservaClick: (estudioId) => {
+        // Comunicar la selección a la sección de reservas
+        const event = new CustomEvent('estudioSeleccionado', { 
+          detail: { 
+            estudioId: estudioId, 
+            estudioNombre: lightboxData[estudioId].nombre 
+          }
+        });
+        document.dispatchEvent(event);
+      }
+    });
+    
+    // ===== EVENT LISTENERS PARA ABRIR EL LIGHTBOX =====
+    
+    // Botón para abrir lightbox
+    const openGalleryBtns = document.querySelectorAll('.open-gallery-btn');
+    openGalleryBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const estudioId = btn.getAttribute('data-estudio-id');
+        lightbox.open(estudioId, 0);
+      });
+    });
+    
+    // Miniaturas para abrir lightbox
+    const galleryThumbs = document.querySelectorAll('.gallery-thumb');
+    galleryThumbs.forEach(thumb => {
+      thumb.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const estudioId = thumb.getAttribute('data-estudio-id');
+        const imgIndex = parseInt(thumb.getAttribute('data-img-index') || '0');
+        lightbox.open(estudioId, imgIndex + 1); // +1 porque incluimos la imagen principal
+      });
+    });
+    
+    // Imágenes principales para abrir lightbox
+    const mainImages = document.querySelectorAll('.main-image');
+    mainImages.forEach(img => {
+      img.addEventListener('click', (e) => {
+        // Comprobar si el clic fue en un elemento hijo
+        if (e.target !== img) return;
+        
+        const estudioId = img.getAttribute('data-estudio-id');
+        if (estudioId) {
+          lightbox.open(estudioId, 0);
+        }
+      });
+    });
+  });
+</script>

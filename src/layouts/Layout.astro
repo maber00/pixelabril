@@ -1,0 +1,99 @@
+---
+import '../styles/global.css';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+
+
+export interface Props {
+	title: string;
+	description?: string;
+	ogImage?: string;
+}
+
+const { 
+	title, 
+	description = "Pixel Living es coliving en Bogotá para quienes buscan algo más que un arriendo. Apartaestudios diseñados para estadías medianas y largas, con estilo, comodidad y comunidad.", 
+	ogImage = "/images/pixel-living-og.jpg" 
+} = Astro.props;
+
+// Manejo seguro para la URL canónica
+const pathname = Astro.url.pathname;
+const siteUrl = "https://pixelliving.co"; // URL predeterminada en caso de que Astro.site no esté disponible
+---
+
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Canonical URL -->
+		<link rel="canonical" href={`${siteUrl}${pathname}`} />
+		
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={`${siteUrl}${pathname}`} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={`${siteUrl}${ogImage}`} />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={`${siteUrl}${pathname}`} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={`${siteUrl}${ogImage}`} />
+		
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+		
+		<!-- Structured Data -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Organization",
+				"name": "Pixel Living",
+				"url": "https://pixelliving.co",
+				"logo": "https://pixelliving.co/images/logo.png",
+				"sameAs": [
+					"https://instagram.com/pixelliving",
+					"https://facebook.com/pixelliving"
+				],
+				"address": {
+					"@type": "PostalAddress",
+					"addressLocality": "Bogotá",
+					"addressCountry": "CO"
+				}
+			}
+		</script>
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Product",
+				"name": "Pixel Living Coliving",
+				"description": "Coliving en Bogotá para quienes buscan algo más que un arriendo.",
+				"brand": {
+					"@type": "Brand",
+					"name": "Pixel Living"
+				}
+			}
+		</script>
+	</head>
+	<body class="font-poppins text-gray-800 bg-white">
+		<Header />
+		<slot />
+		<Footer />
+	</body>
+</html>

@@ -1,0 +1,564 @@
+---
+// Corregimos las rutas de importación
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import LightboxModal from '../../components/LightboxModal.astro';
+
+// Definimos cuáles son los IDs de estudio válidos para las rutas
+export function getStaticPaths() {
+  return [
+    { params: { id: 'jade' } },
+    { params: { id: 'zian' } },
+    { params: { id: 'indigo' } },
+    { params: { id: 'ambar' } }
+  ];
+}
+
+// Extraemos el parámetro de la URL
+const { id } = Astro.params;
+
+// Definición de tipos para tener tipos correctos
+interface Estudio {
+  id: string;
+  nombre: string;
+  color: string;
+  imagen: string;
+  descripcion: string;
+  metros: string;
+  precio: string;
+  galeria: string[];
+  caracteristicas: string[];
+  incluye: string[];
+}
+
+// Definimos un tipo con índice para permitir acceso usando string como índice
+interface EstudiosRecord {
+  [key: string]: Estudio;
+}
+
+// Un solo objeto unificado con toda la información
+const estudiosCompletos: EstudiosRecord = {
+  'jade': {
+    id: 'jade',
+    nombre: 'Estudio Jade',
+    color: 'bg-green-500',
+    imagen: '/images/estudios/f1.jpg',
+    descripcion: 'Espacio luminoso con toques de verde que evocan naturaleza y tranquilidad. Diseñado para quienes buscan un ambiente sereno que promueve la concentración y el bienestar. Con ventanas amplias que maximizan la luz natural y vistas despejadas.',
+    metros: '28m²',
+    precio: 'Desde $1.800.000',
+    galeria: [
+      '/images/estudios/indigo/f1.jpg', 
+      '/images/estudios/indigo/f2.jpg', 
+      '/images/estudios/indigo/f3.jpg', 
+      '/images/estudios/indigo/f4.jpg', 
+      '/images/estudios/indigo/f5.jpg'
+    ],
+    caracteristicas: [
+      'Cama doble con colchón ortopédico',
+      'Escritorio amplio con silla ergonómica',
+      'Kitchenette equipada',
+      'Baño privado con ducha',
+      'Armario empotrado',
+      'Iluminación LED regulable'
+    ],
+    incluye: [
+      'Wifi de alta velocidad',
+      'Servicios básicos (agua, luz, gas)',
+      'Limpieza quincenal',
+      'Acceso a zonas comunes',
+      'Smart TV con Netflix',
+      'Ropa de cama y toallas'
+    ]
+  },
+  'zian': {
+    id: 'zian',
+    nombre: 'Estudio Zian',
+    color: 'bg-blue-500',
+    imagen: '/images/estudios/f2.jpg',
+    descripcion: 'Colores azules que transmiten calma y concentración, ideal para trabajo remoto. Este espacio ha sido diseñado pensando en profesionales que necesitan un ambiente inspirador y funcional para combinar vida y trabajo con estilo.',
+    metros: '32m²',
+    precio: 'Desde $2.100.000',
+    galeria: [
+     '/images/estudios/indigo/f1.jpg', 
+      '/images/estudios/indigo/f2.jpg', 
+      '/images/estudios/indigo/f3.jpg', 
+      '/images/estudios/indigo/f4.jpg', 
+      '/images/estudios/indigo/f5.jpg'
+    ],
+    caracteristicas: [
+      'Cama doble premium con almacenamiento',
+      'Estación de trabajo completa',
+      'Cocina equipada con microondas',
+      'Baño con ducha de lluvia',
+      'Closet con organización modular',
+      'Sistema de sonido bluetooth'
+    ],
+    incluye: [
+      'Wifi de alta velocidad (200 Mbps)',
+      'Servicios básicos premium',
+      'Limpieza semanal',
+      'Acceso completo a coworking',
+      'Smart TV 43" con apps de streaming',
+      'Amenities premium de baño'
+    ]
+  },
+  'indigo': {
+    id: 'indigo',
+    nombre: 'Estudio Índigo',
+    color: 'bg-indigo-500',
+    imagen: '/images/estudios/f3.jpg',
+    descripcion: 'Tonos violetas que inspiran creatividad y reflexión en un ambiente acogedor. Nuestro estudio más amplio, perfecto para estadías de larga duración o para quienes desean un espacio con zona de estar separada del área de descanso.',
+    metros: '35m²',
+    precio: 'Desde $2.300.000',
+    galeria: [
+      '/images/estudios/indigo/f1.jpg', 
+      '/images/estudios/indigo/f2.jpg', 
+      '/images/estudios/indigo/f3.jpg', 
+      '/images/estudios/indigo/f4.jpg', 
+      '/images/estudios/indigo/f5.jpg'
+    ],
+    caracteristicas: [
+      'Cama queen con colchón premium',
+      'Área de trabajo separada',
+      'Cocina completa con barra desayunador',
+      'Baño completo con amenities',
+      'Walk-in closet',
+      'Zona de estar con sofá'
+    ],
+    incluye: [
+      'Wifi dedicado de alta velocidad',
+      'Servicios básicos premium',
+      'Limpieza semanal con cambio de sábanas',
+      'Acceso premium a todas las áreas comunes',
+      'Smart TV 50" con todas las plataformas',
+      'Caja de seguridad digital'
+    ]
+  },
+  'ambar': {
+    id: 'ambar',
+    nombre: 'Estudio Ámbar',
+    color: 'bg-amber-500',
+    imagen: '/images/estudios/f4.jpg',
+    descripcion: 'Cálidos tonos ámbar que crean un ambiente acogedor y energético. Especialmente diseñado para quienes buscan un espacio que evoque calidez y vitalidad, perfecto para creativos y mentes inquietas.',
+    metros: '30m²',
+    precio: 'Desde $2.000.000',
+    galeria: [
+      '/images/estudios/indigo/f1.jpg', 
+      '/images/estudios/indigo/f2.jpg', 
+      '/images/estudios/indigo/f3.jpg', 
+      '/images/estudios/indigo/f4.jpg', 
+      '/images/estudios/indigo/f5.jpg'
+    ],
+    caracteristicas: [
+      'Cama doble con ropa de algodón orgánico',
+      'Escritorio creativo con iluminación especial',
+      'Electrodomésticos',
+      'Baño con ducha italiana',
+      'Sistema de almacenamiento personalizado',
+      'Iluminación ambiental con control por app'
+    ],
+    incluye: [
+      'Wifi de alta velocidad',
+      'Servicios básicos incluidos',
+      'Limpieza bisemanal',
+      'Smart TV'
+    ]
+  }
+};
+
+// Redirección si el estudio no existe
+if (!id || !estudiosCompletos[id as keyof typeof estudiosCompletos]) {
+  return Astro.redirect('/404');
+}
+
+// Obtener el estudio seleccionado
+const estudio = estudiosCompletos[id as keyof typeof estudiosCompletos];
+
+// Clases dinámicas basadas en el color del estudio
+// Definir tipos explícitos para evitar errores
+interface ColorClasses {
+  bg: string;
+  text: string;
+  border: string;
+  hover: string;
+  light: string;
+  lightText: string;
+}
+
+const colorClasses: Record<string, ColorClasses> = {
+  'jade': {
+    bg: 'bg-green-500',
+    text: 'text-green-500',
+    border: 'border-green-500',
+    hover: 'hover:bg-green-600',
+    light: 'bg-green-100',
+    lightText: 'text-green-700'
+  },
+  'zian': {
+    bg: 'bg-blue-500',
+    text: 'text-blue-500',
+    border: 'border-blue-500',
+    hover: 'hover:bg-blue-600',
+    light: 'bg-blue-100',
+    lightText: 'text-blue-700'
+  },
+  'indigo': {
+    bg: 'bg-indigo-500',
+    text: 'text-indigo-500',
+    border: 'border-indigo-500',
+    hover: 'hover:bg-indigo-600',
+    light: 'bg-indigo-100',
+    lightText: 'text-indigo-700'
+  },
+  'ambar': {
+    bg: 'bg-amber-500',
+    text: 'text-amber-500',
+    border: 'border-amber-500',
+    hover: 'hover:bg-amber-600',
+    light: 'bg-amber-100',
+    lightText: 'text-amber-700'
+  }
+};
+
+// Acceder con type assertion para evitar errores
+const colors = colorClasses[estudio.id as keyof typeof colorClasses];
+
+// Preparar datos para el lightbox
+interface LightboxEstudio {
+  nombre: string;
+  imagenPrincipal: string;
+  imagenes: string[];
+  color: string;
+}
+
+interface LightboxData {
+  [key: string]: LightboxEstudio;
+}
+
+const lightboxData: LightboxData = {
+  [estudio.id]: {
+    nombre: estudio.nombre,
+    imagenPrincipal: estudio.imagen,
+    imagenes: estudio.galeria,
+    color: colors.bg
+  }
+};
+---
+
+<Layout title={`${estudio.nombre} - Pixel Living | Coliving en Bogotá`}>
+    <main>
+      <section class="pt-32 pb-16">
+        <div class="container">
+          <!-- Navegación de migas de pan -->
+          <div class="flex items-center mb-6 text-sm">
+            <a href="/" class="text-gray-500 hover:text-gray-700">Inicio</a>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mx-2 text-gray-400">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+            <a href="/#espacios" class="text-gray-500 hover:text-gray-700">Espacios</a>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mx-2 text-gray-400">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+            <span class={`font-medium ${colors.text}`}>{estudio.nombre}</span>
+          </div>
+          
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Galería de imágenes -->
+            <div>
+              <div class="relative overflow-hidden rounded-xl border-2 border-gray-200 mb-4 aspect-video">
+                <img 
+                  id="mainImage"
+                  src={estudio.imagen} 
+                  alt={estudio.nombre} 
+                  class="w-full h-full object-cover"
+                />
+                <div class={`absolute top-4 right-4 ${colors.bg} py-1 px-3 rounded-md shadow-md text-white font-medium`}>
+                  {estudio.metros}
+                </div>
+              </div>
+              
+              <!-- Miniaturas -->
+              <div class="grid grid-cols-5 gap-2">
+                {/* Imagen principal y las primeras 4 imágenes de galería */}
+                <div class={`cursor-pointer rounded-md overflow-hidden border-2 ${colors.border} thumbnail-container`} data-index={-1}>
+                  <img 
+                    src={estudio.imagen} 
+                    alt={`${estudio.nombre} - Imagen principal`} 
+                    class="w-full h-20 object-cover thumbnail"
+                    data-img-src={estudio.imagen}
+                    data-index={-1}
+                  />
+                </div>
+                
+                {estudio.galeria.slice(0, 4).map((img: string, imgIndex: number) => (
+                  <div class={`cursor-pointer rounded-md overflow-hidden border-2 border-gray-200 thumbnail-container`} data-index={imgIndex}>
+                    <img 
+                      src={img} 
+                      alt={`${estudio.nombre} - Imagen ${imgIndex + 1}`} 
+                      class="w-full h-20 object-cover thumbnail"
+                      data-img-src={img}
+                      data-index={imgIndex}
+                    />
+                  </div>
+                ))}
+              </div>
+              
+              <!-- Botón para ver todas las fotos -->
+              <button 
+                class="w-full mt-4 py-2 bg-gray-800 text-white rounded-md flex items-center justify-center group"
+                id="openGalleryBtn"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+                Ver todas las fotos
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1 transform transition-transform group-hover:translate-x-1">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </button>
+            </div>
+            
+            <!-- Información del estudio -->
+            <div>
+              <h1 class="text-4xl font-bold mb-2 cal-sans">
+                <span class={colors.text}>{estudio.nombre}</span>
+              </h1>
+              <p class="text-2xl mb-6 font-light">{estudio.precio}</p>
+              
+              <div class="mb-8">
+                <h2 class="text-xl font-semibold mb-3">Descripción</h2>
+                <p class="text-gray-700 leading-relaxed">{estudio.descripcion}</p>
+              </div>
+              
+              <div class="mb-8">
+                <h2 class="text-xl font-semibold mb-3">Características</h2>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {estudio.caracteristicas.map((item: string) => (
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class={`w-5 h-5 ${colors.text} mr-2 flex-shrink-0 mt-0.5`}>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div class="mb-8">
+                <h2 class="text-xl font-semibold mb-3">Incluye</h2>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {estudio.incluye.map((item: string) => (
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class={`w-5 h-5 ${colors.text} mr-2 flex-shrink-0 mt-0.5`}>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+          
+          <div class="bg-gray-100 p-6 rounded-lg">
+            <h2 class="text-xl font-semibold mb-4">¿Te interesa este espacio?</h2>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a 
+                href="#reserva-section" 
+                class={`flex-1 py-3 px-6 ${colors.bg} ${colors.hover} text-white rounded-md flex items-center justify-center`}
+              >
+                Reservar ahora
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </a>
+              
+              <a 
+              href={`https://wa.me/TUTELEFONO?text=Hola, estoy interesado en el ${estudio.nombre}. ¿Está disponible? Gracias.`}
+              target="_blank" 
+              class="flex-1 py-3 px-6 bg-green-500 hover:bg-green-600 text-white rounded-md flex items-center justify-center"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 mr-2" viewBox="0 0 16 16">
+                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+              </svg>
+              Consultar por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sección de reserva -->
+<section id="reserva-section" class={`${colors.light} py-16`}>
+  <div class="container">
+    <h2 class={`text-3xl font-bold mb-8 text-center ${colors.lightText}`}>Reserva tu {estudio.nombre}</h2>
+    
+    <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+      <form id="reservaForm" class="p-8">
+        <input type="hidden" id="estudioSeleccionado" name="estudio" value={estudio.id}>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" class={`w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:${colors.border} focus:border-transparent`} required>
+          </div>
+          
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Correo electrónico</label>
+            <input type="email" id="email" name="email" class={`w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:${colors.border} focus:border-transparent`} required>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label for="telefono" class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" class={`w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:${colors.border} focus:border-transparent`} required>
+          </div>
+          
+          <div>
+            <label for="fecha" class="block text-sm font-medium text-gray-700 mb-1">Fecha de ingreso estimada</label>
+            <input type="date" id="fecha" name="fecha" class={`w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:${colors.border} focus:border-transparent`} required>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label for="estadia" class="block text-sm font-medium text-gray-700 mb-1">Tiempo estimado de estadía</label>
+            <select id="estadia" name="estadia" class={`w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:${colors.border} focus:border-transparent`} required>
+              <option value="">Selecciona una opción</option>
+              <option value="1-3 meses">1-3 meses</option>
+              <option value="3-6 meses">3-6 meses</option>
+              <option value="6-12 meses">6-12 meses</option>
+              <option value="Más de 1 año">Más de 1 año</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="personas" class="block text-sm font-medium text-gray-700 mb-1">Número de personas</label>
+            <select id="personas" name="personas" class={`w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:${colors.border} focus:border-transparent`} required>
+              <option value="1">1 persona</option>
+              <option value="2">2 personas</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="mb-6">
+          <label for="expectativas" class="block text-sm font-medium text-gray-700 mb-1">¿Qué buscas en tu experiencia en Pixel?</label>
+          <textarea id="expectativas" name="expectativas" rows="3" class={`w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:${colors.border} focus:border-transparent`} required></textarea>
+        </div>
+        
+        <button type="submit" class={`w-full btn ${colors.bg} hover:${colors.hover} text-white py-3 rounded-md font-medium`}>
+          👉 Solicita tu {estudio.nombre} ahora
+        </button>
+        
+        <p class="text-center text-sm text-gray-500 mt-4">
+          Al enviar esta solicitud, aceptas nuestra política de privacidad y términos de servicio.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Otros estudios -->
+<section class="py-16">
+  <div class="container">
+    <h2 class="text-3xl font-bold mb-8 text-center">Explora otros espacios</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {Object.values(estudiosCompletos)
+        .filter(e => e.id !== estudio.id)
+        .slice(0, 3)
+        .map((e: Estudio) => (
+          <div class="bg-white rounded-md overflow-hidden shadow-lg border-2 border-gray-200 transform transition duration-300 hover:-translate-y-2 hover:shadow-xl">
+            <div class="relative">
+              <img src={e.imagen} alt={e.nombre} class="w-full h-48 object-cover" />
+              <div class={`absolute top-4 right-4 bg-white py-1 px-3 rounded-md shadow-md border ${colorClasses[e.id as keyof typeof colorClasses].border}`}>
+                <span class="font-medium text-sm">{e.metros}</span>
+              </div>
+            </div>
+            
+            <div class="p-4">
+              <h3 class={`text-xl font-bold mb-2 ${colorClasses[e.id as keyof typeof colorClasses].text}`}>{e.nombre}</h3>
+              <p class="text-gray-600 mb-3 line-clamp-2">{e.descripcion}</p>
+              
+              <div class="flex justify-between items-center">
+                <span class={`text-lg font-bold ${colorClasses[e.id as keyof typeof colorClasses].text}`}>{e.precio}</span>
+                <a href={`/estudio/${e.id}`} class={`${colorClasses[e.id as keyof typeof colorClasses].text} font-medium inline-flex items-center group`}>
+                  Ver detalles
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-1 transform transition-transform group-hover:translate-x-1">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- Usar el componente de lightbox compartido -->
+<LightboxModal id="estudio-lightbox" showDetailsButton={false} showReservaButton={true} reservaPath="#reserva-section" />
+</Layout>
+
+<!-- Importamos el script del lightbox -->
+<script is:inline src="/scripts/lightbox.js"></script>
+<script define:vars={{ lightboxData, estudioId: estudio.id }}>
+document.addEventListener('DOMContentLoaded', () => {
+// Referencias de elementos
+const mainImage = document.getElementById('mainImage');
+const thumbnailContainers = document.querySelectorAll('.thumbnail-container');
+const openGalleryBtn = document.getElementById('openGalleryBtn');
+const reservaForm = document.getElementById('reservaForm');
+
+// Inicializar el lightbox compartido
+const lightbox = new window.PixelLightbox({
+modalId: 'estudio-lightbox',
+dataSource: lightboxData,
+detailsPath: '/estudio/',
+reservaPath: '#reserva-section'
+});
+
+// Cambiar la imagen principal al hacer clic en una miniatura
+thumbnailContainers.forEach(container => {
+container.addEventListener('click', () => {
+  const thumbImg = container.querySelector('.thumbnail');
+  if (mainImage && thumbImg) {
+    const imgSrc = thumbImg.getAttribute('data-img-src');
+    if (imgSrc) {
+      mainImage.src = imgSrc;
+    }
+    
+    // Actualizar estilos de miniaturas
+    thumbnailContainers.forEach(c => {
+      c.classList.remove('border-green-500', 'border-blue-500', 'border-indigo-500', 'border-amber-500');
+      c.classList.add('border-gray-200');
+    });
+    
+    // Aplicar estilo activo
+    container.classList.remove('border-gray-200');
+    container.classList.add(lightboxData[estudioId].color.replace('bg-', 'border-'));
+  }
+});
+});
+
+// Abrir la galería de imágenes
+openGalleryBtn?.addEventListener('click', () => {
+lightbox.open(estudioId, 0);
+});
+
+// Procesamiento del formulario de reserva
+reservaForm?.addEventListener('submit', (e) => {
+e.preventDefault();
+
+// Aquí puedes agregar la lógica para enviar el formulario
+// Por ejemplo, mediante fetch a una API o redirigir a WhatsApp
+
+alert(`¡Gracias por tu interés en el ${document.querySelector('h1')?.textContent?.trim()}! Te contactaremos pronto para confirmar disponibilidad.`);
+reservaForm.reset();
+});
+});
+</script>

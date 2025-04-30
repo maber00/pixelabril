@@ -1,0 +1,145 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const contactInfo = [
+  {
+    icono: 'M15 10.5a3 3 0 11-6 0 3 3 0 016 0z M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z',
+    titulo: 'Dirección',
+    texto: 'Bogotá, Colombia',
+    link: 'https://maps.google.com',
+    linkTexto: 'Ver en mapa'
+  },
+  {
+    icono: 'M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z',
+    titulo: 'WhatsApp',
+    texto: '+57 XXX XXX XXXX',
+    link: 'https://wa.me/TUTELEFONO',
+    linkTexto: 'Enviar mensaje'
+  },
+  {
+    icono: 'M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75',
+    titulo: 'Correo',
+    texto: 'info@pixelliving.co',
+    link: 'mailto:info@pixelliving.co',
+    linkTexto: 'Enviar correo'
+  },
+  {
+    icono: 'M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z',
+    titulo: 'Instagram',
+    texto: '@pixelliving',
+    link: 'https://instagram.com/pixelliving',
+    linkTexto: 'Síguenos'
+  }
+];
+---
+
+<Layout title="Contacto - Pixel Living | Coliving en Bogotá">
+  <Header />
+  <main>
+    <section class="section bg-gradient-to-b from-gray-50 to-gray-100 pt-32">
+      <div class="container">
+        <h1 class="text-4xl md:text-5xl font-bold text-center mb-4 cal-sans">Contacto</h1>
+        <p class="text-lg text-center max-w-2xl mx-auto mb-12 font-light">
+          ¿Tienes preguntas sobre Pixel Living? Estamos aquí para ayudarte. Ponte en contacto con nosotros a través de cualquiera de estos medios.
+        </p>
+        
+        <div class="max-w-5xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <div class="bg-white rounded-md shadow-lg overflow-hidden border-2 border-gray-200">
+                <div class="h-64">
+                  <!-- Mapa de Google (en producción usar API key real) -->
+                  <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                    <img 
+                      src="/api/placeholder/600/300" 
+                      alt="Mapa de ubicación Pixel Living" 
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+                
+                <div class="p-6 space-y-6">
+                  {contactInfo.map(info => (
+                    <div class="flex items-start">
+                      <div class="flex-shrink-0 bg-gray-100 p-2 rounded-md border border-gray-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-700">
+                          <path stroke-linecap="round" stroke-linejoin="round" d={info.icono} />
+                        </svg>
+                      </div>
+                      
+                      <div class="ml-4">
+                        <h3 class="font-semibold">{info.titulo}</h3>
+                        <p class="text-gray-600 font-light">{info.texto}</p>
+                        <a href={info.link} target="_blank" class="text-pixel-blue font-medium inline-flex items-center mt-1 group">
+                          {info.linkTexto}
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1 transform transition-transform group-hover:translate-x-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-md shadow-lg p-8 border-2 border-gray-200">
+              <h3 class="text-2xl font-bold mb-6 cal-sans">Envíanos un mensaje</h3>
+              
+              <form id="contactForm" class="space-y-4">
+                <div>
+                  <label for="contactNombre" class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+                  <input type="text" id="contactNombre" name="nombre" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent" required>
+                </div>
+                
+                <div>
+                  <label for="contactEmail" class="block text-sm font-medium text-gray-700 mb-1">Correo electrónico</label>
+                  <input type="email" id="contactEmail" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent" required>
+                </div>
+                
+                <div>
+                  <label for="contactAsunto" class="block text-sm font-medium text-gray-700 mb-1">Asunto</label>
+                  <input type="text" id="contactAsunto" name="asunto" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent" required>
+                </div>
+                
+                <div>
+                  <label for="contactMensaje" class="block text-sm font-medium text-gray-700 mb-1">Mensaje</label>
+                  <textarea id="contactMensaje" name="mensaje" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent" required></textarea>
+                </div>
+                
+                <button type="submit" class="w-full btn bg-pixel-blue hover:bg-blue-600 text-white">
+                  Enviar mensaje
+                </button>
+              </form>
+            </div>
+          </div>
+          
+          <!-- Píxeles decorativos -->
+          <div class="mt-16 grid grid-cols-6 gap-2">
+            {[...Array(6)].map((_, i) => (
+              <div class={`h-8 rounded-sm ${['bg-pixel-yellow', 'bg-pixel-orange', 'bg-pixel-blue', 'bg-pixel-purple', 'bg-pixel-brown', 'bg-pixel-green'][i % 6]}`}></div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contactForm');
+    
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Aquí puedes agregar la lógica para enviar el formulario
+      
+      alert('¡Gracias por tu mensaje! Te responderemos lo antes posible.');
+      (form as HTMLFormElement).reset();
+    });
+  });
+</script>

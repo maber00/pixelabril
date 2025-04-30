@@ -1,0 +1,75 @@
+---
+import imageBG from '../assets/PIXEL-LIVING.webp';
+
+---
+
+<section id="vive-pixel" class="section bg-pixel-orange/5">
+  <div class="container">
+    <div class="max-w-8xl mx-auto">
+      <div class="flex flex-col  bg-gray-100 rounded-2xl p-10 md:flex-row items-center gap-12">
+        <div class="md:w-1/2 ">
+          <span class="inline-block text-pixel-orange font-semibold text-sm uppercase tracking-wider mb-3">Nuestra filosofía</span>
+          <h2 class="text-5xl md:text-7xl  font-normal mb-8 md:leading-15 leading-11">Un hogar temporal para <span class="text-pixel-orange">mentes inquietas</span></h2>
+
+          <div class="space-y-0 text-lg">
+            <p>
+              En Pixel creemos que el lugar donde vives debe <span class="font-semibold">inspirarte</span>.
+            </p>
+            <p>
+              No somos un arriendo tradicional. Tampoco un hotel.
+            </p>
+            <p>
+              Somos un punto de conexión entre personas que están en movimiento, pero quieren estar bien.
+            </p>
+            <p>
+              Pixel Living es para quienes valoran los detalles, el diseño y la buena energía.
+            </p>
+          </div>
+        </div>
+        
+        <div class="md:w-1/2 relative">
+          <div class="relative border-2 border-pixel-orange rounded-md overflow-hidden">
+            <img 
+              src={imageBG.src} 
+
+              alt="Ambiente Pixel Living" 
+              class="w-full h-auto object-cover"
+            />
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-pixel-orange p-8 rounded-md shadow-lg transform transition-all hover:-translate-y-2 hover:shadow-xl border-4 border-orange-500 pixel-hover">
+          <div class="w-16 h-16 bg-pixel-orange/20 rounded-md flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-14 h-14 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+          </div>
+          <h3 class="text-4xl font-semibold text-white mb-3">Sentirse en casa</h3>
+          <p class="text-white">Espacios diseñados para que te apropies de ellos desde el primer día, con todo lo que necesitas.</p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-md shadow-lg transform transition-all hover:-translate-y-2 hover:shadow-xl border-2 border-pixel-orange pixel-hover">
+          <div class="w-16 h-16 bg-pixel-orange/20 rounded-md flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-14 h-14 text-pixel-orange">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+            </svg>
+          </div>
+          <h3 class="text-4xl font-semibold mb-3">Conectar</h3>
+          <p class="text-gray-600">Una comunidad de personas creativas, inquietas y en constante movimiento que comparten más que un espacio.</p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-md shadow-lg transform transition-all hover:-translate-y-2 hover:shadow-xl border-2 border-pixel-orange pixel-hover">
+          <div class="w-16 h-16 bg-pixel-orange/20 rounded-md flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-14 h-14 text-pixel-orange">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+          </div>
+          <h3 class="text-4xl font-semibold mb-3">Inspirar</h3>
+          <p class="text-gray-600">Un ambiente que estimula la creatividad y el bienestar personal, impulsándote en tu día a día.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

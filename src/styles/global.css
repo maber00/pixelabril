@@ -1,0 +1,163 @@
+/* Importar Tailwind preflight en lugar de base */
+@import "tailwindcss";
+/* Importar estilos de píxel */
+@import './pixel-styles.css';
+/* Importar estilos de tipografía */
+@import './typography.css';
+/* Importar estilos de bloques de píxeles */
+@import './pixel-blocks.css';
+/* Estilos globales */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family:  'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #1f2937;
+  background-color: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cal Sans', sans-serif;
+  letter-spacing: 0.04em;
+
+}
+
+
+/* Variables de colores */
+:root {
+  --color-pixel-yellow: #FFCC33;
+  --color-pixel-orange: #FF9933;
+  --color-pixel-blue: #3399FF;
+  --color-pixel-purple: #9966CC;
+  --color-pixel-brown: #996633;
+  --color-pixel-green: #33CC66;
+}
+
+/* Componentes */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 300ms;
+}
+
+.btn-primary {
+  background-color: var(--color-pixel-yellow);
+  color: #1f2937;
+}
+.btn-primary:hover {
+  background-color: #F59E0B;
+}
+
+.section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.container {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 95%;
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 90%;
+  }
+}
+
+.section-title {
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Utilidades */
+.text-pixel-yellow {
+  color: var(--color-pixel-yellow);
+}
+
+.text-pixel-orange {
+  color: var(--color-pixel-orange);
+}
+
+.text-pixel-blue {
+  color: var(--color-pixel-blue);
+}
+
+.text-pixel-purple {
+  color: var(--color-pixel-purple);
+}
+
+.text-pixel-brown {
+  color: var(--color-pixel-brown);
+}
+
+.text-pixel-green {
+  color: var(--color-pixel-green);
+}
+
+.bg-pixel-yellow {
+  background-color: var(--color-pixel-yellow);
+}
+
+.bg-pixel-orange {
+  background-color: var(--color-pixel-orange);
+}
+
+.bg-pixel-blue {
+  background-color: var(--color-pixel-blue);
+}
+
+.bg-pixel-purple {
+  background-color: var(--color-pixel-purple);
+}
+
+.bg-pixel-brown {
+  background-color: var(--color-pixel-brown);
+}
+
+.bg-pixel-green {
+  background-color: var(--color-pixel-green);
+}
+
+/* Bordes de píxeles */
+.border-pixel-yellow {
+  border-color: var(--color-pixel-yellow);
+}
+
+.border-pixel-orange {
+  border-color: var(--color-pixel-orange);
+}
+
+.border-pixel-blue {
+  border-color: var(--color-pixel-blue);
+}
+
+.border-pixel-purple {
+  border-color: var(--color-pixel-purple);
+}
+
+.border-pixel-brown {
+  border-color: var(--color-pixel-brown);
+}
+
+.border-pixel-green {
+  border-color: var(--color-pixel-green);
+}

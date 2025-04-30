@@ -1,0 +1,31 @@
+/* Estilos específicos para Cal Sans y tipografía */
+
+/* Clases básicas para Cal Sans */
+.cal-sans {
+    font-family: 'Cal Sans', sans-serif;
+  }
+  
+  /* Para títulos grandes como el hero */
+  .cal-hero {
+    font-family: 'Cal Sans', sans-serif;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  
+  /* Para títulos de secciones */
+  .cal-title {
+    font-family: 'Cal Sans', sans-serif;
+    letter-spacing: -0.02em;
+  }
+  
+  /* Para texto normal */
+  .cal-text {
+    font-family: 'Cal Sans', sans-serif;
+  }
+  
+  /* Ajustes para elementos específicos */
+  h1, h2, h3, h4, h5, h6, 
+  .btn,
+  .nav-link {
+    font-family: 'Cal Sans', sans-serif;
+  }
