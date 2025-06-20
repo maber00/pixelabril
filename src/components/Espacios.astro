@@ -7,9 +7,7 @@ interface Caracteristica {
   texto: string;
 }
 
-
 // Definición de tipos
-// Definimos interfaces para tener tipos correctos
 interface Estudio {
   id: string;
   nombre: string;
@@ -23,27 +21,27 @@ interface Estudio {
   incluye: string[];
 }
 
-// Definimos un tipo con índice para permitir acceso usando string como índice
 interface EstudiosRecord {
   [key: string]: Estudio;
 }
 
-// Ahora definimos estudiosCompletos con el tipo correcto
+// Estudios completos con datos reales del proyecto
 const estudiosCompletos: EstudiosRecord = {
   'jade': {
     id: 'jade',
     nombre: 'Estudio Jade',
     color: 'bg-green-500',
-    imagen: '/images/estudios/f1.jpg',
+    imagen: '/images/estudios/jade/pixel-jade-room-004.webp',
     descripcion: 'Espacio luminoso con toques de verde que evocan naturaleza y tranquilidad.',
     metros: '28m²',
     precio: 'Desde $1.800.000',
-    galeria: [
-      '/images/estudios/indigo/f1.jpg', 
-      '/images/estudios/indigo/f2.jpg', 
-      '/images/estudios/indigo/f3.jpg', 
-      '/images/estudios/indigo/f4.jpg', 
-      '/images/estudios/indigo/f5.jpg'
+    galeria: [ 
+      '/images/estudios/jade/pixel-jade-room-005.webp', 
+      '/images/estudios/jade/pixel-jade-room-001.webp',  
+      '/images/estudios/jade/pixel-jade-room-002.webp',   
+      '/images/estudios/jade/pixel-jade-room-006.webp',
+      '/images/estudios/jade/pixel-jade-room-007.webp',
+      '/images/estudios/jade/pixel-jade-room-008.webp'
     ],
     caracteristicas: [
       'Cama doble con colchón ortopédico',
@@ -66,17 +64,20 @@ const estudiosCompletos: EstudiosRecord = {
     id: 'zian',
     nombre: 'Estudio Zian',
     color: 'bg-blue-500',
-    imagen: '/images/estudios/f2.jpg',
+    imagen: '/images/estudios/zian/pixel-zian-room-008.webp',
     descripcion: 'Colores azules que transmiten calma y concentración, ideal para trabajo remoto.',
     metros: '32m²',
     precio: 'Desde $2.100.000',
     galeria: [
-      '/images/estudios/indigo/f1.jpg', 
-      '/images/estudios/indigo/f2.jpg', 
-      '/images/estudios/indigo/f3.jpg', 
-      '/images/estudios/indigo/f4.jpg', 
-      '/images/estudios/indigo/f5.jpg'
-      
+      '/images/estudios/zian/pixel-zian-room-001.webp', 
+      '/images/estudios/zian/pixel-zian-room-002.webp', 
+      '/images/estudios/zian/pixel-zian-room-003.webp', 
+      '/images/estudios/zian/pixel-zian-room-004.webp', 
+      '/images/estudios/zian/pixel-zian-room-005.webp',
+      '/images/estudios/zian/pixel-zian-room-006.webp', 
+      '/images/estudios/zian/pixel-zian-room-007.webp', 
+      '/images/estudios/zian/pixel-zian-room-009.webp', 
+      '/images/estudios/zian/pixel-zian-room-010.webp' 
     ],
     caracteristicas: [
       'Cama doble premium con almacenamiento',
@@ -99,14 +100,27 @@ const estudiosCompletos: EstudiosRecord = {
     id: 'indigo',
     nombre: 'Estudio Índigo',
     color: 'bg-indigo-500',
-    imagen: '/images/estudios/f3.jpg',
+    imagen: '/images/estudios/indigo/pixel-indigo-room-005.webp',
     descripcion: 'Tonos violetas que inspiran creatividad y reflexión en un ambiente acogedor.',
     metros: '35m²',
     precio: 'Desde $2.300.000',
     galeria: [
-      '/images/estudios/indigo/f6.jpg', 
-      '/images/estudios/indigo/f7.jpg', 
-      '/images/estudios/indigo/f8.jpg'
+      '/images/estudios/indigo/pixel-indigo-room-001.webp', 
+      '/images/estudios/indigo/pixel-indigo-room-002.webp', 
+      '/images/estudios/indigo/pixel-indigo-room-003.webp', 
+      '/images/estudios/indigo/pixel-indigo-room-004.webp', 
+      '/images/estudios/indigo/pixel-indigo-room-006.webp',
+      '/images/estudios/indigo/pixel-indigo-room-007.webp', 
+      '/images/estudios/indigo/pixel-indigo-room-008.webp', 
+      '/images/estudios/indigo/pixel-indigo-room-009.webp', 
+      '/images/estudios/indigo/pixel-indigo-room-010.webp',
+      '/images/estudios/indigo/pixel-indigo-room-011.webp', 
+      '/images/estudios/indigo/pixel-indigo-room-012.webp', 
+      '/images/estudios/indigo/pixel-indigo-room-013.webp', 
+      '/images/estudios/indigo/pixel-indigo-room-014.webp', 
+      '/images/estudios/indigo/pixel-indigo-room-016.webp', 
+      '/images/estudios/indigo/pixel-indigo-room-017.webp', 
+      '/images/estudios/indigo/pixel-indigo-room-018.webp'
     ],
     caracteristicas: [
       'Cama queen con colchón premium',
@@ -184,7 +198,7 @@ const caracteristicas: Caracteristica[] = [
   }
 ];
 
-// Definimos tipos para los datos derivados
+// Derivar arrays simplificados
 interface EstudioSimplificado {
   id: string;
   nombre: string;
@@ -206,7 +220,6 @@ interface LightboxData {
   [key: string]: LightboxEstudio;
 }
 
-// A partir de esta estructura unificada, generamos los arreglos con tipos correctos
 const estudios: EstudioSimplificado[] = Object.values(estudiosCompletos).map(estudio => ({
   id: estudio.id,
   nombre: estudio.nombre,
@@ -217,7 +230,6 @@ const estudios: EstudioSimplificado[] = Object.values(estudiosCompletos).map(est
   precio: estudio.precio
 }));
 
-// Para el lightbox, creamos un objeto que tiene el formato esperado
 const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((result, estudio) => {
   result[estudio.id] = {
     nombre: estudio.nombre,
@@ -229,11 +241,13 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
 }, {} as LightboxData);
 ---
 
-<section id="espacios" class="section bg-pixel-blue/5">
-  <div class="container ">
-    <div class="text-center bg-pixel-blue rounded-t-2xl ">
+<section id="espacios" class="section bg-pixel-blue/5" role="region" aria-labelledby="espacios-heading">
+  <div class="container">
+    <div class="text-center bg-pixel-blue rounded-t-2xl">
       <span class="inline-block text-pixel-blue font-semibold text-sm uppercase tracking-wider mb-2">Nuestros espacios</span>
-      <h2 class="text-4xl md:text-7xl font-normal px-4 md:px-18">Espacios diseñados para vivir con <span class="text-blue-100">intención</span></h2>
+      <h2 id="espacios-heading" class="text-4xl md:text-7xl font-normal px-4 md:px-18">
+        Espacios diseñados para vivir con <span class="text-blue-100">intención</span>
+      </h2>
       
       <p class="text-lg text-blue-100 max-w-5xl pb-10 px-4 mx-auto mt-6">
         Cada uno de nuestros apartaestudios está completamente amoblado y listo para recibirte.
@@ -243,13 +257,18 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
     
     <!-- Carrusel de apartaestudios -->
     <div class="relative mx-auto bg-pixel-blue max-w-7xl px-4 overflow-hidden" id="carousel-container">
+      <div class="sr-only" id="carousel-instructions">
+        Use las flechas izquierda y derecha para navegar, o presione Tab para explorar cada estudio individualmente.
+      </div>
+      
       <!-- Botones de navegación -->
       <button 
         class="absolute left-0 top-1/2 z-10 -translate-y-1/2 bg-white rounded-md p-3 shadow-lg hover:bg-gray-100 focus:outline-none disabled:opacity-30 disabled:cursor-not-allowed border border-pixel-blue" 
         id="prev-btn"
         aria-label="Ver apartaestudio anterior"
+        aria-describedby="carousel-instructions"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pixel-blue">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pixel-blue" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
         </svg>
       </button>
@@ -258,69 +277,102 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
         class="absolute right-0 top-1/2 z-10 -translate-y-1/2 bg-white rounded-md p-3 shadow-lg hover:bg-gray-100 focus:outline-none disabled:opacity-30 disabled:cursor-not-allowed border border-pixel-blue" 
         id="next-btn"
         aria-label="Ver apartaestudio siguiente"
+        aria-describedby="carousel-instructions"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pixel-blue">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pixel-blue" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
         </svg>
       </button>
       
       <!-- Carrusel -->
-      <div class="flex transition-transform duration-500 ease-in-out" id="carousel-slides">
+      <div 
+        class="flex transition-transform duration-500 ease-in-out" 
+        id="carousel-slides"
+        role="group"
+        aria-label="Carrusel de apartaestudios"
+        aria-live="polite"
+      >
         {estudios.map((estudio, index) => (
-          <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-2 transition-opacity duration-300" data-slide-index={index} data-estudio-id={estudio.id}>
+          <article 
+            class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-2 transition-opacity duration-300" 
+            data-slide-index={index} 
+            data-estudio-id={estudio.id}
+            aria-labelledby={`estudio-${estudio.id}-title`}
+          >
             <div class="bg-white rounded-md overflow-hidden shadow-lg h-full flex flex-col transform transition duration-300 hover:-translate-y-2 hover:shadow-xl border-2 border-pixel-blue pixel-hover">
               <div class="relative">
-                <img src={estudio.imagen} alt={estudio.nombre} class="w-full h-64 object-cover main-image" data-estudio-id={estudio.id} />
+                <img 
+                  src={estudio.imagen} 
+                  alt={`${estudio.nombre} - Vista principal del apartaestudio`}
+                  class="w-full h-64 object-cover main-image cursor-pointer" 
+                  data-estudio-id={estudio.id}
+                  tabindex="0"
+                  role="button"
+                  aria-label={`Ver galería completa de ${estudio.nombre}`}
+                />
+                
                 <div class="absolute top-4 right-4 bg-white py-1 px-3 rounded-md shadow-md border border-pixel-blue">
-                  <span class="font-medium text-sm">{estudio.metros}</span>
+                  <span class="font-medium text-sm" aria-label={`Área: ${estudio.metros}`}>{estudio.metros}</span>
                 </div>
                 
                 <!-- Botón para abrir galería -->
                 <button 
-                  class="absolute bottom-4 right-4 bg-black bg-opacity-60 p-2 rounded-full text-white hover:bg-opacity-80 open-gallery-btn" 
+                  class="absolute bottom-4 right-4 bg-black bg-opacity-60 p-2 rounded-full text-white hover:bg-opacity-80 open-gallery-btn focus:bg-opacity-80" 
                   data-estudio-id={estudio.id}
-                  aria-label={`Ver galería de ${estudio.nombre}`}
+                  aria-label={`Abrir galería completa de ${estudio.nombre}`}
+                  title={`Ver más fotos de ${estudio.nombre}`}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
                   </svg>
                 </button>
                 
-                <!-- Miniaturas de galería (versión compacta) -->
-                <div class="absolute bottom-4 left-4 flex space-x-1">
-  <!-- Imagen principal como primera miniatura -->
-  <div 
-    class="w-8 h-8 rounded-md overflow-hidden border border-white cursor-pointer gallery-thumb" 
-    data-estudio-id={estudio.id}
-    data-img-index={-1}
-  >
-    <img src={estudio.imagen} alt={`${estudio.nombre} imagen principal`} class="w-full h-full object-cover" />
-  </div>
-  
-  <!-- Imágenes de la galería (máximo 3 miniaturas adicionales) -->
-  {estudiosCompletos[estudio.id].galeria.slice(0, 3).map((img: string, imgIndex: number) => (
-    <div 
-      class="w-8 h-8 rounded-md overflow-hidden border border-white cursor-pointer gallery-thumb" 
-      data-estudio-id={estudio.id}
-      data-img-index={imgIndex}
-    >
-      <img src={img} alt={`${estudio.nombre} imagen ${imgIndex + 1}`} class="w-full h-full object-cover" />
-    </div>
-  ))}
-</div>
-
+                <!-- Miniaturas de galería -->
+                <div class="absolute bottom-4 left-4 flex space-x-1" role="group" aria-label={`Vista previa de imágenes de ${estudio.nombre}`}>
+                  <!-- Imagen principal como primera miniatura -->
+                  <button 
+                    class="w-8 h-8 rounded-md overflow-hidden border border-white cursor-pointer gallery-thumb hover:scale-110 focus:scale-110 transition-transform" 
+                    data-estudio-id={estudio.id}
+                    data-img-index={-1}
+                    aria-label={`Ver imagen principal de ${estudio.nombre}`}
+                    tabindex="0"
+                  >
+                    <img src={estudio.imagen} alt="" class="w-full h-full object-cover" />
+                  </button>
+                  
+                  <!-- Imágenes de la galería (máximo 3 miniaturas adicionales) -->
+                  {estudiosCompletos[estudio.id].galeria.slice(0, 3).map((img: string, imgIndex: number) => (
+                    <button 
+                      class="w-8 h-8 rounded-md overflow-hidden border border-white cursor-pointer gallery-thumb hover:scale-110 focus:scale-110 transition-transform" 
+                      data-estudio-id={estudio.id}
+                      data-img-index={imgIndex}
+                      aria-label={`Ver imagen ${imgIndex + 2} de ${estudio.nombre}`}
+                      tabindex="0"
+                    >
+                      <img src={img} alt="" class="w-full h-full object-cover" />
+                    </button>
+                  ))}
+                </div>
               </div>
               
               <div class="p-4 flex-grow">
-                <h3 class="text-xl font-bold mb-2 text-pixel-blue">{estudio.nombre}</h3>
+                <h3 id={`estudio-${estudio.id}-title`} class="text-xl font-bold mb-2 text-pixel-blue">
+                  {estudio.nombre}
+                </h3>
                 <p class="text-gray-600 mb-3">{estudio.descripcion}</p>
                 
                 <div class="mt-auto">
                   <div class="flex justify-between items-center">
-                    <span class="text-xl font-bold text-pixel-blue">{estudio.precio}</span>
-                    <a href={`/estudio/${estudio.id}`} class="text-pixel-blue font-medium inline-flex items-center group ver-detalles-btn">
+                    <span class="text-xl font-bold text-pixel-blue" aria-label={`Precio desde ${estudio.precio}`}>
+                      {estudio.precio}
+                    </span>
+                    <a 
+                      href={`/estudio/${estudio.id}`} 
+                      class="text-pixel-blue font-medium inline-flex items-center group ver-detalles-btn hover:underline focus:underline"
+                      aria-describedby={`estudio-${estudio.id}-title`}
+                    >
                       Ver detalles
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-1 transform transition-transform group-hover:translate-x-1">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-1 transform transition-transform group-hover:translate-x-1" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                       </svg>
                     </a>
@@ -328,17 +380,20 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
                 </div>
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
       
       <!-- Indicadores -->
-      <div class="flex justify-center mt-8 mb-8 space-x-2" id="carousel-indicators">
+      <div class="flex justify-center mt-8 mb-8 space-x-2" id="carousel-indicators" role="group" aria-label="Indicadores de carrusel">
         {estudios.map((_, index) => (
           <button 
-            class="w-4 h-4 bg-gray-200 focus:outline-none transition-colors duration-300 rounded-sm border border-pixel-blue" 
+            class="w-4 h-4 bg-gray-200 focus:outline-none transition-colors duration-300 rounded-sm border border-pixel-blue hover:scale-110 focus:scale-110" 
             data-index={index}
-            aria-label={`Ver apartaestudio ${index + 1}`}
+            aria-label={`Ir a apartaestudio ${index + 1}`}
+            role="tab"
+            aria-selected={index === 0 ? 'true' : 'false'}
+            tabindex={index === 0 ? 0 : -1}
           ></button>
         ))}
       </div>
@@ -348,28 +403,33 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
     <div class="bg-white rounded-md shadow-lg p-8 max-w-4xl mx-auto mt-16 border-2 border-pixel-blue">
       <h3 class="text-2xl font-bold mb-6 text-center text-pixel-blue">Características de nuestros espacios</h3>
       
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6" role="list">
         {caracteristicas.map((item: { icono: string; texto: string }) => (
-  <div class="flex items-start space-x-3">
-    <div class="flex-shrink-0 bg-pixel-blue/10 p-2 rounded-md border border-pixel-blue">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pixel-blue">
-        <path stroke-linecap="round" stroke-linejoin="round" d={item.icono} />
-      </svg>
-    </div>
-    <div>
-      <p class="font-medium">{item.texto}</p>
-    </div>
-  </div>
-))}
+          <div class="flex items-start space-x-3" role="listitem">
+            <div class="flex-shrink-0 bg-pixel-blue/10 p-2 rounded-md border border-pixel-blue" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pixel-blue">
+                <path stroke-linecap="round" stroke-linejoin="round" d={item.icono} />
+              </svg>
+            </div>
+            <div>
+              <p class="font-medium">{item.texto}</p>
+            </div>
+          </div>
+        ))}
       </div>
       
       <div class="mt-8 text-center">
-        <a href="#reservas" class="btn bg-pixel-blue hover:bg-blue-600 text-white inline-flex items-center border border-blue-700 pixel-hover">
+        <a 
+          href="#reservas" 
+          class="btn bg-pixel-blue hover:bg-blue-600 text-white inline-flex items-center border border-blue-700 pixel-hover focus:ring-4 focus:ring-blue-300"
+          aria-describedby="reservas-cta-desc"
+        >
           👉 Solicita disponibilidad
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
           </svg>
         </a>
+        <p id="reservas-cta-desc" class="sr-only">Ir a la sección de reservas para solicitar disponibilidad de apartaestudios</p>
       </div>
     </div>
   </div>
@@ -378,151 +438,588 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
   <LightboxModal id="espacios-lightbox" showDetailsButton={true} showReservaButton={true} />
 </section>
 
-<!-- Script para el carrusel y lightbox -->
-<script is:inline src="/scripts/lightbox.js"></script>
 <script define:vars={{ lightboxData }}>
-  document.addEventListener('DOMContentLoaded', () => {
-    console.log("Espacios script loaded");
-    
-    // Elementos del carrusel
-    const container = document.getElementById('carousel-container');
-    const slides = document.getElementById('carousel-slides');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    const indicators = document.querySelectorAll('#carousel-indicators button');
-    
-    if (!container || !slides || !prevBtn || !nextBtn) return;
-    
-    // Variables
-    let currentIndex = 0;
-    let slidesPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
-    const totalSlides = indicators.length;
-    
-    // ===== FUNCIONES DEL CARRUSEL =====
-    function updateCarousel() {
-      if (!container || !slides || !prevBtn || !nextBtn) return;
-      
-      // Actualizar la posición del carrusel
-      const slideWidth = container.clientWidth / slidesPerView;
-      slides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-      
-      // Actualizar visibilidad de botones
-      prevBtn.disabled = currentIndex === 0;
-      nextBtn.disabled = currentIndex === totalSlides - slidesPerView;
-      
-      // Actualizar indicadores
-      indicators.forEach((indicator, index) => {
-        if (index === currentIndex) {
-          indicator.classList.add('bg-pixel-blue');
-          indicator.classList.remove('bg-gray-200');
-        } else {
-          indicator.classList.add('bg-gray-200');
-          indicator.classList.remove('bg-pixel-blue');
-        }
-      });
-      
-      // Actualizar visibilidad de slides
-      const slideElements = document.querySelectorAll('[data-slide-index]');
-      slideElements.forEach((slide, index) => {
-        if (index >= currentIndex && index < currentIndex + slidesPerView) {
-          slide.classList.remove('opacity-50');
-        } else {
-          slide.classList.add('opacity-50');
-        }
-      });
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("=== ESPACIOS ASTRO 5.x SCRIPT INICIADO ===");
+  
+  // ===== HELPERS TYPE-SAFE PARA ASTRO 5.x =====
+  const getAccessibilityManager = () => {
+    return (typeof window !== 'undefined' && window.PAM) ? window.PAM : null;
+  };
+  
+  const announceCarouselChange = (current, total, title = '') => {
+    const pam = getAccessibilityManager();
+    if (pam && typeof pam.announceCarouselChange === 'function') {
+      pam.announceCarouselChange(current, total, title);
     }
-    
-    // Inicializar carrusel
-    updateCarousel();
-    
-    // Event listeners del carrusel
-    prevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateCarousel();
-      }
+  };
+  
+  const announceLightboxChange = (current, total, title = '') => {
+    const pam = getAccessibilityManager();
+    if (pam && typeof pam.announceLightboxChange === 'function') {
+      pam.announceLightboxChange(current, total, title);
+    }
+  };
+  
+  const trapFocus = (container) => {
+    const pam = getAccessibilityManager();
+    if (pam && typeof pam.trapFocus === 'function') {
+      pam.trapFocus(container);
+    }
+  };
+  
+  const releaseFocusTrap = () => {
+    const pam = getAccessibilityManager();
+    if (pam && typeof pam.releaseFocusTrap === 'function') {
+      pam.releaseFocusTrap();
+    }
+  };
+  
+  // Función para dispatch de eventos personalizado compatible con Astro 5.x
+  const dispatchEstudioSeleccionado = (estudioId, estudioNombre) => {
+    const event = new CustomEvent('estudioSeleccionado', {
+      detail: { estudioId, estudioNombre },
+      bubbles: true,
+      cancelable: true
     });
+    document.dispatchEvent(event);
+  };
+  
+  // ===== VERIFICAR ELEMENTOS CRÍTICOS =====
+  const container = document.getElementById('carousel-container');
+  const slides = document.getElementById('carousel-slides');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const indicators = document.querySelectorAll('#carousel-indicators button');
+  const lightboxModal = document.getElementById('espacios-lightbox');
+  
+  console.log("Elementos encontrados:", {
+    container: !!container,
+    slides: !!slides,
+    prevBtn: !!prevBtn,
+    nextBtn: !!nextBtn,
+    indicators: indicators.length,
+    lightboxModal: !!lightboxModal,
+    lightboxData: Object.keys(lightboxData || {})
+  });
+
+  if (!container || !slides || !prevBtn || !nextBtn) {
+    console.error("❌ Elementos del carrusel no encontrados");
+    return;
+  }
+
+  if (!lightboxModal) {
+    console.error("❌ Modal lightbox no encontrado");
+    return;
+  }
+
+  // ===== VARIABLES CARRUSEL =====
+  let currentIndex = 0;
+  let slidesPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+  const totalSlides = indicators.length;
+
+  // ===== FUNCIONES CARRUSEL =====
+  function updateCarousel() {
+    console.log("Actualizando carrusel:", { currentIndex, slidesPerView, totalSlides });
     
-    nextBtn.addEventListener('click', () => {
-      if (currentIndex < totalSlides - slidesPerView) {
-        currentIndex++;
-        updateCarousel();
-      }
-    });
+    const slideWidth = container.clientWidth / slidesPerView;
+    slides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
     
+    // Actualizar botones
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === totalSlides - slidesPerView;
+    
+    // Actualizar ARIA states
+    prevBtn.setAttribute('aria-disabled', String(currentIndex === 0));
+    nextBtn.setAttribute('aria-disabled', String(currentIndex === totalSlides - slidesPerView));
+    
+    // Actualizar indicadores
     indicators.forEach((indicator, index) => {
-      indicator.addEventListener('click', () => {
-        currentIndex = Math.min(index, totalSlides - slidesPerView);
-        updateCarousel();
-      });
+      const isActive = index === currentIndex;
+      indicator.classList.toggle('bg-pixel-blue', isActive);
+      indicator.classList.toggle('bg-gray-200', !isActive);
+      indicator.setAttribute('aria-selected', String(isActive));
+      indicator.setAttribute('tabindex', isActive ? '0' : '-1');
     });
     
-    // Actualizar en cambio de tamaño de ventana
-    window.addEventListener('resize', () => {
-      const newSlidesPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
-      if (newSlidesPerView !== slidesPerView) {
-        slidesPerView = newSlidesPerView;
-        currentIndex = Math.min(currentIndex, totalSlides - slidesPerView);
-        updateCarousel();
+    // Actualizar opacity de slides
+    const slideElements = document.querySelectorAll('[data-slide-index]');
+    slideElements.forEach((slide, index) => {
+      if (index >= currentIndex && index < currentIndex + slidesPerView) {
+        slide.classList.remove('opacity-50');
+      } else {
+        slide.classList.add('opacity-50');
       }
     });
-    
-    // ===== INICIALIZAR EL LIGHTBOX =====
-    // Crear instancia de PixelLightbox
-    const lightbox = new PixelLightbox({
-      modalId: 'espacios-lightbox',
-      dataSource: lightboxData,
-      detailsPath: '/estudio/',
-      reservaPath: '#reservas',
-      onReservaClick: (estudioId) => {
-        // Comunicar la selección a la sección de reservas
-        const event = new CustomEvent('estudioSeleccionado', { 
-          detail: { 
-            estudioId: estudioId, 
-            estudioNombre: lightboxData[estudioId].nombre 
-          }
-        });
-        document.dispatchEvent(event);
+
+    // Anunciar cambio a lectores de pantalla
+    const currentSlide = slideElements[currentIndex];
+    const estudioNombre = currentSlide?.querySelector('h3')?.textContent || '';
+    announceCarouselChange(currentIndex + 1, totalSlides, estudioNombre);
+  }
+
+  // ===== EVENTOS CARRUSEL =====
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateCarousel();
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (currentIndex < totalSlides - slidesPerView) {
+      currentIndex++;
+      updateCarousel();
+    }
+  });
+
+  // Navegación con teclado en indicadores
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => {
+      currentIndex = Math.min(index, totalSlides - slidesPerView);
+      updateCarousel();
+    });
+
+    indicator.addEventListener('keydown', (e) => {
+      let targetIndex = currentIndex;
+      
+      switch (e.key) {
+        case 'ArrowLeft':
+          e.preventDefault();
+          targetIndex = Math.max(0, currentIndex - 1);
+          break;
+        case 'ArrowRight':
+          e.preventDefault();
+          targetIndex = Math.min(totalSlides - slidesPerView, currentIndex + 1);
+          break;
+        case 'Home':
+          e.preventDefault();
+          targetIndex = 0;
+          break;
+        case 'End':
+          e.preventDefault();
+          targetIndex = totalSlides - slidesPerView;
+          break;
       }
-    });
-    
-    // ===== EVENT LISTENERS PARA ABRIR EL LIGHTBOX =====
-    
-    // Botón para abrir lightbox
-    const openGalleryBtns = document.querySelectorAll('.open-gallery-btn');
-    openGalleryBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const estudioId = btn.getAttribute('data-estudio-id');
-        lightbox.open(estudioId, 0);
-      });
-    });
-    
-    // Miniaturas para abrir lightbox
-    const galleryThumbs = document.querySelectorAll('.gallery-thumb');
-    galleryThumbs.forEach(thumb => {
-      thumb.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const estudioId = thumb.getAttribute('data-estudio-id');
-        const imgIndex = parseInt(thumb.getAttribute('data-img-index') || '0');
-        lightbox.open(estudioId, imgIndex + 1); // +1 porque incluimos la imagen principal
-      });
-    });
-    
-    // Imágenes principales para abrir lightbox
-    const mainImages = document.querySelectorAll('.main-image');
-    mainImages.forEach(img => {
-      img.addEventListener('click', (e) => {
-        // Comprobar si el clic fue en un elemento hijo
-        if (e.target !== img) return;
-        
-        const estudioId = img.getAttribute('data-estudio-id');
-        if (estudioId) {
-          lightbox.open(estudioId, 0);
-        }
-      });
+      
+      if (targetIndex !== currentIndex) {
+        currentIndex = targetIndex;
+        updateCarousel();
+        indicators[currentIndex].focus();
+      }
     });
   });
+
+  // Responsive handling
+  window.addEventListener('resize', () => {
+    const newSlidesPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+    if (newSlidesPerView !== slidesPerView) {
+      slidesPerView = newSlidesPerView;
+      currentIndex = Math.min(currentIndex, totalSlides - slidesPerView);
+      updateCarousel();
+    }
+  });
+
+  updateCarousel();
+
+  // ===== LIGHTBOX COMPATIBLE CON ASTRO 5.x =====
+  const lightboxImage = lightboxModal.querySelector('.lightbox-image');
+  const lightboxTitle = lightboxModal.querySelector('.lightbox-title');
+  const lightboxThumbnails = lightboxModal.querySelector('.lightbox-thumbnails');
+  const lightboxClose = lightboxModal.querySelector('.lightbox-close');
+  const lightboxPrev = lightboxModal.querySelector('.lightbox-prev');
+  const lightboxNext = lightboxModal.querySelector('.lightbox-next');
+  const lightboxDetailsLink = lightboxModal.querySelector('.lightbox-details-link');
+  const lightboxReservaLink = lightboxModal.querySelector('.lightbox-reserva-link');
+  const lightboxCurrent = lightboxModal.querySelector('.lightbox-current');
+  const lightboxTotal = lightboxModal.querySelector('.lightbox-total');
+
+  let currentEstudioId = '';
+  let currentImageIndex = 0;
+  let currentImages = [];
+
+  function buildImageArray(estudioData) {
+    const images = [];
+    if (estudioData.imagenPrincipal) {
+      images.push({
+        src: estudioData.imagenPrincipal,
+        alt: `${estudioData.nombre} - Imagen principal`
+      });
+    }
+    if (estudioData.imagenes && Array.isArray(estudioData.imagenes)) {
+      estudioData.imagenes.forEach((src, index) => {
+        images.push({
+          src: src,
+          alt: `${estudioData.nombre} - Imagen ${index + 1}`
+        });
+      });
+    }
+    return images;
+  }
+
+  function updateLightboxImage() {
+    if (!lightboxImage || currentImages.length === 0) return;
+    
+    const currentImage = currentImages[currentImageIndex];
+    lightboxImage.style.opacity = '0.7';
+    
+    setTimeout(() => {
+      lightboxImage.src = currentImage.src;
+      lightboxImage.alt = currentImage.alt;
+      lightboxImage.style.opacity = '1';
+    }, 150);
+
+    // Update counter
+    if (lightboxCurrent) lightboxCurrent.textContent = currentImageIndex + 1;
+    if (lightboxTotal) lightboxTotal.textContent = currentImages.length;
+
+    // Update navigation
+    if (lightboxPrev) {
+      lightboxPrev.disabled = currentImageIndex === 0;
+      lightboxPrev.setAttribute('aria-disabled', String(currentImageIndex === 0));
+      lightboxPrev.style.opacity = currentImageIndex === 0 ? '0.5' : '1';
+    }
+    if (lightboxNext) {
+      lightboxNext.disabled = currentImageIndex === currentImages.length - 1;
+      lightboxNext.setAttribute('aria-disabled', String(currentImageIndex === currentImages.length - 1));
+      lightboxNext.style.opacity = currentImageIndex === currentImages.length - 1 ? '0.5' : '1';
+    }
+
+    updateLightboxThumbnails();
+
+    // Anunciar cambio
+    const estudioData = lightboxData[currentEstudioId];
+    announceLightboxChange(currentImageIndex + 1, currentImages.length, estudioData?.nombre);
+  }
+
+  function updateLightboxThumbnails() {
+    if (!lightboxThumbnails) return;
+
+    lightboxThumbnails.innerHTML = '';
+    currentImages.forEach((image, index) => {
+      const thumb = document.createElement('button');
+      thumb.className = `cursor-pointer rounded-md overflow-hidden transition-all duration-200 ${
+        index === currentImageIndex 
+          ? 'ring-2 ring-white ring-offset-2 ring-offset-black opacity-100' 
+          : 'opacity-70 hover:opacity-90'
+      }`;
+      
+      thumb.setAttribute('aria-label', `Ver ${image.alt}`);
+      thumb.setAttribute('tabindex', '0');
+
+      thumb.innerHTML = `<img src="${image.src}" alt="" class="w-16 h-16 object-cover" loading="lazy" />`;
+
+      thumb.addEventListener('click', () => {
+        currentImageIndex = index;
+        updateLightboxImage();
+      });
+
+      thumb.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          currentImageIndex = index;
+          updateLightboxImage();
+        }
+      });
+
+      lightboxThumbnails.appendChild(thumb);
+    });
+  }
+
+  function openLightbox(estudioId, imageIndex = 0) {
+    console.log("🎯 Abriendo lightbox:", { estudioId, imageIndex });
+    
+    const estudioData = lightboxData[estudioId];
+    if (!estudioData) {
+      console.error('Estudio no encontrado:', estudioId);
+      return;
+    }
+
+    currentEstudioId = estudioId;
+    currentImages = buildImageArray(estudioData);
+    currentImageIndex = Math.max(0, Math.min(imageIndex, currentImages.length - 1));
+
+    // Update title
+    if (lightboxTitle) {
+      lightboxTitle.textContent = estudioData.nombre;
+    }
+
+    // Update links
+    if (lightboxDetailsLink) {
+      lightboxDetailsLink.href = `/estudio/${estudioId}`;
+    }
+
+    if (lightboxReservaLink) {
+      lightboxReservaLink.href = '#reservas';
+    }
+
+    updateLightboxImage();
+
+    // Show modal with accessibility
+    lightboxModal.classList.remove('hidden');
+    lightboxModal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+
+    // Focus management
+    trapFocus(lightboxModal);
+    
+    // Fallback focus si no hay PAM disponible
+    if (!getAccessibilityManager()) {
+      setTimeout(() => {
+        lightboxClose?.focus();
+      }, 100);
+    }
+
+    console.log("✅ Lightbox abierto exitosamente");
+  }
+
+  function closeLightbox() {
+    lightboxModal.classList.add('hidden');
+    lightboxModal.classList.remove('flex');
+    document.body.style.overflow = '';
+    
+    // Release focus trap
+    releaseFocusTrap();
+    
+    console.log("Lightbox cerrado");
+  }
+
+  // ===== EVENTOS LIGHTBOX =====
+  
+  // Cerrar
+  if (lightboxClose) {
+    lightboxClose.addEventListener('click', closeLightbox);
+  }
+
+  // Navegación
+  if (lightboxPrev) {
+    lightboxPrev.addEventListener('click', () => {
+      if (currentImageIndex > 0) {
+        currentImageIndex--;
+        updateLightboxImage();
+      }
+    });
+  }
+
+  if (lightboxNext) {
+    lightboxNext.addEventListener('click', () => {
+      if (currentImageIndex < currentImages.length - 1) {
+        currentImageIndex++;
+        updateLightboxImage();
+      }
+    });
+  }
+
+  // Click fuera del modal
+  lightboxModal.addEventListener('click', (e) => {
+    if (e.target === lightboxModal) {
+      closeLightbox();
+    }
+  });
+
+  // Teclado
+  document.addEventListener('keydown', (e) => {
+    if (!lightboxModal.classList.contains('hidden')) {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        if (currentImageIndex > 0) {
+          currentImageIndex--;
+          updateLightboxImage();
+        }
+      } else if (e.key === 'ArrowRight') {
+        if (currentImageIndex < currentImages.length - 1) {
+          currentImageIndex++;
+          updateLightboxImage();
+        }
+      }
+    }
+  });
+
+  // RESERVAR AHORA - Compatible con Astro 5.x
+  if (lightboxReservaLink) {
+    lightboxReservaLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log("🎯 Reservar clicked para:", currentEstudioId);
+      
+      // Cerrar lightbox
+      closeLightbox();
+      
+      // Enviar evento (compatible con Astro 5.x)
+      setTimeout(() => {
+        const estudioData = lightboxData[currentEstudioId];
+        dispatchEstudioSeleccionado(
+          currentEstudioId,
+          estudioData ? estudioData.nombre : 'Estudio seleccionado'
+        );
+        
+        console.log("✅ Evento estudioSeleccionado enviado:", {
+          estudioId: currentEstudioId,
+          estudioNombre: estudioData?.nombre
+        });
+      }, 200);
+
+      // Scroll a reservas
+      setTimeout(() => {
+        const reservasSection = document.querySelector('#reservas');
+        if (reservasSection) {
+          reservasSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+          console.log("✅ Scroll a reservas completado");
+        }
+      }, 400);
+    });
+  }
+
+  // ===== EVENTOS PARA ABRIR LIGHTBOX =====
+  
+  // Botón galería
+  document.querySelectorAll('.open-gallery-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const estudioId = btn.getAttribute('data-estudio-id');
+      if (estudioId) {
+        console.log("Click en gallery btn:", estudioId);
+        openLightbox(estudioId, 0);
+      }
+    });
+  });
+
+  // Thumbnails
+  document.querySelectorAll('.gallery-thumb').forEach(thumb => {
+    thumb.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const estudioId = thumb.getAttribute('data-estudio-id');
+      const imgIndex = parseInt(thumb.getAttribute('data-img-index') || '0');
+      if (estudioId) {
+        const lightboxIndex = imgIndex === -1 ? 0 : imgIndex + 1;
+        console.log("Click en thumbnail:", { estudioId, imgIndex, lightboxIndex });
+        openLightbox(estudioId, lightboxIndex);
+      }
+    });
+
+    // Keyboard support for thumbnails
+    thumb.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        thumb.click();
+      }
+    });
+  });
+
+  // Imagen principal
+  document.querySelectorAll('.main-image').forEach(img => {
+    img.addEventListener('click', (e) => {
+      if (e.target !== img) return;
+      const estudioId = img.getAttribute('data-estudio-id');
+      if (estudioId) {
+        console.log("Click en main image:", estudioId);
+        openLightbox(estudioId, 0);
+      }
+    });
+
+    // Keyboard support for main image
+    img.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        img.click();
+      }
+    });
+  });
+
+  console.log("✅ Espacios (Astro 5.x) inicializado correctamente");
+  
+  // Debug
+  window.espaciosDebug = {
+    openLightbox,
+    closeLightbox,
+    lightboxData,
+    currentEstudioId: () => currentEstudioId,
+    testLightbox: (estudioId) => openLightbox(estudioId, 0)
+  };
+});
 </script>
+
+<style>
+  /* Screen reader only utility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Enhanced focus styles for keyboard navigation */
+  .keyboard-navigation button:focus,
+  .keyboard-navigation [role="button"]:focus {
+    outline: 2px solid #ffd700;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.3);
+  }
+
+  /* Gallery thumbnail focus */
+  .keyboard-navigation .gallery-thumb:focus {
+    transform: scale(1.15);
+    z-index: 10;
+    position: relative;
+  }
+
+  /* Carousel indicator focus */
+  .keyboard-navigation [data-index]:focus {
+    transform: scale(1.3);
+    z-index: 10;
+  }
+
+  /* Lightbox focus styles */
+  .lightbox-modal.flex .keyboard-navigation button:focus {
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.8);
+  }
+
+  /* Improved hover effects for accessibility */
+  @media (hover: hover) {
+    .gallery-thumb:hover,
+    .open-gallery-btn:hover {
+      transform: scale(1.05);
+    }
+    
+    .main-image:hover {
+      opacity: 0.9;
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .gallery-thumb,
+    .open-gallery-btn {
+      border: 2px solid;
+    }
+    
+    .carousel-indicator {
+      border: 2px solid;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .gallery-thumb,
+    .open-gallery-btn,
+    .main-image,
+    #carousel-slides {
+      transition: none !important;
+    }
+    
+    .hover\:scale-110:hover,
+    .focus\:scale-110:focus {
+      transform: none !important;
+    }
+  }
+</style>

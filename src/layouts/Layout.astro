@@ -1,99 +1,526 @@
 ---
+// src/layouts/Layout.astro - VERSIÓN LIMPIA CON UN SOLO SISTEMA
+
+
+
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+
 
 
 export interface Props {
 	title: string;
 	description?: string;
 	ogImage?: string;
+	canonical?: string;
+	noindex?: boolean;
+	structuredData?: object;
 }
 
 const { 
 	title, 
 	description = "Pixel Living es coliving en Bogotá para quienes buscan algo más que un arriendo. Apartaestudios diseñados para estadías medianas y largas, con estilo, comodidad y comunidad.", 
-	ogImage = "/images/pixel-living-og.jpg" 
+	ogImage = "/images/pixel-living-og.jpg",
+	canonical,
+	noindex = false,
+	structuredData = null
 } = Astro.props;
 
-// Manejo seguro para la URL canónica
 const pathname = Astro.url.pathname;
-const siteUrl = "https://pixelliving.co"; // URL predeterminada en caso de que Astro.site no esté disponible
+const siteUrl = "https://pixelliving.co";
+const canonicalUrl = canonical || `${siteUrl}${pathname}`;
+
+// Structured data por defecto
+const defaultStructuredData = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Organization",
+			"@id": `${siteUrl}/#organization`,
+			"name": "Pixel Living",
+			"url": siteUrl,
+			"logo": {
+				"@type": "ImageObject",
+				"@id": `${siteUrl}/#logo`,
+				"url": `${siteUrl}/images/logo-pixel-living.webp`,
+				"width": 300,
+				"height": 100
+			},
+			"contactPoint": {
+				"@type": "ContactPoint",
+				"telephone": "+57-301-787-2595",
+				"contactType": "customer service",
+				"availableLanguage": "Spanish"
+			},
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Bogotá",
+				"addressCountry": "CO"
+			},
+			"sameAs": [
+				"https://instagram.com/pixelliving",
+				"https://facebook.com/pixelliving"
+			]
+		},
+		{
+			"@type": "WebSite",
+			"@id": `${siteUrl}/#website`,
+			"url": siteUrl,
+			"name": "Pixel Living",
+			"description": description,
+			"publisher": {
+				"@id": `${siteUrl}/#organization`
+			},
+			"potentialAction": [
+				{
+					"@type": "SearchAction",
+					"target": {
+						"@type": "EntryPoint",
+						"urlTemplate": `${siteUrl}/buscar?q={search_term_string}`
+					},
+					"query-input": "required name=search_term_string"
+				}
+			]
+		},
+		{
+			"@type": "Service",
+			"@id": `${siteUrl}/#service`,
+			"name": "Coliving Pixel Living",
+			"description": "Servicio de coliving premium en Bogotá con apartaestudios completamente amoblados",
+			"provider": {
+				"@id": `${siteUrl}/#organization`
+			},
+			"areaServed": {
+				"@type": "City",
+				"name": "Bogotá"
+			},
+			"serviceType": "Coliving",
+			"category": "Accommodation"
+		}
+	]
+};
+
+const finalStructuredData = structuredData || defaultStructuredData;
 ---
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" dir="ltr">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		
+		<!-- Preconnect a recursos externos críticos -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		
+		<!-- DNS Prefetch para recursos secundarios -->
+		
+		<!-- Favicon y iconos -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<meta name="theme-color" content="#996633" />
+		<meta name="msapplication-TileColor" content="#996633" />
+		
+		<!-- Meta tags básicos -->
 		<meta name="generator" content={Astro.generator} />
+		<meta name="author" content="Pixel Living" />
+		<meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"} />
 		
 		<!-- Canonical URL -->
-		<link rel="canonical" href={`${siteUrl}${pathname}`} />
+		<link rel="canonical" href={canonicalUrl} />
 		
 		<!-- Primary Meta Tags -->
 		<title>{title}</title>
 		<meta name="title" content={title} />
 		<meta name="description" content={description} />
+		<meta name="keywords" content="coliving Bogotá, apartaestudios amoblados, hospedaje temporal, vivienda temporal, pixel living, comunidad digital, coworking" />
 		
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content={`${siteUrl}${pathname}`} />
+		<meta property="og:site_name" content="Pixel Living" />
+		<meta property="og:url" content={canonicalUrl} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={`${siteUrl}${ogImage}`} />
+		<meta property="og:image:alt" content="Pixel Living - Coliving en Bogotá" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:locale" content="es_CO" />
 		
 		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={`${siteUrl}${pathname}`} />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content={`${siteUrl}${ogImage}`} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@pixelliving" />
+		<meta name="twitter:creator" content="@pixelliving" />
+		<meta name="twitter:url" content={canonicalUrl} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+		<meta name="twitter:image:alt" content="Pixel Living - Coliving en Bogotá" />
+		
+		<!-- Geo tags para ubicación -->
+		<meta name="geo.region" content="CO-DC" />
+		<meta name="geo.placename" content="Bogotá" />
+		<meta name="geo.position" content="4.7110;-74.0721" />
+		<meta name="ICBM" content="4.7110, -74.0721" />
+		
+		<!-- Precargar recursos críticos -->
+		<link rel="preload" href="/fonts/cal-sans.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/images/logo-pixel-living.webp" as="image" type="image/webp" />
+		
+		<!-- 🔥 PRELOAD SOLO SCRIPTS ESENCIALES -->
+		<link rel="preload" href="/scripts/pixel-config.js" as="script" />
+		<link rel="preload" href="/scripts/pixel-form-unified.js" as="script" />
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+
+		
+		<!-- Critical CSS inline -->
+		<style>
+			/* Critical CSS para evitar FOUC */
+			html { scroll-behavior: smooth; }
+			body { 
+				font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+				margin: 0;
+				padding: 0;
+				background: white;
+				color: #1f2937;
+			}
+			.skip-links { position: fixed; top: 0; left: 0; z-index: 9999; }
+			.skip-link {
+				position: absolute;
+				top: -40px;
+				left: 6px;
+				background: #000;
+				color: #fff;
+				padding: 8px;
+				text-decoration: none;
+				border-radius: 0 0 4px 0;
+				transform: translateY(-100%);
+				transition: transform 0.3s ease;
+			}
+			.skip-link:focus {
+				transform: translateY(0);
+				outline: 2px solid #ffd700;
+				outline-offset: 2px;
+			}
+			/* Prevent FOUC */
+			.main-content { min-height: 50vh; }
+			
+			/* 🔥 ESTILOS CRÍTICOS PARA VALIDACIÓN INTEGRADOS */
+			.field-neutral { 
+				border-color: #d1d5db; 
+			}
+			.field-valid { 
+				border-color: #059669 !important; 
+				box-shadow: 0 0 0 1px #059669 !important;
+				background-color: rgba(5, 150, 105, 0.05) !important;
+			}
+			.field-invalid { 
+				border-color: #dc2626 !important; 
+				box-shadow: 0 0 0 1px #dc2626 !important;
+				background-color: rgba(220, 38, 38, 0.05) !important;
+			}
+			.form-loading { 
+				pointer-events: none; 
+				opacity: 0.8; 
+			}
+			
+			/* Validación feedback */
+			.pixel-validation-container {
+				margin-top: 0.5rem;
+				min-height: 1.5rem;
+			}
+			.validation-feedback {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				font-size: 0.875rem;
+				transition: all 0.2s ease;
+			}
+			.validation-feedback.validation-valid { color: #059669; }
+			.validation-feedback.validation-invalid { color: #dc2626; }
+			
+			/* Contador de caracteres */
+			.character-counter {
+				margin-top: 0.25rem;
+				font-size: 0.75rem;
+				transition: color 0.2s ease;
+			}
+			.character-counter.counter-normal { color: #6b7280; }
+			.character-counter.counter-warning { color: #d97706; font-weight: 600; }
+			.character-counter.counter-error { color: #dc2626; font-weight: 600; }
+			
+			/* Notificaciones */
+			.pixel-notification {
+				position: fixed;
+				top: 20px;
+				right: 20px;
+				z-index: 9999;
+				max-width: 400px;
+				padding: 1rem 1.5rem;
+				border-radius: 0.5rem;
+				color: white;
+				font-weight: 500;
+				box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+				transform: translateX(100%);
+				transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+			}
+			.pixel-notification.show { transform: translateX(0); }
+			.pixel-notification.notification-success { background: linear-gradient(135deg, #22c55e, #16a34a); }
+			.pixel-notification.notification-error { background: linear-gradient(135deg, #ef4444, #dc2626); }
+			
+			/* Mensajes de éxito */
+			.success-message {
+				margin-bottom: 1rem;
+			}
+			.success-message .bg-green-50 {
+				background-color: rgba(16, 185, 129, 0.1);
+				border: 1px solid rgba(16, 185, 129, 0.3);
+				color: #065f46;
+				padding: 1rem;
+				border-radius: 0.5rem;
+				margin-bottom: 1rem;
+			}
+		</style>
 		
 		<!-- Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Cal+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+		
+		<!-- 🔥 SCRIPTS ÚNICOS - SIN CONFLICTOS -->
+		<!-- 1. Configuración esencial -->
+		<!--<script is:inline src="/scripts/pixel-config.js"></script> -->
+		
+		<!-- 2. Sistema unificado de formularios (ÚNICO) -->
+ <!--<script is:inline src="/scripts/pixel-form-unified.js"></script> -->
+<!-- <script is:inline src="/scripts/pixel-validation-standalone.js"></script> -->
+
+		
+		<!-- 3. Scripts opcionales (comentar si causan problemas) -->
+		<!-- <script is:inline src="/scripts/pixel-accessibility-manager.js"></script> -->
+		<!-- <script is:inline src="/scripts/pixel-image-manager.js"></script> -->
 		
 		<!-- Structured Data -->
-		<script type="application/ld+json">
-			{
-				"@context": "https://schema.org",
-				"@type": "Organization",
-				"name": "Pixel Living",
-				"url": "https://pixelliving.co",
-				"logo": "https://pixelliving.co/images/logo.png",
-				"sameAs": [
-					"https://instagram.com/pixelliving",
-					"https://facebook.com/pixelliving"
-				],
-				"address": {
-					"@type": "PostalAddress",
-					"addressLocality": "Bogotá",
-					"addressCountry": "CO"
-				}
-			}
-		</script>
-		<script type="application/ld+json">
-			{
-				"@context": "https://schema.org",
-				"@type": "Product",
-				"name": "Pixel Living Coliving",
-				"description": "Coliving en Bogotá para quienes buscan algo más que un arriendo.",
-				"brand": {
-					"@type": "Brand",
-					"name": "Pixel Living"
-				}
-			}
-		</script>
+		<script type="application/ld+json" set:html={JSON.stringify(finalStructuredData)}></script>
+		
+		<!-- Web App Manifest -->
+		<link rel="manifest" href="/manifest.json" />
+		
+		<!-- Security headers via meta -->
+		<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+		<meta http-equiv="X-Frame-Options" content="DENY" />
+		<meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+		<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+		
+		<!-- Performance hints -->
+		<meta http-equiv="x-dns-prefetch-control" content="on" />
+		
+		<!-- Alternativas de idioma -->
+		<link rel="alternate" hreflang="es" href={canonicalUrl} />
+		<link rel="alternate" hreflang="es-CO" href={canonicalUrl} />
+		<link rel="alternate" hreflang="x-default" href={canonicalUrl} />
 	</head>
+	
 	<body class="font-poppins text-gray-800 bg-white">
+		<!-- Skip Links para accesibilidad -->
+		<div class="skip-links">
+			<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+			<a href="#navigation" class="skip-link">Saltar a navegación</a>
+			<a href="#espacios" class="skip-link">Saltar a espacios</a>
+			<a href="#reservas" class="skip-link">Saltar a reservas</a>
+		</div>
+		
+		<!-- Header -->
 		<Header />
-		<slot />
+		
+		<!-- Main content wrapper -->
+		<main id="main-content" class="main-content" role="main">
+			<slot />
+		</main>
+		
+		<!-- Footer -->
 		<Footer />
+		
+		<!-- Live region para anuncios de screen reader -->
+		<div id="live-region" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+		
+		<!-- 🔥 INICIALIZACIÓN SIMPLIFICADA -->
+		<script is:inline>
+			// Inicialización simple y directa
+			document.addEventListener('DOMContentLoaded', () => {
+				const initStart = performance.now();
+				
+				// Verificar que el sistema unificado esté disponible
+				if (window.PIXEL_FORM_UNIFIED_LOADED) {
+					const initTime = Math.round(performance.now() - initStart);
+					console.log(`🎉 Pixel Living inicializado en ${initTime}ms`);
+					console.log('✅ Sistema unificado de formularios activo');
+					
+					// Emitir evento de sistema listo
+					document.dispatchEvent(new CustomEvent('pixelSystemReady', {
+						detail: { initTime, system: 'unified' }
+					}));
+				} else {
+					console.warn('⚠️ Sistema unificado de formularios no disponible');
+				}
+			});
+
+			// Fallback de verificación
+			setTimeout(() => {
+				if (!window.PIXEL_FORM_UNIFIED_LOADED) {
+					console.warn('⚠️ Sistema de formularios no inicializado después de 3 segundos');
+					console.log('🔧 Verifica que existe: /scripts/pixel-form-unified.js');
+				}
+			}, 3000);
+			
+			// Debug helper (solo en desarrollo)
+			if (window.location.hostname.includes('localhost') || 
+			    window.location.hostname.includes('127.0.0.1')) {
+				
+				// Shortcut de debug: Ctrl+Shift+D
+				document.addEventListener('keydown', (e) => {
+					if (e.ctrlKey && e.shiftKey && e.key === 'D') {
+						console.log('🔧 PIXEL DEBUG INFO:');
+						console.log('- Config:', !!window.PIXEL_CONFIG);
+						console.log('- Unified System:', !!window.PIXEL_FORM_UNIFIED);
+						console.log('- Forms:', document.querySelectorAll('form[data-form-type]').length);
+						
+						// Test contador de caracteres
+						const textarea = document.querySelector('textarea');
+						if (textarea && window.PIXEL_FORM_UNIFIED) {
+							console.log('🔧 Testando contador...');
+							window.PIXEL_FORM_UNIFIED.updateCharacterCounter(textarea);
+						}
+					}
+				});
+			}
+		</script>
+		
+		<!-- Service Worker registration -->
+		<script is:inline>
+			// Register service worker for offline functionality
+			if ('serviceWorker' in navigator) {
+				window.addEventListener('load', () => {
+					navigator.serviceWorker.register('/sw.js')
+						.then(registration => {
+							console.log('SW registered: ', registration);
+						})
+						.catch(registrationError => {
+							console.log('SW registration failed: ', registrationError);
+						});
+				});
+			}
+		</script>
+		
+		<!-- Error boundary global -->
+		<script is:inline>
+			// Global error handler
+			window.addEventListener('error', (e) => {
+				console.error('Global error:', e.error);
+			});
+			
+			window.addEventListener('unhandledrejection', (e) => {
+				console.error('Unhandled promise rejection:', e.reason);
+			});
+		</script>
 	</body>
 </html>
+
+<style>
+	/* Screen reader only utility */
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+	
+	/* Print styles */
+	@media print {
+		.skip-links,
+		header,
+		footer,
+		.lightbox-modal,
+		.pixel-spinner,
+		.notification {
+			display: none !important;
+		}
+		
+		body {
+			font-size: 12pt;
+			line-height: 1.4;
+			color: black;
+			background: white;
+		}
+		
+		h1, h2, h3, h4, h5, h6 {
+			page-break-after: avoid;
+		}
+		
+		img {
+			max-width: 100% !important;
+			height: auto !important;
+		}
+	}
+	
+	/* Focus management */
+	.keyboard-navigation *:focus {
+		outline: 2px solid #ffd700;
+		outline-offset: 2px;
+	}
+	
+	/* Custom scrollbar */
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+	
+	::-webkit-scrollbar-track {
+		background: #f1f1f1;
+	}
+	
+	::-webkit-scrollbar-thumb {
+		background: #c1c1c1;
+		border-radius: 4px;
+	}
+	
+	::-webkit-scrollbar-thumb:hover {
+		background: #a1a1a1;
+	}
+	
+	/* Selection styling */
+	::selection {
+		background-color: #ffd700;
+		color: #000;
+	}
+	
+	::-moz-selection {
+		background-color: #ffd700;
+		color: #000;
+	}
+	
+	/* Responsive para móviles */
+	@media (max-width: 768px) {
+		.pixel-notification {
+			top: 10px;
+			right: 10px;
+			left: 10px;
+			max-width: none;
+			transform: translateY(-100%);
+		}
+		
+		.pixel-notification.show {
+			transform: translateY(0);
+		}
+	}
+</style>
