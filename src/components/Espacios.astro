@@ -2,10 +2,13 @@
 // Importar el componente LightboxModal
 import LightboxModal from '../components/LightboxModal.astro';
 
-interface Caracteristica {
-  icono: string;
-  texto: string;
-}
+import iconoCama from '../assets/icoos_24-Breakfast.svg'; 
+import iconoCocina from '../assets/icoos_17-Key card.svg';
+import iconoEscritorio from '../assets/icoos_23-Bell.svg';
+import iconoWifi from '../assets/icoos_18-Key.svg';
+import iconoServicios from '../assets/icoos_22-Air condition.svg';
+import iconoPrivado from '../assets/icoos_16-Bed.svg';
+
 
 // Definición de tipos
 interface Estudio {
@@ -139,32 +142,42 @@ const estudiosCompletos: EstudiosRecord = {
       'Caja de seguridad digital'
     ]
   },
+
+
+  
   
 };
 
+// Cambiar la interfaz Caracteristica
+interface Caracteristica {
+  icono: ImageMetadata; // Cambiar de string a ImageMetadata
+  texto: string;
+}
+
+// REEMPLAZAR el array caracteristicas por esto:
 const caracteristicas: Caracteristica[] = [
   {
-    icono: 'M12 6.75a2.25 2.25 0 0 1 0 4.5 2.25 2.25 0 0 1 0-4.5M12 3a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9M3.6 8.1a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75m16.05-.75a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5M6.112 5.565a.75.75 0 0 1 0 1.061l-1.06 1.061a.75.75 0 1 1-1.06-1.06l1.06-1.062a.75.75 0 0 1 1.06 0m13.323 1.06a.75.75 0 0 1-1.06 1.062l-1.06-1.06a.75.75 0 0 1 1.06-1.062l1.06 1.06M6.112 14.516a.75.75 0 0 1-1.06 0l-1.06-1.06a.75.75 0 1 1 1.06-1.062l1.06 1.06a.75.75 0 0 1 0 1.062m13.323-1.06a.75.75 0 1 1-1.06 1.06l-1.06-1.06a.75.75 0 1 1 1.06-1.06l1.06 1.06M3.6 16a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75m16.05-.75a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5m-6.9-7.354a.75.75 0 0 1 .645-.405h9a.75.75 0 0 1 0 1.5h-9a.75.75 0 0 1-.645-1.095m0 3.75a.75.75 0 0 1 .645-.405h9a.75.75 0 0 1 0 1.5h-9a.75.75 0 0 1-.645-1.095',
+    icono: iconoCama,
     texto: 'Cama doble'
   },
   {
-    icono: 'M15.98 1.804A1 1 0 0 0 15 1H7.62c-.376 0-.72.211-.895.553L4.184 5.5h15.652l-2.457-3.946zM2 7v1a2 2 0 0 0 2 2h1v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V10h1a2 2 0 0 0 2-2V7H2zm5.5 4a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0v-6a.5.5 0 0 1 .5-.5m3 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0v-6a.5.5 0 0 1 .5-.5m3 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0v-6a.5.5 0 0 1 .5-.5',
+    icono: iconoCocina,
     texto: 'Cocina equipada'
   },
   {
-    icono: 'M2.25 5.25a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-9a3 3 0 0 1-3-3v-9m3.75 6v3h3v-3a.75.75 0 0 0-.75-.75h-1.5a.75.75 0 0 0-.75.75m0-3v.75H9v-.75a.75.75 0 0 0-.75-.75h-1.5a.75.75 0 0 0-.75.75',
+    icono: iconoEscritorio,
     texto: 'Escritorio de trabajo'
   },
   {
-    icono: 'M8.288 15.038a5.25 5.25 0 0 1 7.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 0 1 1.06 0',
+    icono: iconoWifi,
     texto: 'WiFi de alta velocidad'
   },
   {
-    icono: 'M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.055 2.264-.22 2.938a4.49 4.49 0 0 0-.363 1.8V7.5',
+    icono: iconoServicios,
     texto: 'Servicios incluidos'
   },
   {
-    icono: 'M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0M4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632',
+    icono: iconoPrivado,
     texto: 'Espacio privado y tranquilo'
   }
 ];
@@ -232,9 +245,9 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
         Use las flechas izquierda y derecha para navegar, o presione Tab para explorar cada estudio individualmente.
       </div>
       
-      <!-- Botones de navegación-->
+      <!-- Botones de navegación - SOLO EN MÓVIL/TABLET -->
       <button 
-        class="absolute left-0 top-1/2 z-10 -translate-y-1/2 focus:outline-none disabled:opacity-30 disabled:cursor-not-allowed border border-pixel-blue" 
+        class="absolute left-0 top-1/2 z-10 -translate-y-1/2 bg-white rounded-md p-3 shadow-lg hover:bg-gray-100 focus:outline-none disabled:opacity-30 disabled:cursor-not-allowed border border-pixel-blue md:hidden" 
         id="prev-btn"
         aria-label="Ver apartaestudio anterior"
         aria-describedby="carousel-instructions"
@@ -245,7 +258,7 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
       </button>
       
       <button 
-        class="absolute right-0 top-1/2 z-10 -translate-y-1/2 focus:outline-none disabled:opacity-30 disabled:cursor-not-allowed border border-pixel-blue" 
+        class="absolute right-0 top-1/2 z-10 -translate-y-1/2 bg-white rounded-md p-3 shadow-lg hover:bg-gray-100 focus:outline-none disabled:opacity-30 disabled:cursor-not-allowed border border-pixel-blue md:hidden" 
         id="next-btn"
         aria-label="Ver apartaestudio siguiente"
         aria-describedby="carousel-instructions"
@@ -257,7 +270,7 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
       
       <!-- Carrusel -->
       <div 
-        class="flex transition-transform duration-500 pb-6 ease-in-out" 
+        class="flex transition-transform duration-500 ease-in-out" 
         id="carousel-slides"
         role="group"
         aria-label="Carrusel de apartaestudios"
@@ -355,7 +368,7 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
         ))}
       </div>
       
-      <!-- Indicadores
+      <!-- Indicadores -->
       <div class="flex justify-center mt-8 mb-8 space-x-2" id="carousel-indicators" role="group" aria-label="Indicadores de carrusel">
         {estudios.map((_, index) => (
           <button 
@@ -367,43 +380,46 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
             tabindex={index === 0 ? 0 : -1}
           ></button>
         ))}
-      </div> -->
+      </div>
     </div>
     
-    <!-- Características -->
-    <div class="bg-white rounded-md shadow-lg p-8 max-w-4xl mx-auto mt-16 border-2 border-pixel-blue">
-      <h3 class="text-2xl font-bold mb-6 text-center text-pixel-blue">Características de nuestros espacios</h3>
-      
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-6" role="list">
-        {caracteristicas.map((item: { icono: string; texto: string }) => (
-          <div class="flex items-start space-x-3" role="listitem">
-            <div class="flex-shrink-0 bg-pixel-blue/10 p-2 rounded-md border border-pixel-blue" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pixel-blue">
-                <path stroke-linecap="round" stroke-linejoin="round" d={item.icono} />
-              </svg>
-            </div>
-            <div>
-              <p class="font-medium">{item.texto}</p>
-            </div>
-          </div>
-        ))}
+   <!-- Características -->
+<div class="bg-white rounded-md shadow-lg p-8 max-w-4xl mx-auto mt-16 border-2 border-pixel-blue">
+  <h3 class="text-2xl font-bold mb-6 text-center text-pixel-blue">Características de nuestros espacios</h3>
+  
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-6" role="list">
+    {caracteristicas.map((item: { icono: ImageMetadata; texto: string }) => (
+      <div class="flex items-start space-x-3" role="listitem">
+        <div class="flex-shrink-0  p-1 rounded-md border border-pixel-blue" aria-hidden="true">
+          <!-- USAR IMG en lugar de SVG -->
+          <img 
+            src={item.icono.src} 
+            alt="" 
+            class="w-8 h-8 object-contain"
+            
+          />
+        </div>
+        <div>
+          <p class="font-medium">{item.texto}</p>
+        </div>
       </div>
-      
-      <div class="mt-8 text-center">
-        <a 
-          href="#reservas" 
-          class="btn bg-pixel-blue hover:bg-blue-600 text-white inline-flex items-center border border-blue-700 pixel-hover focus:ring-4 focus:ring-blue-300"
-          aria-describedby="reservas-cta-desc"
-        >
-          👉 Solicita disponibilidad
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-          </svg>
-        </a>
-        <p id="reservas-cta-desc" class="sr-only">Ir a la sección de reservas para solicitar disponibilidad de apartaestudios</p>
-      </div>
-    </div>
+    ))}
   </div>
+  
+  <div class="mt-8 text-center">
+    <a 
+      href="#reservas" 
+      class="btn bg-pixel-blue hover:bg-blue-600 text-white inline-flex items-center border border-blue-700 pixel-hover focus:ring-4 focus:ring-blue-300"
+      aria-describedby="reservas-cta-desc"
+    >
+      👉 Solicita disponibilidad
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+      </svg>
+    </a>
+    <p id="reservas-cta-desc" class="sr-only">Ir a la sección de reservas para solicitar disponibilidad de apartaestudios</p>
+  </div>
+</div>
   
   <!-- Importar el componente de lightbox compartido -->
   <LightboxModal id="espacios-lightbox" showDetailsButton={true} showReservaButton={true} />
@@ -488,21 +504,34 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentIndex = 0;
   let slidesPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
   const totalSlides = indicators.length;
+  let isMobile = () => window.innerWidth < 768;
 
   // ===== FUNCIONES CARRUSEL =====
   function updateCarousel() {
-    console.log("Actualizando carrusel:", { currentIndex, slidesPerView, totalSlides });
+    console.log("Actualizando carrusel:", { currentIndex, slidesPerView, totalSlides, isMobile: isMobile() });
     
     const slideWidth = container.clientWidth / slidesPerView;
     slides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
     
-    // Actualizar botones
-    prevBtn.disabled = currentIndex === 0;
-    nextBtn.disabled = currentIndex === totalSlides - slidesPerView;
+    // En desktop, deshabilitar botones
+    const isDesktop = !isMobile();
+    
+    // Actualizar botones - solo funcionales en móvil
+    if (isDesktop) {
+      prevBtn.disabled = true;
+      nextBtn.disabled = true;
+      prevBtn.setAttribute('aria-hidden', 'true');
+      nextBtn.setAttribute('aria-hidden', 'true');
+    } else {
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex === totalSlides - slidesPerView;
+      prevBtn.setAttribute('aria-hidden', 'false');
+      nextBtn.setAttribute('aria-hidden', 'false');
+    }
     
     // Actualizar ARIA states
-    prevBtn.setAttribute('aria-disabled', String(currentIndex === 0));
-    nextBtn.setAttribute('aria-disabled', String(currentIndex === totalSlides - slidesPerView));
+    prevBtn.setAttribute('aria-disabled', String(isDesktop || currentIndex === 0));
+    nextBtn.setAttribute('aria-disabled', String(isDesktop || currentIndex === totalSlides - slidesPerView));
     
     // Actualizar indicadores
     indicators.forEach((indicator, index) => {
@@ -514,23 +543,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // Actualizar opacity de slides
-    const slideElements = document.querySelectorAll('[data-slide-index]');
-    slideElements.forEach((slide, index) => {
-      if (index >= currentIndex && index < currentIndex + slidesPerView) {
-        slide.classList.remove('opacity-50');
-      } else {
-        slide.classList.add('opacity-50');
-      }
-    });
+    
 
-    // Anunciar cambio a lectores de pantalla
-    const currentSlide = slideElements[currentIndex];
-    const estudioNombre = currentSlide?.querySelector('h3')?.textContent || '';
-    announceCarouselChange(currentIndex + 1, totalSlides, estudioNombre);
+    // Anunciar cambio a lectores de pantalla (solo en móvil)
+    if (!isDesktop) {
+      const currentSlide = slideElements[currentIndex];
+      const estudioNombre = currentSlide?.querySelector('h3')?.textContent || '';
+      announceCarouselChange(currentIndex + 1, totalSlides, estudioNombre);
+    }
   }
 
-  // ===== EVENTOS CARRUSEL =====
+  // ===== EVENTOS CARRUSEL - SOLO EN MÓVIL =====
   prevBtn.addEventListener('click', () => {
+    if (!isMobile()) return; // Bloquear en desktop
+    
     if (currentIndex > 0) {
       currentIndex--;
       updateCarousel();
@@ -538,13 +564,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   nextBtn.addEventListener('click', () => {
+    if (!isMobile()) return; // Bloquear en desktop
+    
     if (currentIndex < totalSlides - slidesPerView) {
       currentIndex++;
       updateCarousel();
     }
   });
 
-  // Navegación con teclado en indicadores
+  // Navegación con teclado en indicadores (funciona en todas las resoluciones)
   indicators.forEach((indicator, index) => {
     indicator.addEventListener('click', () => {
       currentIndex = Math.min(index, totalSlides - slidesPerView);
@@ -903,6 +931,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   console.log("✅ Espacios (Astro 5.x) inicializado correctamente");
+  console.log("📱 Navegación responsive activada - Botones solo en móvil");
   
   // Debug
   window.espaciosDebug = {
@@ -910,7 +939,8 @@ document.addEventListener('DOMContentLoaded', () => {
     closeLightbox,
     lightboxData,
     currentEstudioId: () => currentEstudioId,
-    testLightbox: (estudioId) => openLightbox(estudioId, 0)
+    testLightbox: (estudioId) => openLightbox(estudioId, 0),
+    isMobile: isMobile
   };
 });
 </script>
@@ -955,6 +985,14 @@ document.addEventListener('DOMContentLoaded', () => {
     box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.8);
   }
 
+  /* Responsive navigation buttons - ocultar en desktop */
+  @media (min-width: 768px) {
+    #prev-btn,
+    #next-btn {
+      display: none !important;
+    }
+  }
+
   /* Improved hover effects for accessibility */
   @media (hover: hover) {
     .gallery-thumb:hover,
@@ -965,12 +1003,22 @@ document.addEventListener('DOMContentLoaded', () => {
     .main-image:hover {
       opacity: 0.9;
     }
+
+    /* Hover en botones de navegación solo en móvil */
+    @media (max-width: 767px) {
+      #prev-btn:hover,
+      #next-btn:hover {
+        transform: scale(1.1);
+      }
+    }
   }
 
   /* High contrast mode support */
   @media (prefers-contrast: high) {
     .gallery-thumb,
-    .open-gallery-btn {
+    .open-gallery-btn,
+    #prev-btn,
+    #next-btn {
       border: 2px solid;
     }
     
@@ -984,13 +1032,32 @@ document.addEventListener('DOMContentLoaded', () => {
     .gallery-thumb,
     .open-gallery-btn,
     .main-image,
-    #carousel-slides {
+    #carousel-slides,
+    #prev-btn,
+    #next-btn {
       transition: none !important;
     }
     
     .hover\:scale-110:hover,
     .focus\:scale-110:focus {
       transform: none !important;
+    }
+  }
+
+  /* Estilos específicos para botones responsive */
+  #prev-btn,
+  #next-btn {
+    /* En móvil, mejorar el área de toque */
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Indicador visual de que los botones están deshabilitados en desktop */
+  @media (min-width: 768px) {
+    .carousel-nav-disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      pointer-events: none;
     }
   }
 </style>

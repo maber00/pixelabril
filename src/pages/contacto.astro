@@ -3,18 +3,21 @@ import Layout from '../layouts/Layout.astro';
 import Header2 from '../components/Header2.astro';
 import Footer from '../components/Footer.astro';
 
+// Importar logo para el mapa
+import pixelLogo from '../assets/logo-pixel.svg'; // Ajusta la ruta según tu logo
+
 const contactInfo = [
   {
     icono: 'M15 10.5a3 3 0 11-6 0 3 3 0 016 0z M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z',
     titulo: 'Dirección',
-    texto: 'Bogotá, Colombia',
-    link: 'https://maps.google.com',
+    texto: 'Calle 98a # 51-40, La Castellana, Bogotá',
+    link: 'https://maps.google.com/maps?q=Zona+Rosa,+Bogotá,+Colombia&source=embed',
     linkTexto: 'Ver en mapa'
   },
   {
     icono: 'M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z',
     titulo: 'WhatsApp',
-    texto: '+57 XXX XXX XXXX',
+    texto: '+57 301 787 2595',
     link: 'https://wa.me/573017872595',
     linkTexto: 'Enviar mensaje'
   },
@@ -33,6 +36,17 @@ const contactInfo = [
     linkTexto: 'Síguenos'
   }
 ];
+
+// Configuración del mapa
+const mapConfig = {
+  // Coordenadas exactas de Calle 98a # 51-40, La Castellana, Bogotá
+  lat: 4.6728,
+  lng: -74.0569,
+  zoom: 16,
+  // Dirección exacta para búsqueda en Google Maps
+  searchQuery: 'Calle 98a 51-40, La Castellana, Bogotá, Colombia'
+};
+
 ---
 
 <Layout title="Contacto - Pixel Living | Coliving en Bogotá">
@@ -49,14 +63,49 @@ const contactInfo = [
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <div class="bg-white rounded-md shadow-lg overflow-hidden border-2 border-gray-200">
-                <div class="h-64">
-                  <!-- Mapa de Google (en producción usar API key real) -->
-                  <div class="w-full h-full bg-gray-200 flex items-center justify-center">
-                    <img 
-                      src="/api/placeholder/600/300" 
-                      alt="Mapa de ubicación Pixel Living" 
-                      class="w-full h-full object-cover"
-                    />
+                <!-- GOOGLE MAPS MEJORADO -->
+                <div class="relative h-64 group cursor-pointer" id="mapContainer">
+                  <!-- Google Maps Iframe -->
+                   <iframe
+                    class="w-full h-full border-0"
+                    loading="lazy"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=es&amp;q=Calle%2098a%20%2351-40,%20La%20Castellana,%20Bogot%C3%A1,%20Colombia&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                  </iframe>
+                  
+                  <!-- Overlay con logo de Pixel Living -->
+                  <div class="absolute inset-0 pointer-events-none">
+                    <!-- Logo como marcador personalizado -->
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto">
+                      <div class="relative">
+                        <!-- Pin del mapa -->
+                        <div class="bg-white rounded-full p-3 shadow-lg border-4 border-black animate-bounce">
+                          <img 
+                            src={pixelLogo.src} 
+                            alt="Pixel Living Logo" 
+                            class="w-8 h-8 "
+                          />
+                        </div>
+                        <!-- Sombra del pin -->
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 w-4 h-2 bg-black/20 rounded-full blur-sm"></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Overlay clickeable para abrir Google Maps -->
+                                    <div class="absolute inset-0 bg-transparent hover:bg-black/10 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <div class="bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg">
+                      <div class="flex items-center space-x-2 text-pixel-blue font-medium">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                        </svg>
+                        <span>Cómo llegar</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 
@@ -88,31 +137,87 @@ const contactInfo = [
             <div class="bg-white rounded-md shadow-lg p-8 border-2 border-gray-200">
               <h3 class="text-2xl font-bold mb-6 cal-sans">Envíanos un mensaje</h3>
               
-              <form id="contactForm" class="space-y-4">
+              <!-- Contenedor para mensajes dinámicos -->
+              <div id="message-container" class="hidden mb-4"></div>
+              
+              <form id="contactForm" class="space-y-4" data-bypass-intercept="true">
                 <div>
-                  <label for="contactNombre" class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
-                  <input type="text" id="contactNombre" name="nombre" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent" required>
+                  <label for="contactNombre" class="block text-sm font-medium text-gray-700 mb-1">
+                    Nombre completo *
+                  </label>
+                  <input 
+                    type="text" 
+                    id="contactNombre" 
+                    name="nombre" 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent" 
+                    placeholder="Ej: María García"
+                    autocomplete="name"
+                    required
+                  >
+                  <div id="contactNombre-error" class="hidden text-red-600 text-sm mt-1"></div>
                 </div>
                 
                 <div>
-                  <label for="contactEmail" class="block text-sm font-medium text-gray-700 mb-1">Correo electrónico</label>
-                  <input type="email" id="contactEmail" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent" required>
+                  <label for="contactEmail" class="block text-sm font-medium text-gray-700 mb-1">
+                    Correo electrónico *
+                  </label>
+                  <input 
+                    type="email" 
+                    id="contactEmail" 
+                    name="email" 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent" 
+                    placeholder="Ej: maria@gmail.com"
+                    autocomplete="email"
+                    required
+                  >
+                  <div id="contactEmail-error" class="hidden text-red-600 text-sm mt-1"></div>
                 </div>
                 
                 <div>
-                  <label for="contactAsunto" class="block text-sm font-medium text-gray-700 mb-1">Asunto</label>
-                  <input type="text" id="contactAsunto" name="asunto" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent" required>
+                  <label for="contactAsunto" class="block text-sm font-medium text-gray-700 mb-1">
+                    Asunto *
+                  </label>
+                  <input 
+                    type="text" 
+                    id="contactAsunto" 
+                    name="asunto" 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent" 
+                    placeholder="Ej: Consulta sobre apartamentos"
+                    required
+                  >
+                  <div id="contactAsunto-error" class="hidden text-red-600 text-sm mt-1"></div>
                 </div>
                 
                 <div>
-                  <label for="contactMensaje" class="block text-sm font-medium text-gray-700 mb-1">Mensaje</label>
-                  <textarea id="contactMensaje" name="mensaje" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent" required></textarea>
+                  <label for="contactMensaje" class="block text-sm font-medium text-gray-700 mb-1">
+                    Mensaje *
+                  </label>
+                  <textarea 
+                    id="contactMensaje" 
+                    name="mensaje" 
+                    rows="5" 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent" 
+                    placeholder="Escribe tu mensaje aquí..."
+                    required
+                  ></textarea>
+                  <div id="contador-caracteres" class="mt-1 text-xs text-gray-500">0/1000 caracteres</div>
+                  <div id="contactMensaje-error" class="hidden text-red-600 text-sm mt-1"></div>
                 </div>
                 
-                <button type="submit" class="w-full btn bg-pixel-blue hover:bg-blue-600 text-white">
+                <button type="submit" class="w-full btn bg-pixel-blue hover:bg-blue-600 text-white py-3 px-6 rounded-md font-medium transition-colors">
                   Enviar mensaje
                 </button>
               </form>
+              
+              <div class="mt-4 text-center">
+                <p class="text-sm text-gray-500">O contáctanos directamente:</p>
+                <a href="https://wa.me/573017872595" target="_blank" class="inline-flex items-center text-pixel-blue mt-2 font-medium hover:underline">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 mr-2" viewBox="0 0 16 16">
+                    <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                  </svg>
+                  WhatsApp
+                </a>
+              </div>
             </div>
           </div>
           
@@ -126,20 +231,340 @@ const contactInfo = [
       </div>
     </section>
   </main>
-
+  <Footer />
 </Layout>
 
-<script>
+<script define:vars={{ mapConfig }}>
   document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('contactForm');
+    console.log('🚀 Inicializando página de contacto...');
     
-    form?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      // Aquí puedes agregar la lógica para enviar el formulario
-      
-      alert('¡Gracias por tu mensaje! Te responderemos lo antes posible.');
-      (form as HTMLFormElement).reset();
+    // ===== MAPA =====
+    const mapContainer = document.getElementById('mapContainer');
+    
+    // Mapa - Abrir Google Maps con direcciones
+    mapContainer?.addEventListener('click', () => {
+      const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(mapConfig.searchQuery)}&travelmode=driving`;
+      window.open(googleMapsUrl, '_blank');
+      console.log('📍 Usuario solicitó direcciones a Pixel Living - La Castellana');
     });
+    
+    mapContainer?.addEventListener('mouseenter', () => {
+      mapContainer.setAttribute('title', 'Haz clic para obtener direcciones');
+    });
+    
+    // ===== FORMULARIO DE CONTACTO =====
+    const form = document.getElementById('contactForm');
+    const messageContainer = document.getElementById('message-container');
+    const contadorCaracteres = document.getElementById('contador-caracteres');
+    const mensajeField = document.getElementById('contactMensaje');
+    
+    if (!form || !messageContainer) {
+      console.error('❌ Elementos del formulario no encontrados');
+      return;
+    }
+    
+    // Campos que requieren validación
+    const campos = form.querySelectorAll('input[required], textarea[required]');
+    
+    // ===== FUNCIONES DE UTILIDAD =====
+    
+    function mostrarMensaje(tipo, mensaje) {
+      let iconoHTML = '';
+      let claseColor = '';
+      
+      switch (tipo) {
+        case 'success':
+          iconoHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>`;
+          claseColor = 'bg-green-50 text-green-800 border-green-200';
+          break;
+        case 'error':
+          iconoHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+          </svg>`;
+          claseColor = 'bg-red-50 text-red-800 border-red-200';
+          break;
+        case 'loading':
+          iconoHTML = `<svg class="animate-spin h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>`;
+          claseColor = 'bg-blue-50 text-blue-800 border-blue-200';
+          break;
+      }
+      
+      messageContainer.innerHTML = `
+        <div class="flex items-center gap-3 p-4 rounded-lg border ${claseColor}">
+          ${iconoHTML}
+          <span>${mensaje}</span>
+        </div>
+      `;
+      
+      messageContainer.classList.remove('hidden');
+      
+      if (tipo === 'success') {
+        setTimeout(() => {
+          messageContainer.classList.add('hidden');
+        }, 3000);
+      }
+    }
+    
+    // ===== FUNCIONES DE VALIDACIÓN =====
+    
+    function validarNombre(valor) {
+      const nombre = valor.trim();
+      if (nombre.length < 2) return 'El nombre debe tener al menos 2 caracteres';
+      if (nombre.length > 50) return 'El nombre no puede exceder 50 caracteres';
+      if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombre)) return 'Solo se permiten letras y espacios';
+      return null;
+    }
+    
+    function validarEmail(valor) {
+      const email = valor.trim();
+      if (!email) return 'El email es obligatorio';
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Email inválido';
+      return null;
+    }
+    
+    function validarAsunto(valor) {
+      const asunto = valor.trim();
+      if (!asunto) return 'El asunto es obligatorio';
+      if (asunto.length < 3) return 'Mínimo 3 caracteres';
+      if (asunto.length > 100) return 'Máximo 100 caracteres';
+      return null;
+    }
+    
+    function validarMensaje(valor) {
+      const texto = valor.trim();
+      if (!texto) return 'El mensaje es obligatorio';
+      if (texto.length < 10) return 'Mínimo 10 caracteres';
+      if (texto.length > 1000) return 'Máximo 1000 caracteres';
+      return null;
+    }
+    
+    // ===== MOSTRAR/LIMPIAR ERRORES =====
+    
+    function mostrarError(campo, mensaje) {
+      campo.classList.add('border-red-500');
+      campo.classList.remove('border-gray-300');
+      
+      const errorDiv = document.getElementById(`${campo.id}-error`);
+      if (errorDiv) {
+        errorDiv.textContent = mensaje;
+        errorDiv.classList.remove('hidden');
+      }
+    }
+    
+    function limpiarError(campo) {
+      campo.classList.remove('border-red-500');
+      campo.classList.add('border-gray-300');
+      
+      const errorDiv = document.getElementById(`${campo.id}-error`);
+      if (errorDiv) {
+        errorDiv.textContent = '';
+        errorDiv.classList.add('hidden');
+      }
+    }
+    
+    // ===== VALIDAR CAMPO =====
+    
+    function validarCampo(campo) {
+      let error = null;
+      
+      switch (campo.id) {
+        case 'contactNombre':
+          error = validarNombre(campo.value);
+          break;
+        case 'contactEmail':
+          error = validarEmail(campo.value);
+          break;
+        case 'contactAsunto':
+          error = validarAsunto(campo.value);
+          break;
+        case 'contactMensaje':
+          error = validarMensaje(campo.value);
+          break;
+      }
+      
+      if (error) {
+        mostrarError(campo, error);
+        return false;
+      } else {
+        limpiarError(campo);
+        return true;
+      }
+    }
+    
+    // ===== CONFIGURAR EVENTOS DE VALIDACIÓN =====
+    
+    campos.forEach(campo => {
+      // Validar al perder el foco
+      campo.addEventListener('blur', () => {
+        validarCampo(campo);
+      });
+      
+      // Limpiar error mientras escribe
+      campo.addEventListener('input', () => {
+        if (campo.classList.contains('border-red-500')) {
+          limpiarError(campo);
+        }
+      });
+    });
+    
+    // ===== CONTADOR DE CARACTERES =====
+    
+    if (mensajeField && contadorCaracteres) {
+      mensajeField.addEventListener('input', () => {
+        const currentLength = mensajeField.value.length;
+        const maxLength = 1000;
+        
+        contadorCaracteres.textContent = `${currentLength}/${maxLength} caracteres`;
+        
+        if (currentLength > maxLength * 0.9) {
+          contadorCaracteres.classList.add('text-yellow-600');
+          contadorCaracteres.classList.remove('text-gray-500');
+        } else if (currentLength > maxLength) {
+          contadorCaracteres.classList.add('text-red-600');
+          contadorCaracteres.classList.remove('text-yellow-600', 'text-gray-500');
+        } else {
+          contadorCaracteres.classList.add('text-gray-500');
+          contadorCaracteres.classList.remove('text-yellow-600', 'text-red-600');
+        }
+      });
+    }
+    
+    // ===== ENVÍO DEL FORMULARIO =====
+    
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      
+      // Ocultar mensajes anteriores
+      messageContainer.classList.add('hidden');
+      
+      // Validar todos los campos
+      let todoValido = true;
+      let primerError = null;
+      
+      campos.forEach(campo => {
+        if (!validarCampo(campo)) {
+          todoValido = false;
+          if (!primerError) {
+            primerError = campo;
+          }
+        }
+      });
+      
+      if (!todoValido) {
+        mostrarMensaje('error', 'Por favor corrige los errores señalados');
+        if (primerError) {
+          primerError.focus();
+          primerError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return;
+      }
+      
+      // Configurar botón y estado de carga
+      const boton = form.querySelector('button[type="submit"]');
+      const textoOriginal = boton.textContent;
+      
+      try {
+        boton.textContent = 'Enviando...';
+        boton.disabled = true;
+        mostrarMensaje('loading', 'Enviando tu mensaje...');
+        
+        // Recopilar datos del formulario
+        const nombre = document.getElementById('contactNombre').value.trim();
+        const email = document.getElementById('contactEmail').value.trim();
+        const asunto = document.getElementById('contactAsunto').value.trim();
+        const mensaje = document.getElementById('contactMensaje').value.trim();
+        
+        console.log('📧 Enviando mensaje de contacto:', { nombre, email, asunto });
+        
+        // Preparar FormData para FormSubmit
+        const formData = new FormData();
+        formData.append('Nombre_Completo', nombre);
+        formData.append('Email_Contacto', email);
+        formData.append('Asunto_Mensaje', asunto);
+        formData.append('Mensaje_Completo', mensaje);
+        formData.append('Fecha_Envio', new Date().toLocaleString('es-CO'));
+        formData.append('Origen', 'Formulario de Contacto - Página Web');
+        formData.append('_subject', `📧 Contacto Web: ${asunto} - ${nombre}`);
+        formData.append('_template', 'table');
+        formData.append('_captcha', 'false');
+        
+        // Enviar email a través de FormSubmit
+        const response = await fetch('https://formsubmit.co/mbedoyarudas@gmail.com', {
+          method: 'POST',
+          body: formData
+        });
+        
+        if (response.ok) {
+          // Éxito
+          mostrarMensaje('success', '¡Mensaje enviado exitosamente! Te responderemos lo antes posible.');
+          
+          // Resetear formulario después de 2 segundos
+          setTimeout(() => {
+            form.reset();
+            campos.forEach(campo => limpiarError(campo));
+            if (contadorCaracteres) {
+              contadorCaracteres.textContent = '0/1000 caracteres';
+              contadorCaracteres.className = 'mt-1 text-xs text-gray-500';
+            }
+          }, 2000);
+          
+          console.log('✅ Mensaje de contacto enviado exitosamente');
+          
+        } else {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+      } catch (error) {
+        console.error('❌ Error enviando mensaje:', error);
+        mostrarMensaje('error', 'Error al enviar el mensaje. Por favor intenta nuevamente o contáctanos directamente por WhatsApp.');
+      } finally {
+        boton.textContent = textoOriginal;
+        boton.disabled = false;
+      }
+    });
+    
+    console.log('✅ Formulario de contacto configurado correctamente');
   });
 </script>
+
+<style>
+  /* Animación para el marcador */
+  @keyframes bounce {
+    0%, 20%, 53%, 80%, 100% {
+      transform: translate3d(0,0,0);
+    }
+    40%, 43% {
+      transform: translate3d(0,-8px,0);
+    }
+    70% {
+      transform: translate3d(0,-4px,0);
+    }
+    90% {
+      transform: translate3d(0,-2px,0);
+    }
+  }
+  
+  .animate-bounce {
+    animation: bounce 2s infinite;
+  }
+  
+  /* Hover effect para el mapa */
+  #mapContainer:hover .animate-bounce {
+    animation-play-state: paused;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
+  
+  /* Responsive del mapa */
+  @media (max-width: 768px) {
+    #mapContainer {
+      height: 200px;
+    }
+  }
+</style>
