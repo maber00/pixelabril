@@ -9,7 +9,6 @@ import iconoWifi from '../assets/icoos_18-Key.svg';
 import iconoServicios from '../assets/icoos_22-Air condition.svg';
 import iconoPrivado from '../assets/icoos_16-Bed.svg';
 
-
 // Definición de tipos
 interface Estudio {
   id: string;
@@ -141,16 +140,12 @@ const estudiosCompletos: EstudiosRecord = {
       'Smart TV 50" con todas las plataformas',
       'Caja de seguridad digital'
     ]
-  },
-
-
-  
-  
+  }
 };
 
 // Cambiar la interfaz Caracteristica
 interface Caracteristica {
-  icono: ImageMetadata; // Cambiar de string a ImageMetadata
+  icono: ImageMetadata;
   texto: string;
 }
 
@@ -239,195 +234,203 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
       </p>
     </div>
     
-    <!-- Carrusel de apartaestudios -->
-    <div class="relative mx-auto bg-pixel-blue max-w-7xl px-4 overflow-hidden" id="carousel-container">
-      <div class="sr-only" id="carousel-instructions">
-        Use las flechas izquierda y derecha para navegar, o presione Tab para explorar cada estudio individualmente.
-      </div>
-      
-      <!-- Botones de navegación - SOLO EN MÓVIL/TABLET -->
-      <button 
-        class="absolute left-0 top-1/2 z-10 -translate-y-1/2 bg-white rounded-md p-3 shadow-lg hover:bg-gray-100 focus:outline-none disabled:opacity-30 disabled:cursor-not-allowed border border-pixel-blue md:hidden" 
-        id="prev-btn"
-        aria-label="Ver apartaestudio anterior"
-        aria-describedby="carousel-instructions"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pixel-blue" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-        </svg>
-      </button>
-      
-      <button 
-        class="absolute right-0 top-1/2 z-10 -translate-y-1/2 bg-white rounded-md p-3 shadow-lg hover:bg-gray-100 focus:outline-none disabled:opacity-30 disabled:cursor-not-allowed border border-pixel-blue md:hidden" 
-        id="next-btn"
-        aria-label="Ver apartaestudio siguiente"
-        aria-describedby="carousel-instructions"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pixel-blue" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-        </svg>
-      </button>
-      
-      <!-- Carrusel -->
-      <div 
-        class="flex transition-transform duration-500 ease-in-out" 
-        id="carousel-slides"
-        role="group"
-        aria-label="Carrusel de apartaestudios"
-        aria-live="polite"
-      >
-        {estudios.map((estudio, index) => (
-          <article 
-            class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-2 transition-opacity duration-300" 
-            data-slide-index={index} 
-            data-estudio-id={estudio.id}
-            aria-labelledby={`estudio-${estudio.id}-title`}
+    <!-- Carrusel de apartaestudios - ESTRUCTURA CORREGIDA -->
+    <div class="bg-pixel-blue">
+      <!-- Contenedor del carrusel con padding interno -->
+      <div class="relative max-w-7xl mx-auto" id="carousel-container">
+        
+        <!-- Área de contenido con padding para los botones -->
+        <div class="px-4 md:px-16 py-8 relative overflow-hidden">
+          
+          <!-- Instrucciones para lectores de pantalla -->
+          <div class="sr-only" id="carousel-instructions">
+            Use las flechas izquierda y derecha para navegar, o presione Tab para explorar cada estudio individualmente.
+          </div>
+          
+          <!-- Botones de navegación - POSICIONADOS CORRECTAMENTE -->
+          <button 
+            class="absolute left-2 top-1/2 z-10 -translate-y-1/2 bg-white rounded-lg p-3 shadow-lg hover:bg-gray-100 focus:outline-none disabled:opacity-30 disabled:cursor-not-allowed border border-pixel-blue transition-all duration-200 md:hidden" 
+            id="prev-btn"
+            aria-label="Ver apartaestudio anterior"
+            aria-describedby="carousel-instructions"
           >
-            <div class="bg-white rounded-md overflow-hidden shadow-lg h-full flex flex-col transform transition duration-300 hover:-translate-y-2 hover:shadow-xl border-2 border-pixel-blue pixel-hover">
-              <div class="relative">
-                <img 
-                  src={estudio.imagen} 
-                  alt={`${estudio.nombre} - Vista principal del apartaestudio`}
-                  class="w-full h-64 object-cover main-image cursor-pointer" 
-                  data-estudio-id={estudio.id}
-                  tabindex="0"
-                  role="button"
-                  aria-label={`Ver galería completa de ${estudio.nombre}`}
-                />
-                
-                <div class="absolute top-4 right-4 bg-white py-1 px-3 rounded-md shadow-md border border-pixel-blue">
-                  <span class="font-medium text-sm" aria-label={`Área: ${estudio.metros}`}>{estudio.metros}</span>
-                </div>
-                
-                <!-- Botón para abrir galería -->
-                <button 
-                  class="absolute bottom-4 right-4 bg-black bg-opacity-60 p-2 rounded-full text-white hover:bg-opacity-80 open-gallery-btn focus:bg-opacity-80" 
-                  data-estudio-id={estudio.id}
-                  aria-label={`Abrir galería completa de ${estudio.nombre}`}
-                  title={`Ver más fotos de ${estudio.nombre}`}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
-                  </svg>
-                </button>
-                
-                <!-- Miniaturas de galería -->
-                <div class="absolute bottom-4 left-4 flex space-x-1" role="group" aria-label={`Vista previa de imágenes de ${estudio.nombre}`}>
-                  <!-- Imagen principal como primera miniatura -->
-                  <button 
-                    class="w-8 h-8 rounded-md overflow-hidden border border-white cursor-pointer gallery-thumb hover:scale-110 focus:scale-110 transition-transform" 
-                    data-estudio-id={estudio.id}
-                    data-img-index={-1}
-                    aria-label={`Ver imagen principal de ${estudio.nombre}`}
-                    tabindex="0"
-                  >
-                    <img src={estudio.imagen} alt="" class="w-full h-full object-cover" />
-                  </button>
-                  
-                  <!-- Imágenes de la galería (máximo 3 miniaturas adicionales) -->
-                  {estudiosCompletos[estudio.id].galeria.slice(0, 3).map((img: string, imgIndex: number) => (
-                    <button 
-                      class="w-8 h-8 rounded-md overflow-hidden border border-white cursor-pointer gallery-thumb hover:scale-110 focus:scale-110 transition-transform" 
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pixel-blue" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+          </button>
+          
+          <button 
+            class="absolute right-2 top-1/2 z-10 -translate-y-1/2 bg-white rounded-lg p-3 shadow-lg hover:bg-gray-100 focus:outline-none disabled:opacity-30 disabled:cursor-not-allowed border border-pixel-blue transition-all duration-200 md:hidden" 
+            id="next-btn"
+            aria-label="Ver apartaestudio siguiente"
+            aria-describedby="carousel-instructions"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pixel-blue" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          </button>
+          
+          <!-- Carrusel de slides -->
+          <div 
+            class="flex transition-transform duration-500 ease-in-out -mx-2" 
+            id="carousel-slides"
+            role="group"
+            aria-label="Carrusel de apartaestudios"
+            aria-live="polite"
+          >
+            {estudios.map((estudio, index) => (
+              <article 
+                class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2 transition-opacity duration-300" 
+                data-slide-index={index} 
+                data-estudio-id={estudio.id}
+                aria-labelledby={`estudio-${estudio.id}-title`}
+              >
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg h-full flex flex-col transform transition duration-300 hover:-translate-y-2 hover:shadow-xl border-2 border-pixel-blue pixel-hover">
+                  <div class="relative">
+                    <img 
+                      src={estudio.imagen} 
+                      alt={`${estudio.nombre} - Vista principal del apartaestudio`}
+                      class="w-full h-64 object-cover main-image cursor-pointer" 
                       data-estudio-id={estudio.id}
-                      data-img-index={imgIndex}
-                      aria-label={`Ver imagen ${imgIndex + 2} de ${estudio.nombre}`}
                       tabindex="0"
+                      role="button"
+                      aria-label={`Ver galería completa de ${estudio.nombre}`}
+                    />
+                    
+                    <div class="absolute top-4 right-4 bg-white py-1 px-3 rounded-md shadow-md border border-pixel-blue">
+                      <span class="font-medium text-sm" aria-label={`Área: ${estudio.metros}`}>{estudio.metros}</span>
+                    </div>
+                    
+                    <!-- Botón para abrir galería -->
+                    <button 
+                      class="absolute bottom-4 right-4 bg-black bg-opacity-60 p-2 rounded-full text-white hover:bg-opacity-80 open-gallery-btn focus:bg-opacity-80 transition-all duration-200" 
+                      data-estudio-id={estudio.id}
+                      aria-label={`Abrir galería completa de ${estudio.nombre}`}
+                      title={`Ver más fotos de ${estudio.nombre}`}
                     >
-                      <img src={img} alt="" class="w-full h-full object-cover" />
-                    </button>
-                  ))}
-                </div>
-              </div>
-              
-              <div class="p-4 flex-grow">
-                <h3 id={`estudio-${estudio.id}-title`} class="text-xl font-bold mb-2 text-pixel-blue">
-                  {estudio.nombre}
-                </h3>
-                <p class="text-gray-600 mb-3">{estudio.descripcion}</p>
-                
-                <div class="mt-auto">
-                  <div class="flex justify-between items-center">
-                    <span class="text-xl font-bold text-pixel-blue" aria-label={`Precio desde ${estudio.precio}`}>
-                      {estudio.precio}
-                    </span>
-                    <a 
-                      href={`/estudio/${estudio.id}`} 
-                      class="text-pixel-blue font-medium inline-flex items-center group ver-detalles-btn hover:underline focus:underline"
-                      aria-describedby={`estudio-${estudio.id}-title`}
-                    >
-                      Ver detalles
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-1 transform transition-transform group-hover:translate-x-1" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
                       </svg>
-                    </a>
+                    </button>
+                    
+                    <!-- Miniaturas de galería -->
+                    <div class="absolute bottom-4 left-4 flex space-x-1" role="group" aria-label={`Vista previa de imágenes de ${estudio.nombre}`}>
+                      <!-- Imagen principal como primera miniatura -->
+                      <button 
+                        class="w-8 h-8 rounded-md overflow-hidden border border-white cursor-pointer gallery-thumb hover:scale-110 focus:scale-110 transition-transform" 
+                        data-estudio-id={estudio.id}
+                        data-img-index={-1}
+                        aria-label={`Ver imagen principal de ${estudio.nombre}`}
+                        tabindex="0"
+                      >
+                        <img src={estudio.imagen} alt="" class="w-full h-full object-cover" />
+                      </button>
+                      
+                      <!-- Imágenes de la galería (máximo 3 miniaturas adicionales) -->
+                      {estudiosCompletos[estudio.id].galeria.slice(0, 3).map((img: string, imgIndex: number) => (
+                        <button 
+                          class="w-8 h-8 rounded-md overflow-hidden border border-white cursor-pointer gallery-thumb hover:scale-110 focus:scale-110 transition-transform" 
+                          data-estudio-id={estudio.id}
+                          data-img-index={imgIndex}
+                          aria-label={`Ver imagen ${imgIndex + 2} de ${estudio.nombre}`}
+                          tabindex="0"
+                        >
+                          <img src={img} alt="" class="w-full h-full object-cover" />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div class="p-4 flex-grow">
+                    <h3 id={`estudio-${estudio.id}-title`} class="text-xl font-bold mb-2 text-pixel-blue">
+                      {estudio.nombre}
+                    </h3>
+                    <p class="text-gray-600 mb-3">{estudio.descripcion}</p>
+                    
+                    <div class="mt-auto">
+                      <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold text-pixel-blue" aria-label={`Precio desde ${estudio.precio}`}>
+                          {estudio.precio}
+                        </span>
+                        <a 
+                          href={`/estudio/${estudio.id}`} 
+                          class="text-pixel-blue font-medium inline-flex items-center group ver-detalles-btn hover:underline focus:underline"
+                          aria-describedby={`estudio-${estudio.id}-title`}
+                        >
+                          Ver detalles
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-1 transform transition-transform group-hover:translate-x-1" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-      
-      <!-- Indicadores -->
-      <div class="flex justify-center mt-8 mb-8 space-x-2" id="carousel-indicators" role="group" aria-label="Indicadores de carrusel">
-        {estudios.map((_, index) => (
-          <button 
-            class="w-4 h-4 bg-gray-200 focus:outline-none transition-colors duration-300 rounded-sm border border-pixel-blue hover:scale-110 focus:scale-110" 
-            data-index={index}
-            aria-label={`Ir a apartaestudio ${index + 1}`}
-            role="tab"
-            aria-selected={index === 0 ? 'true' : 'false'}
-            tabindex={index === 0 ? 0 : -1}
-          ></button>
-        ))}
+              </article>
+            ))}
+          </div>
+        </div>
+        
+        <!-- Indicadores -->
+        <div class="flex justify-center pb-8 space-x-2" id="carousel-indicators" role="group" aria-label="Indicadores de carrusel">
+          {estudios.map((_, index) => (
+            <button 
+              class="w-4 h-4 bg-gray-200 focus:outline-none transition-colors duration-300 rounded-sm border border-pixel-blue hover:scale-110 focus:scale-110" 
+              data-index={index}
+              aria-label={`Ir a apartaestudio ${index + 1}`}
+              role="tab"
+              aria-selected={index === 0 ? 'true' : 'false'}
+              tabindex={index === 0 ? 0 : -1}
+            ></button>
+          ))}
+        </div>
       </div>
     </div>
     
-   <!-- Características -->
-<div class="bg-white rounded-md shadow-lg p-8 max-w-4xl mx-auto mt-16 border-2 border-pixel-blue">
-  <h3 class="text-2xl font-bold mb-6 text-center text-pixel-blue">Características de nuestros espacios</h3>
-  
-  <div class="grid grid-cols-2 md:grid-cols-3 gap-6" role="list">
-    {caracteristicas.map((item: { icono: ImageMetadata; texto: string }) => (
-      <div class="flex items-start space-x-3" role="listitem">
-        <div class="flex-shrink-0  p-1 rounded-md border border-pixel-blue" aria-hidden="true">
-          <!-- USAR IMG en lugar de SVG -->
-          <img 
-            src={item.icono.src} 
-            alt="" 
-            class="w-8 h-8 object-contain"
-            
-          />
-        </div>
-        <div>
-          <p class="font-medium">{item.texto}</p>
-        </div>
+    <!-- Características -->
+    <div class="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto mt-16 border-2 border-pixel-blue">
+      <h3 class="text-2xl font-bold mb-6 text-center text-pixel-blue">Características de nuestros espacios</h3>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6" role="list">
+        {caracteristicas.map((item: { icono: ImageMetadata; texto: string }) => (
+          <div class="flex items-start space-x-3" role="listitem">
+            <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue" aria-hidden="true">
+              <img 
+                src={item.icono.src} 
+                alt="" 
+                class="w-8 h-8 object-contain"
+              />
+            </div>
+            <div>
+              <p class="font-medium">{item.texto}</p>
+            </div>
+          </div>
+        ))}
       </div>
-    ))}
+      
+      <div class="mt-8 text-center">
+        <a 
+          href="#reservas" 
+          class="btn bg-pixel-blue hover:bg-blue-600 text-white inline-flex items-center border border-blue-700 pixel-hover focus:ring-4 focus:ring-blue-300 transition-all duration-200"
+          aria-describedby="reservas-cta-desc"
+        >
+          👉 Solicita disponibilidad
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+        <p id="reservas-cta-desc" class="sr-only">Ir a la sección de reservas para solicitar disponibilidad de apartaestudios</p>
+      </div>
+    </div>
+    
+    <!-- Importar el componente de lightbox compartido -->
+    <LightboxModal id="espacios-lightbox" showDetailsButton={true} showReservaButton={true} />
   </div>
-  
-  <div class="mt-8 text-center">
-    <a 
-      href="#reservas" 
-      class="btn bg-pixel-blue hover:bg-blue-600 text-white inline-flex items-center border border-blue-700 pixel-hover focus:ring-4 focus:ring-blue-300"
-      aria-describedby="reservas-cta-desc"
-    >
-      👉 Solicita disponibilidad
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-      </svg>
-    </a>
-    <p id="reservas-cta-desc" class="sr-only">Ir a la sección de reservas para solicitar disponibilidad de apartaestudios</p>
-  </div>
-</div>
-  
-  <!-- Importar el componente de lightbox compartido -->
-  <LightboxModal id="espacios-lightbox" showDetailsButton={true} showReservaButton={true} />
 </section>
 
 <script define:vars={{ lightboxData }}>
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("=== ESPACIOS ASTRO 5.x SCRIPT INICIADO ===");
+  console.log("=== ESPACIOS CARRUSEL CORREGIDO ===");
   
   // ===== HELPERS TYPE-SAFE PARA ASTRO 5.x =====
   const getAccessibilityManager = () => {
@@ -479,6 +482,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextBtn = document.getElementById('next-btn');
   const indicators = document.querySelectorAll('#carousel-indicators button');
   const lightboxModal = document.getElementById('espacios-lightbox');
+  const slideElements = document.querySelectorAll('[data-slide-index]');
   
   console.log("Elementos encontrados:", {
     container: !!container,
@@ -487,6 +491,7 @@ document.addEventListener('DOMContentLoaded', () => {
     nextBtn: !!nextBtn,
     indicators: indicators.length,
     lightboxModal: !!lightboxModal,
+    slideElements: slideElements.length,
     lightboxData: Object.keys(lightboxData || {})
   });
 
@@ -510,7 +515,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateCarousel() {
     console.log("Actualizando carrusel:", { currentIndex, slidesPerView, totalSlides, isMobile: isMobile() });
     
-    const slideWidth = container.clientWidth / slidesPerView;
+    // Calcular el ancho del slide basado en el contenedor padre
+    const containerWidth = slides.parentElement.clientWidth;
+    const slideWidth = containerWidth / slidesPerView;
+    
+    // Aplicar transformación
     slides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
     
     // En desktop, deshabilitar botones
@@ -524,14 +533,14 @@ document.addEventListener('DOMContentLoaded', () => {
       nextBtn.setAttribute('aria-hidden', 'true');
     } else {
       prevBtn.disabled = currentIndex === 0;
-      nextBtn.disabled = currentIndex === totalSlides - slidesPerView;
+      nextBtn.disabled = currentIndex >= totalSlides - slidesPerView;
       prevBtn.setAttribute('aria-hidden', 'false');
       nextBtn.setAttribute('aria-hidden', 'false');
     }
     
     // Actualizar ARIA states
     prevBtn.setAttribute('aria-disabled', String(isDesktop || currentIndex === 0));
-    nextBtn.setAttribute('aria-disabled', String(isDesktop || currentIndex === totalSlides - slidesPerView));
+    nextBtn.setAttribute('aria-disabled', String(isDesktop || currentIndex >= totalSlides - slidesPerView));
     
     // Actualizar indicadores
     indicators.forEach((indicator, index) => {
@@ -542,11 +551,8 @@ document.addEventListener('DOMContentLoaded', () => {
       indicator.setAttribute('tabindex', isActive ? '0' : '-1');
     });
     
-    // Actualizar opacity de slides
-    
-
     // Anunciar cambio a lectores de pantalla (solo en móvil)
-    if (!isDesktop) {
+    if (!isDesktop && slideElements[currentIndex]) {
       const currentSlide = slideElements[currentIndex];
       const estudioNombre = currentSlide?.querySelector('h3')?.textContent || '';
       announceCarouselChange(currentIndex + 1, totalSlides, estudioNombre);
@@ -609,16 +615,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Responsive handling
+  // Responsive handling mejorado
   window.addEventListener('resize', () => {
     const newSlidesPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
     if (newSlidesPerView !== slidesPerView) {
       slidesPerView = newSlidesPerView;
-      currentIndex = Math.min(currentIndex, totalSlides - slidesPerView);
+      currentIndex = Math.min(currentIndex, Math.max(0, totalSlides - slidesPerView));
       updateCarousel();
     }
   });
 
+  // Inicializar carrusel
   updateCarousel();
 
   // ===== LIGHTBOX COMPATIBLE CON ASTRO 5.x =====
@@ -930,7 +937,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  console.log("✅ Espacios (Astro 5.x) inicializado correctamente");
+  console.log("✅ Espacios con carrusel corregido inicializado");
   console.log("📱 Navegación responsive activada - Botones solo en móvil");
   
   // Debug
@@ -940,7 +947,9 @@ document.addEventListener('DOMContentLoaded', () => {
     lightboxData,
     currentEstudioId: () => currentEstudioId,
     testLightbox: (estudioId) => openLightbox(estudioId, 0),
-    isMobile: isMobile
+    isMobile: isMobile,
+    updateCarousel,
+    currentIndex: () => currentIndex
   };
 });
 </script>
@@ -985,12 +994,33 @@ document.addEventListener('DOMContentLoaded', () => {
     box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.8);
   }
 
-  /* Responsive navigation buttons - ocultar en desktop */
+  /* NUEVA ESTRUCTURA DE RESPONSIVE NAVIGATION */
+  
+  /* Botones de navegación solo en móvil */
   @media (min-width: 768px) {
     #prev-btn,
     #next-btn {
       display: none !important;
     }
+  }
+
+  /* Mejorar área de toque en móvil */
+  #prev-btn,
+  #next-btn {
+    min-width: 44px;
+    min-height: 44px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Carrusel responsivo sin cortes */
+  #carousel-slides {
+    will-change: transform;
+  }
+
+  /* Espaciado negativo para compensar padding */
+  #carousel-slides.-mx-2 {
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
   }
 
   /* Improved hover effects for accessibility */
@@ -1008,7 +1038,8 @@ document.addEventListener('DOMContentLoaded', () => {
     @media (max-width: 767px) {
       #prev-btn:hover,
       #next-btn:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       }
     }
   }
@@ -1044,20 +1075,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* Estilos específicos para botones responsive */
-  #prev-btn,
-  #next-btn {
-    /* En móvil, mejorar el área de toque */
-    min-width: 44px;
-    min-height: 44px;
+  /* Asegurar que el carrusel no se desborde */
+  #carousel-container {
+    contain: layout;
   }
 
-  /* Indicador visual de que los botones están deshabilitados en desktop */
-  @media (min-width: 768px) {
-    .carousel-nav-disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-      pointer-events: none;
-    }
+  /* Prevenir scroll horizontal no deseado */
+  .bg-pixel-blue {
+    overflow-x: hidden;
   }
 </style>
