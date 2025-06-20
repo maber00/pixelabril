@@ -581,7 +581,7 @@ ${datos.expectativas}
     mostrarMensaje('error', 'Error al enviar. Intenta nuevamente.');
     
     // En caso de error, abrir WhatsApp de todas formas
-    const emergencyMsg = `Solicitud de reserva - Error en formulario web. Por favor contactar a: ${datos?.nombre || 'Usuario'}`;
+    const emergencyMsg = `Solicitud de reserva - Error en formulario web. Por favor revisar formulario.`;
     window.open(`https://wa.me/573017872595?text=${encodeURIComponent(emergencyMsg)}`, '_blank');
   } finally {
     if (boton) {

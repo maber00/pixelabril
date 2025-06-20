@@ -76,7 +76,7 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
         Apartaestudios diseñados para estadías medianas y largas, con estilo, comodidad y comunidad.
       </p>
       
-      <a href="https://wa.me/TUTELEFONO" target="_blank" class="btn btn-primary text-lg flex items-center hero-cta">
+      <a href="https://wa.me/573017872595" target="_blank" class="btn btn-primary text-lg flex items-center hero-cta">
         👉 Quiero vivir en Pixel
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
@@ -107,7 +107,10 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
   </div>
 </section>
 
+<!-- ASEGÚRATE DE QUE ESTOS ESTILOS ESTÉN EN LA SECCIÓN <style> DE Hero.astro -->
+
 <style>
+  /* ===== CONTENEDOR DEL CARRUSEL ===== */
   .carousel-container {
     position: relative;
     width: 100%;
@@ -115,6 +118,7 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     overflow: hidden;
   }
   
+  /* ===== SLIDES CON EFECTO FADE ===== */
   .carousel-slide {
     position: absolute;
     top: 0;
@@ -122,13 +126,17 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out; /* Transición suave de 1 segundo */
+    z-index: 0;
   }
   
+  /* Slide activo visible */
   .carousel-slide.active {
     opacity: 1;
+    z-index: 1;
   }
   
+  /* ===== WRAPPER PARA ZOOM ===== */
   .zoom-wrapper {
     width: 100%;
     height: 100%;
@@ -136,6 +144,7 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     position: relative;
   }
   
+  /* ===== IMÁGENES CON EFECTO ZOOM ===== */
   .zoom-image {
     width: 100%;
     height: 100%;
@@ -145,6 +154,7 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     left: 0;
   }
   
+  /* Animaciones de zoom para cada imagen */
   .zoom-image-1 {
     animation: zoomEffect1 8s ease-in-out infinite alternate;
   }
@@ -165,6 +175,7 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     animation: zoomEffect5 6s ease-in-out infinite alternate;
   }
   
+  /* ===== KEYFRAMES PARA ZOOM ===== */
   @keyframes zoomEffect1 {
     0% {
       transform: scale(1) translate(0, 0);
@@ -210,6 +221,7 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     }
   }
   
+  /* ===== INDICADORES (DOTS) ===== */
   .carousel-indicators {
     backdrop-filter: blur(10px);
     background: rgba(0, 0, 0, 0.2);
@@ -226,6 +238,17 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     background: transparent;
     cursor: pointer;
     transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  /* Área clickeable más grande */
+  .carousel-dot::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
   }
   
   .carousel-dot:hover {
@@ -239,6 +262,7 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
   }
   
+  /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
     .carousel-indicators {
       bottom: 16px;
@@ -250,102 +274,293 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
       height: 10px;
     }
     
-    @keyframes zoomEffect1 {
+    /* Zoom más sutil en móvil */
+    @keyframes zoomEffect1,
+    @keyframes zoomEffect2,
+    @keyframes zoomEffect3,
+    @keyframes zoomEffect4,
+    @keyframes zoomEffect5 {
       0% { transform: scale(1); }
-      100% { transform: scale(1.1); }
+      100% { transform: scale(1.05); }
+    }
+  }
+  
+  /* ===== MEJORAS DE RENDIMIENTO ===== */
+  .carousel-slide:not(.active) {
+    pointer-events: none;
+  }
+  
+  /* Suavizar animaciones en dispositivos lentos */
+  @media (prefers-reduced-motion: reduce) {
+    .carousel-slide {
+      transition: opacity 0.5s ease-in-out;
     }
     
-    @keyframes zoomEffect2 {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.1); }
-    }
-    
-    @keyframes zoomEffect3 {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.1); }
+    .zoom-image {
+      animation: none !important;
     }
   }
 </style>
 
+<!-- REEMPLAZA TODO EL SCRIPT EN Hero.astro CON ESTE CÓDIGO NUEVO -->
+
 <script is:inline>
-  (function() {
-    'use strict';
+(function() {
+  'use strict';
+  
+  // Esperar a que el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCarousel);
+  } else {
+    initCarousel();
+  }
+  
+  function initCarousel() {
+    console.log('🎠 Inicializando Hero Carousel...');
     
-    document.addEventListener('DOMContentLoaded', function() {
-      var currentSlide = 0;
-      var slides = document.querySelectorAll('.carousel-slide');
-      var dots = document.querySelectorAll('.carousel-dot');
-      var totalSlides = slides.length;
-      var isPlaying = true;
-      var intervalId = null;
-      var duration = 4000;
-      
-      function goToSlide(slideIndex) {
-        if (slideIndex === currentSlide) return;
-        
-        slides[currentSlide].classList.remove('active');
-        dots[currentSlide].classList.remove('active');
-        
-        slides[slideIndex].classList.add('active');
-        dots[slideIndex].classList.add('active');
-        
-        currentSlide = slideIndex;
+    // ===== ELEMENTOS =====
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const heroSection = document.getElementById('hero-section');
+    
+    // Verificar que tengamos elementos
+    if (!slides.length || !dots.length) {
+      console.error('❌ No se encontraron slides o dots');
+      return;
+    }
+    
+    // ===== CONFIGURACIÓN =====
+    const CONFIG = {
+      duration: 3000,        // 3 segundos por slide
+      fadeTime: 1000,        // 1 segundo de transición fade
+      currentSlide: 0,
+      totalSlides: slides.length,
+      isPlaying: true,
+      intervalId: null,
+      isTransitioning: false
+    };
+    
+    console.log(`📊 Configuración: ${CONFIG.totalSlides} slides, cambio cada ${CONFIG.duration/1000}s`);
+    
+    // ===== FUNCIONES PRINCIPALES =====
+    
+    /**
+     * Cambiar a un slide específico
+     */
+    function goToSlide(index) {
+      // Validar índice
+      if (index < 0 || index >= CONFIG.totalSlides) {
+        console.warn('Índice inválido:', index);
+        return;
       }
       
-      function nextSlide() {
-        var nextIndex = (currentSlide + 1) % totalSlides;
-        goToSlide(nextIndex);
+      // Evitar cambios durante transición
+      if (CONFIG.isTransitioning) {
+        console.log('⏳ Transición en progreso, esperando...');
+        return;
       }
       
-      for (var i = 0; i < dots.length; i++) {
-        (function(dotIndex) {
-          dots[dotIndex].addEventListener('click', function() {
-            goToSlide(dotIndex);
-          });
-        })(i);
+      // Si es el mismo slide, no hacer nada
+      if (index === CONFIG.currentSlide) {
+        console.log('📍 Ya estás en este slide');
+        return;
       }
       
-      var heroSection = document.getElementById('hero-section');
-      if (heroSection) {
-        heroSection.addEventListener('mouseenter', function() {
-          isPlaying = false;
-        });
-        
-        heroSection.addEventListener('mouseleave', function() {
-          isPlaying = true;
-        });
-      }
+      console.log(`🔄 Cambiando de slide ${CONFIG.currentSlide} → ${index}`);
+      CONFIG.isTransitioning = true;
       
-      document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-          isPlaying = false;
-        } else {
-          isPlaying = true;
+      // Quitar clase active del slide y dot actual
+      slides[CONFIG.currentSlide].classList.remove('active');
+      dots[CONFIG.currentSlide].classList.remove('active');
+      
+      // Actualizar índice
+      CONFIG.currentSlide = index;
+      
+      // Agregar clase active al nuevo slide y dot
+      slides[CONFIG.currentSlide].classList.add('active');
+      dots[CONFIG.currentSlide].classList.add('active');
+      
+      // Esperar a que termine la transición
+      setTimeout(() => {
+        CONFIG.isTransitioning = false;
+      }, CONFIG.fadeTime);
+      
+      // Reiniciar autoplay si estaba activo
+      if (CONFIG.isPlaying) {
+        resetAutoplay();
+      }
+    }
+    
+    /**
+     * Ir al siguiente slide
+     */
+    function nextSlide() {
+      const nextIndex = (CONFIG.currentSlide + 1) % CONFIG.totalSlides;
+      goToSlide(nextIndex);
+    }
+    
+    /**
+     * Ir al slide anterior
+     */
+    function prevSlide() {
+      const prevIndex = CONFIG.currentSlide === 0 ? CONFIG.totalSlides - 1 : CONFIG.currentSlide - 1;
+      goToSlide(prevIndex);
+    }
+    
+    /**
+     * Iniciar autoplay
+     */
+    function startAutoplay() {
+      // Limpiar interval existente
+      stopAutoplay();
+      
+      // Crear nuevo interval
+      CONFIG.intervalId = setInterval(() => {
+        if (CONFIG.isPlaying && !CONFIG.isTransitioning) {
+          nextSlide();
         }
+      }, CONFIG.duration);
+      
+      console.log('▶️ Autoplay iniciado');
+    }
+    
+    /**
+     * Detener autoplay
+     */
+    function stopAutoplay() {
+      if (CONFIG.intervalId) {
+        clearInterval(CONFIG.intervalId);
+        CONFIG.intervalId = null;
+        console.log('⏸️ Autoplay detenido');
+      }
+    }
+    
+    /**
+     * Reiniciar autoplay
+     */
+    function resetAutoplay() {
+      stopAutoplay();
+      startAutoplay();
+    }
+    
+    // ===== EVENT LISTENERS =====
+    
+    // Click en dots
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log(`🔘 Dot ${index} clickeado`);
+        goToSlide(index);
       });
       
-      function startAutoplay() {
-        if (intervalId) return;
-        
-        intervalId = setInterval(function() {
-          if (isPlaying) {
-            nextSlide();
-          }
-        }, duration);
-      }
+      // Mejorar accesibilidad
+      dot.setAttribute('tabindex', '0');
+      dot.setAttribute('role', 'button');
+      dot.setAttribute('aria-label', `Ir a imagen ${index + 1} de ${CONFIG.totalSlides}`);
       
-      function stopAutoplay() {
-        if (intervalId) {
-          clearInterval(intervalId);
-          intervalId = null;
+      // Permitir activación con Enter
+      dot.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          goToSlide(index);
         }
-      }
-      
-      startAutoplay();
-      
-      window.addEventListener('beforeunload', function() {
-        stopAutoplay();
       });
     });
-  })();
+    
+    // Pausar en hover
+    if (heroSection) {
+      heroSection.addEventListener('mouseenter', () => {
+        CONFIG.isPlaying = false;
+        console.log('🖱️ Mouse enter - Autoplay pausado');
+      });
+      
+      heroSection.addEventListener('mouseleave', () => {
+        CONFIG.isPlaying = true;
+        console.log('🖱️ Mouse leave - Autoplay reanudado');
+      });
+    }
+    
+    // Navegación con teclado
+    document.addEventListener('keydown', (e) => {
+      // Solo si el hero está visible
+      if (!isElementInViewport(heroSection)) return;
+      
+      switch(e.key) {
+        case 'ArrowLeft':
+          e.preventDefault();
+          prevSlide();
+          break;
+        case 'ArrowRight':
+          e.preventDefault();
+          nextSlide();
+          break;
+      }
+    });
+    
+    // Pausar cuando la página no está visible
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        CONFIG.isPlaying = false;
+        stopAutoplay();
+        console.log('👁️ Página oculta - Autoplay detenido');
+      } else {
+        CONFIG.isPlaying = true;
+        startAutoplay();
+        console.log('👁️ Página visible - Autoplay reanudado');
+      }
+    });
+    
+    // Optimización: Pausar si el hero no está visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          CONFIG.isPlaying = true;
+          startAutoplay();
+        } else {
+          CONFIG.isPlaying = false;
+          stopAutoplay();
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    if (heroSection) {
+      observer.observe(heroSection);
+    }
+    
+    // ===== FUNCIONES AUXILIARES =====
+    
+    function isElementInViewport(el) {
+      if (!el) return false;
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+    
+    // ===== INICIALIZACIÓN =====
+    
+    // Asegurar que el primer slide esté activo
+    slides[0].classList.add('active');
+    dots[0].classList.add('active');
+    
+    // Iniciar autoplay
+    startAutoplay();
+    
+    // Log de éxito
+    console.log('✅ Hero Carousel inicializado correctamente');
+    
+    // ===== API PÚBLICA (para debug) =====
+    window.heroCarousel = {
+      goToSlide: goToSlide,
+      nextSlide: nextSlide,
+      prevSlide: prevSlide,
+      play: () => { CONFIG.isPlaying = true; startAutoplay(); },
+      pause: () => { CONFIG.isPlaying = false; stopAutoplay(); },
+      getConfig: () => CONFIG
+    };
+  }
+})();
 </script>

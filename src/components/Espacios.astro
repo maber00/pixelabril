@@ -139,36 +139,7 @@ const estudiosCompletos: EstudiosRecord = {
       'Caja de seguridad digital'
     ]
   },
-  'ambar': {
-    id: 'ambar',
-    nombre: 'Estudio Ámbar',
-    color: 'bg-amber-500',
-    imagen: '/images/estudios/f4.jpg',
-    descripcion: 'Cálidos tonos ámbar que crean un ambiente acogedor y energético.',
-    metros: '30m²',
-    precio: 'Desde $2.000.000',
-    galeria: [
-      '/images/estudios/indigo/f1.jpg', 
-      '/images/estudios/indigo/f2.jpg', 
-      '/images/estudios/indigo/f3.jpg', 
-      '/images/estudios/indigo/f4.jpg', 
-      '/images/estudios/indigo/f5.jpg'
-    ],
-    caracteristicas: [
-      'Cama doble con ropa de algodón orgánico',
-      'Escritorio creativo con iluminación especial',
-      'Electrodomésticos',
-      'Baño con ducha italiana',
-      'Sistema de almacenamiento personalizado',
-      'Iluminación ambiental con control por app'
-    ],
-    incluye: [
-      'Wifi de alta velocidad',
-      'Servicios básicos incluidos',
-      'Limpieza bisemanal',
-      'Smart TV'
-    ]
-  }
+  
 };
 
 const caracteristicas: Caracteristica[] = [
@@ -261,9 +232,9 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
         Use las flechas izquierda y derecha para navegar, o presione Tab para explorar cada estudio individualmente.
       </div>
       
-      <!-- Botones de navegación -->
+      <!-- Botones de navegación-->
       <button 
-        class="absolute left-0 top-1/2 z-10 -translate-y-1/2 bg-white rounded-md p-3 shadow-lg hover:bg-gray-100 focus:outline-none disabled:opacity-30 disabled:cursor-not-allowed border border-pixel-blue" 
+        class="absolute left-0 top-1/2 z-10 -translate-y-1/2 focus:outline-none disabled:opacity-30 disabled:cursor-not-allowed border border-pixel-blue" 
         id="prev-btn"
         aria-label="Ver apartaestudio anterior"
         aria-describedby="carousel-instructions"
@@ -274,7 +245,7 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
       </button>
       
       <button 
-        class="absolute right-0 top-1/2 z-10 -translate-y-1/2 bg-white rounded-md p-3 shadow-lg hover:bg-gray-100 focus:outline-none disabled:opacity-30 disabled:cursor-not-allowed border border-pixel-blue" 
+        class="absolute right-0 top-1/2 z-10 -translate-y-1/2 focus:outline-none disabled:opacity-30 disabled:cursor-not-allowed border border-pixel-blue" 
         id="next-btn"
         aria-label="Ver apartaestudio siguiente"
         aria-describedby="carousel-instructions"
@@ -286,7 +257,7 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
       
       <!-- Carrusel -->
       <div 
-        class="flex transition-transform duration-500 ease-in-out" 
+        class="flex transition-transform duration-500 pb-6 ease-in-out" 
         id="carousel-slides"
         role="group"
         aria-label="Carrusel de apartaestudios"
@@ -384,7 +355,7 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
         ))}
       </div>
       
-      <!-- Indicadores -->
+      <!-- Indicadores
       <div class="flex justify-center mt-8 mb-8 space-x-2" id="carousel-indicators" role="group" aria-label="Indicadores de carrusel">
         {estudios.map((_, index) => (
           <button 
@@ -396,7 +367,7 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
             tabindex={index === 0 ? 0 : -1}
           ></button>
         ))}
-      </div>
+      </div> -->
     </div>
     
     <!-- Características -->

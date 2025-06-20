@@ -831,6 +831,7 @@ if (nuevoExpectativas && nuevoContador) {
 // Manejar envío del formulario
 nuevoForm.addEventListener('submit', async function(e) {
   e.preventDefault();
+  e.stopImmediatePropagation(); // Evitar cualquier interferencia
   
   messageContainer.classList.add('hidden');
   
@@ -859,13 +860,16 @@ nuevoForm.addEventListener('submit', async function(e) {
   const boton = nuevoForm.querySelector('button[type="submit"]');
   const textoOriginal = boton.textContent;
   
+  // Declarar datos fuera del try para poder usarlo en catch
+  let datos = null;
+  
   try {
     boton.textContent = 'Enviando...';
     boton.disabled = true;
     showMessage('loading', 'Procesando tu solicitud...');
     
     // Recopilar datos
-    const datos = {
+    datos = {
       nombre: nuevoForm.querySelector('#nombre').value.trim(),
       email: nuevoForm.querySelector('#email').value.trim(),
       telefono: nuevoForm.querySelector('#telefono').value.trim(),
@@ -876,43 +880,9 @@ nuevoForm.addEventListener('submit', async function(e) {
     };
     
     console.log('📋 Datos del formulario:', datos);
+    console.log('🏠 Estudio seleccionado:', estudioNombre);
     
-    // 1. ENVIAR A FORMSUBMIT (ILIMITADO Y GRATIS)
-    try {
-      const formData = new FormData();
-      
-      // Campos del formulario
-      formData.append('Nombre', datos.nombre);
-      formData.append('Email', datos.email);
-      formData.append('Teléfono', datos.telefono);
-      formData.append('Estudio_Solicitado', estudioNombre);
-      formData.append('Fecha_de_Ingreso', datos.fecha || 'Por coordinar');
-      formData.append('Duración_Estadía', datos.estadia || 'Por definir');
-      formData.append('Número_de_Personas', datos.personas || '1');
-      formData.append('Expectativas_y_Mensaje', datos.expectativas);
-      
-      // Configuración de FormSubmit
-      formData.append('_subject', `🏠 Nueva Reserva: ${estudioNombre} - ${datos.nombre}`);
-      formData.append('_template', 'table'); // Formato tabla para mejor visualización
-      formData.append('_captcha', 'false'); // Desactivar captcha
-      formData.append('_autoresponse', `Hola ${datos.nombre}, hemos recibido tu solicitud para ${estudioNombre}. Nos pondremos en contacto contigo pronto. ¡Gracias por tu interés en Pixel Living!`);
-      
-      // Enviar a FormSubmit
-      const response = await fetch('https://formsubmit.co/mbedoyarudas@gmail.com', {
-        method: 'POST',
-        body: formData
-      });
-
-      if (!response.ok) {
-        throw new Error('Error al enviar a FormSubmit');
-      }
-
-      console.log('✅ Formulario enviado correctamente por email');
-    } catch (error) {
-      console.error('⚠️ Error con el envío de email, continuando con WhatsApp:', error);
-    }
-    
-    // 2. CREAR MENSAJE WHATSAPP
+    // 1. CREAR MENSAJE WHATSAPP PRIMERO
     const mensajeWhatsApp = `🏠 *SOLICITUD RESERVA PIXEL LIVING*
 📍 ${estudioNombre}
 
@@ -934,14 +904,50 @@ ${datos.expectativas}
 ⏰ ${new Date().toLocaleString('es-CO')}
 🌐 pixelliving.co`;
     
-    // 3. MOSTRAR ÉXITO Y ABRIR WHATSAPP
-    showMessage('success', '¡Solicitud enviada exitosamente! WhatsApp se abrirá en 2 segundos...');
+    // 2. ABRIR WHATSAPP INMEDIATAMENTE (sin delay)
+    const whatsappURL = `https://wa.me/573017872595?text=${encodeURIComponent(mensajeWhatsApp)}`;
+    window.open(whatsappURL, '_blank');
+    console.log('✅ WhatsApp abierto');
     
+    // 3. MOSTRAR ÉXITO
+    showMessage('success', '¡Solicitud enviada! Redirigiendo a WhatsApp...');
+    
+    // 4. ENVIAR A FORMSUBMIT EN BACKGROUND (sin bloquear)
+    const enviarEmail = async () => {
+      try {
+        const formData = new FormData();
+        
+        // Campos principales
+        formData.append('Nombre', datos.nombre);
+        formData.append('Email', datos.email);
+        formData.append('Teléfono', datos.telefono);
+        formData.append('Estudio_Solicitado', estudioNombre);
+        formData.append('Fecha_de_Ingreso', datos.fecha || 'Por coordinar');
+        formData.append('Duración_Estadía', datos.estadia || 'Por definir');
+        formData.append('Número_de_Personas', datos.personas || '1');
+        formData.append('Expectativas_y_Mensaje', datos.expectativas);
+        
+        // Configuración de FormSubmit
+        formData.append('_subject', `🏠 Nueva Reserva: ${estudioNombre} - ${datos.nombre}`);
+        formData.append('_template', 'table');
+        formData.append('_captcha', 'false');
+        
+        const response = await fetch('https://formsubmit.co/mbedoyarudas@gmail.com', {
+          method: 'POST',
+          body: formData
+        });
+        
+        console.log(response.ok ? '✅ Email enviado correctamente' : '⚠️ Error en email');
+      } catch (error) {
+        console.error('⚠️ Error enviando email:', error);
+      }
+    };
+    
+    // Ejecutar envío de email sin esperar
+    enviarEmail();
+    
+    // 5. RESETEAR FORMULARIO RÁPIDO (300ms)
     setTimeout(() => {
-      const whatsappURL = `https://wa.me/573017872595?text=${encodeURIComponent(mensajeWhatsApp)}`;
-      window.open(whatsappURL, '_blank');
-      
-      // Resetear formulario
       nuevoForm.reset();
       
       // Limpiar errores
@@ -955,20 +961,59 @@ ${datos.expectativas}
         nuevoContador.className = 'mt-1 text-xs text-gray-500';
       }
       
-      console.log('✅ Proceso completado exitosamente');
-    }, 2000);
+      console.log('✅ Proceso completado');
+    }, 300);
     
   } catch (error) {
     console.error('❌ Error:', error);
     showMessage('error', 'Error al enviar. Intenta nuevamente o contacta por WhatsApp directamente.');
+    
+    // En caso de error, abrir WhatsApp de todas formas
+    const emergencyMsg = datos ? 
+      `Solicitud ${estudioNombre} - Error en formulario. Contactar a: ${datos.nombre}` :
+      `Solicitud ${estudioNombre} - Error en formulario web`;
+    
+    window.open(`https://wa.me/573017872595?text=${encodeURIComponent(emergencyMsg)}`, '_blank');
   } finally {
-    boton.textContent = textoOriginal;
-    boton.disabled = false;
+    // Restaurar botón siempre
+    if (boton) {
+      boton.textContent = textoOriginal;
+      boton.disabled = false;
+    }
   }
 });
 
+// TAMBIÉN ACTUALIZA LA FUNCIÓN showMessage PARA TIEMPOS MÁS CORTOS:
+function showMessage(type, message) {
+  const typeStyles = {
+    success: 'bg-green-50 border-green-300 text-green-800',
+    error: 'bg-red-50 border-red-300 text-red-800',
+    loading: 'bg-blue-50 border-blue-300 text-blue-800'
+  };
+  
+  const typeIcons = {
+    success: '✅',
+    error: '❌',
+    loading: '⏳'
+  };
+  
+  messageContainer.innerHTML = `
+    <div class="border p-4 rounded-md ${typeStyles[type]} flex items-center gap-2">
+      <span class="text-xl">${typeIcons[type]}</span>
+      <span>${message}</span>
+    </div>
+  `;
+  
+  messageContainer.classList.remove('hidden');
+  
+  if (type === 'success') {
+    setTimeout(() => {
+      messageContainer.classList.add('hidden');
+    }, 1500); // Solo 1.5 segundos
+  }
+}
 console.log('✅ Sistema configurado: Galería funcional + Validación simplificada y efectiva');
 
-}, 500);
+});
 });
 </script>
