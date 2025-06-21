@@ -151,36 +151,7 @@ const estudiosCompletos: EstudiosRecord = {
       'Caja de seguridad digital'
     ]
   },
-  'ambar': {
-    id: 'ambar',
-    nombre: 'Estudio Ámbar',
-    color: 'bg-amber-500',
-    imagen: '/images/estudios/f4.jpg',
-    descripcion: 'Cálidos tonos ámbar que crean un ambiente acogedor y energético. Especialmente diseñado para quienes buscan un espacio que evoque calidez y vitalidad, perfecto para creativos y mentes inquietas.',
-    metros: '30m²',
-    precio: 'Desde $2.000.000',
-    galeria: [
-      '/images/estudios/indigo/f1.jpg', 
-      '/images/estudios/indigo/f2.jpg', 
-      '/images/estudios/indigo/f3.jpg', 
-      '/images/estudios/indigo/f4.jpg', 
-      '/images/estudios/indigo/f5.jpg'
-    ],
-    caracteristicas: [
-      'Cama doble con ropa de algodón orgánico',
-      'Escritorio creativo con iluminación especial',
-      'Electrodomésticos',
-      'Baño con ducha italiana',
-      'Sistema de almacenamiento personalizado',
-      'Iluminación ambiental con control por app'
-    ],
-    incluye: [
-      'Wifi de alta velocidad',
-      'Servicios básicos incluidos',
-      'Limpieza bisemanal',
-      'Smart TV'
-    ]
-  }
+  
 };
 
 // Redirección si el estudio no existe
@@ -549,7 +520,7 @@ const lightboxData: LightboxData = {
         <div class="container">
           <h2 class="text-3xl font-bold mb-8 text-center">Explora otros espacios</h2>
           
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 px-0 lg:px-40 gap-6">
             {Object.values(estudiosCompletos)
               .filter(e => e.id !== estudio.id)
               .slice(0, 3)
