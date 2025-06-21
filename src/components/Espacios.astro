@@ -423,14 +423,26 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
       </div>
     </div>
     
-    <!-- Importar el componente de lightbox compartido -->
+    <!-- Importar el componente de lightbox responsivo -->
     <LightboxModal id="espacios-lightbox" showDetailsButton={true} showReservaButton={true} />
   </div>
 </section>
 
+<!-- CARGAR EL LIGHTBOX RESPONSIVO INTEGRADO -->
 <script define:vars={{ lightboxData }}>
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("=== ESPACIOS CARRUSEL CORREGIDO ===");
+  console.log("=== ESPACIOS CON LIGHTBOX RESPONSIVO ===");
+  
+  // ===== HACER LIGHTBOX DATA DISPONIBLE GLOBALMENTE =====
+  window.lightboxData = lightboxData || {};
+  
+  // ===== CONFIGURACIÓN RESPONSIVA =====
+  const getThumbnailsPerView = () => {
+    const width = window.innerWidth;
+    if (width < 641) return 5;        // Móvil: 5 thumbnails
+    if (width < 1025) return 6;       // Tablet: 6 thumbnails  
+    return 8;                         // Desktop: 8 thumbnails
+  };
   
   // ===== HELPERS TYPE-SAFE PARA ASTRO 5.x =====
   const getAccessibilityManager = () => {
@@ -441,13 +453,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const pam = getAccessibilityManager();
     if (pam && typeof pam.announceCarouselChange === 'function') {
       pam.announceCarouselChange(current, total, title);
-    }
-  };
-  
-  const announceLightboxChange = (current, total, title = '') => {
-    const pam = getAccessibilityManager();
-    if (pam && typeof pam.announceLightboxChange === 'function') {
-      pam.announceLightboxChange(current, total, title);
     }
   };
   
@@ -492,7 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
     indicators: indicators.length,
     lightboxModal: !!lightboxModal,
     slideElements: slideElements.length,
-    lightboxData: Object.keys(lightboxData || {})
+    lightboxData: Object.keys(window.lightboxData || {})
   });
 
   if (!container || !slides || !prevBtn || !nextBtn) {
@@ -531,11 +536,15 @@ document.addEventListener('DOMContentLoaded', () => {
       nextBtn.disabled = true;
       prevBtn.setAttribute('aria-hidden', 'true');
       nextBtn.setAttribute('aria-hidden', 'true');
+      prevBtn.style.display = 'none';
+      nextBtn.style.display = 'none';
     } else {
       prevBtn.disabled = currentIndex === 0;
       nextBtn.disabled = currentIndex >= totalSlides - slidesPerView;
       prevBtn.setAttribute('aria-hidden', 'false');
       nextBtn.setAttribute('aria-hidden', 'false');
+      prevBtn.style.display = 'block';
+      nextBtn.style.display = 'block';
     }
     
     // Actualizar ARIA states
@@ -628,257 +637,379 @@ document.addEventListener('DOMContentLoaded', () => {
   // Inicializar carrusel
   updateCarousel();
 
-  // ===== LIGHTBOX COMPATIBLE CON ASTRO 5.x =====
-  const lightboxImage = lightboxModal.querySelector('.lightbox-image');
-  const lightboxTitle = lightboxModal.querySelector('.lightbox-title');
-  const lightboxThumbnails = lightboxModal.querySelector('.lightbox-thumbnails');
-  const lightboxClose = lightboxModal.querySelector('.lightbox-close');
-  const lightboxPrev = lightboxModal.querySelector('.lightbox-prev');
-  const lightboxNext = lightboxModal.querySelector('.lightbox-next');
-  const lightboxDetailsLink = lightboxModal.querySelector('.lightbox-details-link');
-  const lightboxReservaLink = lightboxModal.querySelector('.lightbox-reserva-link');
-  const lightboxCurrent = lightboxModal.querySelector('.lightbox-current');
-  const lightboxTotal = lightboxModal.querySelector('.lightbox-total');
-
-  let currentEstudioId = '';
-  let currentImageIndex = 0;
-  let currentImages = [];
-
-  function buildImageArray(estudioData) {
-    const images = [];
-    if (estudioData.imagenPrincipal) {
-      images.push({
-        src: estudioData.imagenPrincipal,
-        alt: `${estudioData.nombre} - Imagen principal`
+  // ===== CLASE LIGHTBOX RESPONSIVO INTEGRADA =====
+  class ResponsiveLightbox {
+    constructor(modalId, lightboxData) {
+      this.modalId = modalId;
+      this.lightboxData = lightboxData || {};
+      this.currentEstudioId = '';
+      this.currentImageIndex = 0;
+      this.currentImages = [];
+      this.thumbCarouselIndex = 0;
+      this.thumbnailsPerView = getThumbnailsPerView();
+      
+      this.initializeElements();
+      this.bindEvents();
+    }
+    
+    initializeElements() {
+      this.modal = document.getElementById(this.modalId);
+      if (!this.modal) {
+        console.error(`❌ Modal ${this.modalId} no encontrado`);
+        return;
+      }
+      
+      // Elementos principales
+      this.image = this.modal.querySelector('.lightbox-image');
+      this.title = this.modal.querySelector('.lightbox-title');
+      this.closeBtn = this.modal.querySelector('.lightbox-close');
+      this.prevBtn = this.modal.querySelector('.lightbox-prev');
+      this.nextBtn = this.modal.querySelector('.lightbox-next');
+      this.detailsLink = this.modal.querySelector('.lightbox-details-link');
+      this.reservaLink = this.modal.querySelector('.lightbox-reserva-link');
+      this.currentSpan = this.modal.querySelector('.lightbox-current');
+      this.totalSpan = this.modal.querySelector('.lightbox-total');
+      
+      // Elementos del carrusel de thumbnails
+      this.thumbCarousel = this.modal.querySelector('.lightbox-thumbnails-carousel');
+      this.thumbPrevBtn = this.modal.querySelector('.thumb-carousel-prev');
+      this.thumbNextBtn = this.modal.querySelector('.thumb-carousel-next');
+      
+      console.log('✅ Elementos del lightbox responsivo inicializados');
+    }
+    
+    bindEvents() {
+      if (!this.modal) return;
+      
+      // Cerrar modal
+      this.closeBtn?.addEventListener('click', () => this.close());
+      
+      // Navegación principal
+      this.prevBtn?.addEventListener('click', () => this.navigateImage(-1));
+      this.nextBtn?.addEventListener('click', () => this.navigateImage(1));
+      
+      // Navegación del carrusel de thumbnails
+      this.thumbPrevBtn?.addEventListener('click', () => this.navigateThumbnailCarousel(-1));
+      this.thumbNextBtn?.addEventListener('click', () => this.navigateThumbnailCarousel(1));
+      
+      // Click fuera del modal
+      this.modal.addEventListener('click', (e) => {
+        if (e.target === this.modal) this.close();
+      });
+      
+      // Teclado
+      document.addEventListener('keydown', (e) => this.handleKeyboard(e));
+      
+      // Responsive
+      window.addEventListener('resize', () => this.handleResize());
+      
+      // Botón reserva
+      this.reservaLink?.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.close();
+        this.dispatchEstudioSeleccionado();
+        setTimeout(() => this.scrollToReservas(), 200);
       });
     }
-    if (estudioData.imagenes && Array.isArray(estudioData.imagenes)) {
-      estudioData.imagenes.forEach((src, index) => {
+    
+    // ===== FUNCIONES PRINCIPALES =====
+    
+    open(estudioId, imageIndex = 0) {
+      console.log('🎯 Abriendo lightbox responsivo:', { estudioId, imageIndex });
+      
+      const estudioData = this.lightboxData[estudioId];
+      if (!estudioData) {
+        console.error('❌ Estudio no encontrado:', estudioId);
+        return;
+      }
+      
+      this.currentEstudioId = estudioId;
+      this.currentImages = this.buildImageArray(estudioData);
+      this.currentImageIndex = Math.max(0, Math.min(imageIndex, this.currentImages.length - 1));
+      this.thumbCarouselIndex = 0;
+      
+      // Actualizar título
+      if (this.title) this.title.textContent = estudioData.nombre;
+      
+      // Actualizar enlaces
+      if (this.detailsLink) this.detailsLink.href = `/estudio/${estudioId}`;
+      if (this.reservaLink) this.reservaLink.href = '#reservas';
+      
+      // Construir thumbnails
+      this.buildThumbnails();
+      
+      // Actualizar imagen y mostrar modal
+      this.updateImage();
+      this.show();
+      
+      console.log('✅ Lightbox responsivo abierto con', this.currentImages.length, 'imágenes');
+    }
+    
+    close() {
+      this.modal?.classList.add('hidden');
+      this.modal?.classList.remove('flex');
+      document.body.style.overflow = '';
+      releaseFocusTrap();
+      console.log('🚪 Lightbox responsivo cerrado');
+    }
+    
+    show() {
+      this.modal?.classList.remove('hidden');
+      this.modal?.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      
+      // Focus management
+      trapFocus(this.modal);
+      if (!getAccessibilityManager()) {
+        setTimeout(() => this.closeBtn?.focus(), 100);
+      }
+    }
+    
+    navigateImage(direction) {
+      if (this.currentImages.length === 0) return;
+      
+      this.currentImageIndex = (this.currentImageIndex + direction + this.currentImages.length) % this.currentImages.length;
+      this.updateImage();
+      this.ensureThumbnailVisible();
+    }
+    
+    navigateThumbnailCarousel(direction) {
+      const maxIndex = Math.max(0, this.currentImages.length - this.thumbnailsPerView);
+      
+      if (direction === -1) {
+        this.thumbCarouselIndex = Math.max(0, this.thumbCarouselIndex - 1);
+      } else {
+        this.thumbCarouselIndex = Math.min(maxIndex, this.thumbCarouselIndex + 1);
+      }
+      
+      this.updateThumbnailCarousel();
+    }
+    
+    // ===== FUNCIONES DE CONSTRUCCIÓN =====
+    
+    buildImageArray(estudioData) {
+      const images = [];
+      
+      // Imagen principal
+      if (estudioData.imagenPrincipal) {
         images.push({
-          src: src,
-          alt: `${estudioData.nombre} - Imagen ${index + 1}`
+          src: estudioData.imagenPrincipal,
+          alt: `${estudioData.nombre} - Imagen principal`
         });
-      });
-    }
-    return images;
-  }
-
-  function updateLightboxImage() {
-    if (!lightboxImage || currentImages.length === 0) return;
-    
-    const currentImage = currentImages[currentImageIndex];
-    lightboxImage.style.opacity = '0.7';
-    
-    setTimeout(() => {
-      lightboxImage.src = currentImage.src;
-      lightboxImage.alt = currentImage.alt;
-      lightboxImage.style.opacity = '1';
-    }, 150);
-
-    // Update counter
-    if (lightboxCurrent) lightboxCurrent.textContent = currentImageIndex + 1;
-    if (lightboxTotal) lightboxTotal.textContent = currentImages.length;
-
-    // Update navigation
-    if (lightboxPrev) {
-      lightboxPrev.disabled = currentImageIndex === 0;
-      lightboxPrev.setAttribute('aria-disabled', String(currentImageIndex === 0));
-      lightboxPrev.style.opacity = currentImageIndex === 0 ? '0.5' : '1';
-    }
-    if (lightboxNext) {
-      lightboxNext.disabled = currentImageIndex === currentImages.length - 1;
-      lightboxNext.setAttribute('aria-disabled', String(currentImageIndex === currentImages.length - 1));
-      lightboxNext.style.opacity = currentImageIndex === currentImages.length - 1 ? '0.5' : '1';
-    }
-
-    updateLightboxThumbnails();
-
-    // Anunciar cambio
-    const estudioData = lightboxData[currentEstudioId];
-    announceLightboxChange(currentImageIndex + 1, currentImages.length, estudioData?.nombre);
-  }
-
-  function updateLightboxThumbnails() {
-    if (!lightboxThumbnails) return;
-
-    lightboxThumbnails.innerHTML = '';
-    currentImages.forEach((image, index) => {
-      const thumb = document.createElement('button');
-      thumb.className = `cursor-pointer rounded-md overflow-hidden transition-all duration-200 ${
-        index === currentImageIndex 
-          ? 'ring-2 ring-white ring-offset-2 ring-offset-black opacity-100' 
-          : 'opacity-70 hover:opacity-90'
-      }`;
-      
-      thumb.setAttribute('aria-label', `Ver ${image.alt}`);
-      thumb.setAttribute('tabindex', '0');
-
-      thumb.innerHTML = `<img src="${image.src}" alt="" class="w-16 h-16 object-cover" loading="lazy" />`;
-
-      thumb.addEventListener('click', () => {
-        currentImageIndex = index;
-        updateLightboxImage();
-      });
-
-      thumb.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          currentImageIndex = index;
-          updateLightboxImage();
-        }
-      });
-
-      lightboxThumbnails.appendChild(thumb);
-    });
-  }
-
-  function openLightbox(estudioId, imageIndex = 0) {
-    console.log("🎯 Abriendo lightbox:", { estudioId, imageIndex });
-    
-    const estudioData = lightboxData[estudioId];
-    if (!estudioData) {
-      console.error('Estudio no encontrado:', estudioId);
-      return;
-    }
-
-    currentEstudioId = estudioId;
-    currentImages = buildImageArray(estudioData);
-    currentImageIndex = Math.max(0, Math.min(imageIndex, currentImages.length - 1));
-
-    // Update title
-    if (lightboxTitle) {
-      lightboxTitle.textContent = estudioData.nombre;
-    }
-
-    // Update links
-    if (lightboxDetailsLink) {
-      lightboxDetailsLink.href = `/estudio/${estudioId}`;
-    }
-
-    if (lightboxReservaLink) {
-      lightboxReservaLink.href = '#reservas';
-    }
-
-    updateLightboxImage();
-
-    // Show modal with accessibility
-    lightboxModal.classList.remove('hidden');
-    lightboxModal.classList.add('flex');
-    document.body.style.overflow = 'hidden';
-
-    // Focus management
-    trapFocus(lightboxModal);
-    
-    // Fallback focus si no hay PAM disponible
-    if (!getAccessibilityManager()) {
-      setTimeout(() => {
-        lightboxClose?.focus();
-      }, 100);
-    }
-
-    console.log("✅ Lightbox abierto exitosamente");
-  }
-
-  function closeLightbox() {
-    lightboxModal.classList.add('hidden');
-    lightboxModal.classList.remove('flex');
-    document.body.style.overflow = '';
-    
-    // Release focus trap
-    releaseFocusTrap();
-    
-    console.log("Lightbox cerrado");
-  }
-
-  // ===== EVENTOS LIGHTBOX =====
-  
-  // Cerrar
-  if (lightboxClose) {
-    lightboxClose.addEventListener('click', closeLightbox);
-  }
-
-  // Navegación
-  if (lightboxPrev) {
-    lightboxPrev.addEventListener('click', () => {
-      if (currentImageIndex > 0) {
-        currentImageIndex--;
-        updateLightboxImage();
       }
-    });
-  }
-
-  if (lightboxNext) {
-    lightboxNext.addEventListener('click', () => {
-      if (currentImageIndex < currentImages.length - 1) {
-        currentImageIndex++;
-        updateLightboxImage();
-      }
-    });
-  }
-
-  // Click fuera del modal
-  lightboxModal.addEventListener('click', (e) => {
-    if (e.target === lightboxModal) {
-      closeLightbox();
-    }
-  });
-
-  // Teclado
-  document.addEventListener('keydown', (e) => {
-    if (!lightboxModal.classList.contains('hidden')) {
-      if (e.key === 'Escape') {
-        closeLightbox();
-      } else if (e.key === 'ArrowLeft') {
-        if (currentImageIndex > 0) {
-          currentImageIndex--;
-          updateLightboxImage();
-        }
-      } else if (e.key === 'ArrowRight') {
-        if (currentImageIndex < currentImages.length - 1) {
-          currentImageIndex++;
-          updateLightboxImage();
-        }
-      }
-    }
-  });
-
-  // RESERVAR AHORA - Compatible con Astro 5.x
-  if (lightboxReservaLink) {
-    lightboxReservaLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      console.log("🎯 Reservar clicked para:", currentEstudioId);
       
-      // Cerrar lightbox
-      closeLightbox();
-      
-      // Enviar evento (compatible con Astro 5.x)
-      setTimeout(() => {
-        const estudioData = lightboxData[currentEstudioId];
-        dispatchEstudioSeleccionado(
-          currentEstudioId,
-          estudioData ? estudioData.nombre : 'Estudio seleccionado'
-        );
-        
-        console.log("✅ Evento estudioSeleccionado enviado:", {
-          estudioId: currentEstudioId,
-          estudioNombre: estudioData?.nombre
-        });
-      }, 200);
-
-      // Scroll a reservas
-      setTimeout(() => {
-        const reservasSection = document.querySelector('#reservas');
-        if (reservasSection) {
-          reservasSection.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
+      // Galería adicional
+      if (estudioData.imagenes && Array.isArray(estudioData.imagenes)) {
+        estudioData.imagenes.forEach((src, index) => {
+          images.push({
+            src: src,
+            alt: `${estudioData.nombre} - Imagen ${index + 1}`
           });
-          console.log("✅ Scroll a reservas completado");
-        }
-      }, 400);
-    });
+        });
+      }
+      
+      return images;
+    }
+    
+    buildThumbnails() {
+      if (!this.thumbCarousel) return;
+      
+      this.thumbCarousel.innerHTML = '';
+      
+      this.currentImages.forEach((image, index) => {
+        const thumb = document.createElement('button');
+        thumb.className = `lightbox-thumbnail mr-2 last:mr-0 rounded-md overflow-hidden border-2 border-transparent hover:border-white focus:border-yellow-400 transition-all duration-200`;
+        thumb.setAttribute('aria-label', `Ver ${image.alt}`);
+        thumb.setAttribute('data-index', index.toString());
+        
+        thumb.innerHTML = `
+          <img 
+            src="${image.src}" 
+            alt="" 
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        `;
+        
+        thumb.addEventListener('click', () => {
+          this.currentImageIndex = index;
+          this.updateImage();
+        });
+        
+        this.thumbCarousel.appendChild(thumb);
+      });
+      
+      // Actualizar responsive
+      this.updateThumbnailSizes();
+      this.updateThumbnailCarousel();
+    }
+    
+    updateThumbnailSizes() {
+      if (!this.thumbCarousel) return;
+      
+      const thumbnails = this.thumbCarousel.querySelectorAll('.lightbox-thumbnail');
+      const gap = 0.5; // rem
+      const totalGaps = (this.thumbnailsPerView - 1) * gap;
+      const thumbnailWidth = `calc((100% - ${totalGaps}rem) / ${this.thumbnailsPerView})`;
+      
+      thumbnails.forEach(thumb => {
+        thumb.style.width = thumbnailWidth;
+        thumb.style.aspectRatio = '1';
+        thumb.style.flexShrink = '0';
+      });
+    }
+    
+    // ===== FUNCIONES DE ACTUALIZACIÓN =====
+    
+    updateImage() {
+      if (!this.image || this.currentImages.length === 0) return;
+      
+      const currentImage = this.currentImages[this.currentImageIndex];
+      
+      // Transición suave
+      this.image.style.opacity = '0.7';
+      
+      setTimeout(() => {
+        this.image.src = currentImage.src;
+        this.image.alt = currentImage.alt;
+        this.image.style.opacity = '1';
+      }, 150);
+      
+      // Actualizar contador
+      if (this.currentSpan) this.currentSpan.textContent = (this.currentImageIndex + 1).toString();
+      if (this.totalSpan) this.totalSpan.textContent = this.currentImages.length.toString();
+      
+      // Actualizar botones de navegación
+      this.updateNavigationButtons();
+      
+      // Actualizar thumbnails activas
+      this.updateActiveThumbnail();
+    }
+    
+    updateNavigationButtons() {
+      if (this.prevBtn) {
+        this.prevBtn.disabled = this.currentImageIndex === 0;
+        this.prevBtn.style.opacity = this.currentImageIndex === 0 ? '0.5' : '1';
+      }
+      
+      if (this.nextBtn) {
+        this.nextBtn.disabled = this.currentImageIndex === this.currentImages.length - 1;
+        this.nextBtn.style.opacity = this.currentImageIndex === this.currentImages.length - 1 ? '0.5' : '1';
+      }
+    }
+    
+    updateActiveThumbnail() {
+      if (!this.thumbCarousel) return;
+      
+      const thumbnails = this.thumbCarousel.querySelectorAll('.lightbox-thumbnail');
+      thumbnails.forEach((thumb, index) => {
+        const isActive = index === this.currentImageIndex;
+        thumb.style.opacity = isActive ? '1' : '0.7';
+        thumb.style.borderColor = isActive ? '#ffffff' : 'transparent';
+      });
+    }
+    
+    updateThumbnailCarousel() {
+      if (!this.thumbCarousel) return;
+      
+      const translateX = -(this.thumbCarouselIndex * (100 / this.thumbnailsPerView));
+      this.thumbCarousel.style.transform = `translateX(${translateX}%)`;
+      
+      // Actualizar botones del carrusel
+      this.updateThumbnailCarouselButtons();
+    }
+    
+    updateThumbnailCarouselButtons() {
+      const maxIndex = Math.max(0, this.currentImages.length - this.thumbnailsPerView);
+      
+      if (this.thumbPrevBtn) {
+        this.thumbPrevBtn.style.opacity = this.thumbCarouselIndex === 0 ? '0.5' : '1';
+        this.thumbPrevBtn.disabled = this.thumbCarouselIndex === 0;
+      }
+      
+      if (this.thumbNextBtn) {
+        this.thumbNextBtn.style.opacity = this.thumbCarouselIndex >= maxIndex ? '0.5' : '1';
+        this.thumbNextBtn.disabled = this.thumbCarouselIndex >= maxIndex;
+      }
+    }
+    
+    ensureThumbnailVisible() {
+      const currentThumbIndex = this.currentImageIndex;
+      const visibleStart = this.thumbCarouselIndex;
+      const visibleEnd = this.thumbCarouselIndex + this.thumbnailsPerView - 1;
+      
+      if (currentThumbIndex < visibleStart) {
+        this.thumbCarouselIndex = currentThumbIndex;
+        this.updateThumbnailCarousel();
+      } else if (currentThumbIndex > visibleEnd) {
+        this.thumbCarouselIndex = Math.max(0, currentThumbIndex - this.thumbnailsPerView + 1);
+        this.updateThumbnailCarousel();
+      }
+    }
+    
+    // ===== EVENTOS =====
+    
+    handleKeyboard(e) {
+      if (this.modal?.classList.contains('hidden')) return;
+      
+      switch (e.key) {
+        case 'Escape':
+          this.close();
+          break;
+        case 'ArrowLeft':
+          this.navigateImage(-1);
+          break;
+        case 'ArrowRight':
+          this.navigateImage(1);
+          break;
+      }
+    }
+    
+    handleResize() {
+      const newThumbnailsPerView = getThumbnailsPerView();
+      if (newThumbnailsPerView !== this.thumbnailsPerView) {
+        this.thumbnailsPerView = newThumbnailsPerView;
+        this.updateThumbnailSizes();
+        this.thumbCarouselIndex = 0; // Reset position
+        this.updateThumbnailCarousel();
+      }
+    }
+    
+    // ===== INTEGRACIÓN CON RESERVAS =====
+    
+    dispatchEstudioSeleccionado() {
+      const estudioData = this.lightboxData[this.currentEstudioId];
+      dispatchEstudioSeleccionado(
+        this.currentEstudioId,
+        estudioData ? estudioData.nombre : 'Estudio seleccionado'
+      );
+      
+      console.log('📤 Evento estudioSeleccionado enviado:', {
+        estudioId: this.currentEstudioId,
+        estudioNombre: estudioData?.nombre
+      });
+    }
+    
+    scrollToReservas() {
+      const reservasSection = document.querySelector('#reservas');
+      if (reservasSection) {
+        reservasSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+        console.log('⬇️ Scroll a reservas completado');
+      }
+    }
   }
-
+  
+  // ===== INICIALIZAR LIGHTBOX RESPONSIVO =====
+  const lightboxInstance = new ResponsiveLightbox('espacios-lightbox', window.lightboxData);
+  
+  // Función global para abrir lightbox
+  window.openLightbox = function(estudioId, imageIndex = 0) {
+    lightboxInstance.open(estudioId, imageIndex);
+  };
+  
   // ===== EVENTOS PARA ABRIR LIGHTBOX =====
   
   // Botón galería
@@ -887,9 +1018,9 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       e.stopPropagation();
       const estudioId = btn.getAttribute('data-estudio-id');
-      if (estudioId) {
-        console.log("Click en gallery btn:", estudioId);
-        openLightbox(estudioId, 0);
+      if (estudioId && window.openLightbox) {
+        console.log("🎯 Abriendo galería:", estudioId);
+        window.openLightbox(estudioId, 0);
       }
     });
   });
@@ -901,10 +1032,10 @@ document.addEventListener('DOMContentLoaded', () => {
       e.stopPropagation();
       const estudioId = thumb.getAttribute('data-estudio-id');
       const imgIndex = parseInt(thumb.getAttribute('data-img-index') || '0');
-      if (estudioId) {
+      if (estudioId && window.openLightbox) {
         const lightboxIndex = imgIndex === -1 ? 0 : imgIndex + 1;
-        console.log("Click en thumbnail:", { estudioId, imgIndex, lightboxIndex });
-        openLightbox(estudioId, lightboxIndex);
+        console.log("🎯 Abriendo thumbnail:", { estudioId, imgIndex, lightboxIndex });
+        window.openLightbox(estudioId, lightboxIndex);
       }
     });
 
@@ -922,9 +1053,9 @@ document.addEventListener('DOMContentLoaded', () => {
     img.addEventListener('click', (e) => {
       if (e.target !== img) return;
       const estudioId = img.getAttribute('data-estudio-id');
-      if (estudioId) {
-        console.log("Click en main image:", estudioId);
-        openLightbox(estudioId, 0);
+      if (estudioId && window.openLightbox) {
+        console.log("🎯 Abriendo imagen principal:", estudioId);
+        window.openLightbox(estudioId, 0);
       }
     });
 
@@ -937,19 +1068,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  console.log("✅ Espacios con carrusel corregido inicializado");
-  console.log("📱 Navegación responsive activada - Botones solo en móvil");
+  console.log("✅ Espacios con lightbox responsivo inicializado completamente");
+  console.log(`📱 Configuración: ${getThumbnailsPerView()} thumbnails por vista`);
   
   // Debug
   window.espaciosDebug = {
-    openLightbox,
-    closeLightbox,
-    lightboxData,
-    currentEstudioId: () => currentEstudioId,
-    testLightbox: (estudioId) => openLightbox(estudioId, 0),
+    openLightbox: window.openLightbox,
+    lightboxData: window.lightboxData,
+    currentIndex: () => currentIndex,
     isMobile: isMobile,
     updateCarousel,
-    currentIndex: () => currentIndex
+    getThumbnailsPerView
   };
 });
 </script>
@@ -1023,6 +1152,36 @@ document.addEventListener('DOMContentLoaded', () => {
     margin-right: -0.5rem;
   }
 
+  /* Estilos para el carrusel de thumbnails en el lightbox */
+  .lightbox-thumbnails-carousel {
+    will-change: transform;
+  }
+  
+  /* Asegurar que las thumbnails no se deformen */
+  .lightbox-thumbnail {
+    aspect-ratio: 1;
+    flex-shrink: 0;
+  }
+  
+  /* Responsive design para thumbnails del lightbox */
+  @media (max-width: 640px) {
+    .lightbox-thumbnail {
+      width: calc((100% - 2rem) / 5); /* 5 thumbnails en móvil con gaps */
+    }
+  }
+  
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .lightbox-thumbnail {
+      width: calc((100% - 3rem) / 6); /* 6 thumbnails en tablet */
+    }
+  }
+  
+  @media (min-width: 1025px) {
+    .lightbox-thumbnail {
+      width: calc((100% - 4rem) / 8); /* 8 thumbnails en desktop */
+    }
+  }
+
   /* Improved hover effects for accessibility */
   @media (hover: hover) {
     .gallery-thumb:hover,
@@ -1042,6 +1201,19 @@ document.addEventListener('DOMContentLoaded', () => {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       }
     }
+    
+    /* Hover effects para lightbox thumbnails */
+    .lightbox-thumbnail:hover {
+      opacity: 1 !important;
+      transform: scale(1.05);
+    }
+  }
+
+  /* Focus states para lightbox */
+  .lightbox-thumbnail:focus {
+    outline: 2px solid #ffd700;
+    outline-offset: 2px;
+    opacity: 1 !important;
   }
 
   /* High contrast mode support */
@@ -1049,7 +1221,8 @@ document.addEventListener('DOMContentLoaded', () => {
     .gallery-thumb,
     .open-gallery-btn,
     #prev-btn,
-    #next-btn {
+    #next-btn,
+    .lightbox-thumbnail {
       border: 2px solid;
     }
     
@@ -1065,12 +1238,15 @@ document.addEventListener('DOMContentLoaded', () => {
     .main-image,
     #carousel-slides,
     #prev-btn,
-    #next-btn {
+    #next-btn,
+    .lightbox-thumbnails-carousel,
+    .lightbox-thumbnail {
       transition: none !important;
     }
     
     .hover\:scale-110:hover,
-    .focus\:scale-110:focus {
+    .focus\:scale-110:focus,
+    .lightbox-thumbnail:hover {
       transform: none !important;
     }
   }

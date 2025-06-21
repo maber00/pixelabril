@@ -1,6 +1,7 @@
 ---
 // Este componente es un modal/lightbox reutilizable para mostrar galería de imágenes
 // Se debe colocar en src/components/LightboxModal.astro
+// VERSIÓN RESPONSIVA MEJORADA con carrusel de thumbnails
 
 interface Props {
   id?: string;               // ID para el modal
@@ -19,66 +20,114 @@ const {
 } = Astro.props;
 ---
 
-<!-- Galería modal/lightbox -->
-<div id={id} class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center lightbox-modal">
-  <div class="w-full max-w-5xl px-4 py-8">
+<!-- Galería modal/lightbox RESPONSIVO MEJORADO -->
+<div id={id} class="fixed inset-0 bg-black bg-opacity-95 z-50 hidden items-center justify-center lightbox-modal">
+  <div class="w-full h-full flex flex-col px-2 py-4 md:px-4 md:py-8">
+    
     <!-- Controles superiores -->
-    <div class="flex justify-between items-center mb-4 text-white">
-      <h3 class="text-xl font-medium lightbox-title">Galería de imágenes</h3>
-      <button class="p-2 hover:bg-gray-800 rounded-full lightbox-close">
+    <div class="flex justify-between items-center mb-4 text-white px-2">
+      <h3 class="text-lg md:text-xl font-medium lightbox-title truncate">Galería de imágenes</h3>
+      <button 
+        class="p-2 hover:bg-gray-800 rounded-full lightbox-close transition-colors flex-shrink-0" 
+        aria-label="Cerrar galería"
+      >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
     
-    <!-- Imagen principal -->
-    <div class="relative">
-      <div class="bg-gray-900 flex items-center justify-center rounded-lg overflow-hidden">
-        <img class="max-h-[70vh] max-w-full object-contain lightbox-image" src="" alt="Imagen en galería" />
+    <!-- Imagen principal - RESPONSIVE -->
+    <div class="relative flex-1 flex items-center justify-center mb-4">
+      <div class="bg-gray-900 flex items-center justify-center rounded-lg overflow-hidden w-full h-full max-h-[60vh] md:max-h-[70vh]">
+        <img 
+          class="max-h-full max-w-full object-contain lightbox-image transition-opacity duration-300" 
+          src="" 
+          alt="Imagen en galería" 
+        />
       </div>
       
-      <!-- Botones de navegación -->
-      <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-2 rounded-full text-white hover:bg-opacity-70 lightbox-prev">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <!-- Botones de navegación principales -->
+      <button 
+        class="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 hover:bg-opacity-80 p-2 md:p-3 rounded-full text-white transition-all lightbox-prev"
+        aria-label="Imagen anterior"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
         </svg>
       </button>
       
-      <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-2 rounded-full text-white hover:bg-opacity-70 lightbox-next">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <button 
+        class="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 hover:bg-opacity-80 p-2 md:p-3 rounded-full text-white transition-all lightbox-next"
+        aria-label="Imagen siguiente"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
         </svg>
       </button>
     </div>
     
-    <!-- Miniaturas -->
-    <div class="mt-4 flex space-x-2 overflow-x-auto">
-      <div class="flex space-x-2 lightbox-thumbnails">
-        <!-- Se llenarán dinámicamente con JavaScript -->
+    <!-- CARRUSEL DE THUMBNAILS RESPONSIVO -->
+    <div class="relative px-2">
+      <!-- Contenedor del carrusel de thumbnails -->
+      <div class="relative overflow-hidden rounded-lg">
+        
+        <!-- Botones de navegación del carrusel de thumbnails -->
+        <button 
+          class="absolute left-0 top-1/2 z-10 transform -translate-y-1/2 bg-black bg-opacity-60 hover:bg-opacity-80 p-1.5 rounded-full text-white transition-all thumb-carousel-prev"
+          aria-label="Ver thumbnails anteriores"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+        
+        <button 
+          class="absolute right-0 top-1/2 z-10 transform -translate-y-1/2 bg-black bg-opacity-60 hover:bg-opacity-80 p-1.5 rounded-full text-white transition-all thumb-carousel-next"
+          aria-label="Ver thumbnails siguientes"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+        
+        <!-- Carrusel de thumbnails -->
+        <div class="px-8">
+          <div class="flex transition-transform duration-300 ease-in-out lightbox-thumbnails-carousel" style="transform: translateX(0%);">
+            <!-- Las thumbnails se generarán dinámicamente aquí -->
+          </div>
+        </div>
       </div>
     </div>
     
     <!-- Contador de imágenes -->
     <div class="mt-3 text-center text-white lightbox-counter">
-      <span class="lightbox-current">1</span> / <span class="lightbox-total">1</span>
+      <span class="text-sm md:text-base">
+        <span class="lightbox-current font-medium">1</span> / <span class="lightbox-total">1</span>
+      </span>
     </div>
     
     <!-- Enlace a detalles y reserva -->
-    <div class="mt-6 flex justify-center gap-4">
+    <div class="mt-4 flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 px-2">
       {showDetailsButton && (
-        <a href="#" class="py-2 px-6 bg-pixel-blue hover:bg-blue-600 text-white rounded-md flex items-center group lightbox-details-link">
+        <a 
+          href="#" 
+          class="py-2 px-4 md:py-3 md:px-6 bg-pixel-blue hover:bg-blue-600 text-white rounded-md flex items-center justify-center group lightbox-details-link text-sm md:text-base transition-colors"
+        >
           Ver detalles completos
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2 transform transition-transform group-hover:translate-x-1">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 md:w-5 md:h-5 ml-2 transform transition-transform group-hover:translate-x-1">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
           </svg>
         </a>
       )}
       
       {showReservaButton && (
-        <a href={reservaPath} class="py-2 px-6 bg-pixel-blue hover:bg-blue-600 text-white rounded-md flex items-center group lightbox-reserva-link">
+        <a 
+          href={reservaPath} 
+          class="py-2 px-4 md:py-3 md:px-6 bg-green-600 hover:bg-green-700 text-white rounded-md flex items-center justify-center group lightbox-reserva-link text-sm md:text-base transition-colors"
+        >
           Reservar ahora
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 md:w-5 md:h-5 ml-2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 9v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
           </svg>
         </a>
@@ -86,3 +135,68 @@ const {
     </div>
   </div>
 </div>
+
+<style>
+  /* Estilos para el carrusel de thumbnails */
+  .lightbox-thumbnails-carousel {
+    will-change: transform;
+  }
+  
+  /* Asegurar que las thumbnails no se deformen */
+  .lightbox-thumbnail {
+    aspect-ratio: 1;
+    flex-shrink: 0;
+  }
+  
+  /* Smooth transitions */
+  .lightbox-modal {
+    backdrop-filter: blur(4px);
+  }
+  
+  /* Responsive design */
+  @media (max-width: 640px) {
+    .lightbox-thumbnail {
+      width: calc((100% - 2rem) / 5); /* 5 thumbnails en móvil con gaps */
+    }
+  }
+  
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .lightbox-thumbnail {
+      width: calc((100% - 3rem) / 6); /* 6 thumbnails en tablet */
+    }
+  }
+  
+  @media (min-width: 1025px) {
+    .lightbox-thumbnail {
+      width: calc((100% - 4rem) / 8); /* 8 thumbnails en desktop */
+    }
+  }
+  
+  /* Hover effects */
+  @media (hover: hover) {
+    .lightbox-thumbnail:hover {
+      opacity: 1 !important;
+      transform: scale(1.05);
+    }
+  }
+  
+  /* Focus states */
+  .lightbox-thumbnail:focus {
+    outline: 2px solid #ffd700;
+    outline-offset: 2px;
+    opacity: 1 !important;
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .lightbox-thumbnails-carousel,
+    .lightbox-thumbnail,
+    .lightbox-image {
+      transition: none !important;
+    }
+    
+    .lightbox-thumbnail:hover {
+      transform: none !important;
+    }
+  }
+</style>
