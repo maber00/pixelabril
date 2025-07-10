@@ -2,31 +2,31 @@
 // Importar logo para el mapa (ajusta la ruta según tu proyecto)
 import pixelLogo from '../assets/logo-pixel.svg';
 
-// Información de contacto
+// Información de contacto ACTUALIZADA según propuesta del cliente
 const contactInfo = [
   {
     icono: 'M15 10.5a3 3 0 11-6 0 3 3 0 016 0z M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z',
     titulo: 'Dirección',
-    texto: 'Calle 98a # 51-40, La Castellana',
+    texto: 'Calle 98a #51-32, La Castellana',
     subtexto: 'Bogotá, Colombia',
    
   },
   {
     icono: 'M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z',
     titulo: 'WhatsApp',
-    texto: '+57 301 787 2595',
+    texto: '+57 319 5895858',
   },
   {
     icono: 'M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75',
     titulo: 'Email',
-    texto: 'info@pixelliving.co',
+    texto: 'comercialpixel98a@gmail.com',
   
   },
 
 ];
 ---
 
-<!-- SECCIÓN DE CONTACTO CON INFORMACIÓN Y MAPA -->
+<!-- SECCIÓN DE CONTACTO CON INFORMACIÓN Y MAPA ACTUALIZADOS -->
 <section class="py-16 bg-gray-100">   
   <div class="container">
     
@@ -84,7 +84,7 @@ const contactInfo = [
             <div class="text-center">
               <p class="text-gray-600 mb-4">¿Prefieres hablar directamente?</p>
               <a 
-                href="https://wa.me/573017872595?text=Hola,%20me%20gustaría%20agendar%20una%20visita%20a%20Pixel%20Living" 
+                href="https://wa.me/573195895858?text=Hola,%20me%20gustaría%20agendar%20una%20visita%20a%20Pixel%20Living" 
                 target="_blank"
                 class="btn bg-green-600 hover:bg-green-700 text-white inline-flex items-center px-6 py-2 text-sm"
               >
@@ -97,7 +97,7 @@ const contactInfo = [
           </div>
         </div>
         
-        <!-- MAPA CON UBICACIÓN -->
+        <!-- MAPA CON UBICACIÓN ACTUALIZADA -->
         <div class="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-gray-200">
           <!-- Header del mapa -->
           <div class=" bg-pixel-blue p-6">
@@ -107,13 +107,13 @@ const contactInfo = [
           
           <!-- Google Maps con overlay personalizado -->
           <div class="relative h-80 group cursor-pointer" id="mapContainer">
-            <!-- Google Maps Iframe -->
+            <!-- Google Maps Iframe ACTUALIZADO con dirección correcta -->
             <iframe
               class="w-full h-full border-0"
               loading="lazy"
               allowfullscreen
               referrerpolicy="no-referrer-when-downgrade"
-              src="https://maps.google.com/maps?width=100%25&amp;height=320&amp;hl=es&amp;q=Calle%2098a%20%2351-40,%20La%20Castellana,%20Bogot%C3%A1,%20Colombia&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+              src="https://maps.google.com/maps?width=100%25&amp;height=320&amp;hl=es&amp;q=Calle%2098a%20%2351-32,%20La%20Castellana,%20Bogot%C3%A1,%20Colombia&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
             </iframe>
             
             <!-- Overlay con logo de Pixel Living -->
@@ -151,15 +151,15 @@ const contactInfo = [
             </div>
           </div>
           
-          <!-- Información adicional del mapa -->
+          <!-- Información adicional del mapa ACTUALIZADA -->
           <div class="p-6">
             <div class="flex items-center justify-between">
               <div>
-                <h4 class="font-bold text-gray-900 mb-1">Calle 98a # 51-40</h4>
+                <h4 class="font-bold text-gray-900 mb-1">Calle 98a #51-32</h4>
                 <p class="text-gray-600">La Castellana, Bogotá</p>
               </div>
               <a 
-                href="https://www.google.com/maps/dir/?api=1&destination=Calle+98a+51-40,+La+Castellana,+Bogotá,+Colombia" 
+                href="https://www.google.com/maps/dir/?api=1&destination=Calle+98a+51-32,+La+Castellana,+Bogotá,+Colombia" 
                 target="_blank"
                 class="btn bg-pixel-blue hover:bg-blue-600 text-white inline-flex items-center px-4 py-2 text-sm"
               >
@@ -192,9 +192,9 @@ const contactInfo = [
   document.addEventListener('DOMContentLoaded', () => {
     const mapContainer = document.getElementById('mapContainer');
     
-    // Abrir Google Maps con direcciones al hacer click
+    // Abrir Google Maps con direcciones al hacer click - DIRECCIÓN ACTUALIZADA
     mapContainer?.addEventListener('click', () => {
-      const googleMapsUrl = 'https://www.google.com/maps/dir/?api=1&destination=Calle+98a+51-40,+La+Castellana,+Bogotá,+Colombia&travelmode=driving';
+      const googleMapsUrl = 'https://www.google.com/maps/dir/?api=1&destination=Calle+98a+51-32,+La+Castellana,+Bogotá,+Colombia&travelmode=driving';
       window.open(googleMapsUrl, '_blank');
       console.log('📍 Usuario solicitó direcciones a Pixel Living');
     });

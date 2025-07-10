@@ -23,7 +23,7 @@
       timeout: 10000
     },
     whatsapp: {
-      number: '573017872595',
+      number: '573195895858',
       baseUrl: 'https://wa.me/'
     },
     validation: {

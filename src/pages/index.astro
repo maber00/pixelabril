@@ -3,20 +3,24 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import VivePixel from '../components/VivePixel.astro';
 import Espacios from '../components/Espacios.astro';
+import Precios from '../components/Precios.astro';
+import Ubicacion from '../components/Ubicacion.astro';
 import Coliving from '../components/Coliving.astro';
 import Reservas from '../components/Reservas.astro';
 import Faq from '../components/Faq.astro';
-import Contacto from '../components/Contacto.astro';
+import ZonasComunes from '../components/ZonasComunes.astro';
 ---
 
 <Layout title="Pixel Living | Coliving en Bogotá">
 	<main>
 		<Hero />
-		<VivePixel />
 		<Espacios />
+		<ZonasComunes />
+		<VivePixel />
+		<Ubicacion />
+		<Precios />
 		<Coliving />
 		<Reservas />
 		<Faq />
-		<Contacto />
 	</main>
 </Layout>

@@ -1,138 +1,424 @@
 ---
+// VivePixel.astro - ACORDEÓN CSS PURO (100% ESTABLE)
 import imageBG from '../assets/PIXEL-LIVING.webp';
-// Agregar más imágenes para el diseño alternado
-import imagen2 from '../assets/pixel-room-03.webp'; // Reemplaza con tu imagen
-import imagen3 from '../assets/pixel-pesonas-001.webp'; // Reemplaza con tu imagen
-import imagen4 from '../assets/pixel-terraza-hero-2.webp'; // Reemplaza con tu imagen
-
 ---
 
-<section id="vive-pixel" class="section bg-pixel-orange/5">
+<section id="vive-pixel" class="section bg-pixel-orange/5 py-16">
   <div class="container">
-    <div class="max-w-7xl mx-auto space-y-8">
+    <div class="max-w-4xl mx-auto">
       
-      <!-- Encabezado de sección -->
-      <div class="text-center mb-8">
+      <!-- Header de sección -->
+      <div class="text-center mb-12">
+        <span class="inline-block text-pixel-orange font-semibold text-sm uppercase tracking-wider mb-3">Nuestra historia</span>
+        <h2 class="text-4xl md:text-6xl font-normal mb-6 text-gray-900 cal-sans">
+          Descubre <span class="text-pixel-orange">por qué Pixel Living</span> es diferente
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Conoce nuestra filosofía, valores y lo que nos hace únicos en el mundo del coliving
+        </p>
       </div>
 
-      <div class="bg-gray-100 rounded-xl p-6 space-y-8">
+      <!-- Acordeón -->
+      <div class="space-y-4">
         
-        <!-- Bloque 1: Título + Imagen -->
-        <div class="flex flex-col md:flex-row items-center gap-6">
-          <div class="md:w-1/2">
-                    <span class="inline-block text-pixel-orange font-semibold text-xl  tracking-wider mb-2">Nuestra filosofía</span>
-
-            <h2 class="text-3xl md:text-6xl font-normal md:leading-none">
-              Un hogar temporal para <span class="text-pixel-orange">mentes inquietas</span>
-            </h2>
-          </div>
-          <div class="md:w-1/2">
-            <div class="border-2 border-pixel-orange rounded-lg overflow-hidden">
-              <img 
-                src={imageBG.src} 
-                alt="Ambiente Pixel Living" 
-                class="w-full h-78 object-cover"
-              />
+        <!-- Sección 1: Filosofía -->
+        <details class="pixel-accordion group" open>
+          <summary class="pixel-accordion-header">
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-pixel-orange rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189 6.01 6.01 0 011.125-1.304c.21-.226.414-.481.6-.772.282-.445.423-.954.423-1.423C18.75 7.943 17.357 6.75 15.75 6.75c-1.608 0-3 1.193-3 2.25" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900">Nuestra filosofía</h3>
+                <p class="text-sm text-gray-600">¿Qué nos inspira cada día?</p>
+              </div>
+            </div>
+          </summary>
+          <div class="pixel-accordion-content">
+            <div class="grid md:grid-cols-2 mt-5 gap-8 items-center">
+              <div>
+                <h4 class="text-3xl font-bold mb-4 text-gray-900">
+                  Un hogar temporal para <span class="text-pixel-orange">mentes inquietas</span>
+                </h4>
+                <p class="text-lg text-gray-700 mb-4">
+                  En Pixel creemos que el lugar donde vives debe <strong class="text-pixel-orange">inspirarte</strong>. 
+                  No somos un arriendo tradicional, tampoco un hotel.
+                </p>
+                <p class="text-gray-600">
+                  Somos un punto de conexión entre personas que están en movimiento, pero quieren estar bien.
+                </p>
+              </div>
+              <div class="order-first md:order-last">
+                <img 
+                  src={imageBG.src} 
+                  alt="Pixel Living - Filosofía" 
+                  class="w-full h-64 object-cover rounded-lg shadow-lg"
+                />
+              </div>
             </div>
           </div>
-        </div>
+        </details>
 
-        <!-- Bloque 2: Imagen + Texto -->
-        <div class="flex flex-col md:flex-row-reverse items-center gap-6">
-          <div class="md:w-1/2">
-            <p class="text-xl md:text-2xl font-normal ">
-              En Pixel creemos que el lugar donde vives debe <span class="text-pixel-orange font-bold">inspirarte.</span>
-            </p>
-          </div>
-          <div class="md:w-1/2">
-            <div class="border-2 border-pixel-orange rounded-lg overflow-hidden">
-              <img 
-                src={imagen2.src} 
-                alt="Inspiración en Pixel Living" 
-                class="w-full h-78 object-cover"
-              />
+        <!-- Sección 2: Diferenciación -->
+        <details class="pixel-accordion group">
+          <summary class="pixel-accordion-header">
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-pixel-blue rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900">¿Qué nos hace únicos?</h3>
+                <p class="text-sm text-gray-600">Nuestra propuesta diferencial</p>
+              </div>
+            </div>
+          </summary>
+          <div class="pixel-accordion-content">
+            <div class="bg-pixel-blue mt-5 rounded-xl p-8 text-center text-white">
+              <h4 class="text-3xl font-bold mb-4">
+                No somos un arriendo tradicional.<br>Tampoco un hotel.
+              </h4>
+              <p class="text-xl mb-6 opacity-90">
+                Somos algo completamente nuevo: un <strong>ecosistema de vida</strong> diseñado para la nueva generación de profesionales.
+              </p>
+              <div class="grid md:grid-cols-3 gap-4 mt-8">
+                <div class="bg-white/20 rounded-lg p-4">
+                  <h5 class="font-bold mb-2">🏠 Sin codeudor</h5>
+                  <p class="text-sm">Solo tu documento</p>
+                </div>
+                <div class="bg-white/20 rounded-lg p-4">
+                  <h5 class="font-bold mb-2">📦 Todo incluido</h5>
+                  <p class="text-sm">Un solo pago mensual</p>
+                </div>
+                <div class="bg-white/20 rounded-lg p-4">
+                  <h5 class="font-bold mb-2">⚡ Desde 1 mes</h5>
+                  <p class="text-sm">Flexibilidad total</p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </details>
 
-        <!-- Bloque 3: Texto solo -->
-        <div class="bg-pixel-orange rounded-xl p-2 text-center">
-          <p class="text-3xl md:text-4xl font-semibold text-white">
-            No somos un arriendo tradicional. Tampoco un hotel.
-          </p>
-        </div>
-
-        <!-- Bloque 4: Texto + Imagen -->
-        <div class="flex flex-col md:flex-row items-center gap-6">
-          <div class="md:w-1/2">
-            <p class="text-xl md:text-2xl font-normal ">
-              Somos un punto de <span class="text-pixel-orange font-bold">conexión</span> entre personas que están en movimiento, pero quieren estar bien.
-            </p>
-          </div>
-          <div class="md:w-1/2">
-            <div class="border-2 border-pixel-orange rounded-lg overflow-hidden">
-              <img 
-                src={imagen3.src} 
-                alt="Conexión en Pixel Living" 
-                class="w-full h-78 object-cover"
-              />
+        <!-- Sección 3: Para quién -->
+        <details class="pixel-accordion group">
+          <summary class="pixel-accordion-header">
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-pixel-purple rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900">¿Para quién es Pixel?</h3>
+                <p class="text-sm text-gray-600">Nuestros residentes ideales</p>
+              </div>
+            </div>
+          </summary>
+          <div class="pixel-accordion-content">
+            <h4 class="text-2xl font-bold mb-6 mt-5 text-center text-gray-900">
+              <span class="text-pixel-purple">Pixel Living</span> es para quienes valoran los detalles, el diseño y la buena energía
+            </h4>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class="bg-white rounded-lg p-6 shadow-md border-l-4 border-pixel-orange">
+                <h5 class="font-bold text-gray-900 mb-2">🌍 Nómadas Digitales</h5>
+                <p class="text-gray-600 text-sm">Profesionales remotos que buscan estabilidad temporal con flexibilidad</p>
+              </div>
+              <div class="bg-white rounded-lg p-6 shadow-md border-l-4 border-pixel-blue">
+                <h5 class="font-bold text-gray-900 mb-2">💼 Profesionales</h5>
+                <p class="text-gray-600 text-sm">Ejecutivos en transición, traslados de trabajo o proyectos temporales</p>
+              </div>
+              <div class="bg-white rounded-lg p-6 shadow-md border-l-4 border-pixel-purple">
+                <h5 class="font-bold text-gray-900 mb-2">🎓 Estudiantes</h5>
+                <p class="text-gray-600 text-sm">Universitarios, investigadores y estudiantes de posgrado</p>
+              </div>
+              <div class="bg-white rounded-lg p-6 shadow-md border-l-4 border-pixel-green">
+                <h5 class="font-bold text-gray-900 mb-2">🚀 Emprendedores</h5>
+                <p class="text-gray-600 text-sm">Founders y creativos que necesitan networking y inspiración</p>
+              </div>
+              <div class="bg-white rounded-lg p-6 shadow-md border-l-4 border-pixel-brown">
+                <h5 class="font-bold text-gray-900 mb-2">🏥 Personal de Salud</h5>
+                <p class="text-gray-600 text-sm">Médicos, enfermeros en rotaciones o especializaciones</p>
+              </div>
+              <div class="bg-white rounded-lg p-6 shadow-md border-l-4 border-pixel-yellow">
+                <h5 class="font-bold text-gray-900 mb-2">🌐 Expertos Internacionales</h5>
+                <p class="text-gray-600 text-sm">Consultores, diplomáticos y profesionales extranjeros</p>
+              </div>
             </div>
           </div>
-        </div>
+        </details>
 
-        <!-- Bloque 5: Imagen + Texto final -->
-        <div class="flex flex-col md:flex-row-reverse items-center gap-6">
-          <div class="md:w-1/2">
-            <p class="text-xl md:text-2xl font-normal">
-              <span class="text-pixel-orange font-bold">Pixel Living</span> es para quienes valoran los detalles, el diseño y la buena energía.
-            </p>
-          </div>
-          <div class="md:w-1/2">
-            <div class="border-2 border-pixel-orange rounded-lg overflow-hidden">
-              <img 
-                src={imagen4.src} 
-                alt="Diseño y detalles en Pixel Living" 
-                class="w-full h-78 object-cover"
-              />
+        <!-- Sección 4: Beneficios -->
+        <details class="pixel-accordion group">
+          <summary class="pixel-accordion-header">
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-pixel-green rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125V11.25c0-3.725-3.025-6.75-6.75-6.75h-4.5c-3.725 0-6.75 3.025-6.75 6.75v.875c0 .621.504 1.125 1.125 1.125z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900">Beneficios</h3>
+                <p class="text-sm text-gray-600">Lo que solo Pixel te ofrece</p>
+              </div>
+            </div>
+          </summary>
+          <div class="pixel-accordion-content">
+            <div class="grid md:grid-cols-3 gap-6">
+              <div class="bg-pixel-green p-6 rounded-lg mt-5 text-white text-center transform hover:scale-105 transition-transform">
+                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                  </svg>
+                </div>
+                <h5 class="text-xl font-bold mb-3">Sentirse en casa</h5>
+                <p class="text-sm">Espacios diseñados para que te apropies de ellos desde el primer día</p>
+              </div>
+              
+              <div class="bg-white mt-5 p-6 rounded-lg border-2 border-pixel-green text-center transform hover:scale-105 transition-transform">
+                <div class="w-16 h-16 bg-pixel-orange/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-pixel-orange">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                  </svg>
+                </div>
+                <h5 class="text-xl font-bold mb-3 text-gray-900">Conectar</h5>
+                <p class="text-sm text-gray-600">Una comunidad de personas creativas en constante movimiento</p>
+              </div>
+              
+              <div class="bg-white p-6 mt-5 rounded-lg border-2 border-pixel-green text-center transform hover:scale-105 transition-transform">
+                <div class="w-16 h-16 bg-pixel-orange/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-pixel-orange">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                  </svg>
+                </div>
+                <h5 class="text-xl font-bold mb-3 text-gray-900">Inspirar</h5>
+                <p class="text-sm text-gray-600">Un ambiente que estimula la creatividad y el bienestar personal</p>
+              </div>
             </div>
           </div>
-        </div>
-        
-      </div>
-      
-      <!-- Tarjetas de beneficios -->
-      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-pixel-orange p-6 rounded-lg shadow-lg transform transition-all hover:-translate-y-1 hover:shadow-xl border-2 border-orange-500 pixel-hover">
-          <div class="w-12 h-12 bg-pixel-orange/20 rounded-lg flex items-center justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-            </svg>
+        </details>
+
+        <!-- Sección 5: Tu experiencia -->
+        <details class="pixel-accordion group">
+          <summary class="pixel-accordion-header">
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-pixel-yellow rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900">Tu experiencia Pixel</h3>
+                <p class="text-sm text-gray-600">Cómo será tu día a día</p>
+              </div>
+            </div>
+          </summary>
+          <div class="pixel-accordion-content">
+            <div class="bg-pixel-yellow rounded-xl mt-5 p-8 text-gray-900">
+              <h4 class="text-3xl font-bold text-center mb-8">
+                Vive la experiencia Pixel desde el día 1
+              </h4>
+              <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h5 class="text-xl font-bold mb-4">🌅 Tu mañana</h5>
+                  <ul class="space-y-2 text-gray/90">
+                    <li>• Despierta en tu apartaestudio de 29m²</li>
+                    <li>• Café en la terraza con vista al norte</li>
+                    <li>• Coworking con wifi de alta velocidad</li>
+                    <li>• Networking natural con otros residentes</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="text-xl font-bold mb-4">🌆 Tu tarde-noche</h5>
+                  <ul class="space-y-2 text-gray/90">
+                    <li>• Ejercicio en nuestra zona TRX</li>
+                    <li>• Atardecer en el rooftop con fire pits</li>
+                    <li>• Eventos exclusivos de comunidad</li>
+                    <li>• Descanso en tu espacio privado</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
-          <h3 class="text-2xl font-semibold text-white mb-2">Sentirse en casa</h3>
-          <p class="text-white text-sm">Espacios diseñados para que te apropies de ellos desde el primer día, con todo lo que necesitas.</p>
-        </div>
-        
-        <div class="bg-white p-6 rounded-lg shadow-lg transform transition-all hover:-translate-y-1 hover:shadow-xl border-2 border-pixel-orange pixel-hover">
-          <div class="w-12 h-12 bg-pixel-orange/20 rounded-lg flex items-center justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-pixel-orange">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-            </svg>
+        </details>
+
+        <!-- Sección 6: CTA Final -->
+        <details class="pixel-accordion group">
+          <summary class="pixel-accordion-header">
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-pixel-brown rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900">¿Listo para Pixel?</h3>
+                <p class="text-sm text-gray-600">Tu nuevo hogar te está esperando</p>
+              </div>
+            </div>
+          </summary>
+          <div class="pixel-accordion-content">
+            <div class="text-center bg-pixel-brown rounded-xl mt-5 p-8 text-white">
+              <h4 class="text-3xl font-bold mb-4">
+                ¡Tu experiencia Pixel comienza aquí!
+              </h4>
+              <p class="text-xl mb-6 opacity-90">
+                Cupos limitados. Solo necesitas tu documento de identificación.
+              </p>
+              <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a 
+                  href="#reservas" 
+                  class="bg-white text-pixel-brown px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg inline-flex items-center"
+                >
+                  Reservar mi espacio
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </a>
+                <p class="text-white/80 text-sm">
+                  📞 Respuesta en menos de 1 hora
+                </p>
+              </div>
+            </div>
           </div>
-          <h3 class="text-2xl font-semibold mb-2">Conectar</h3>
-          <p class="text-gray-600 text-sm">Una comunidad de personas creativas, inquietas y en constante movimiento que comparten más que un espacio.</p>
-        </div>
-        
-        <div class="bg-white p-6 rounded-lg shadow-lg transform transition-all hover:-translate-y-1 hover:shadow-xl border-2 border-pixel-orange pixel-hover">
-          <div class="w-12 h-12 bg-pixel-orange/20 rounded-lg flex items-center justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-pixel-orange">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-            </svg>
-          </div>
-          <h3 class="text-2xl font-semibold mb-2">Inspirar</h3>
-          <p class="text-gray-600 text-sm">Un ambiente que estimula la creatividad y el bienestar personal, impulsándote en tu día a día.</p>
-        </div>
+        </details>
+
       </div>
     </div>
   </div>
 </section>
 
+<style>
+  /* ===== ACORDEÓN CSS PURO - 100% ESTABLE ===== */
+  
+  .pixel-accordion {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 2px solid #f3f4f6;
+    transition: all 0.3s ease;
+  }
+  
+  .pixel-accordion:hover {
+    border-color: var(--color-pixel-orange);
+    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pixel-accordion[open] {
+    border-color: var(--color-pixel-orange);
+    box-shadow: 0 10px 25px -3px rgba(255, 153, 51, 0.1);
+  }
+  
+  .pixel-accordion-header {
+    padding: 24px;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+  }
+  
+  .pixel-accordion-header:hover {
+    background-color: #fef3e2;
+  }
+  
+  .pixel-accordion[open] .pixel-accordion-header {
+    background-color: #fff7ed;
+    border-bottom: 2px solid #fed7aa;
+  }
+  
+  /* Quitar el triángulo por defecto del navegador */
+  .pixel-accordion-header::-webkit-details-marker {
+    display: none;
+  }
+  
+  /* Crear nuestro propio indicador */
+  .pixel-accordion-header::after {
+    content: '▶';
+    font-size: 18px;
+    color: var(--color-pixel-orange);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  
+  .pixel-accordion[open] .pixel-accordion-header::after {
+    transform: rotate(90deg);
+  }
+  
+  .pixel-accordion-content {
+    padding: 0 24px 24px 24px;
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .pixel-accordion-header {
+      padding: 16px;
+    }
+    
+    .pixel-accordion-content {
+      padding: 0 16px 16px 16px;
+    }
+    
+    .pixel-accordion-header .flex {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    
+    .pixel-accordion-header::after {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .pixel-accordion[open] .pixel-accordion-header::after {
+      transform: translateY(-50%) rotate(90deg);
+    }
+  }
+  
+  /* Colores Pixel Variables CSS */
+  :root {
+    --color-pixel-yellow: #FFCC33;
+    --color-pixel-orange: #FF9933;
+    --color-pixel-blue: #3399FF;
+    --color-pixel-purple: #9966CC;
+    --color-pixel-brown: #996633;
+    --color-pixel-green: #33CC66;
+  }
+  
+  /* Utilidades de color */
+  .bg-pixel-orange { background-color: var(--color-pixel-orange); }
+  .bg-pixel-blue { background-color: var(--color-pixel-blue); }
+  .bg-pixel-purple { background-color: var(--color-pixel-purple); }
+  .bg-pixel-green { background-color: var(--color-pixel-green); }
+  .bg-pixel-yellow { background-color: var(--color-pixel-yellow); }
+  .bg-pixel-brown { background-color: var(--color-pixel-brown); }
+  
+  .text-pixel-orange { color: var(--color-pixel-orange); }
+  .text-pixel-brown { color: var(--color-pixel-brown); }
+  
+  .border-pixel-orange { border-color: var(--color-pixel-orange); }
+  .border-pixel-blue { border-color: var(--color-pixel-blue); }
+  .border-pixel-purple { border-color: var(--color-pixel-purple); }
+  .border-pixel-green { border-color: var(--color-pixel-green); }
+  .border-pixel-brown { border-color: var(--color-pixel-brown); }
+  .border-pixel-yellow { border-color: var(--color-pixel-yellow); }
+</style>

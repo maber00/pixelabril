@@ -14,7 +14,7 @@
 
   // ===== CONFIGURACIÓN =====
   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeokkypj'; // Tu endpoint actual
-  const WHATSAPP_NUMBER = '573017872595'; // Tu número de WhatsApp
+  const WHATSAPP_NUMBER = '573195895858'; // Tu número de WhatsApp
 
   // ===== FUNCIÓN DE ENVÍO SIN REDIRECCIÓN =====
   function enviarFormularioSinRedireccion(formElement, formData) {

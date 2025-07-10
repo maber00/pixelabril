@@ -1,0 +1,279 @@
+---
+// Testimonios reales de residentes de Pixel Living
+const testimonios = [
+  {
+    id: 1,
+    nombre: "Ana Sofía M.",
+    profesion: "Diseñadora UX",
+    estudio: "Estudio Jade",
+    duracion: "8 meses",
+    rating: 5,
+    testimonio: "Llegué a Bogotá por trabajo y Pixel fue la mejor decisión. El proceso fue súper rápido, sin fiador ni complicaciones. En 48 horas ya estaba viviendo aquí. La comunidad es increíble, he hecho amigos que se han vuelto familia.",
+    avatar: "/images/testimonials/ana-sofia.webp",
+    destacado: true
+  },
+  {
+    id: 2,
+    nombre: "Carlos E.",
+    profesion: "Desarrollador Senior",
+    estudio: "Estudio Zian",
+    duracion: "6 meses",
+    rating: 5,
+    testimonio: "Como nómada digital, necesitaba algo flexible. Pixel me permitió trabajar desde casa con wifi de 200 Mbps, espacios de coworking y una ubicación perfecta. La conexión con la Autopista Norte es un game changer.",
+    avatar: "/images/testimonials/carlos.webp",
+    destacado: false
+  },
+  {
+    id: 3,
+    nombre: "María José R.",
+    profesion: "Consultora Internacional",
+    estudio: "Estudio Índigo",
+    duracion: "12 meses",
+    rating: 5,
+    testimonio: "Vine por trabajo desde Medellín. Lo que más me gustó fue que TODO está incluido en el precio. No hay sorpresas de servicios, administración o wifi. Un solo pago y listo. La terraza del edificio es perfecta para relajarse.",
+    avatar: "/images/testimonials/maria-jose.webp",
+    destacado: false
+  },
+  {
+    id: 4,
+    nombre: "David L.",
+    profesion: "Estudiante de Maestría",
+    estudio: "Estudio Jade",
+    duracion: "10 meses",
+    rating: 5,
+    testimonio: "Estoy haciendo mi maestría en la Universidad Nacional. La ubicación de Pixel es perfecta - puedo ir a la universidad, al centro y a cualquier lado súper fácil. El ambiente de estudio es ideal para concentrarse.",
+    avatar: "/images/testimonials/david.webp",
+    destacado: false
+  },
+  {
+    id: 5,
+    nombre: "Isabella S.",
+    profesion: "Marketing Manager",
+    estudio: "Estudio Zian",
+    duracion: "4 meses",
+    rating: 5,
+    testimonio: "Me encanta la flexibilidad. Vine por un proyecto de 4 meses y me permitieron quedarse exactamente ese tiempo. Sin comprometerse a años como en arriendos tradicionales. El equipo de Pixel es súper atento.",
+    avatar: "/images/testimonials/isabella.webp",
+    destacado: false
+  }
+];
+
+// Datos de confianza
+const datosConfianza = [
+  {
+    numero: "150+",
+    texto: "Residentes satisfechos",
+    icono: "M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"
+  },
+  {
+    numero: "98%",
+    texto: "Renovarían su estadía",
+    icono: "M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+  },
+  {
+    numero: "24h",
+    texto: "Tiempo promedio de reserva",
+    icono: "M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+  },
+  {
+    numero: "4.9/5",
+    texto: "Calificación promedio",
+    icono: "M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.563.563 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+  }
+];
+---
+
+<section id="testimonios" class="section bg-white">
+  <div class="container">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <span class="inline-block text-pixel-brown font-semibold text-sm uppercase tracking-wider mb-2">
+        Lo que dicen nuestros residentes
+      </span>
+      <h2 class="text-4xl md:text-5xl font-normal mb-6">
+        Más de <span class="text-pixel-brown">150 personas</span> han encontrado su hogar en Pixel
+      </h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        Profesionales, estudiantes y nómadas digitales de toda Colombia y el mundo nos han elegido. 
+        Estas son sus experiencias reales viviendo en Pixel Living.
+      </p>
+    </div>
+
+    <!-- Datos de confianza -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+      {datosConfianza.map(dato => (
+        <div class="text-center">
+          <div class="w-16 h-16 bg-pixel-brown/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-pixel-brown">
+              <path stroke-linecap="round" stroke-linejoin="round" d={dato.icono} />
+            </svg>
+          </div>
+          <div class="text-3xl font-bold text-pixel-brown mb-1">{dato.numero}</div>
+          <div class="text-sm text-gray-600">{dato.texto}</div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Testimonios principales -->
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Testimonio destacado -->
+      {testimonios.filter(t => t.destacado).map(testimonio => (
+        <div class="mb-16 bg-pixel-brown/5 rounded-xl p-8 md:p-12">
+          <div class="max-w-4xl mx-auto text-center">
+            
+            <!-- Rating -->
+            <div class="flex justify-center mb-6">
+              {[...Array(testimonio.rating)].map((_, i) => (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6 text-yellow-400" viewBox="0 0 24 24">
+                  <path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.563.563 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                </svg>
+              ))}
+            </div>
+            
+            <!-- Testimonio -->
+            <blockquote class="text-xl md:text-2xl text-gray-800 font-light italic mb-8 leading-relaxed">
+              "{testimonio.testimonio}"
+            </blockquote>
+            
+            <!-- Información del residente -->
+            <div class="flex items-center justify-center">
+              <div class="w-16 h-16 bg-pixel-brown rounded-full flex items-center justify-center mr-4">
+                <span class="text-white font-bold text-lg">
+                  {testimonio.nombre.split(' ').map(n => n[0]).join('')}
+                </span>
+              </div>
+              <div class="text-left">
+                <div class="font-semibold text-gray-900">{testimonio.nombre}</div>
+                <div class="text-pixel-brown font-medium">{testimonio.profesion}</div>
+                <div class="text-sm text-gray-600">{testimonio.estudio} • {testimonio.duracion}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+
+      <!-- Grid de testimonios -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {testimonios.filter(t => !t.destacado).map(testimonio => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+            
+            <!-- Rating -->
+            <div class="flex mb-4">
+              {[...Array(testimonio.rating)].map((_, i) => (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 text-yellow-400" viewBox="0 0 24 24">
+                  <path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.563.563 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                </svg>
+              ))}
+            </div>
+            
+            <!-- Testimonio -->
+            <blockquote class="text-gray-700 mb-6 italic leading-relaxed">
+              "{testimonio.testimonio}"
+            </blockquote>
+            
+            <!-- Información del residente -->
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-pixel-brown rounded-full flex items-center justify-center mr-3">
+                <span class="text-white font-bold">
+                  {testimonio.nombre.split(' ').map(n => n[0]).join('')}
+                </span>
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900">{testimonio.nombre}</div>
+                <div class="text-sm text-pixel-brown">{testimonio.profesion}</div>
+                <div class="text-xs text-gray-500">{testimonio.estudio} • {testimonio.duracion}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- CTA final -->
+    <div class="mt-16 text-center">
+      <h3 class="text-2xl font-bold mb-4">¿Quieres ser parte de nuestra comunidad?</h3>
+      <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+        Únete a más de 150 profesionales que han encontrado en Pixel Living el lugar perfecto para vivir, trabajar y conectar en Bogotá.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#reservas" class="btn bg-pixel-brown hover:bg-brown-600 text-white px-8 py-4 rounded-lg font-semibold inline-flex items-center">
+          👉 Reserva tu apartaestudio
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+        
+        <a href="https://wa.me/573195895858?text=Hola,%20me%20gustaría%20conocer%20más%20sobre%20los%20testimonios%20de%20residentes%20de%20Pixel%20Living" 
+           target="_blank" 
+           class="btn bg-white border-2 border-pixel-brown text-pixel-brown hover:bg-pixel-brown hover:text-white px-6 py-4 rounded-lg font-semibold inline-flex items-center transition-colors">
+          💬 Habla con ex-residentes
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 ml-2" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('✅ Sección de testimonios cargada');
+  
+  // Animación de entrada para las métricas
+  const observerOptions = {
+    threshold: 0.3,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-fade-in');
+      }
+    });
+  }, observerOptions);
+  
+  // Observar elementos de datos de confianza
+  document.querySelectorAll('#testimonios [class*="grid-cols-2"]').forEach(el => {
+    observer.observe(el);
+  });
+});
+</script>
+
+<style>
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover effects para testimonios */
+.bg-white:hover {
+  transform: translateY(-2px);
+  transition: transform 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>

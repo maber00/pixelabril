@@ -1,5 +1,5 @@
 ---
-// Hero.astro con Carousel y Zoom Animado - JavaScript Vanilla
+// Hero.astro OPTIMIZADO con messaging de alta conversión y responsive mobile
 import heroImage1 from '../assets/pixel-frontal-002.webp';
 import heroImage2 from '../assets/pixel-room-01.webp';
 import heroImage3 from '../assets/pixel-recepcion.webp';
@@ -7,7 +7,7 @@ import heroImage4 from '../assets/pixel-terraza-hero-2.webp';
 import heroImage5 from '../assets/pixel-room-02.jpg';
 ---
 
-<section class="relative min-h-screen flex items-center overflow-hidden w-full" id="hero-section">
+<section class="relative min-h-screen flex items-center overflow-hidden w-250 md:w-full" id="hero-section">
   <!-- Carousel de fondo -->
   <div class="absolute inset-0 z-0">
     <!-- Imágenes del carousel -->
@@ -25,7 +25,7 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
         <div class="zoom-wrapper">
           <img
             src={heroImage2.src}
-            alt="Pixel Living - Espacios diseñados para crear"
+            alt="Apartaestudios amoblados 29m² en el norte de Bogotá"
             class="zoom-image zoom-image-2"
           />
         </div>
@@ -34,7 +34,7 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
         <div class="zoom-wrapper">
           <img
             src={heroImage3.src}
-            alt="Pixel Living - Comunidad y comodidad"
+            alt="Coliving sin codeudor en Zona Rosa Bogotá"
             class="zoom-image zoom-image-3"
           />
         </div>
@@ -43,7 +43,7 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
         <div class="zoom-wrapper">
           <img
             src={heroImage4.src}
-            alt="Pixel Living - Espacios únicos"
+            alt="Terraza Pixel Living - Espacios compartidos"
             class="zoom-image zoom-image-4"
           />
         </div>
@@ -52,7 +52,7 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
         <div class="zoom-wrapper">
           <img
             src={heroImage5.src}
-            alt="Pixel Living - Experiencia completa"
+            alt="Habitaciones completamente equipadas Pixel Living"
             class="zoom-image zoom-image-5"
           />
         </div>
@@ -63,25 +63,73 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10"></div>
   </div>
   
-  <!-- Contenido principal -->
-  <div class="container relative z-20 pt-32 pb-16 md:py-0">
-    <div class="flex flex-col items-start text-left max-w-3xl">
-      <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6 text-white cal-display hero-title">
-        Vivir <span class="text-pixel-yellow">diferente.</span> <br/>
-        <span class="text-pixel-orange">Conectar.</span> <span class="text-white">Crear.</span>
-      </h1>
+  <!-- Contenido principal OPTIMIZADO -->
+  <div class="container relative z-20 mt-32 mb-32 md:py-0">
+    <div class="flex flex-col items-start text-left max-w-4xl">
       
-      <p class="text-xl md:text-2xl text-gray-200 mb-10 max-w-2xl hero-description">
-        Pixel Living es coliving en Bogotá para quienes buscan algo más que un arriendo.
-        Apartaestudios diseñados para estadías medianas y largas, con estilo, comodidad y comunidad.
+      <!-- Título principal optimizado -->
+      <h1 class="text-4xl md:text-3xl font-bold leading-tight mb-4 text-white cal-display hero-title">
+        <span class="text-pixel-orange">Coliving Bogotá</span> | <span class="text-pixel-yellow">Pixel Living</span>
+      </h1>
+
+      <!-- Subtítulo -->
+      <h2 class="text-xl md:text-7xl text-white mb-6 font-normal">
+        <span class="block">Vive, crea y conecta</span>
+        <span class="block text-3xl md:text-5xl text-pixel-yellow mt-2">en el norte de Bogotá.</span>
+      </h2>
+      
+      <!-- Descripción principal -->
+      <p class="text-lg md:text-xl text-gray-200 mb-6 max-w-2xl leading-relaxed">
+        Pixel Living es tu coliving en Bogotá, donde encuentras apartaestudios modernos y amoblados, 
+        todos los servicios incluidos y una comunidad vibrante en la ubicación más estratégica de la ciudad.
+      </p>
+
+      <!-- Nuevos beneficios destacados -->
+      <div class="flex flex-wrap gap-2 mb-6">
+        <span class="bg-pixel-yellow text-gray-900 px-3 py-1 rounded-full text-sm font-medium">✓ Sin codeudor</span>
+        <span class="bg-pixel-orange text-white px-3 py-1 rounded-full text-sm font-medium">✓ Desde 1 mes</span>
+        <span class="bg-pixel-blue text-white px-3 py-1 rounded-full text-sm font-medium">✓ Todo incluido</span>
+        <span class="bg-pixel-green text-white px-3 py-1 rounded-full text-sm font-medium">✓ Listo para habitar</span>
+      </div>
+      
+      <!-- Descripción específica - OCULTA EN MÓVIL -->
+      <p class="hidden md:block text-lg md:text-xl text-gray-200 mb-6 max-w-2xl">
+        Disfruta la flexibilidad de arrendar desde un mes, sin codeudor y sin complicaciones.
+      </p>
+
+      <!-- Texto principal - OCULTO EN MÓVIL -->
+      <p class="hidden md:block text-xl md:text-2xl text-white mb-4 font-semibold">
+        Todo lo que necesitas para vivir, trabajar y crecer, está aquí.
+      </p>
+
+      <!-- Pregunta CTA - OCULTA EN MÓVIL -->
+      <p class="hidden md:block text-lg text-pixel-yellow mb-8 font-medium">
+        ¿Listo para vivir la experiencia Pixel Living?
       </p>
       
-      <a href="https://wa.me/573017872595" target="_blank" class="btn btn-primary text-lg flex items-center hero-cta">
-        👉 Quiero vivir en Pixel
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-        </svg>
-      </a>
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-4">
+        <!-- Botón principal - OCULTO EN MÓVIL, VISIBLE EN DESKTOP -->
+        <a href="#reservas" class="hidden md:flex btn bg-pixel-yellow hover:bg-yellow-500 text-gray-900 text-lg font-semibold px-8 py-4 rounded-lg items-center justify-center">
+          Reserva tu espacio ahora
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+        
+        <!-- Botón secundario - SIEMPRE VISIBLE -->
+        <a href="#espacios" class="btn bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 px-6 py-4 rounded-lg">
+          Ver precios y disponibilidad
+        </a>
+      </div>
+
+      <!-- Información de confianza -->
+      <p class="text-sm text-gray-300 mt-4">
+        Cupos limitados • Solo tu documento de identificación
+      </p>
+      <p class="text-xs text-gray-400 mt-2">
+        Proceso de reserva en menos de 24 horas
+      </p>
     </div>
   </div>
   
@@ -98,25 +146,25 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
   
   <!-- Indicador de scroll -->
   <div class="absolute md:bottom-8 invisible md:visible md:left-1/2 transform -translate-x-1/2 text-white z-30">
-    <a href="#vive-pixel" class="flex flex-col mt-30 items-center">
-      <span class="mb-2 text-sm font-medium">Descubre más</span>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <a href="#vive-pixel" class="flex flex-col mt-30 items-center group">
+      <span class="mb-2 text-sm font-medium group-hover:text-pixel-yellow transition-colors">Descubre por qué somos diferentes</span>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 animate-bounce">
         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
       </svg>
     </a>
   </div>
 </section>
 
+<!-- Estilos mantenidos del original -->
 <style>
-  /* ===== CONTENEDOR DEL CARRUSEL ===== */
+  /* ===== TODOS LOS ESTILOS ORIGINALES DEL CAROUSEL ===== */
   .carousel-container {
     position: relative;
-    width: 100%;
-    height: 100vh;
+    width: 125%;
+    height: 125vh;
     overflow: hidden;
   }
   
-  /* ===== SLIDES CON EFECTO FADE ===== */
   .carousel-slide {
     position: absolute;
     top: 0;
@@ -124,7 +172,7 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 1.2s ease-in-out; /* Transición más suave */
+    transition: opacity 1.2s ease-in-out;
     z-index: 0;
   }
   
@@ -133,7 +181,6 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     z-index: 1;
   }
   
-  /* ===== WRAPPER PARA ZOOM ===== */
   .zoom-wrapper {
     width: 100%;
     height: 100%;
@@ -141,7 +188,6 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     position: relative;
   }
   
-  /* ===== IMÁGENES CON EFECTO ZOOM ===== */
   .zoom-image {
     width: 100%;
     height: 100%;
@@ -151,81 +197,43 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     left: 0;
   }
   
-  /* Animaciones de zoom para cada imagen */
-  .zoom-image-1 {
-    animation: zoomEffect1 8s ease-in-out infinite alternate;
-  }
+  .zoom-image-1 { animation: zoomEffect1 8s ease-in-out infinite alternate; }
+  .zoom-image-2 { animation: zoomEffect2 10s ease-in-out infinite alternate; }
+  .zoom-image-3 { animation: zoomEffect3 7s ease-in-out infinite alternate; }
+  .zoom-image-4 { animation: zoomEffect4 9s ease-in-out infinite alternate; }
+  .zoom-image-5 { animation: zoomEffect5 6s ease-in-out infinite alternate; }
   
-  .zoom-image-2 {
-    animation: zoomEffect2 10s ease-in-out infinite alternate;
-  }
-  
-  .zoom-image-3 {
-    animation: zoomEffect3 7s ease-in-out infinite alternate;
-  }
-  
-  .zoom-image-4 {
-    animation: zoomEffect4 9s ease-in-out infinite alternate;
-  }
-  
-  .zoom-image-5 {
-    animation: zoomEffect5 6s ease-in-out infinite alternate;
-  }
-  
-  /* ===== KEYFRAMES PARA ZOOM ===== */
   @keyframes zoomEffect1 {
-    0% {
-      transform: scale(1) translate(0, 0);
-    }
-    100% {
-      transform: scale(1.1) translate(1%, 1%);
-    }
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.1) translate(1%, 1%); }
   }
   
   @keyframes zoomEffect2 {
-    0% {
-      transform: scale(1) translate(1%, 0);
-    }
-    100% {
-      transform: scale(1.1) translate(-1%, 1%);
-    }
+    0% { transform: scale(1) translate(1%, 0); }
+    100% { transform: scale(1.1) translate(-1%, 1%); }
   }
   
   @keyframes zoomEffect3 {
-    0% {
-      transform: scale(1) translate(-1%, 1%);
-    }
-    100% {
-      transform: scale(1.1) translate(1%, -1%);
-    }
+    0% { transform: scale(1) translate(-1%, 1%); }
+    100% { transform: scale(1.1) translate(1%, -1%); }
   }
   
   @keyframes zoomEffect4 {
-    0% {
-      transform: scale(1) translate(0, -1%);
-    }
-    100% {
-      transform: scale(1.1) translate(-1%, 0);
-    }
+    0% { transform: scale(1) translate(0, -1%); }
+    100% { transform: scale(1.1) translate(-1%, 0); }
   }
   
   @keyframes zoomEffect5 {
-    0% {
-      transform: scale(1) translate(1%, 1%);
-    }
-    100% {
-      transform: scale(1.1) translate(0, -1%);
-    }
+    0% { transform: scale(1) translate(1%, 1%); }
+    100% { transform: scale(1.1) translate(0, -1%); }
   }
   
-  /* ===== INDICADORES (DOTS) - FIX PARA CLICKS ===== */
   .carousel-indicators {
     backdrop-filter: blur(10px);
     background: rgba(0, 0, 0, 0.2);
     padding: 12px 20px;
     border-radius: 50px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    /* FIX: Permitir clicks solo en los dots */
     pointer-events: none;
     z-index: 50;
     position: relative;
@@ -240,12 +248,10 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
-    /* FIX: Permitir clicks en los dots */
     pointer-events: auto;
     z-index: 51;
   }
   
-  /* Área clickeable más grande */
   .carousel-dot::before {
     content: '';
     position: absolute;
@@ -266,8 +272,13 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
   }
   
-  /* ===== RESPONSIVE ===== */
+  /* Responsive optimizado */
   @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.5rem;
+      line-height: 1.1;
+    }
+    
     .carousel-indicators {
       bottom: 16px;
       padding: 8px 16px;
@@ -278,35 +289,30 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
       height: 10px;
     }
     
-    /* Zoom más sutil en móvil */
-    @keyframes zoomEffect1,
-    @keyframes zoomEffect2,
-    @keyframes zoomEffect3,
-    @keyframes zoomEffect4,
-    @keyframes zoomEffect5 {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.05); }
+    /* Grid responsive para beneficios */
+    .grid-cols-2 {
+      grid-template-columns: 1fr;
     }
   }
   
-  /* ===== MEJORAS DE RENDIMIENTO ===== */
-  .carousel-slide:not(.active) {
-    pointer-events: none;
-  }
-  
-  /* Suavizar animaciones en dispositivos lentos */
+  /* Mejoras de accesibilidad */
   @media (prefers-reduced-motion: reduce) {
-    .carousel-slide {
-      transition: opacity 0.5s ease-in-out; /* Más rápido para reduced motion */
-    }
-    
-    .zoom-image {
-      animation: none !important;
-    }
+    .carousel-slide { transition: opacity 0.5s ease-in-out; }
+    .zoom-image { animation: none !important; }
+    .animate-pulse { animation: none !important; }
+    .animate-bounce { animation: none !important; }
+  }
+  
+  /* Focus states mejorados */
+  .btn:focus {
+    outline: 3px solid #ffd700;
+    outline-offset: 2px;
   }
 </style>
 
+<!-- Script del carousel mantenido del original -->
 <script is:inline>
+// [MANTENER TODO EL SCRIPT ORIGINAL DEL CAROUSEL]
 (function() {
   'use strict';
   
@@ -318,7 +324,6 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     var dots = document.querySelectorAll('.carousel-dot');
     var heroSection = document.getElementById('hero-section');
     
-    // Verificar elementos
     if (!slides.length || !dots.length) {
       console.error('❌ No se encontraron slides o dots');
       return;
@@ -326,8 +331,8 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     
     // ===== CONFIGURACIÓN =====
     var CONFIG = {
-      duration: 4000,      // 4 segundos entre slides (más lento)
-      fadeTime: 1200,      // 1.2 segundos de transición (más suave)
+      duration: 4000,
+      fadeTime: 1200,
       currentSlide: 0,
       totalSlides: slides.length,
       isPlaying: true,
@@ -337,43 +342,30 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     
     console.log('📊 ' + CONFIG.totalSlides + ' slides encontrados');
     
-    // ===== FUNCIONES PRINCIPALES =====
-    
+    // ===== FUNCIONES =====
     function goToSlide(slideIndex) {
       if (slideIndex < 0 || slideIndex >= CONFIG.totalSlides) return;
-      if (CONFIG.isTransitioning) {
-        console.log('⏳ Transición en progreso...');
-        return;
-      }
+      if (CONFIG.isTransitioning) return;
       if (slideIndex === CONFIG.currentSlide) return;
       
-      console.log('🔄 Slide ' + CONFIG.currentSlide + ' → ' + slideIndex);
       CONFIG.isTransitioning = true;
       
-      // Cambiar slides
       slides[CONFIG.currentSlide].classList.remove('active');
       dots[CONFIG.currentSlide].classList.remove('active');
       CONFIG.currentSlide = slideIndex;
       slides[CONFIG.currentSlide].classList.add('active');
       dots[CONFIG.currentSlide].classList.add('active');
       
-      // Liberar transición
       setTimeout(function() {
         CONFIG.isTransitioning = false;
       }, CONFIG.fadeTime);
       
-      // Reiniciar autoplay
       if (CONFIG.isPlaying) resetAutoplay();
     }
     
     function nextSlide() {
       var nextIndex = (CONFIG.currentSlide + 1) % CONFIG.totalSlides;
       goToSlide(nextIndex);
-    }
-    
-    function prevSlide() {
-      var prevIndex = CONFIG.currentSlide === 0 ? CONFIG.totalSlides - 1 : CONFIG.currentSlide - 1;
-      goToSlide(prevIndex);
     }
     
     function startAutoplay() {
@@ -383,14 +375,12 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
           nextSlide();
         }
       }, CONFIG.duration);
-      console.log('▶️ Autoplay iniciado');
     }
     
     function stopAutoplay() {
       if (CONFIG.intervalId) {
         clearInterval(CONFIG.intervalId);
         CONFIG.intervalId = null;
-        console.log('⏸️ Autoplay detenido');
       }
     }
     
@@ -400,28 +390,20 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     }
     
     // ===== EVENT LISTENERS =====
-    
-    // Clicks en dots - VERSIÓN SIMPLIFICADA
     for (var i = 0; i < dots.length; i++) {
       var dot = dots[i];
-      
-      // Usar data-slide del HTML existente o crear uno
       dot.setAttribute('data-slide-index', i.toString());
       
-      // Click event
       dot.addEventListener('click', function(e) {
         e.preventDefault();
         var clickedIndex = parseInt(this.getAttribute('data-slide-index'));
-        console.log('🔘 Dot ' + clickedIndex + ' clickeado');
         goToSlide(clickedIndex);
       });
       
-      // Accesibilidad
       dot.setAttribute('tabindex', '0');
       dot.setAttribute('role', 'button');
       dot.setAttribute('aria-label', 'Ir a imagen ' + (i + 1));
       
-      // Teclado
       dot.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
@@ -431,50 +413,42 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
       });
     }
     
-    // Hover en hero
     if (heroSection) {
       heroSection.addEventListener('mouseenter', function() {
         CONFIG.isPlaying = false;
-        console.log('🖱️ Mouse enter - Pausado');
       });
       
       heroSection.addEventListener('mouseleave', function() {
         CONFIG.isPlaying = true;
-        console.log('🖱️ Mouse leave - Reanudado');
       });
     }
     
-    // Navegación con teclado
     document.addEventListener('keydown', function(e) {
       if (!heroSection) return;
-      
       var rect = heroSection.getBoundingClientRect();
       var heroVisible = rect.top < window.innerHeight / 2;
       if (!heroVisible) return;
       
       if (e.key === 'ArrowLeft') {
         e.preventDefault();
-        prevSlide();
+        var prevIndex = CONFIG.currentSlide === 0 ? CONFIG.totalSlides - 1 : CONFIG.currentSlide - 1;
+        goToSlide(prevIndex);
       } else if (e.key === 'ArrowRight') {
         e.preventDefault();
         nextSlide();
       }
     });
     
-    // Visibility API
     document.addEventListener('visibilitychange', function() {
       if (document.hidden) {
         CONFIG.isPlaying = false;
         stopAutoplay();
-        console.log('👁️ Página oculta');
       } else {
         CONFIG.isPlaying = true;
         startAutoplay();
-        console.log('👁️ Página visible');
       }
     });
     
-    // Intersection Observer
     var observer = new IntersectionObserver(function(entries) {
       for (var j = 0; j < entries.length; j++) {
         var entry = entries[j];
@@ -508,7 +482,6 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
     };
   }
   
-  // Inicializar cuando esté listo
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initHeroCarousel);
   } else {

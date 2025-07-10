@@ -8,7 +8,7 @@ window.PIXEL_CONFIG = {
   // ===== WHATSAPP =====
   whatsapp: {
     // ✅ NÚMERO REAL CONFIGURADO
-    number: '573017872595',  // 👈 CORREGIDO: agregué código de país 57
+    number: '573195895858',  // 👈 CORREGIDO: agregué código de país 57
     baseUrl: 'https://wa.me/',
     
     // Mensajes predeterminados por si no hay formulario
@@ -127,7 +127,7 @@ window.PIXEL_CONFIG = {
     name: 'Pixel Living',
     url: 'https://pixelliving.co',
     email: 'info@pixelliving.co',
-    phone: '+57 301 787 2595', // ✅ NÚMERO REAL CONFIGURADO
+    phone: '+57 319 5895858', // ✅ NÚMERO REAL CONFIGURADO
     address: 'Bogotá, Colombia',
     
     // Redes sociales
@@ -233,4 +233,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-console.log('✅ Pixel Config cargado - WhatsApp: 573017872595');
+console.log('✅ Pixel Config cargado - WhatsApp: 573195895858');
