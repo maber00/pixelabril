@@ -22,63 +22,67 @@ import imageBG from '../assets/PIXEL-LIVING.webp';
       <div class="space-y-4">
         
         <!-- Sección 1: Filosofía -->
-        <details class="pixel-accordion group" open>
-          <summary class="pixel-accordion-header">
-            <div class="flex items-center">
-              <div class="w-12 h-12 bg-pixel-orange rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189 6.01 6.01 0 011.125-1.304c.21-.226.414-.481.6-.772.282-.445.423-.954.423-1.423C18.75 7.943 17.357 6.75 15.75 6.75c-1.608 0-3 1.193-3 2.25" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="text-xl font-bold text-gray-900">Nuestra filosofía</h3>
-                <p class="text-sm text-gray-600">¿Qué nos inspira cada día?</p>
-              </div>
-            </div>
-          </summary>
-          <div class="pixel-accordion-content">
-            <div class="grid md:grid-cols-2 mt-5 gap-8 items-center">
-              <div>
-                <h4 class="text-3xl font-bold mb-4 text-gray-900">
-                  Un hogar temporal para <span class="text-pixel-orange">mentes inquietas</span>
-                </h4>
-                <p class="text-lg text-gray-700 mb-4">
-                  En Pixel creemos que el lugar donde vives debe <strong class="text-pixel-orange">inspirarte</strong>. 
-                  No somos un arriendo tradicional, tampoco un hotel.
-                </p>
-                <p class="text-gray-600">
-                  Somos un punto de conexión entre personas que están en movimiento, pero quieren estar bien.
-                </p>
-              </div>
-              <div class="order-first md:order-last">
-                <img 
-                  src={imageBG.src} 
-                  alt="Pixel Living - Filosofía" 
-                  class="w-full h-64 object-cover rounded-lg shadow-lg"
-                />
-              </div>
-            </div>
-          </div>
-        </details>
+       <details class="pixel-accordion group" open>
+  <summary class="pixel-accordion-header">
+    <div class="flex items-center">
+      <div class="w-12 h-12 bg-pixel-orange rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+        <img 
+          src="/images/filosofia.svg" 
+          alt="Filosofía Pixel Living" 
+          class="w-8 h-8 filter brightness-0 invert"
+        />
+      </div>
+      <div>
+        <h3 class="text-xl font-normal text-gray-900">Nuestra filosofía</h3>
+        <p class="text-sm text-gray-600">¿Qué nos inspira cada día?</p>
+      </div>
+    </div>
+  </summary>
+  <div class="pixel-accordion-content">
+    <div class="grid md:grid-cols-2 mt-5 gap-8 items-center">
+      <div>
+        <h4 class="text-3xl font-normal mb-4 text-gray-900">
+          Un hogar temporal para <span class="text-pixel-orange">mentes inquietas</span>
+        </h4>
+        <p class="text-lg text-gray-700 mb-4">
+          En Pixel creemos que el lugar donde vives debe <strong class="text-pixel-orange">inspirarte</strong>.
+          No somos un arriendo tradicional, tampoco un hotel.
+        </p>
+        <p class="text-gray-600">
+          Somos un punto de conexión entre personas que están en movimiento, pero quieren estar bien.
+        </p>
+      </div>
+      <div class="order-first md:order-last">
+        <img
+          src={imageBG.src}
+          alt="Pixel Living - Filosofía"
+          class="w-full h-64 object-cover rounded-lg shadow-lg"
+        />
+      </div>
+    </div>
+  </div>
+</details>
 
         <!-- Sección 2: Diferenciación -->
         <details class="pixel-accordion group">
           <summary class="pixel-accordion-header">
             <div class="flex items-center">
-              <div class="w-12 h-12 bg-pixel-blue rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
-                </svg>
-              </div>
+             <div class="w-12 h-12 bg-pixel-blue rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+        <img 
+          src="/images/unicos.svg" 
+          alt="Filosofía Pixel Living" 
+          class="w-8 h-8 filter brightness-0 invert"
+        />
+      </div>
               <div>
-                <h3 class="text-xl font-bold text-gray-900">¿Qué nos hace únicos?</h3>
+                <h3 class="text-xl font-normal text-gray-900">¿Qué nos hace únicos?</h3>
                 <p class="text-sm text-gray-600">Nuestra propuesta diferencial</p>
               </div>
             </div>
           </summary>
           <div class="pixel-accordion-content">
             <div class="bg-pixel-blue mt-5 rounded-xl p-8 text-center text-white">
-              <h4 class="text-3xl font-bold mb-4">
+              <h4 class="text-3xl font-normal mb-4">
                 No somos un arriendo tradicional.<br>Tampoco un hotel.
               </h4>
               <p class="text-xl mb-6 opacity-90">
@@ -86,15 +90,15 @@ import imageBG from '../assets/PIXEL-LIVING.webp';
               </p>
               <div class="grid md:grid-cols-3 gap-4 mt-8">
                 <div class="bg-white/20 rounded-lg p-4">
-                  <h5 class="font-bold mb-2">🏠 Sin codeudor</h5>
+                  <h5 class="font-normal mb-2">🏠 Sin codeudor</h5>
                   <p class="text-sm">Solo tu documento</p>
                 </div>
                 <div class="bg-white/20 rounded-lg p-4">
-                  <h5 class="font-bold mb-2">📦 Todo incluido</h5>
+                  <h5 class="font-normal mb-2">📦 Todo incluido</h5>
                   <p class="text-sm">Un solo pago mensual</p>
                 </div>
                 <div class="bg-white/20 rounded-lg p-4">
-                  <h5 class="font-bold mb-2">⚡ Desde 1 mes</h5>
+                  <h5 class="font-normal mb-2">⚡ Desde 1 mes</h5>
                   <p class="text-sm">Flexibilidad total</p>
                 </div>
               </div>
@@ -112,38 +116,38 @@ import imageBG from '../assets/PIXEL-LIVING.webp';
                 </svg>
               </div>
               <div>
-                <h3 class="text-xl font-bold text-gray-900">¿Para quién es Pixel?</h3>
+                <h3 class="text-xl font-normal text-gray-900">¿Para quién es Pixel?</h3>
                 <p class="text-sm text-gray-600">Nuestros residentes ideales</p>
               </div>
             </div>
           </summary>
           <div class="pixel-accordion-content">
-            <h4 class="text-2xl font-bold mb-6 mt-5 text-center text-gray-900">
+            <h4 class="text-2xl font-normal mb-6 mt-5 text-center text-gray-900">
               <span class="text-pixel-purple">Pixel Living</span> es para quienes valoran los detalles, el diseño y la buena energía
             </h4>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div class="bg-white rounded-lg p-6 shadow-md border-l-4 border-pixel-orange">
-                <h5 class="font-bold text-gray-900 mb-2">🌍 Nómadas Digitales</h5>
+              <div class="bg-gray-50 rounded-lg p-6 shadow-md border-l-4 border-pixel-orange">
+                <h5 class="font-normal text-gray-900 mb-2">🌍 Nómadas Digitales</h5>
                 <p class="text-gray-600 text-sm">Profesionales remotos que buscan estabilidad temporal con flexibilidad</p>
               </div>
-              <div class="bg-white rounded-lg p-6 shadow-md border-l-4 border-pixel-blue">
-                <h5 class="font-bold text-gray-900 mb-2">💼 Profesionales</h5>
+              <div class="bg-gray-50 rounded-lg p-6 shadow-md border-l-4 border-pixel-blue">
+                <h5 class="font-normal text-gray-900 mb-2">💼 Profesionales</h5>
                 <p class="text-gray-600 text-sm">Ejecutivos en transición, traslados de trabajo o proyectos temporales</p>
               </div>
-              <div class="bg-white rounded-lg p-6 shadow-md border-l-4 border-pixel-purple">
-                <h5 class="font-bold text-gray-900 mb-2">🎓 Estudiantes</h5>
+              <div class="bg-gray-50 rounded-lg p-6 shadow-md border-l-4 border-pixel-purple">
+                <h5 class="font-normal text-gray-900 mb-2">🎓 Estudiantes</h5>
                 <p class="text-gray-600 text-sm">Universitarios, investigadores y estudiantes de posgrado</p>
               </div>
-              <div class="bg-white rounded-lg p-6 shadow-md border-l-4 border-pixel-green">
-                <h5 class="font-bold text-gray-900 mb-2">🚀 Emprendedores</h5>
+              <div class="bg-gray-50 rounded-lg p-6 shadow-md border-l-4 border-pixel-green">
+                <h5 class="font-normal text-gray-900 mb-2">🚀 Emprendedores</h5>
                 <p class="text-gray-600 text-sm">Founders y creativos que necesitan networking y inspiración</p>
               </div>
-              <div class="bg-white rounded-lg p-6 shadow-md border-l-4 border-pixel-brown">
-                <h5 class="font-bold text-gray-900 mb-2">🏥 Personal de Salud</h5>
+              <div class="bg-gray-50 rounded-lg p-6 shadow-md border-l-4 border-pixel-brown">
+                <h5 class="font-normal text-gray-900 mb-2">🏥 Personal de Salud</h5>
                 <p class="text-gray-600 text-sm">Médicos, enfermeros en rotaciones o especializaciones</p>
               </div>
-              <div class="bg-white rounded-lg p-6 shadow-md border-l-4 border-pixel-yellow">
-                <h5 class="font-bold text-gray-900 mb-2">🌐 Expertos Internacionales</h5>
+              <div class="bg-gray-50 rounded-lg p-6 shadow-md border-l-4 border-pixel-yellow">
+                <h5 class="font-normal text-gray-900 mb-2">🌐 Expertos Internacionales</h5>
                 <p class="text-gray-600 text-sm">Consultores, diplomáticos y profesionales extranjeros</p>
               </div>
             </div>
@@ -154,13 +158,15 @@ import imageBG from '../assets/PIXEL-LIVING.webp';
         <details class="pixel-accordion group">
           <summary class="pixel-accordion-header">
             <div class="flex items-center">
-              <div class="w-12 h-12 bg-pixel-green rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125V11.25c0-3.725-3.025-6.75-6.75-6.75h-4.5c-3.725 0-6.75 3.025-6.75 6.75v.875c0 .621.504 1.125 1.125 1.125z" />
-                </svg>
-              </div>
+               <div class="w-12 h-12 bg-pixel-green rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+        <img 
+          src="/images/beneficio.svg" 
+          alt="Filosofía Pixel Living" 
+          class="w-8 h-8 filter brightness-0 invert"
+        />
+      </div>
               <div>
-                <h3 class="text-xl font-bold text-gray-900">Beneficios</h3>
+                <h3 class="text-xl font-normal text-gray-900">Beneficios</h3>
                 <p class="text-sm text-gray-600">Lo que solo Pixel te ofrece</p>
               </div>
             </div>
@@ -173,7 +179,7 @@ import imageBG from '../assets/PIXEL-LIVING.webp';
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                   </svg>
                 </div>
-                <h5 class="text-xl font-bold mb-3">Sentirse en casa</h5>
+                <h5 class="text-xl font-normal mb-3">Sentirse en casa</h5>
                 <p class="text-sm">Espacios diseñados para que te apropies de ellos desde el primer día</p>
               </div>
               
@@ -183,7 +189,7 @@ import imageBG from '../assets/PIXEL-LIVING.webp';
                     <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
                   </svg>
                 </div>
-                <h5 class="text-xl font-bold mb-3 text-gray-900">Conectar</h5>
+                <h5 class="text-xl font-normal mb-3 text-gray-900">Conectar</h5>
                 <p class="text-sm text-gray-600">Una comunidad de personas creativas en constante movimiento</p>
               </div>
               
@@ -193,7 +199,7 @@ import imageBG from '../assets/PIXEL-LIVING.webp';
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                   </svg>
                 </div>
-                <h5 class="text-xl font-bold mb-3 text-gray-900">Inspirar</h5>
+                <h5 class="text-xl font-normal mb-3 text-gray-900">Inspirar</h5>
                 <p class="text-sm text-gray-600">Un ambiente que estimula la creatividad y el bienestar personal</p>
               </div>
             </div>
@@ -210,19 +216,19 @@ import imageBG from '../assets/PIXEL-LIVING.webp';
                 </svg>
               </div>
               <div>
-                <h3 class="text-xl font-bold text-gray-900">Tu experiencia Pixel</h3>
+                <h3 class="text-xl font-normal text-gray-900">Tu experiencia Pixel</h3>
                 <p class="text-sm text-gray-600">Cómo será tu día a día</p>
               </div>
             </div>
           </summary>
           <div class="pixel-accordion-content">
             <div class="bg-pixel-yellow rounded-xl mt-5 p-8 text-gray-900">
-              <h4 class="text-3xl font-bold text-center mb-8">
+              <h4 class="text-3xl font-normal text-center mb-8">
                 Vive la experiencia Pixel desde el día 1
               </h4>
               <div class="grid md:grid-cols-2 gap-8">
                 <div>
-                  <h5 class="text-xl font-bold mb-4">🌅 Tu mañana</h5>
+                  <h5 class="text-xl font-normal mb-4">🌅 Tu mañana</h5>
                   <ul class="space-y-2 text-gray/90">
                     <li>• Despierta en tu apartaestudio de 29m²</li>
                     <li>• Café en la terraza con vista al norte</li>
@@ -231,7 +237,7 @@ import imageBG from '../assets/PIXEL-LIVING.webp';
                   </ul>
                 </div>
                 <div>
-                  <h5 class="text-xl font-bold mb-4">🌆 Tu tarde-noche</h5>
+                  <h5 class="text-xl font-normal mb-4">🌆 Tu tarde-noche</h5>
                   <ul class="space-y-2 text-gray/90">
                     <li>• Ejercicio en nuestra zona TRX</li>
                     <li>• Atardecer en el rooftop con fire pits</li>
@@ -254,14 +260,14 @@ import imageBG from '../assets/PIXEL-LIVING.webp';
                 </svg>
               </div>
               <div>
-                <h3 class="text-xl font-bold text-gray-900">¿Listo para Pixel?</h3>
+                <h3 class="text-xl font-normal text-gray-900">¿Listo para Pixel?</h3>
                 <p class="text-sm text-gray-600">Tu nuevo hogar te está esperando</p>
               </div>
             </div>
           </summary>
           <div class="pixel-accordion-content">
             <div class="text-center bg-pixel-brown rounded-xl mt-5 p-8 text-white">
-              <h4 class="text-3xl font-bold mb-4">
+              <h4 class="text-3xl font-normal mb-4">
                 ¡Tu experiencia Pixel comienza aquí!
               </h4>
               <p class="text-xl mb-6 opacity-90">
@@ -270,7 +276,7 @@ import imageBG from '../assets/PIXEL-LIVING.webp';
               <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a 
                   href="#reservas" 
-                  class="bg-white text-pixel-brown px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg inline-flex items-center"
+                  class="bg-white text-pixel-brown px-8 py-4 rounded-lg font-normal text-lg hover:bg-gray-100 transition-colors shadow-lg inline-flex items-center"
                 >
                   Reservar mi espacio
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
@@ -367,32 +373,7 @@ import imageBG from '../assets/PIXEL-LIVING.webp';
   }
   
   /* Responsive */
-  @media (max-width: 768px) {
-    .pixel-accordion-header {
-      padding: 16px;
-    }
-    
-    .pixel-accordion-content {
-      padding: 0 16px 16px 16px;
-    }
-    
-    .pixel-accordion-header .flex {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-    }
-    
-    .pixel-accordion-header::after {
-      position: absolute;
-      right: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    
-    .pixel-accordion[open] .pixel-accordion-header::after {
-      transform: translateY(-50%) rotate(90deg);
-    }
-  }
+  
   
   /* Colores Pixel Variables CSS */
   :root {
