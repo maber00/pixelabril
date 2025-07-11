@@ -7,7 +7,7 @@ import heroImage4 from '../assets/pixel-terraza-hero-2.webp';
 import heroImage5 from '../assets/pixel-room-02.jpg';
 ---
 
-<section class="relative min-h-screen flex items-center overflow-hidden w-250 md:w-full" id="hero-section">
+<section class="relative min-h-screen flex items-center overflow-hidden w-full" id="hero-section">
   <!-- Carousel de fondo -->
   <div class="absolute inset-0 z-0">
     <!-- Imágenes del carousel -->
@@ -160,9 +160,17 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
   /* ===== TODOS LOS ESTILOS ORIGINALES DEL CAROUSEL ===== */
   .carousel-container {
     position: relative;
-    width: 125%;
-    height: 125vh;
+    width: 150%;
+    height: 150vh;
     overflow: hidden;
+  }
+  
+  /* Tamaño optimizado para laptop/desktop */
+  @media (min-width: 1024px) {
+    .carousel-container {
+      width: 125%;
+      height: 125vh;
+    }
   }
   
   .carousel-slide {
