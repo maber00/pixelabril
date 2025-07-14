@@ -491,6 +491,10 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
       config: function() { return CONFIG; }
     };
   }
+  function prevSlide() {
+  var prevIndex = CONFIG.currentSlide === 0 ? CONFIG.totalSlides - 1 : CONFIG.currentSlide - 1;
+  goToSlide(prevIndex);
+}
   
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initHeroCarousel);
