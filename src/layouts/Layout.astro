@@ -1,5 +1,5 @@
 ---
-// src/layouts/Layout.astro - VERSIÓN OPTIMIZADA CON TODAS LAS CORRECCIONES
+// src/layouts/Layout.astro - VERSIÓN CORREGIDA SIN ERRORES
 
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
@@ -107,24 +107,22 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		
-		<!-- 🚀 PRECONNECT HINTS CRÍTICOS - Mejora del 43% en latencia -->
+		<!-- 🚀 PRECONNECT HINTS CRÍTICOS - Solo dominios necesarios -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-		<link rel="preconnect" href="https://vercel.app" crossorigin>
 		
 		<!-- 🌐 DNS PREFETCH para recursos secundarios -->
 		<link rel="dns-prefetch" href="https://maps.googleapis.com">
-		<link rel="dns-prefetch" href="https://maps.gstatic.com">
 		<link rel="dns-prefetch" href="https://formsubmit.co">
 		<link rel="dns-prefetch" href="https://wa.me">
 		
-		<!-- 📱 Favicon y iconos -->
+		<!-- 📱 Favicon y iconos - Solo los que existen -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-		<link rel="manifest" href="/site.webmanifest" />
+		<!-- Removido manifest hasta que exista el archivo -->
 		<meta name="theme-color" content="#996633" />
 		<meta name="msapplication-TileColor" content="#996633" />
 		
@@ -170,36 +168,17 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		<meta name="geo.position" content="4.7110;-74.0721" />
 		<meta name="ICBM" content="4.7110, -74.0721" />
 		
-		<!-- ⚡ PRELOAD RECURSOS CRÍTICOS -->
+		<!-- ⚡ PRELOAD RECURSOS CRÍTICOS - Solo los que existen -->
 		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cal+Sans:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 		
-		<!-- 🔤 PRELOAD FUENTES ESPECÍFICAS -->
-		<link rel="preload" href="/fonts/poppins-regular.woff2" as="font" type="font/woff2" crossorigin />
-		<link rel="preload" href="/fonts/poppins-semibold.woff2" as="font" type="font/woff2" crossorigin />
-		<link rel="preload" href="/fonts/cal-sans.woff2" as="font" type="font/woff2" crossorigin />
-		
-		<!-- 🖼️ PRELOAD IMAGEN HERO CRÍTICA -->
-		<link rel="preload" href="/images/pixel-frontal-002.webp" as="image" type="image/webp" fetchpriority="high" />
-		<link rel="preload" href="/images/logo-pixel-living.webp" as="image" type="image/webp" />
-		
-		<!-- 📦 PRELOAD SCRIPTS ESENCIALES -->
-		<link rel="preload" href="/scripts/pixel-config.js" as="script" />
-		<link rel="preload" href="/scripts/pixel-form-unified.js" as="script" />
-		
-		<!-- 🎨 DEFER CSS NO CRÍTICO -->
-		<link rel="preload" href="/_astro/contacto.CNybPjDt.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-		<link rel="preload" href="/_astro/index.BhK6sF9P.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-		
-		<!-- NOSCRIPT FALLBACK para fuentes y CSS -->
+		<!-- NOSCRIPT FALLBACK para fuentes -->
 		<noscript>
 			<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 			<link href="https://fonts.googleapis.com/css2?family=Cal+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-			<link rel="stylesheet" href="/_astro/contacto.CNybPjDt.css">
-			<link rel="stylesheet" href="/_astro/index.BhK6sF9P.css">
 		</noscript>
 		
-		<!-- 🎯 CRITICAL CSS INLINE - Optimizado para LCP -->
+		<!-- 🎯 CRITICAL CSS INLINE - Optimizado -->
 		<style>
 			/* Critical CSS para evitar FOUC y mejorar LCP */
 			html { 
@@ -216,14 +195,6 @@ const finalStructuredData = structuredData || defaultStructuredData;
 				line-height: 1.6;
 			}
 			
-			/* Hero section critical styles */
-			.hero-section {
-				min-height: 100vh;
-				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-				position: relative;
-				overflow: hidden;
-			}
-			
 			/* Header critical styles */
 			header {
 				position: fixed;
@@ -232,10 +203,9 @@ const finalStructuredData = structuredData || defaultStructuredData;
 				z-index: 50;
 				background: rgba(255, 255, 255, 0.95);
 				backdrop-filter: blur(10px);
-				transition: all 0.3s ease;
 			}
 			
-			/* Skip links MEJORADOS para accesibilidad */
+			/* ♿ Skip links MEJORADOS para accesibilidad */
 			.skip-links { 
 				position: fixed; 
 				top: 0; 
@@ -339,14 +309,17 @@ const finalStructuredData = structuredData || defaultStructuredData;
 			.pixel-notification.notification-success { background: linear-gradient(135deg, #22c55e, #16a34a); }
 			.pixel-notification.notification-error { background: linear-gradient(135deg, #ef4444, #dc2626); }
 			
-			/* Mensajes de éxito */
-			.success-message .bg-green-50 {
-				background-color: rgba(16, 185, 129, 0.1);
-				border: 1px solid rgba(16, 185, 129, 0.3);
-				color: #065f46;
-				padding: 1rem;
-				border-radius: 0.5rem;
-				margin-bottom: 1rem;
+			/* Screen reader only utility */
+			.sr-only {
+				position: absolute;
+				width: 1px;
+				height: 1px;
+				padding: 0;
+				margin: -1px;
+				overflow: hidden;
+				clip: rect(0, 0, 0, 0);
+				white-space: nowrap;
+				border: 0;
 			}
 			
 			/* Responsive optimizations */
@@ -362,23 +335,16 @@ const finalStructuredData = structuredData || defaultStructuredData;
 				.pixel-notification.show {
 					transform: translateY(0);
 				}
+				
+				.skip-link {
+					padding: 6px 10px;
+					font-size: 13px;
+				}
 			}
 		</style>
 		
-		<!-- 🔧 Scripts externos esenciales -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-		
 		<!-- 📊 Structured Data -->
 		<script type="application/ld+json" set:html={JSON.stringify(finalStructuredData)}></script>
-		
-		<!-- 📱 Web App Manifest -->
-		<link rel="manifest" href="/manifest.json" />
-		
-		<!-- 🔒 Security headers via meta -->
-		<meta http-equiv="X-Content-Type-Options" content="nosniff" />
-		<meta http-equiv="X-Frame-Options" content="DENY" />
-		<meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-		<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 		
 		<!-- ⚡ Performance hints -->
 		<meta http-equiv="x-dns-prefetch-control" content="on" />
@@ -423,129 +389,85 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		<!-- 📢 Live region para anuncios de screen reader -->
 		<div id="live-region" aria-live="polite" aria-atomic="true" class="sr-only"></div>
 		
-		<!-- 🚀 INICIALIZACIÓN OPTIMIZADA -->
+		<!-- 🚀 INICIALIZACIÓN SIMPLIFICADA Y SEGURA -->
 		<script is:inline>
-			// Inicialización optimizada con error handling
+			// Inicialización con error handling robusto
 			document.addEventListener('DOMContentLoaded', () => {
 				const initStart = performance.now();
 				
 				try {
-					// Verificar que el sistema unificado esté disponible
+					console.log('✅ Pixel Living: Iniciando sistema...');
+					
+					// Verificar elementos básicos
+					const forms = document.querySelectorAll('form');
+					const images = document.querySelectorAll('img');
+					const buttons = document.querySelectorAll('button');
+					
+					console.log('📊 Elementos encontrados:', {
+						formularios: forms.length,
+						imágenes: images.length,
+						botones: buttons.length
+					});
+					
+					// Verificar si existe el sistema de formularios
 					if (typeof window.PIXEL_FORM_UNIFIED_LOADED !== 'undefined' && window.PIXEL_FORM_UNIFIED_LOADED) {
-						const initTime = Math.round(performance.now() - initStart);
-						console.log(`✅ Pixel Living: Sistema inicializado en ${initTime}ms`);
+						console.log('✅ Sistema de formularios cargado');
 						
-						// Debug info (solo en desarrollo)
-						if (location.hostname === 'localhost' || location.hostname.includes('vercel.app')) {
-							console.log('🔧 Debug Info:', {
-								config: !!window.PIXEL_CONFIG,
-								unified: !!window.PIXEL_FORM_UNIFIED,
-								forms: document.querySelectorAll('form[data-form-type]').length
-							});
-						}
-						
-						// Test contador de caracteres
+						// Test contador de caracteres si existe
 						const textarea = document.querySelector('textarea');
-						if (textarea && window.PIXEL_FORM_UNIFIED) {
+						if (textarea && window.PIXEL_FORM_UNIFIED && window.PIXEL_FORM_UNIFIED.updateCharacterCounter) {
 							window.PIXEL_FORM_UNIFIED.updateCharacterCounter(textarea);
 						}
 					} else {
-						console.warn('⚠️ Sistema de formularios no cargado');
+						console.log('ℹ️ Sistema de formularios no disponible (normal en algunas páginas)');
 					}
+					
+					const initTime = Math.round(performance.now() - initStart);
+					console.log(`✅ Pixel Living: Sistema inicializado en ${initTime}ms`);
+					
 				} catch (error) {
 					console.error('❌ Error en inicialización:', error);
 				}
 			});
 			
 			// Mejorar skip links con indicador visual
-			document.querySelectorAll('.skip-link').forEach(link => {
-				link.addEventListener('focus', function() {
-					document.body.classList.add('skip-link-focused');
+			try {
+				document.querySelectorAll('.skip-link').forEach(link => {
+					link.addEventListener('focus', function() {
+						document.body.classList.add('skip-link-focused');
+					});
+					
+					link.addEventListener('blur', function() {
+						document.body.classList.remove('skip-link-focused');
+					});
 				});
-				
-				link.addEventListener('blur', function() {
-					document.body.classList.remove('skip-link-focused');
-				});
-			});
-		</script>
-		
-		<!-- 🔧 Service Worker registration -->
-		<script is:inline>
-			// Register service worker for offline functionality
-			if ('serviceWorker' in navigator) {
-				window.addEventListener('load', () => {
-					navigator.serviceWorker.register('/sw.js')
-						.then(registration => {
-							console.log('✅ SW registered: ', registration);
-						})
-						.catch(registrationError => {
-							console.log('❌ SW registration failed: ', registrationError);
-						});
-				});
+			} catch (error) {
+				console.warn('⚠️ Error configurando skip links:', error);
 			}
 		</script>
 		
-		<!-- 🛡️ Error boundary global -->
+		<!-- 🛡️ Error boundary global MEJORADO -->
 		<script is:inline>
 			// Global error handler mejorado
 			window.addEventListener('error', (e) => {
-				console.error('Global error:', e.error);
-				// No enviar a analytics en desarrollo
-				if (!location.hostname.includes('localhost')) {
-					// Aquí podrías enviar errores a tu servicio de analytics
-				}
+				console.error('Global error:', {
+					message: e.message,
+					filename: e.filename,
+					line: e.lineno,
+					column: e.colno,
+					error: e.error
+				});
 			});
 			
 			window.addEventListener('unhandledrejection', (e) => {
 				console.error('Unhandled promise rejection:', e.reason);
 			});
 		</script>
-		
-		<!-- 📊 Cargar scripts no críticos después del LCP -->
-		<script is:inline>
-			// Optimización de carga de scripts no críticos
-			function loadNonCriticalScripts() {
-				const scripts = [
-					'/scripts/pixel-accessibility-manager.js',
-					'/scripts/pixel-image-manager.js'
-				];
-				
-				scripts.forEach(src => {
-					const script = document.createElement('script');
-					script.src = src;
-					script.async = true;
-					script.onerror = () => console.warn(`⚠️ No se pudo cargar: ${src}`);
-					document.body.appendChild(script);
-				});
-			}
-			
-			// Ejecutar después de que la página esté interactiva
-			if (document.readyState === 'complete') {
-				setTimeout(loadNonCriticalScripts, 1000);
-			} else {
-				window.addEventListener('load', () => {
-					setTimeout(loadNonCriticalScripts, 1000);
-				});
-			}
-		</script>
 	</body>
 </html>
 
 <!-- 🎨 ESTILOS ADICIONALES -->
 <style>
-	/* Screen reader only utility */
-	.sr-only {
-		position: absolute;
-		width: 1px;
-		height: 1px;
-		padding: 0;
-		margin: -1px;
-		overflow: hidden;
-		clip: rect(0, 0, 0, 0);
-		white-space: nowrap;
-		border: 0;
-	}
-	
 	/* Focus management mejorado */
 	.keyboard-navigation *:focus,
 	*:focus-visible {
@@ -611,14 +533,6 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		}
 	}
 	
-	/* 📱 Responsive design enhancements */
-	@media (max-width: 768px) {
-		.skip-link {
-			padding: 6px 10px;
-			font-size: 13px;
-		}
-	}
-	
 	/* 🎭 Animations con respeto a prefers-reduced-motion */
 	@media (prefers-reduced-motion: reduce) {
 		*,
@@ -632,10 +546,5 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		.skip-link {
 			transition: none;
 		}
-	}
-	
-	/* 🌙 Dark mode support preparado */
-	@media (prefers-color-scheme: dark) {
-		/* Estilos para dark mode cuando se implemente */
 	}
 </style>
