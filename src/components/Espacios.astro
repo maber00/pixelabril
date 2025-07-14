@@ -416,23 +416,29 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
         </div>
         
         <!-- Indicadores -->
-        <div class="flex justify-center pb-8 space-x-2" id="carousel-indicators" role="group" aria-label="Indicadores de carrusel">
-          {estudios.map((_, index) => (
-            <button 
-              class="w-4 h-4 bg-gray-200 focus:outline-none transition-colors duration-300 rounded-sm border border-pixel-blue hover:scale-110 focus:scale-110" 
-              data-index={index}
-              aria-label={`Ir a apartaestudio ${index + 1}`}
-              role="tab"
-              aria-selected={index === 0 ? 'true' : 'false'}
-              tabindex={index === 0 ? 0 : -1}
-            ></button>
-          ))}
-        </div>
-      </div>
+        <div class="flex justify-center pb-8" id="carousel-indicators">
+  <div class="flex space-x-2" role="tablist" aria-label="Navegación de apartaestudios">
+    {estudios.map((_, index) => (
+      <button 
+        class="w-4 h-4 bg-gray-200 focus:outline-none transition-colors duration-300 rounded-sm border border-pixel-blue hover:scale-110 focus:scale-110 focus:ring-2 focus:ring-pixel-blue focus:ring-offset-2" 
+        data-index={index}
+        role="tab"
+        aria-label={`Ver apartaestudio ${index + 1} de ${estudios.length}`}
+        aria-selected={index === 0 ? 'true' : 'false'}
+        aria-controls={`estudio-${index}`}
+        tabindex={index === 0 ? '0' : '-1'}
+        id={`tab-${index}`}
+        data-astro-cid-wjo5qhow=""
+      >
+        <span class="sr-only">Apartaestudio {index + 1}</span>
+      </button>
+    ))}
+  </div>
+</div>
     </div>
     
     <!-- Características -->
-    <div class="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto mt-16 border-2 border-pixel-blue">
+    <div class="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto mt-2 mb-16 border-2 border-pixel-blue">
       <h3 class="text-4xl font-normal mb-6 text-center text-pixel-blue">Características de nuestros espacios</h3>
       
       <div class="grid grid-cols-2 md:grid-cols-3 gap-6" role="list">
