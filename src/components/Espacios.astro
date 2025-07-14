@@ -250,9 +250,9 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
       </h2>
       
       <!-- Mejora del copy según auditoría -->
-      <div class="text-xl font-normal text-blue-900 max-w-5xl pb-6 px-4 mx-auto mt-6">
+      <div class="text-lg md:text-xl font-normal text-white max-w-5xl pb-6 px-4 mx-auto mt-6">
         <p class="mb-4">
-          En Pixel Living, cada apartaestudio tiene <strong class="text-white">29 metros cuadrados</strong> y está diseñado para brindarte máxima comodidad, privacidad y flexibilidad, en el coliving más flexible y completo del norte de Bogotá.
+          En Pixel Living, cada apartaestudio tiene <strong class="text-blue-900">29 metros cuadrados</strong> y está diseñado para brindarte máxima comodidad, privacidad y flexibilidad, en el coliving más flexible y completo del norte de Bogotá.
         </p>
         
         <!-- Destacar beneficios clave según auditoría -->
@@ -273,7 +273,7 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
       </div>
 
        <!-- Mensaje final optimizado -->
-      <p class="text-blue-900 text-xl pb-8 px-4 max-w-3xl mx-auto font-normal">
+      <p class="text-white text-lg md:text-xl  pb-4 px-4 max-w-3xl mx-auto font-normal">
         Elige vivir fácil, sin trámites, sin codeudor y con la libertad que solo te da Pixel Living.
       </p>
     </div>
@@ -438,7 +438,8 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
     </div>
     
     <!-- Características -->
-    <div class="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto mt-2 mb-16 border-2 border-pixel-blue">
+     <div class="mx-4">
+    <div class="bg-white  rounded-lg shadow-lg p-4 md:p-10 max-w-4xl  mt-2 mb-16 border-2 mx-auto  border-pixel-blue">
       <h3 class="text-4xl font-normal mb-6 text-center text-pixel-blue">Características de nuestros espacios</h3>
       
       <div class="grid grid-cols-2 md:grid-cols-3 gap-6" role="list">
@@ -452,7 +453,7 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
               />
             </div>
             <div>
-              <p class="font-medium">{item.texto}</p>
+              <p class="font-normal text-sm md:text-lg ">{item.texto}</p>
             </div>
           </div>
         ))}
@@ -471,6 +472,7 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
         </a>
         <p id="reservas-cta-desc" class="sr-only">Ir a la sección de reservas para solicitar disponibilidad de apartaestudios</p>
       </div>
+    </div>
     </div>
     
     <!-- Importar el componente de lightbox responsivo -->
