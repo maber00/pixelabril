@@ -4,9 +4,9 @@
 // Importar imágenes para las zonas comunes
 import coworkingImg from '../assets/coworking/rooftoop.webp'; // Agrega tu imagen
 import rooftopImg from '../assets/pixel-terraza-hero-2.webp'; // Ya disponible
-import gymImg from '../assets/pet2.jpg'; // Agrega tu imagen
-import petZoneImg from '../assets/gym/gym.webp'; // Agrega tu imagen
-import bikeImg from '../assets/pixel-parking-001.webp'; // Agrega tu imagen
+import gymImg from '../assets/zona-ejercicio.webp'; // Agrega tu imagen
+import petZoneImg from '../assets/pet-zone.webp'; // Agrega tu imagen
+import bikeImg from '../assets/bici-parking.webp'; // Agrega tu imagen
 import eventsImg from '../assets/pixel-cowork-001.webp'; // Ya disponible
 
 // Amenidades según el documento del cliente
@@ -109,106 +109,9 @@ const amenidades = [
       ))}
     </div>
     
-    <!-- Galería adicional de zonas comunes -->
-    <div class="mb-16 mx-0 md:mx-20">
-      <h3 class="text-4xl font-normal text-center mb-8 text-gray-900 cal-sans">
-        Explora nuestros espacios
-      </h3>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="relative h-48 rounded-lg overflow-hidden group">
-          <img 
-            src={rooftopImg.src} 
-            alt="Terraza Pixel Pixel Living con vista al norte de Bogotá "
-            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end">
-            <p class="text-white font-semibold p-4">Terraza con vista al norte</p>
-          </div>
-        </div>
-        
-        <div class="relative h-48 rounded-lg overflow-hidden group">
-          <img 
-            src={eventsImg.src} 
-            alt="Comunidad Pixel Living"
-            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end">
-            <p class="text-white font-semibold p-4">Eventos de comunidad</p>
-          </div>
-        </div>
-        
-        <div class="relative h-48 rounded-lg overflow-hidden group">
-          <img 
-            src={coworkingImg.src} 
-            alt="Coworking Pixel Living"
-            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end">
-            <p class="text-white font-semibold p-4">Espacios de trabajo</p>
-          </div>
-        </div>
-      </div>
-    </div>
+   
     
-    <!-- Sección destacada -->
-    <div class="bg-white rounded-2xl shadow-xl md:mx-20 mx-0 p-8 md:p-12 border-2 border-pixel-orange">
-      <div class="text-center">
-        <h3 class="text-4xl md:text-4xl font-normal mb-6 text-gray-900 cal-sans">
-          Aquí, la <span class="">vida en comunidad</span> es real
-        </h3>
-        <p class="text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
-          Crece tu red, haz amigos y disfruta experiencias únicas cada semana.<br>
-          <strong>Pixel Living es el coliving Bogotá que te da más.</strong>
-        </p>
-        
-        <!-- Beneficios destacados -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-          <div class="flex flex-col items-center">
-            <div class="w-16 h-16 bg-pixel-orange/10 rounded-full flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-pixel-orange">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-              </svg>
-            </div>
-            <h4 class="text-2xl font-regular text-gray-900 mb-2">Networking Real</h4>
-            <p class="text-gray-600 text-center">Conecta con profesionales, emprendedores y creativos</p>
-          </div>
-          
-          <div class="flex flex-col items-center">
-            <div class="w-16 h-16 bg-pixel-orange/10 rounded-full flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-pixel-orange">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
-              </svg>
-            </div>
-            <h4 class="text-2xl font-regular text-gray-900 mb-2">Ambiente Positivo</h4>
-            <p class="text-gray-600 text-center">Espacios diseñados para el bienestar y la productividad</p>
-          </div>
-          
-          <div class="flex flex-col items-center">
-            <div class="w-16 h-16 bg-pixel-orange/10 rounded-full flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-pixel-orange">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-              </svg>
-            </div>
-            <h4 class="text-2xl font-regular text-gray-900 mb-2">Experiencias Únicas</h4>
-            <p class="text-gray-600 text-center">Eventos, actividades y momentos especiales cada semana</p>
-          </div>
-        </div>
-        
-        <!-- CTA -->
-        <div class="mt-12">
-          <a 
-            href="#reservas" 
-            class="btn bg-pixel-orange hover:bg-orange-600 text-orange-950 inline-flex items-center px-8 py-4 text-2xl pixel-hover"
-          >
-            Conoce nuestras zonas comunes en persona
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ml-2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
+   
   </div>
 </section>
 

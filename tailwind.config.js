@@ -10,9 +10,9 @@ module.exports = {
       colors: {
         'pixel-yellow': '#FFCC33', // 🟨
         'pixel-orange': '#FF9933', // 🟧
-        'pixel-blue': '#3399FF',   // 🟦
+        'pixel-blue': '#004099',   // 🟦
         'pixel-purple': '#9966CC', // 🟪
-        'pixel-brown': '#996633',  // 🟫
+        'pixel-brown': '#009185',  // 🟫
         'pixel-green': '#33CC66',  // 🟩
       },
     },

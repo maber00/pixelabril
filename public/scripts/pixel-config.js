@@ -81,9 +81,9 @@ window.PIXEL_CONFIG = {
     colors: {
       yellow: '#FFCC33',
       orange: '#FF9933', 
-      blue: '#3399FF',
+      blue: '#004099',
       purple: '#9966CC',
-      brown: '#996633',
+      brown: '#009185',
       green: '#33CC66'
     },
     
