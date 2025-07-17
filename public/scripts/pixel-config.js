@@ -132,8 +132,7 @@ window.PIXEL_CONFIG = {
     
     // Redes sociales
     social: {
-      instagram: 'https://instagram.com/pixelliving',
-      facebook: 'https://facebook.com/pixelliving',
+      instagram: 'https://instagram.com/pixelliving.co',
       whatsapp: null // Se genera automáticamente
     }
   }

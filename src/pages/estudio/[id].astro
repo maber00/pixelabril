@@ -1303,10 +1303,14 @@ ${datos.expectativas}
                     formData.append('_template', 'table');
                     formData.append('_captcha', 'false');
                     
-const response = await fetch('https://formsubmit.co/comercialpixel98a@gmail.com', {
+const response = await fetch('https://formsubmit.co/info@pixelliving.co', {
                         method: 'POST',
                         body: formData
                     });
+
+          formData.append('_subject', 'Nueva consulta - Pixel Living');
+          formData.append('_template', 'table');
+          formData.append('_captcha', 'false');
                     
                     console.log(response.ok ? '✅ Email enviado' : '⚠️ Error en email');
                 } catch (error) {

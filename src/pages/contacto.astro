@@ -30,7 +30,7 @@ const contactInfo = [
     icono: 'M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z',
     titulo: 'Instagram',
     texto: '@pixelliving',
-    link: 'https://instagram.com/pixelliving',
+    link: 'https://instagram.com/pixelliving.co',
     linkTexto: 'Síguenos'
   }
 ];
@@ -491,10 +491,14 @@ const mapConfig = {
         formData.append('_captcha', 'false');
         
         // Enviar email a través de FormSubmit
-const response = await fetch('https://formsubmit.co/comercialpixel98a@gmail.com', {
+const response = await fetch('https://formsubmit.co/info@pixelliving.co', {
           method: 'POST',
           body: formData
         });
+
+          formData.append('_subject', 'Nueva consulta - Pixel Living');
+          formData.append('_template', 'table');
+          formData.append('_captcha', 'false');
         
         if (response.ok) {
           // Éxito
