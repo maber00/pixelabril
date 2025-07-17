@@ -175,7 +175,10 @@
                   </span>
                 </label>
               </div>
-              
+              <div style="position: absolute; left: -9999px; visibility: hidden;" aria-hidden="true">
+                <input type="text" name="website_url" id="website_url" value="" 
+                      tabindex="-1" autocomplete="nope" />
+              </div>
               <button type="submit" class="w-full btn bg-pixel-brown hover:bg-brown-600 text-white py-4 px-6 rounded-md font-semibold text-lg transition-colors">
                 🎯 ¡Quiero vivir en Pixel Living!
               </button>
@@ -269,24 +272,54 @@
 </section>
 
 <script>
+// ===== FORMULARIO DE RESERVAS OPTIMIZADO =====
+// Sin duplicaciones, honeypot mejorado, validaciones completas
+
 document.addEventListener('DOMContentLoaded', function() {
   console.log('🚀 Inicializando formulario de reservas optimizado...');
   
-  const form = document.getElementById('reservaForm') as HTMLFormElement | null;
-  const messageContainer = document.getElementById('message-container') as HTMLElement | null;
-  const contadorCaracteres = document.getElementById('contador-caracteres') as HTMLElement | null;
-  const mensajeField = document.getElementById('mensaje') as HTMLTextAreaElement | null;
+  // ===== CONFIGURACIÓN CENTRALIZADA =====
+  const CONFIG = {
+    EMAIL_DESTINO: 'comercialpixel98a@gmail.com', // ✅ EMAIL ÚNICO
+    WHATSAPP_NUMERO: '573195895858',
+    MAX_CARACTERES_MENSAJE: 500,
+    TIEMPO_MINIMO_ENVIO: 3000, // 3 segundos anti-bot
+    REDIRECT_DELAY: 2000
+  };
   
-  if (!form || !messageContainer) {
-    console.error('❌ Elementos del formulario no encontrados');
+  // ===== ELEMENTOS DEL DOM (UNA SOLA VEZ) =====
+  const elementos = {
+    form: document.getElementById('reservaForm') as HTMLFormElement,
+    messageContainer: document.getElementById('message-container') as HTMLElement,
+    contadorCaracteres: document.getElementById('contador-caracteres') as HTMLElement,
+    mensajeField: document.getElementById('mensaje') as HTMLTextAreaElement,
+    submitButton: null as HTMLButtonElement | null,
+    // Campos del formulario
+    campos: {
+      nombre: document.getElementById('nombre') as HTMLInputElement,
+      email: document.getElementById('email') as HTMLInputElement,
+      telefono: document.getElementById('telefono') as HTMLInputElement,
+      duracion: document.getElementById('duracion') as HTMLSelectElement,
+      fecha: document.getElementById('fecha') as HTMLInputElement,
+      personas: document.getElementById('personas') as HTMLSelectElement,
+      como_conociste: document.getElementById('como_conociste') as HTMLSelectElement,
+      mensaje: document.getElementById('mensaje') as HTMLTextAreaElement,
+      honeypot: document.getElementById('website_url') as HTMLInputElement,
+      acepta_contacto: document.querySelector('input[name="acepta_contacto"]') as HTMLInputElement
+    }
+  };
+  
+  // ===== VALIDAR ELEMENTOS CRÍTICOS =====
+  if (!elementos.form || !elementos.messageContainer) {
+    console.error('❌ Elementos críticos del formulario no encontrados');
     return;
   }
   
-  const campos = form.querySelectorAll('input[required], select[required], textarea[required]') as NodeListOf<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
+  elementos.submitButton = elementos.form.querySelector('button[type="submit"]') as HTMLButtonElement;
+  const camposRequeridos = elementos.form.querySelectorAll('input[required], select[required]');
   
   // ===== INTERFACES PARA TYPE SAFETY =====
-  
-  interface FormData {
+  interface DatosFormulario {
     nombre: string;
     email: string;
     telefono: string;
@@ -297,251 +330,258 @@ document.addEventListener('DOMContentLoaded', function() {
     mensaje: string;
   }
   
-  type MessageType = 'success' | 'error' | 'loading';
+  type TipoMensaje = 'success' | 'error' | 'loading';
   
-  // ===== FUNCIONES DE UTILIDAD =====
-  
-  function mostrarMensaje(tipo: MessageType, mensaje: string): void {
-    if (!messageContainer) return;
+  // ===== VALIDACIONES ANTI-SPAM MEJORADAS =====
+  class ValidadorAntiSpam {
+    private static tiempoInicioFormulario = Date.now();
     
-    const iconos: Record<MessageType, string> = {
-      success: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>`,
-      error: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-      </svg>`,
-      loading: `<svg class="animate-spin h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-      </svg>`
-    };
-    
-    const colores: Record<MessageType, string> = {
-      success: 'bg-green-50 text-green-800 border-green-200',
-      error: 'bg-red-50 text-red-800 border-red-200',
-      loading: 'bg-blue-50 text-blue-800 border-blue-200'
-    };
-    
-    messageContainer.innerHTML = `
-      <div class="flex items-center gap-3 p-4 rounded-lg border ${colores[tipo]}">
-        ${iconos[tipo]}
-        <span>${mensaje}</span>
-      </div>
-    `;
-    
-    messageContainer.classList.remove('hidden');
-    
-    if (tipo === 'success') {
-      setTimeout(() => {
-        messageContainer.classList.add('hidden');
-      }, 3000);
-    }
-  }
-  
-  // ===== VALIDACIONES =====
-  
-  function validarNombre(valor: string): string | null {
-    const nombre = valor.trim();
-    if (nombre.length < 2) return 'El nombre debe tener al menos 2 caracteres';
-    if (nombre.length > 50) return 'El nombre no puede exceder 50 caracteres';
-    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombre)) return 'Solo se permiten letras y espacios';
-    return null;
-  }
-  
-  function validarEmail(valor: string): string | null {
-    const email = valor.trim();
-    if (!email) return 'El email es obligatorio';
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Email inválido';
-    return null;
-  }
-  
-  function validarTelefono(valor: string): string | null {
-    const telefono = valor.trim();
-    if (!telefono) return 'El teléfono es obligatorio';
-    if (!/^[0-9+\-\s()]+$/.test(telefono)) return 'Solo números y caracteres de teléfono';
-    if (telefono.replace(/\D/g, '').length < 7) return 'Mínimo 7 dígitos';
-    return null;
-  }
-  
-  function validarFecha(valor: string): string | null {
-    if (!valor) return 'Por favor selecciona una fecha';
-    const fecha = new Date(valor);
-    const hoy = new Date();
-    hoy.setHours(0, 0, 0, 0);
-    if (fecha < hoy) return 'La fecha no puede ser en el pasado';
-    return null;
-  }
-  
-  function validarSelect(valor: string, nombre: string): string | null {
-    if (!valor) return `Por favor selecciona ${nombre}`;
-    return null;
-  }
-  
-  function mostrarError(campo: HTMLElement, mensaje: string): void {
-    campo.classList.add('border-red-500');
-    campo.classList.remove('border-gray-300');
-    
-    const errorDiv = document.getElementById(`${campo.id}-error`);
-    if (errorDiv) {
-      errorDiv.textContent = mensaje;
-      errorDiv.classList.remove('hidden');
-    }
-  }
-  
-  function limpiarError(campo: HTMLElement): void {
-    campo.classList.remove('border-red-500');
-    campo.classList.add('border-gray-300');
-    
-    const errorDiv = document.getElementById(`${campo.id}-error`);
-    if (errorDiv) {
-      errorDiv.classList.add('hidden');
-    }
-  }
-  
-  function validarCampo(campo: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement): boolean {
-    let error: string | null = null;
-    
-    switch (campo.id) {
-      case 'nombre':
-        error = validarNombre(campo.value);
-        break;
-      case 'email':
-        error = validarEmail(campo.value);
-        break;
-      case 'telefono':
-        error = validarTelefono(campo.value);
-        break;
-      case 'fecha':
-        error = validarFecha(campo.value);
-        break;
-      case 'duracion':
-        error = validarSelect(campo.value, 'la duración');
-        break;
-      case 'personas':
-        error = validarSelect(campo.value, 'número de personas');
-        break;
-    }
-    
-    if (error) {
-      mostrarError(campo, error);
-      return false;
-    } else {
-      limpiarError(campo);
+    // 1. Validar honeypot
+    static validarHoneypot(): boolean {
+      const honeypotValue = elementos.campos.honeypot?.value?.trim() || '';
+      
+      if (honeypotValue !== '') {
+        console.log('🚫 Spam detectado - honeypot lleno:', honeypotValue);
+        return false;
+      }
+      
       return true;
     }
+    
+    // 2. Validar tiempo de envío (anti-bot)
+    static validarTiempo(): boolean {
+      const tiempoTranscurrido = Date.now() - this.tiempoInicioFormulario;
+      
+      if (tiempoTranscurrido < CONFIG.TIEMPO_MINIMO_ENVIO) {
+        console.log('🚫 Spam detectado - envío muy rápido:', tiempoTranscurrido + 'ms');
+        return false;
+      }
+      
+      return true;
+    }
+    
+    // 3. Validar patrones sospechosos
+    static validarPatrones(datos: DatosFormulario): boolean {
+      const textoCompleto = `${datos.nombre} ${datos.email} ${datos.mensaje}`.toLowerCase();
+      
+      // Patrones sospechosos comunes - SOLO RegExp
+      const patronesSpam: RegExp[] = [
+        /\b(viagra|cialis|casino|loan|credit|bitcoin|crypto)\b/i,
+        /\b(click here|visit now|buy now|limited time)\b/i,
+        /http[s]?:\/\//i // URLs en nombre o mensaje
+      ];
+      
+      // Validar caracteres extraños en email por separado
+      const emailInvalido = /[^\w\s@.-]/.test(datos.email);
+      
+      const esSpam = patronesSpam.some(patron => patron.test(textoCompleto)) || emailInvalido;
+      
+      if (esSpam) {
+        console.log('🚫 Spam detectado - patrones sospechosos');
+        return false;
+      }
+      
+      return true;
+    }
+    
+    // 4. Validación completa
+    static validarCompleto(datos: DatosFormulario): boolean {
+      return (
+        this.validarHoneypot() &&
+        this.validarTiempo() &&
+        this.validarPatrones(datos)
+      );
+    }
   }
   
-  // ===== EVENTOS =====
-  
-  campos.forEach(campo => {
-    campo.addEventListener('blur', () => {
-      validarCampo(campo);
-    });
-    
-    campo.addEventListener('input', () => {
-      if (campo.classList.contains('border-red-500')) {
-        limpiarError(campo);
-      }
-    });
-  });
-  
-  // Contador de caracteres
-  if (mensajeField && contadorCaracteres) {
-    mensajeField.addEventListener('input', () => {
-      const currentLength = mensajeField.value.length;
-      const maxLength = 500;
+  // ===== UTILIDADES DE MENSAJES =====
+  class MensajeManager {
+    static mostrar(tipo: TipoMensaje, mensaje: string): void {
+      if (!elementos.messageContainer) return;
       
-      contadorCaracteres.textContent = `${currentLength}/${maxLength} caracteres`;
-      
-      if (currentLength > maxLength * 0.9) {
-        contadorCaracteres.classList.add('text-yellow-600');
-        contadorCaracteres.classList.remove('text-gray-500');
-      } else if (currentLength > maxLength) {
-        contadorCaracteres.classList.add('text-red-600');
-        contadorCaracteres.classList.remove('text-yellow-600', 'text-gray-500');
-      } else {
-        contadorCaracteres.classList.add('text-gray-500');
-        contadorCaracteres.classList.remove('text-yellow-600', 'text-red-600');
-      }
-    });
-  }
-  
-  // ===== ENVÍO DEL FORMULARIO =====
-  
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    
-    if (messageContainer) {
-      messageContainer.classList.add('hidden');
-    }
-    
-    // Validar todos los campos
-    let todoValido = true;
-    let primerError: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | null = null;
-    
-    campos.forEach(campo => {
-      if (!validarCampo(campo)) {
-        todoValido = false;
-        if (!primerError) {
-          primerError = campo;
-        }
-      }
-    });
-    
-    if (!todoValido) {
-      mostrarMensaje('error', 'Por favor corrige los errores señalados');
-      if (primerError) {
-        // Type assertion para asegurar que tiene los métodos necesarios
-        (primerError as HTMLElement).focus();
-        (primerError as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-      return;
-    }
-    
-    const boton = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
-    if (!boton) {
-      console.error('❌ Botón de envío no encontrado');
-      return;
-    }
-    
-    const textoOriginal = boton.textContent || '';
-    
-    try {
-      boton.textContent = 'Enviando...';
-      boton.disabled = true;
-      mostrarMensaje('loading', 'Procesando tu solicitud...');
-      
-      // Recopilar datos con null checks
-      const nombreEl = form.querySelector('#nombre') as HTMLInputElement | null;
-      const emailEl = form.querySelector('#email') as HTMLInputElement | null;
-      const telefonoEl = form.querySelector('#telefono') as HTMLInputElement | null;
-      const duracionEl = form.querySelector('#duracion') as HTMLSelectElement | null;
-      const fechaEl = form.querySelector('#fecha') as HTMLInputElement | null;
-      const personasEl = form.querySelector('#personas') as HTMLSelectElement | null;
-      const comoConociste = form.querySelector('#como_conociste') as HTMLSelectElement | null;
-      const mensajeEl = form.querySelector('#mensaje') as HTMLTextAreaElement | null;
-      
-      if (!nombreEl || !emailEl || !telefonoEl || !duracionEl || !fechaEl || !personasEl || !comoConociste || !mensajeEl) {
-        throw new Error('Elementos del formulario no encontrados');
-      }
-      
-      const datos: FormData = {
-        nombre: nombreEl.value.trim(),
-        email: emailEl.value.trim(),
-        telefono: telefonoEl.value.trim(),
-        duracion: duracionEl.value,
-        fecha: fechaEl.value,
-        personas: personasEl.value,
-        como_conociste: comoConociste.value,
-        mensaje: mensajeEl.value.trim()
+      const iconos: Record<TipoMensaje, string> = {
+        success: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>`,
+        error: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+        </svg>`,
+        loading: `<svg class="animate-spin h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>`
       };
       
-      console.log('📋 Datos del formulario:', datos);
+      const colores: Record<TipoMensaje, string> = {
+        success: 'bg-green-50 text-green-800 border-green-200',
+        error: 'bg-red-50 text-red-800 border-red-200',
+        loading: 'bg-blue-50 text-blue-800 border-blue-200'
+      };
       
-      // Crear mensaje de WhatsApp
-      const mensajeWhatsApp = `🏠 *SOLICITUD RESERVA PIXEL LIVING*
+      elementos.messageContainer.innerHTML = `
+        <div class="flex items-center gap-3 p-4 rounded-lg border ${colores[tipo]}">
+          ${iconos[tipo]}
+          <span>${mensaje}</span>
+        </div>
+      `;
+      
+      elementos.messageContainer.classList.remove('hidden');
+      
+      if (tipo === 'success') {
+        setTimeout(() => {
+          elementos.messageContainer.classList.add('hidden');
+        }, 3000);
+      }
+    }
+    
+    static ocultar(): void {
+      elementos.messageContainer?.classList.add('hidden');
+    }
+  }
+  
+  // ===== VALIDADOR DE CAMPOS =====
+  class ValidadorCampos {
+    static validarNombre(valor: string): string | null {
+      const nombre = valor.trim();
+      if (nombre.length < 2) return 'El nombre debe tener al menos 2 caracteres';
+      if (nombre.length > 50) return 'El nombre no puede exceder 50 caracteres';
+      if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombre)) return 'Solo se permiten letras y espacios';
+      return null;
+    }
+    
+    static validarEmail(valor: string): string | null {
+      const email = valor.trim();
+      if (!email) return 'El email es obligatorio';
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Email inválido';
+      return null;
+    }
+    
+    static validarTelefono(valor: string): string | null {
+      const telefono = valor.trim();
+      if (!telefono) return 'El teléfono es obligatorio';
+      if (!/^[0-9+\-\s()]+$/.test(telefono)) return 'Solo números y caracteres de teléfono';
+      if (telefono.replace(/\D/g, '').length < 7) return 'Mínimo 7 dígitos';
+      return null;
+    }
+    
+    static validarFecha(valor: string): string | null {
+      if (!valor) return 'Por favor selecciona una fecha';
+      const fecha = new Date(valor);
+      const hoy = new Date();
+      hoy.setHours(0, 0, 0, 0);
+      if (fecha < hoy) return 'La fecha no puede ser en el pasado';
+      return null;
+    }
+    
+    static validarSelect(valor: string, nombre: string): string | null {
+      if (!valor) return `Por favor selecciona ${nombre}`;
+      return null;
+    }
+    
+    static validarCampo(campo: HTMLInputElement | HTMLSelectElement): boolean {
+      let error: string | null = null;
+      
+      switch (campo.id) {
+        case 'nombre':
+          error = this.validarNombre(campo.value);
+          break;
+        case 'email':
+          error = this.validarEmail(campo.value);
+          break;
+        case 'telefono':
+          error = this.validarTelefono(campo.value);
+          break;
+        case 'fecha':
+          error = this.validarFecha(campo.value);
+          break;
+        case 'duracion':
+          error = this.validarSelect(campo.value, 'la duración');
+          break;
+        case 'personas':
+          error = this.validarSelect(campo.value, 'número de personas');
+          break;
+      }
+      
+      if (error) {
+        this.mostrarError(campo, error);
+        return false;
+      } else {
+        this.limpiarError(campo);
+        return true;
+      }
+    }
+    
+    static mostrarError(campo: HTMLElement, mensaje: string): void {
+      campo.classList.add('border-red-500');
+      campo.classList.remove('border-gray-300');
+      
+      const errorDiv = document.getElementById(`${campo.id}-error`);
+      if (errorDiv) {
+        errorDiv.textContent = mensaje;
+        errorDiv.classList.remove('hidden');
+      }
+    }
+    
+    static limpiarError(campo: HTMLElement): void {
+      campo.classList.remove('border-red-500');
+      campo.classList.add('border-gray-300');
+      
+      const errorDiv = document.getElementById(`${campo.id}-error`);
+      if (errorDiv) {
+        errorDiv.classList.add('hidden');
+      }
+    }
+  }
+  
+  // ===== ENVÍO DE FORMULARIO =====
+  class EnviadorFormulario {
+    static async enviarEmail(datos: DatosFormulario): Promise<void> {
+      // ✅ VALIDACIÓN ANTI-SPAM COMPLETA
+      if (!ValidadorAntiSpam.validarCompleto(datos)) {
+        // Mostrar mensaje falso para confundir spam
+        MensajeManager.mostrar('success', '¡Solicitud enviada! Te contactaremos pronto.');
+        
+        // Pequeño delay para parecer real
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        return;
+      }
+      
+      // ✅ PREPARAR DATOS PARA FORMSUBMIT (UNA SOLA VEZ)
+      const formData = new FormData();
+      
+      // Datos del formulario
+      formData.append('Nombre_Completo', datos.nombre);
+      formData.append('Email_Contacto', datos.email);
+      formData.append('Teléfono', datos.telefono);
+      formData.append('Duración_Solicitada', datos.duracion);
+      formData.append('Fecha_de_Ingreso', datos.fecha || 'Por coordinar');
+      formData.append('Número_de_Personas', datos.personas);
+      formData.append('Conoció_Pixel_por', datos.como_conociste || 'No especificado');
+      formData.append('Mensaje_Adicional', datos.mensaje || 'Ninguno');
+      formData.append('Fecha_Envío', new Date().toLocaleString('es-CO'));
+      formData.append('Origen_Formulario', 'Formulario_Reservas_Principal');
+      
+      // Configuración FormSubmit
+      formData.append('_subject', `🏠 Nueva Reserva Pixel Living - ${datos.nombre}`);
+      formData.append('_template', 'table');
+      formData.append('_captcha', 'false');
+      formData.append('_next', 'https://pixelliving.co/gracias');
+      
+      // ✅ ENVIAR A EMAIL ÚNICO
+      const response = await fetch(`https://formsubmit.co/${CONFIG.EMAIL_DESTINO}`, {
+        method: 'POST',
+        body: formData
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+      
+      console.log('✅ Email enviado exitosamente a:', CONFIG.EMAIL_DESTINO);
+    }
+    
+    static crearMensajeWhatsApp(datos: DatosFormulario): string {
+      return `🏠 *SOLICITUD RESERVA PIXEL LIVING*
 
 👤 *DATOS PERSONALES:*
 - Nombre: ${datos.nombre}
@@ -558,82 +598,199 @@ document.addEventListener('DOMContentLoaded', function() {
 ${datos.mensaje || 'Ninguno'}
 
 ---
-📧 Solicitud enviada también por email
+📧 Email enviado exitosamente
 ⏰ ${new Date().toLocaleString('es-CO')}
 🌐 pixelliving.co`;
+    }
+    
+    // ✅ FUNCIÓN CONTROLADA PARA WHATSAPP - NO AUTOMÁTICA
+    static abrirWhatsAppControlado(mensaje: string, esEmergencia: boolean = false): void {
+      // Solo abrir si es emergencia O si el usuario confirma
+      if (esEmergencia) {
+        console.log('🚨 Abriendo WhatsApp de emergencia');
+        const whatsappURL = `https://wa.me/${CONFIG.WHATSAPP_NUMERO}?text=${encodeURIComponent(mensaje)}`;
+        window.open(whatsappURL, '_blank');
+      } else {
+        // Para envíos normales, mostrar confirmación
+        console.log('📱 WhatsApp programado - esperando confirmación del usuario');
+        setTimeout(() => {
+          if (confirm('¿Quieres abrir WhatsApp para continuar la conversación?')) {
+            const whatsappURL = `https://wa.me/${CONFIG.WHATSAPP_NUMERO}?text=${encodeURIComponent(mensaje)}`;
+            window.open(whatsappURL, '_blank');
+          }
+        }, 1000);
+      }
+    }
+  }
+  
+  // ===== INICIALIZACIÓN DE EVENTOS =====
+  
+  // ✅ PREVENIR ENVÍOS ACCIDENTALES
+  let formularioSubmitido = false;
+  
+  // Validación en tiempo real - SIN ENVÍO AUTOMÁTICO
+  camposRequeridos.forEach(campo => {
+    campo.addEventListener('blur', () => {
+      ValidadorCampos.validarCampo(campo as HTMLInputElement | HTMLSelectElement);
+    });
+    
+    campo.addEventListener('input', () => {
+      if (campo.classList.contains('border-red-500')) {
+        ValidadorCampos.limpiarError(campo as HTMLElement);
+      }
+    });
+    
+    // ✅ PREVENIR ENVÍO CON ENTER EN CAMPOS DE TEXTO
+    campo.addEventListener('keydown', (e: Event) => {
+      const keyboardEvent = e as KeyboardEvent;
+      if (keyboardEvent.key === 'Enter' && campo.tagName !== 'TEXTAREA' && campo.tagName !== 'SELECT') {
+        e.preventDefault();
+        console.log('⚠️ Enter bloqueado en campo de texto - usar botón submit');
+      }
+    });
+  });
+  
+  // Contador de caracteres - SIN TRIGGERS AUTOMÁTICOS
+  if (elementos.mensajeField && elementos.contadorCaracteres) {
+    elementos.mensajeField.addEventListener('input', () => {
+      const currentLength = elementos.mensajeField.value.length;
+      const maxLength = CONFIG.MAX_CARACTERES_MENSAJE;
       
-      // Abrir WhatsApp
-      const whatsappURL = `https://wa.me/573195895858?text=${encodeURIComponent(mensajeWhatsApp)}`;
-      window.open(whatsappURL, '_blank');
+      elementos.contadorCaracteres.textContent = `${currentLength}/${maxLength} caracteres`;
       
-      // Mostrar éxito y redirigir
-      mostrarMensaje('success', '¡Solicitud enviada! Redirigiendo...');
-      
-      // Enviar email en background
-      const enviarEmail = async (): Promise<void> => {
-        try {
-          const formData = new FormData();
-          formData.append('Nombre_Completo', datos.nombre);
-          formData.append('Email_Contacto', datos.email);
-          formData.append('Teléfono', datos.telefono);
-          formData.append('Duración_Solicitada', datos.duracion);
-          formData.append('Fecha_de_Ingreso', datos.fecha || 'Por coordinar');
-          formData.append('Número_de_Personas', datos.personas);
-          formData.append('Conoció_Pixel_por', datos.como_conociste || 'No especificado');
-          formData.append('Mensaje_Adicional', datos.mensaje || 'Ninguno');
-          formData.append('Fecha_Envío', new Date().toLocaleString('es-CO'));
-          formData.append('_subject', `🏠 Nueva Reserva Pixel Living - ${datos.nombre}`);
-          formData.append('_template', 'table');
-          formData.append('_captcha', 'false');
-          formData.append('_next', 'https://pixelliving.co/gracias');
-          
-const response = await fetch('https://formsubmit.co/info@pixelliving.co', {
-            method: 'POST',
-            body: formData
-          });
-
-          formData.append('_subject', 'Nueva consulta - Pixel Living');
-          formData.append('_template', 'table');
-          formData.append('_captcha', 'false');
-          
-          console.log(response.ok ? '✅ Email enviado' : '⚠️ Error en email');
-        } catch (error) {
-          console.error('⚠️ Error enviando email:', error);
+      if (currentLength > maxLength * 0.9) {
+        elementos.contadorCaracteres.classList.add('text-yellow-600');
+        elementos.contadorCaracteres.classList.remove('text-gray-500');
+      } else if (currentLength > maxLength) {
+        elementos.contadorCaracteres.classList.add('text-red-600');
+        elementos.contadorCaracteres.classList.remove('text-yellow-600', 'text-gray-500');
+      } else {
+        elementos.contadorCaracteres.classList.add('text-gray-500');
+        elementos.contadorCaracteres.classList.remove('text-yellow-600', 'text-red-600');
+      }
+    });
+  }
+  
+  // ===== ENVÍO DEL FORMULARIO - PROTEGIDO CONTRA MÚLTIPLES ENVÍOS =====
+  elementos.form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    
+    // ✅ PREVENIR MÚLTIPLES ENVÍOS
+    if (formularioSubmitido) {
+      console.log('⚠️ Formulario ya enviado, ignorando nuevo intento');
+      return;
+    }
+    
+    MensajeManager.ocultar();
+    
+    // ✅ VALIDAR TODOS LOS CAMPOS - CORREGIDO TIPOS
+    let todoValido = true;
+    let primerError: Element | null = null;
+    
+    // Convertir NodeList a Array y tipar correctamente
+    const camposArray = Array.from(camposRequeridos) as (HTMLInputElement | HTMLSelectElement)[];
+    
+    for (const campo of camposArray) {
+      if (!ValidadorCampos.validarCampo(campo)) {
+        todoValido = false;
+        if (!primerError) {
+          primerError = campo;
         }
+      }
+    }
+    
+    if (!todoValido && primerError) {
+      MensajeManager.mostrar('error', 'Por favor corrige los errores señalados');
+      
+      // Type guard para asegurar que es un elemento enfocable
+      if (primerError instanceof HTMLInputElement || primerError instanceof HTMLSelectElement) {
+        primerError.focus();
+        primerError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+    
+    // ✅ CONFIGURAR BOTÓN DE ENVÍO
+    if (!elementos.submitButton) {
+      console.error('❌ Botón de envío no encontrado');
+      return;
+    }
+    
+    const textoOriginal = elementos.submitButton.textContent || '';
+    
+    // ✅ PREVENIR ENVÍOS MÚLTIPLES
+    let enviandoFormulario = false;
+    
+    try {
+      // Verificar si ya se está enviando
+      if (enviandoFormulario) {
+        console.log('⚠️ Formulario ya se está enviando, ignorando click adicional');
+        return;
+      }
+      
+      enviandoFormulario = true;
+      elementos.submitButton.textContent = 'Enviando...';
+      elementos.submitButton.disabled = true;
+      MensajeManager.mostrar('loading', 'Procesando tu solicitud...');
+      
+      // ✅ RECOPILAR DATOS (SIN DUPLICACIÓN)
+      const datos: DatosFormulario = {
+        nombre: elementos.campos.nombre.value.trim(),
+        email: elementos.campos.email.value.trim(),
+        telefono: elementos.campos.telefono.value.trim(),
+        duracion: elementos.campos.duracion.value,
+        fecha: elementos.campos.fecha.value,
+        personas: elementos.campos.personas.value,
+        como_conociste: elementos.campos.como_conociste.value,
+        mensaje: elementos.campos.mensaje.value.trim()
       };
       
-      enviarEmail();
+      console.log('📋 Procesando datos:', datos);
       
-      // Redirigir a página de agradecimiento
+      // ✅ ENVIAR EMAIL (CON ANTI-SPAM)
+      await EnviadorFormulario.enviarEmail(datos);
+      
+      // ✅ MARCAR COMO ENVIADO
+      formularioSubmitido = true;
+      
+      // ✅ MOSTRAR ÉXITO PRIMERO
+      MensajeManager.mostrar('success', '¡Email enviado exitosamente! ¿Quieres continuar por WhatsApp?');
+      
+      // ✅ WHATSAPP CONTROLADO - CON CONFIRMACIÓN
+      const mensajeWhatsApp = EnviadorFormulario.crearMensajeWhatsApp(datos);
+      EnviadorFormulario.abrirWhatsAppControlado(mensajeWhatsApp, false);
+      
+      // ✅ REDIRIGIR DESPUÉS DE DELAY
       setTimeout(() => {
         window.location.href = '/gracias';
-      }, 2000);
+      }, CONFIG.REDIRECT_DELAY);
       
     } catch (error) {
-      console.error('❌ Error:', error);
-      mostrarMensaje('error', 'Error al enviar. Intenta nuevamente o usa WhatsApp directo.');
+      console.error('❌ Error en envío:', error);
+      MensajeManager.mostrar('error', 'Error al enviar email. ¿Quieres intentar por WhatsApp?');
       
-      // En caso de error, crear mensaje de emergencia con datos disponibles
-      let emergencyMsg = 'Solicitud Pixel Living - Error en formulario web.';
+      // ✅ SOLO EN EMERGENCIA - WHATSAPP AUTOMÁTICO
+      const emergencyMsg = `🚨 Solicitud Pixel Living - Error en formulario web
+
+- Nombre: ${elementos.campos.nombre.value || 'N/A'}
+- Email: ${elementos.campos.email.value || 'N/A'}
+- Teléfono: ${elementos.campos.telefono.value || 'N/A'}
+
+Por favor contactar urgente.`;
       
-      // Intentar obtener datos básicos si están disponibles
-      const nombreEl = form.querySelector('#nombre') as HTMLInputElement | null;
-      const emailEl = form.querySelector('#email') as HTMLInputElement | null;
-      const telefonoEl = form.querySelector('#telefono') as HTMLInputElement | null;
+      EnviadorFormulario.abrirWhatsAppControlado(emergencyMsg, true);
       
-      if (nombreEl?.value || emailEl?.value || telefonoEl?.value) {
-        emergencyMsg += ` Datos: ${nombreEl?.value || 'N/A'}, ${emailEl?.value || 'N/A'}, ${telefonoEl?.value || 'N/A'}`;
-      }
-      
-      window.open(`https://wa.me/573195895858?text=${encodeURIComponent(emergencyMsg)}`, '_blank');
     } finally {
-      if (boton) {
-        boton.textContent = textoOriginal;
-        boton.disabled = false;
-      }
+      enviandoFormulario = false;
+      elementos.submitButton.textContent = textoOriginal;
+      elementos.submitButton.disabled = false;
     }
   });
   
-  console.log('✅ Formulario de reservas optimizado configurado');
+  console.log('✅ Formulario optimizado configurado correctamente');
+  console.log('📧 Email destino:', CONFIG.EMAIL_DESTINO);
+  console.log('🔒 Anti-spam activado: honeypot + tiempo + patrones');
+  console.log('📱 WhatsApp controlado: confirmación requerida');
 });
 </script>

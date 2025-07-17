@@ -499,7 +499,10 @@ const lightboxData: LightboxData = {
                 <div id="contador-caracteres" class="mt-1 text-xs text-gray-500">0/500 caracteres</div>
                 <div id="expectativas-error" class="hidden text-red-600 text-sm mt-1"></div>
               </div>
-              
+              <div style="position: absolute; left: -9999px; visibility: hidden;" aria-hidden="true">
+                <input type="text" name="website_url" id="website_url_estudio" value="" 
+                      tabindex="-1" autocomplete="nope" />
+              </div>
               <button 
                 type="submit" 
                 class={`w-full btn ${colors.bg} ${colors.hover} text-white py-3 rounded-md font-medium transition-all duration-300`}
@@ -568,8 +571,80 @@ window.lightboxData = undefined; // Se define más abajo
 
 <!-- Script del formulario y lightbox -->
 <script define:vars={{ lightboxData, estudioId: estudio.id, estudioNombre: estudio.nombre }}>
+// ===== SCRIPT CORREGIDO PARA [id].astro =====
+// Solo agregando honeypot + anti-spam + arreglando duplicaciones
+
+/* 
+===============================
+1. AGREGAR HONEYPOT AL HTML (ANTES DEL BOTÓN SUBMIT)
+===============================
+*/
+/*
+<!-- HONEYPOT - AGREGAR ANTES DEL BOTÓN SUBMIT -->
+<div style="position: absolute; left: -9999px; visibility: hidden;" aria-hidden="true">
+  <input type="text" name="website_url" id="website_url_estudio" value="" 
+        tabindex="-1" autocomplete="nope" />
+</div>
+*/
+
+/* 
+===============================
+2. SCRIPT JAVASCRIPT CORREGIDO
+===============================
+Reemplazar el script actual por este:
+*/
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 Inicializando página de estudio:', estudioNombre);
+    
+    // ===== CONFIGURACIÓN ANTI-SPAM =====
+    const TIEMPO_INICIO = Date.now();
+    const TIEMPO_MINIMO_ENVIO = 3000; // 3 segundos anti-bot
+    let formularioEnviado = false;
+    
+    // ===== VALIDADOR ANTI-SPAM =====
+    function validarHoneypot() {
+        const honeypotField = document.getElementById('website_url_estudio');
+        const honeypotValue = honeypotField ? honeypotField.value.trim() : '';
+        
+        if (honeypotValue !== '') {
+            console.log('🚫 Spam detectado - honeypot lleno:', honeypotValue);
+            return false;
+        }
+        return true;
+    }
+    
+    function validarTiempo() {
+        const tiempoTranscurrido = Date.now() - TIEMPO_INICIO;
+        if (tiempoTranscurrido < TIEMPO_MINIMO_ENVIO) {
+            console.log('🚫 Spam detectado - envío muy rápido:', tiempoTranscurrido + 'ms');
+            return false;
+        }
+        return true;
+    }
+    
+    function validarPatrones(datos) {
+        const textoCompleto = `${datos.nombre} ${datos.email} ${datos.expectativas}`.toLowerCase();
+        
+        const patronesSpam = [
+            /\b(viagra|cialis|casino|loan|credit|bitcoin|crypto)\b/i,
+            /\b(click here|visit now|buy now|limited time)\b/i,
+            /http[s]?:\/\//i
+        ];
+        
+        const emailInvalido = /[^\w\s@.-]/.test(datos.email);
+        const esSpam = patronesSpam.some(patron => patron.test(textoCompleto)) || emailInvalido;
+        
+        if (esSpam) {
+            console.log('🚫 Spam detectado - patrones sospechosos');
+            return false;
+        }
+        return true;
+    }
+    
+    function validarAntiSpam(datos) {
+        return validarHoneypot() && validarTiempo() && validarPatrones(datos);
+    }
     
     // ===== HACER LIGHTBOX DATA DISPONIBLE GLOBALMENTE =====
     window.lightboxData = lightboxData || {};
@@ -1203,10 +1278,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // ===== ENVÍO DEL FORMULARIO =====
+    // ===== ENVÍO DEL FORMULARIO CON ANTI-SPAM =====
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
         e.stopImmediatePropagation();
+        
+        // ✅ PREVENIR MÚLTIPLES ENVÍOS
+        if (formularioEnviado) {
+            console.log('⚠️ Formulario ya enviado, ignorando nuevo intento');
+            return;
+        }
         
         console.log('📋 Procesando formulario de', estudioNombre);
         
@@ -1257,6 +1338,14 @@ document.addEventListener('DOMContentLoaded', () => {
             
             console.log('📋 Datos del formulario:', datos);
             
+            // ✅ VALIDACIÓN ANTI-SPAM COMPLETA
+            if (!validarAntiSpam(datos)) {
+                // Mostrar mensaje falso para confundir spam
+                mostrarMensaje('success', '¡Solicitud enviada! Te contactaremos pronto.');
+                formularioEnviado = true;
+                return;
+            }
+            
             // Crear mensaje de WhatsApp con estudio específico
             const mensajeWhatsApp = `🏠 *SOLICITUD RESERVA PIXEL LIVING*
 📍 ${estudioNombre}
@@ -1279,71 +1368,66 @@ ${datos.expectativas}
 ⏰ ${new Date().toLocaleString('es-CO')}
 🌐 pixelliving.co`;
             
-            // Abrir WhatsApp inmediatamente
-            const whatsappURL = `https://wa.me/573195895858?text=${encodeURIComponent(mensajeWhatsApp)}`;
-
-            window.open(whatsappURL, '_blank');
+            // ✅ ENVIAR EMAIL PRIMERO - SIN DUPLICACIONES
+            const formData = new FormData();
+            formData.append('Nombre', datos.nombre);
+            formData.append('Email', datos.email);
+            formData.append('Teléfono', datos.telefono);
+            formData.append('Estudio_Solicitado', estudioNombre);
+            formData.append('Fecha_de_Ingreso', datos.fecha || 'Por coordinar');
+            formData.append('Duración_Estadía', datos.estadia || 'Por definir');
+            formData.append('Número_de_Personas', datos.personas || '1');
+            formData.append('Expectativas_y_Mensaje', datos.expectativas);
+            formData.append('_subject', `🏠 Nueva Reserva: ${estudioNombre} - ${datos.nombre}`);
+            formData.append('_template', 'table');
+            formData.append('_captcha', 'false');
             
-            // Mostrar éxito
-            mostrarMensaje('success', '¡Solicitud enviada! WhatsApp se abrirá automáticamente...');
+            const response = await fetch('https://formsubmit.co/info@pixelliving.co', {
+                method: 'POST',
+                body: formData
+            });
             
-            // Enviar email en background
-            const enviarEmail = async () => {
-                try {
-                    const formData = new FormData();
-                    formData.append('Nombre', datos.nombre);
-                    formData.append('Email', datos.email);
-                    formData.append('Teléfono', datos.telefono);
-                    formData.append('Estudio_Solicitado', estudioNombre);
-                    formData.append('Fecha_de_Ingreso', datos.fecha || 'Por coordinar');
-                    formData.append('Duración_Estadía', datos.estadia || 'Por definir');
-                    formData.append('Número_de_Personas', datos.personas || '1');
-                    formData.append('Expectativas_y_Mensaje', datos.expectativas);
-                    formData.append('_subject', `🏠 Nueva Reserva: ${estudioNombre} - ${datos.nombre}`);
-                    formData.append('_template', 'table');
-                    formData.append('_captcha', 'false');
-                    
-const response = await fetch('https://formsubmit.co/info@pixelliving.co', {
-                        method: 'POST',
-                        body: formData
+            if (response.ok) {
+                formularioEnviado = true;
+                mostrarMensaje('success', '¡Email enviado! ¿Quieres continuar por WhatsApp?');
+                
+                // ✅ WHATSAPP CONTROLADO - CON CONFIRMACIÓN
+                setTimeout(() => {
+                    if (confirm('¿Quieres abrir WhatsApp para continuar la conversación?')) {
+                        const whatsappURL = `https://wa.me/573195895858?text=${encodeURIComponent(mensajeWhatsApp)}`;
+                        window.open(whatsappURL, '_blank');
+                    }
+                }, 1000);
+                
+                // Resetear formulario después de 2 segundos
+                setTimeout(() => {
+                    form.reset();
+                    campos.forEach(campo => {
+                        limpiarError(campo);
                     });
-
-          formData.append('_subject', 'Nueva consulta - Pixel Living');
-          formData.append('_template', 'table');
-          formData.append('_captcha', 'false');
-                    
-                    console.log(response.ok ? '✅ Email enviado' : '⚠️ Error en email');
-                } catch (error) {
-                    console.error('⚠️ Error enviando email:', error);
-                }
-            };
-            
-            // Ejecutar envío de email sin esperar
-            enviarEmail();
-            
-            // Resetear formulario después de un breve delay
-            setTimeout(() => {
-                form.reset();
-                
-                campos.forEach(campo => {
-                    limpiarError(campo);
-                });
-                
-                if (contadorCaracteres) {
-                    contadorCaracteres.textContent = '0/500 caracteres';
-                    contadorCaracteres.className = 'mt-1 text-xs text-gray-500';
-                }
+                    if (contadorCaracteres) {
+                        contadorCaracteres.textContent = '0/500 caracteres';
+                        contadorCaracteres.className = 'mt-1 text-xs text-gray-500';
+                    }
+                }, 2000);
                 
                 console.log('✅ Proceso completado para', estudioNombre);
-            }, 1000);
+                
+            } else {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
             
         } catch (error) {
             console.error('❌ Error:', error);
-            mostrarMensaje('error', 'Error al enviar. Intenta nuevamente.');
+            mostrarMensaje('error', 'Error al enviar. ¿Quieres intentar por WhatsApp?');
             
-            // En caso de error, abrir WhatsApp de todas formas
-            const emergencyMsg = `Solicitud ${estudioNombre} - Error en formulario web. Contactar urgente.`;
-            window.open(`https://wa.me/573195895858?text=${encodeURIComponent(emergencyMsg)}`, '_blank');
+            // ✅ WHATSAPP DE EMERGENCIA - SOLO CON CONFIRMACIÓN
+            const emergencyMsg = `🚨 Solicitud ${estudioNombre} - Error en formulario web. Contactar urgente.`;
+            setTimeout(() => {
+                if (confirm('¿Quieres abrir WhatsApp como alternativa?')) {
+                    window.open(`https://wa.me/573195895858?text=${encodeURIComponent(emergencyMsg)}`, '_blank');
+                }
+            }, 500);
 
         } finally {
             boton.textContent = textoOriginal;
@@ -1353,6 +1437,9 @@ const response = await fetch('https://formsubmit.co/info@pixelliving.co', {
     
     console.log('✅ Sistema configurado correctamente para:', estudioNombre);
     console.log('🖼️ Lightbox responsivo habilitado con', getThumbnailsPerView(), 'thumbnails por vista');
+    console.log('🔒 Anti-spam activado: honeypot + tiempo + patrones');
+    console.log('📱 WhatsApp controlado: confirmación requerida');
+    console.log('📧 Email correcto: info@pixelliving.co');
 });
 </script>
 
