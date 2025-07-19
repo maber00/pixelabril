@@ -4,11 +4,18 @@
     "description": "Pixel Living is coliving in Bogotá for those seeking more than just a rental. Studio apartments designed for medium and long stays, with style, comfort and community.",
     "keywords": "coliving bogotá, furnished studio apartments, temporary housing, pixel living, digital community, coworking, colombia"
   },
+  "common": {
+    "home": "Home",
+    "loading": "Loading...",
+    "error": "Error", 
+    "success": "Success"
+  },
 
   "nav": {
+    "main_navigation": "Main navigation",
     "why_pixel": "Why Pixel",
-    "studios": "Studios", 
-    "pricing": "Pricing",
+    "studios": "Studios",
+    "pricing": "Pricing", 
     "location": "Location",
     "coliving": "Coliving",
     "booking": "Booking",
@@ -43,7 +50,8 @@
     "title_highlight": "ready for you",
     "description": "At Pixel Living, each studio apartment has",
     "description2": "29 square meters",
-    "description3": "and is designed to provide you with maximum comfort, privacy and flexibility, in the most flexible and complete coliving in north Bogotá.",
+    "description3": "and is designed to provide you maximum comfort, privacy and flexibility, in the most flexible and complete coliving in north Bogotá.",
+    "espacio": "studio apartment",
     "beneficios_destacados": {
       "habitacion_adicional": "Additional room",
       "habitacion_desc": "Work space + auxiliary bed",

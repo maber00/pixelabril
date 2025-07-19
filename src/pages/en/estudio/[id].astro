@@ -8,9 +8,10 @@ import { getLanguageFromUrl, t, setCurrentLanguage, getStudioData } from '../../
 
 // Definir rutas estáticas para los estudios
 export function getStaticPaths() {
-  const studios = ['jade', 'zian', 'indigo', 'ambar'];
-  const paths: Array<{ params: { id: string } }> = []; // <-- AÑADIR TIPO
+  const studios = ['jade', 'zian', 'indigo'];
+  const paths: Array<{ params: { id: string } }> = [];
   
+  // SOLO generar rutas para español
   studios.forEach(id => {
     paths.push({ params: { id } });
   });
@@ -29,7 +30,7 @@ setCurrentLanguage('en');
 // Establecer idioma
 
 // Validar que el estudio existe
-const validStudios = ['jade', 'zian', 'indigo', 'ambar'];
+const validStudios = ['jade', 'zian', 'indigo'];
 if (!studioId || !validStudios.includes(studioId)) {
   return Astro.redirect('/404');
 }
@@ -59,10 +60,6 @@ const colorClasses: Record<string, {
   indigo: {
     bg: 'bg-indigo-500', text: 'text-indigo-500', border: 'border-indigo-500',
     hover: 'hover:bg-indigo-600', light: 'bg-indigo-100', lightText: 'text-indigo-700'
-  },
-  ambar: {
-    bg: 'bg-amber-500', text: 'text-amber-500', border: 'border-amber-500',
-    hover: 'hover:bg-amber-600', light: 'bg-amber-100', lightText: 'text-amber-700'
   }
 };
 

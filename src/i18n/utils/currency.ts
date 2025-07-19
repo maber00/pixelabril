@@ -82,10 +82,6 @@ export const PIXEL_PRICES = {
   indigo: {
     cop: 2950000,
     usd: copToUsd(2950000)
-  },
-  ambar: {
-    cop: 3100000,
-    usd: copToUsd(3100000)
   }
 };
 

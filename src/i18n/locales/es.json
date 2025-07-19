@@ -4,15 +4,22 @@
     "description": "Pixel Living es coliving en Bogotá para quienes buscan algo más que un arriendo. Apartaestudios diseñados para estadías medianas y largas, con estilo, comodidad y comunidad.",
     "keywords": "coliving Bogotá, apartaestudios amoblados, hospedaje temporal, vivienda temporal, pixel living, comunidad digital, coworking"
   },
+  "common": {
+    "home": "Inicio",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito"
+  },
 
-  "nav": {
-    "why_pixel": "Vive Pixel",
-    "studios": "Espacios", 
+ "nav": {
+    "main_navigation": "Navegación principal",
+    "why_pixel": "Por qué Pixel",
+    "studios": "Apartaestudios", 
     "pricing": "Precios",
     "location": "Ubicación",
     "coliving": "Coliving",
     "booking": "Reservas",
-    "faq": "FAQ"
+    "faq": "Preguntas"
   },
 
   "hero": {
@@ -39,14 +46,12 @@
 
   "espacios": {
   "badge": "Apartaestudios Pixel Living",
-  "title": "Apartaestudios amoblados y",
-  "title_highlight": "listos para ti",
-
-  "description": "En Pixel Living, cada apartaestudio tiene",
-  "description2": "29 metros cuadrados",
-  "description3": "y está diseñado para brindarte máxima comodidad, privacidad y flexibilidad, en el coliving más flexible y completo del norte de Bogotá.",
-  "espacio": "apartaestudio",
-
+    "title": "Apartaestudios amoblados y",
+    "title_highlight": "listos para ti",
+    "description": "En Pixel Living, cada apartaestudio tiene",
+    "description2": "29 metros cuadrados",
+    "description3": "y está diseñado para brindarte máxima comodidad, privacidad y flexibilidad, en el coliving más flexible y completo del norte de Bogotá.",
+    "espacio": "apartaestudio",
   "beneficios_destacados": {
     "habitacion_adicional": "Habitación adicional",
     "habitacion_desc": "Espacio de trabajo + cama auxiliar",
@@ -612,8 +617,8 @@
   "estudios": {
     "jade": {
       "nombre": "Estudio Jade",
-      "descripcion_1": "Espacio luminoso con toques de verde que evocan naturaleza y tranquilidad.",
-      "descripcion": "Espacio luminoso con balcón privado. Cocina privada, zona de trabajo independiente y habitación auxiliar. Perfecto para estadías largas con ventanas amplias y vistas despejadas. Todo incluido: wifi, servicios, Smart TV. Sin codeudor.",
+      "descripcion_1": "Espacio luminoso con toques verdes que evocan naturaleza y tranquilidad.",
+      "descripcion": "Espacio luminoso con balcón privado. Cocina privada, zona de trabajo independiente y cuarto auxiliar. Perfecto para estadías largas con ventanales amplios y vistas despejadas. Todo incluido: wifi, servicios, Smart TV. Sin codeudor.",
       "metros": "29m²",
       "imagen": "/images/estudios/jade/pixel-jade-room-004.webp",
       "precio": "Desde $2.650.000",
@@ -645,8 +650,8 @@
       "nombre": "Estudio Zian", 
       "descripcion_1": "Colores azules que transmiten calma y concentración, ideal para trabajo remoto.",
       "descripcion": "Diseñado para profesionales remotos con zona de trabajo optimizada. Cocina privada, escritorio amplio y ambiente que favorece la concentración. Ideal para combinar vida y trabajo con estilo. Todo incluido: wifi, servicios, mobiliario. Sin codeudor.",
-      "imagen": "/images/estudios/zian/pixel-zian-room-001.webp",
       "metros": "29m²",
+      "imagen": "/images/estudios/zian/pixel-zian-room-001.webp",
       "precio": "Desde $2.650.000",
       "galeria": [
         "/images/estudios/zian/pixel-zian-room-001.webp", 
@@ -677,7 +682,7 @@
     },
     "indigo": {
       "nombre": "Estudio Índigo",
-      "descripcion_1": "Tonos violetas que inspiran creatividad y reflexión en un ambiente acogedor.",
+      "descripcion_1": "Tonos morados que inspiran creatividad y reflexión en un ambiente acogedor.",
       "descripcion": "Nuestro apartaestudio más espacioso con zona de estar separada del área de descanso. Cocina privada, balcón privado y ambiente acogedor para creativos y emprendedores. Todo incluido, sin codeudor.",
       "imagen": "/images/estudios/indigo/pixel-indigo-room-001.webp",
       "metros": "29m²", 
