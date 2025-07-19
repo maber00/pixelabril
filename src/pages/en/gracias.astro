@@ -1,9 +1,9 @@
 ---
 // src/pages/gracias.astro
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
 
 // IMPORTAR I18N
-import { getLanguageFromUrl, t, setCurrentLanguage, tArray } from '../i18n/utils/translator';
+import { getLanguageFromUrl, t, setCurrentLanguage, tArray } from '../../i18n/utils/translator';
 
 // Detectar idioma actual
 const currentLang = getLanguageFromUrl(Astro.url.pathname);

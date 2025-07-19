@@ -112,9 +112,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (this.title) this.title.textContent = estudioData.nombre;
       
       // Actualizar enlaces
-      if (this.detailsLink) this.detailsLink.href = `/estudio/${estudioId}`;
-      if (this.reservaLink) this.reservaLink.href = '#reservas';
-      
+      const currentPath = window.location.pathname;
+const isEnglish = currentPath.startsWith('/en');
+
+if (this.detailsLink) {
+  this.detailsLink.href = isEnglish ? `/en/estudio/${estudioId}` : `/estudio/${estudioId}`;
+}
+
+if (this.reservaLink) {
+  this.reservaLink.href = isEnglish ? '/en/#reservas' : '/#reservas';
+}
       // Construir thumbnails
       this.buildThumbnails();
       

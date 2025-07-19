@@ -1,0 +1,240 @@
+---
+// @ts-nocheck
+import { getLanguageFromUrl, getAlternateUrls } from '../i18n/utils/translator';
+
+const languages = ['es', 'en'];
+const currentPath = Astro.url.pathname;
+const currentLang = getLanguageFromUrl(currentPath);
+const alternateUrls = getAlternateUrls(currentPath);
+
+// Helper para acceso seguro a URLs
+function getUrlForLang(lang) {
+  return lang === 'es' ? alternateUrls.es : alternateUrls.en;
+}
+---
+
+<nav lang={currentLang} aria-label="Selector de idioma" class="relative">
+  <!-- Desktop -->
+  <div class="hidden md:inline-flex overflow-hidden rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm">
+    {languages.map((lang) => (
+      <a
+        href={getUrlForLang(lang)}
+        data-lang={lang}
+        class={`px-3 py-2 text-sm font-medium transition ${
+          currentLang === lang
+            ? 'bg-white/20 text-white font-semibold'
+            : 'text-white/80 hover:bg-white/10 hover:text-white'
+        }`}
+        aria-current={currentLang === lang ? 'page' : undefined}
+      >
+        {lang.toUpperCase()}
+      </a>
+    ))}
+  </div>
+
+  <!-- Mobile -->
+  <details class="md:hidden group p-2 relative">
+    <summary class="flex items-center gap-2 px-2 py-2 rounded-lg border border-white/20 bg-black/80 text-white/90 cursor-pointer list-none">
+      <!-- Globo -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 21a9 9 0 100-18 9 9 0 000 18zM8.25 9.75h7.5m-7.5 3h7.5" />
+      </svg>
+      <span class="text-sm font-semibold">{currentLang.toUpperCase()}</span>
+      <!-- Chevron -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-open:rotate-180"
+           fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+      </svg>
+    </summary>
+
+    <ul class="absolute right-0 mt-2 w-40 rounded-lg border border-white/20 bg-black/80 backdrop-blur-sm shadow-lg z-50 text-white/90">
+      {languages.map((lang) => (
+        <li>
+          <a
+            href={getUrlForLang(lang)}
+            data-lang={lang}
+            class={`flex items-center justify-between px-4 py-3 text-sm transition ${
+              currentLang === lang ? 'bg-gray-700/60 font-semibold' : 'hover:bg-white/10'
+            }`}
+          >
+            {lang === 'es' ? 'Español' : 'English'}
+            {currentLang === lang && (
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-pixel-green" fill="none"
+                   viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+            )}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </details>
+</nav>
+
+<style is:global>
+  /* Animación para cambio de idioma */
+  @keyframes lang-switch { 
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); } 
+  }
+  
+  nav[aria-label="Selector de idioma"].animate { 
+    animation: lang-switch 0.25s ease; 
+  }
+
+  /* Ocultar marcador de lista en summary */
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  summary::marker {
+    display: none;
+  }
+  
+  /* Mejorar hover en mobile */
+  @media (hover: hover) {
+    details summary:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+  
+  /* Asegurar que el dropdown esté encima de todo */
+  details[open] ul {
+    z-index: 9999;
+  }
+  
+  /* Smooth transition para el chevron */
+  details summary svg:last-child {
+    transition: transform 0.2s ease;
+  }
+  
+  /* Focus states mejorados */
+  details summary:focus-visible {
+    outline: 2px solid #ffd700;
+    outline-offset: 2px;
+  }
+  
+  nav a:focus-visible {
+    outline: 2px solid #ffd700;
+    outline-offset: 2px;
+  }
+</style>
+
+<script>
+  // @ts-nocheck
+  // Seleccionar el navegador de idioma
+  const selector = document.querySelector('nav[aria-label="Selector de idioma"]');
+
+  // Función para cambiar idioma con animación
+  function changeLang(url, lang) {
+    // Validar parámetros
+    if (!url || !lang) {
+      console.warn('⚠️ URL o idioma faltante');
+      return;
+    }
+    
+    console.log('🌐 Cambiando idioma a:', lang);
+    
+    try { 
+      localStorage.setItem('pixel_language_preference', lang); 
+      console.log('💾 Preferencia guardada:', lang);
+    } catch (error) {
+      console.warn('⚠️ Error guardando preferencia:', error);
+    }
+    
+    // Añadir animación
+    if (selector) {
+      selector.classList.add('animate');
+    }
+    
+    // Redirigir después de la animación
+    setTimeout(function() { 
+      window.location.href = url; 
+    }, 150);
+  }
+
+  // Helper para verificar si un elemento tiene el método closest
+  function findLanguageLink(element) {
+    // Verificar que el elemento tenga el método closest
+    if (!element || typeof element.closest !== 'function') {
+      return null;
+    }
+    return element.closest('[data-lang]');
+  }
+
+  // Manejar clicks en enlaces de idioma
+  document.addEventListener('click', function(e) {
+    const target = e.target;
+    if (!target) return;
+    
+    // Buscar el enlace más cercano con data-lang
+    const link = findLanguageLink(target);
+    if (!link) return;
+    
+    // Prevenir navegación normal
+    e.preventDefault();
+    
+    const lang = link.getAttribute('data-lang');
+    const href = link.getAttribute('href');
+    
+    if (lang && href) {
+      console.log('🔗 Click en idioma:', lang, 'URL:', href);
+      changeLang(href, lang);
+    }
+  });
+
+  // Cerrar dropdown mobile en cambio de tamaño
+  window.addEventListener('resize', function() {
+    if (!selector) return;
+    
+    const details = selector.querySelector('details');
+    if (window.innerWidth >= 768 && details && details.open) {
+      details.open = false;
+      console.log('📱 Cerrando dropdown por cambio a desktop');
+    }
+  });
+
+  // Atajo de teclado Alt + L
+  document.addEventListener('keydown', function(e) {
+    if (e.altKey && e.key.toLowerCase() === 'l') {
+      e.preventDefault();
+      
+      if (!selector) return;
+      
+      const currentLang = selector.getAttribute('lang');
+      const nextLang = currentLang === 'es' ? 'en' : 'es';
+      const link = selector.querySelector('[data-lang="' + nextLang + '"]');
+      
+      if (link) {
+        const href = link.getAttribute('href');
+        if (href) {
+          console.log('⌨️ Atajo de teclado - cambiando a:', nextLang);
+          changeLang(href, nextLang);
+        }
+      }
+    }
+  });
+
+  // Cerrar dropdown al hacer click fuera (para mobile)
+  document.addEventListener('click', function(e) {
+    if (!selector) return;
+    
+    const details = selector.querySelector('details');
+    if (!details || !details.open) return;
+    
+    // Verificar que e.target es un Node antes de usar contains
+    const target = e.target;
+    if (target && selector.contains && typeof selector.contains === 'function') {
+      // Si el click no fue dentro del selector, cerrar dropdown
+      if (!selector.contains(target)) {
+        details.open = false;
+        console.log('📱 Cerrando dropdown por click fuera');
+      }
+    }
+  });
+
+  console.log('✅ Language Selector: Inicializado correctamente');
+</script>

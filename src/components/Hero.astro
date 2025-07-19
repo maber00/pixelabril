@@ -5,6 +5,31 @@ import heroImage2 from '../assets/pixel-room-01.webp';
 import heroImage3 from '../assets/fachada001.webp';
 import heroImage4 from '../assets/pixel-terraza-hero-2.webp';
 import heroImage5 from '../assets/pixel-room-02.jpg';
+
+// AÑADIR SOLO ESTO:
+import { getLanguageFromUrl, t, setCurrentLanguage } from '../i18n/utils/translator';
+const currentLang = getLanguageFromUrl(Astro.url.pathname);
+setCurrentLanguage(currentLang);
+
+// Beneficios según idioma (SIN JSON.parse):
+const benefits = currentLang === 'es' 
+  ? ['✓ Sin codeudor', '✓ Desde 1 mes', '✓ Todo incluido', '✓ Listo para habitar']
+  : ['✓ No guarantor required', '✓ From 1 month', '✓ All-inclusive', '✓ Move-in ready'];
+
+  // Alt texts para imágenes
+const altTexts = currentLang === 'es' ? [
+  "Pixel Living - Coliving moderno en Bogotá",
+  "Apartaestudios amoblados 29m² en el norte de Bogotá", 
+  "Coliving sin codeudor en Zona Rosa Bogotá",
+  "Terraza Pixel Living - Espacios compartidos",
+  "Habitaciones completamente equipadas Pixel Living"
+] : [
+  "Pixel Living - Modern coliving in Bogotá",
+  "29m² furnished studios in north Bogotá",
+  "No guarantor coliving in Zona Rosa Bogotá", 
+  "Pixel Living rooftop - Shared spaces",
+  "Fully equipped Pixel Living rooms"
+];
 ---
 
 <section class="relative min-h-screen flex items-center overflow-hidden w-full" id="hero-section">
@@ -16,7 +41,7 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
         <div class="zoom-wrapper">
           <img
             src={heroImage1.src}
-            alt="Pixel Living - Coliving moderno en Bogotá"
+            alt={altTexts[0]}
             class="zoom-image zoom-image-1"
           />
         </div>
@@ -25,7 +50,7 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
         <div class="zoom-wrapper">
           <img
             src={heroImage2.src}
-            alt="Apartaestudios amoblados 29m² en el norte de Bogotá"
+            alt={altTexts[1]}
             class="zoom-image zoom-image-2"
           />
         </div>
@@ -34,7 +59,7 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
         <div class="zoom-wrapper">
           <img
             src={heroImage3.src}
-            alt="Coliving sin codeudor en Zona Rosa Bogotá"
+            alt={altTexts[2]}
             class="zoom-image zoom-image-3"
           />
         </div>
@@ -43,7 +68,7 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
         <div class="zoom-wrapper">
           <img
             src={heroImage4.src}
-            alt="Terraza Pixel Living - Espacios compartidos"
+            alt={altTexts[3]}
             class="zoom-image zoom-image-4"
           />
         </div>
@@ -52,7 +77,7 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
         <div class="zoom-wrapper">
           <img
             src={heroImage5.src}
-            alt="Habitaciones completamente equipadas Pixel Living"
+            alt={altTexts[4]}
             class="zoom-image zoom-image-5"
           />
         </div>
@@ -69,88 +94,93 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
       
       <!-- Título principal optimizado -->
       <h1 class="text-sm md:text-3xl font-normal leading-tight mb-1 text-white cal-display hero-title">
-  <span class="text-pixel-orange text-xl md:text-4xl">Coliving Bogotá</span> 
-  <span class="text-xs md:text-xl opacity-60">|</span> 
-  <span class="text-pixel-yellow text-xl md:text-4xl">Pixel Living</span>
-</h1>
+      <span class="text-pixel-orange text-xl md:text-4xl">{t('hero.brand_line_1')}</span> 
+      <span class="text-xs md:text-xl opacity-60">|</span> 
+      <span class="text-pixel-yellow text-xl md:text-4xl">{t('hero.brand_line_2')}</span>
+      </h1>
 
       <!-- Subtítulo -->
       <h2 class="text-5xl md:text-6xl text-white mb-6 font-normal">
-        <span class="block">Vive, crea y conecta</span>
-        <span class="block text-2xl md:text-5xl text-pixel-yellow mt-1">en el norte de Bogotá.</span>
+        <span class="block">{t('hero.title')}</span>
+        <span class="block text-2xl md:text-5xl text-pixel-yellow mt-1">{t('hero.subtitle')}</span>
       </h2>
       
       <!-- Descripción principal -->
       <p class="text-lg md:text-xl text-white mb-6 max-w-2xl leading-relaxed">
-        Pixel Living es tu coliving en Bogotá, donde encuentras apartaestudios modernos y amoblados, 
-        todos los servicios incluidos y una comunidad vibrante en la ubicación más estratégica de la ciudad.
+        {t('hero.description')}
       </p>
+
 
       <!-- Nuevos beneficios destacados -->
       <div class="flex flex-wrap gap-2 mb-6">
-        <span class="bg-pixel-yellow text-gray-900 px-3 py-1 rounded-full text-sm font-medium">✓ Sin codeudor</span>
-        <span class="bg-pixel-orange text-orange-950 px-3 py-1 rounded-full text-sm font-medium">✓ Desde 1 mes</span>
-        <span class="bg-pixel-blue text-blue-200 px-3 py-1 rounded-full text-sm font-medium">✓ Todo incluido</span>
-        <span class="bg-pixel-green text-green-950 px-3 py-1 rounded-full text-sm font-medium">✓ Listo para habitar</span>
+        {benefits.map((benefit, index) => {
+  const colors = ['bg-pixel-yellow text-gray-900', 'bg-pixel-orange text-orange-950', 'bg-pixel-blue text-blue-200', 'bg-pixel-green text-green-950'];
+  return (
+    <span class={`${colors[index]} px-3 py-1 rounded-full text-sm font-medium`}>
+      {benefit}
+    </span>
+  );
+})}
       </div>
       
       <!-- Descripción específica - OCULTA EN MÓVIL -->
       <p class="hidden md:block text-lg md:text-xl text-white mb-6 max-w-2xl">
-        Disfruta la flexibilidad de arrendar desde un mes, sin codeudor y sin complicaciones.
-      </p>
+  {t('hero.description_extended')}
+</p>
 
       <!-- Texto principal - OCULTO EN MÓVIL -->
       <p class="hidden md:block text-xl md:text-2xl text-white mb-4 font-semibold">
-        Todo lo que necesitas para vivir, trabajar y crecer, está aquí.
-      </p>
+  {t('hero.value_proposition')}
+</p>
 
       <!-- Pregunta CTA - OCULTA EN MÓVIL -->
       <p class="hidden md:block text-lg text-pixel-yellow mb-8 font-medium">
-        ¿Listo para vivir la experiencia Pixel Living?
-      </p>
+  {t('hero.cta_question')}
+</p>
       
       <!-- CTAs -->
       <div class="flex flex-col sm:flex-row gap-4">
         <!-- Botón principal - OCULTO EN MÓVIL, VISIBLE EN DESKTOP -->
         <a href="#reservas" class="hidden md:flex btn bg-pixel-yellow hover:bg-yellow-500 text-gray-900 text-lg font-semibold px-8 py-4 rounded-lg items-center justify-center">
-          Reserva tu espacio ahora
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-          </svg>
-        </a>
-        
-        <!-- Botón secundario - SIEMPRE VISIBLE -->
-        <a href="#espacios" class="btn bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 px-6 py-4 rounded-lg">
-          Ver precios y disponibilidad
-        </a>
+  {t('hero.button_primary')}
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+  </svg>
+</a>
+
+<a href="#espacios" class="btn bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 px-6 py-4 rounded-lg">
+  {t('hero.button_secondary')}
+</a>
       </div>
 
       <!-- Información de confianza -->
       <p class="text-sm text-gray-300 mt-4">
-        Cupos limitados • Solo tu documento de identificación
-      </p>
-      <p class="text-xs text-gray-400 mt-2">
-        Proceso de reserva en menos de 24 horas
-      </p>
+  {t('hero.trust_info')}
+</p>
+<p class="text-xs text-gray-400 mt-2">
+  {t('hero.process_time')}
+</p>
     </div>
   </div>
   
   <!-- Indicadores del carousel -->
   <div class="absolute bottom-20 invisible md:visible mb-5 left-1/2 transform -translate-x-1/2 z-30">
     <div class="flex space-x-3 carousel-indicators">
-      <button class="carousel-dot active" data-slide="0" aria-label="Imagen 1"></button>
-      <button class="carousel-dot" data-slide="1" aria-label="Imagen 2"></button>
-      <button class="carousel-dot" data-slide="2" aria-label="Imagen 3"></button>
-      <button class="carousel-dot" data-slide="3" aria-label="Imagen 4"></button>
-      <button class="carousel-dot" data-slide="4" aria-label="Imagen 5"></button>
+      <button class="carousel-dot active" data-slide="0" aria-label={currentLang === 'es' ? 'Imagen 1' : 'Image 1'}></button>
+<button class="carousel-dot" data-slide="1" aria-label={currentLang === 'es' ? 'Imagen 2' : 'Image 2'}></button>
+<button class="carousel-dot" data-slide="2" aria-label={currentLang === 'es' ? 'Imagen 3' : 'Image 3'}></button>
+<button class="carousel-dot" data-slide="3" aria-label={currentLang === 'es' ? 'Imagen 4' : 'Image 4'}></button>
+<button class="carousel-dot" data-slide="4" aria-label={currentLang === 'es' ? 'Imagen 5' : 'Image 5'}></button>
     </div>
   </div>
   
   <!-- Indicador de scroll -->
   <div class="absolute md:bottom-8 invisible md:visible md:left-1/2 transform -translate-x-1/2 text-white z-30">
     <a href="#vive-pixel" class="flex flex-col mt-30 items-center group">
-      <span class="mb-2 text-sm font-medium group-hover:text-pixel-yellow transition-colors">Descubre por qué somos diferentes</span>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 animate-bounce">
+  <span class="mb-2 text-sm font-medium group-hover:text-pixel-yellow transition-colors">
+    {currentLang === 'es' ? 'Descubre por qué somos diferentes' : 'Discover why we are different'}
+  </span>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 animate-bounce">
         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
       </svg>
     </a>
@@ -412,7 +442,7 @@ import heroImage5 from '../assets/pixel-room-02.jpg';
       
       dot.setAttribute('tabindex', '0');
       dot.setAttribute('role', 'button');
-      dot.setAttribute('aria-label', 'Ir a imagen ' + (i + 1));
+dot.setAttribute('aria-label', (currentLang === 'es' ? 'Ir a imagen ' : 'Go to image ') + (i + 1));
       
       dot.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.key === ' ') {

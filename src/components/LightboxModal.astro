@@ -1,18 +1,15 @@
 ---
-// Este componente es un modal/lightbox reutilizable para mostrar galería de imágenes
-// Se debe colocar en src/components/LightboxModal.astro
-// VERSIÓN RESPONSIVA MEJORADA con carrusel de thumbnails
-
+// LightboxModal.astro - VERSIÓN UNIFICADA
 interface Props {
-  id?: string;               // ID para el modal
-  showDetailsButton?: boolean; // Mostrar botón de detalles
-  showReservaButton?: boolean; // Mostrar botón de reserva
-  detailsPath?: string;      // Ruta base para detalles (ej: "/estudio/")
-  reservaPath?: string;      // Ruta para reservas (ej: "#reservas")
+  id?: string;
+  showDetailsButton?: boolean;
+  showReservaButton?: boolean;
+  detailsPath?: string;
+  reservaPath?: string;
 }
 
 const { 
-  id = "lightboxModal", 
+  id = "espacios-lightbox", 
   showDetailsButton = true,
   showReservaButton = true,
   detailsPath = "/estudio/",
@@ -20,7 +17,7 @@ const {
 } = Astro.props;
 ---
 
-<!-- Galería modal/lightbox RESPONSIVO MEJORADO -->
+<!-- Modal Lightbox Unificado -->
 <div id={id} class="fixed inset-0 bg-black bg-opacity-95 z-50 hidden items-center justify-center lightbox-modal">
   <div class="w-full h-full flex flex-col px-2 py-4 md:px-4 md:py-8">
     
@@ -37,7 +34,7 @@ const {
       </button>
     </div>
     
-    <!-- Imagen principal - RESPONSIVE -->
+    <!-- Imagen principal -->
     <div class="relative flex-1 flex items-center justify-center mb-4">
       <div class="bg-gray-900 flex items-center justify-center rounded-lg overflow-hidden w-full h-full max-h-[60vh] md:max-h-[70vh]">
         <img 
@@ -47,7 +44,7 @@ const {
         />
       </div>
       
-      <!-- Botones de navegación principales -->
+      <!-- Navegación principal -->
       <button 
         class="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 hover:bg-opacity-80 p-2 md:p-3 rounded-full text-white transition-all lightbox-prev"
         aria-label="Imagen anterior"
@@ -67,36 +64,27 @@ const {
       </button>
     </div>
     
-    <!-- CARRUSEL DE THUMBNAILS RESPONSIVO -->
-    <div class="relative px-2">
-      <!-- Contenedor del carrusel de thumbnails -->
-      <div class="relative overflow-hidden rounded-lg">
+    <!-- Carrusel de thumbnails -->
+    <div class="px-4 md:px-8">
+      <div class="relative">
+        <div class="overflow-hidden">
+          <div class="flex transition-transform duration-300 ease-in-out lightbox-thumbnails-carousel gap-2">
+            <!-- Thumbnails se generan dinámicamente -->
+          </div>
+        </div>
         
-        <!-- Botones de navegación del carrusel de thumbnails -->
-        <button 
-          class="absolute left-0 top-1/2 z-10 transform -translate-y-1/2 bg-black bg-opacity-60 hover:bg-opacity-80 p-1.5 rounded-full text-white transition-all thumb-carousel-prev"
-          aria-label="Ver thumbnails anteriores"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+        <!-- Controles de thumbnails -->
+        <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 hover:bg-opacity-80 p-1 rounded-full text-white lightbox-thumb-prev">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
           </svg>
         </button>
         
-        <button 
-          class="absolute right-0 top-1/2 z-10 transform -translate-y-1/2 bg-black bg-opacity-60 hover:bg-opacity-80 p-1.5 rounded-full text-white transition-all thumb-carousel-next"
-          aria-label="Ver thumbnails siguientes"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+        <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-60 hover:bg-opacity-80 p-1 rounded-full text-white lightbox-thumb-next">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
           </svg>
         </button>
-        
-        <!-- Carrusel de thumbnails -->
-        <div class="px-8">
-          <div class="flex transition-transform duration-300 ease-in-out lightbox-thumbnails-carousel" style="transform: translateX(0%);">
-            <!-- Las thumbnails se generarán dinámicamente aquí -->
-          </div>
-        </div>
       </div>
     </div>
     
@@ -107,7 +95,7 @@ const {
       </span>
     </div>
     
-    <!-- Enlace a detalles y reserva -->
+    <!-- Botones de acción -->
     <div class="mt-4 flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 px-2">
       {showDetailsButton && (
         <a 
@@ -122,81 +110,15 @@ const {
       )}
       
       {showReservaButton && (
-        <a 
-          href={reservaPath} 
+        <button 
           class="py-2 px-4 md:py-3 md:px-6 bg-green-600 hover:bg-green-700 text-white rounded-md flex items-center justify-center group lightbox-reserva-link text-sm md:text-base transition-colors"
         >
           Reservar ahora
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 md:w-5 md:h-5 ml-2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 9v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
           </svg>
-        </a>
+        </button>
       )}
     </div>
   </div>
 </div>
-
-<style>
-  /* Estilos para el carrusel de thumbnails */
-  .lightbox-thumbnails-carousel {
-    will-change: transform;
-  }
-  
-  /* Asegurar que las thumbnails no se deformen */
-  .lightbox-thumbnail {
-    aspect-ratio: 1;
-    flex-shrink: 0;
-  }
-  
-  /* Smooth transitions */
-  .lightbox-modal {
-    backdrop-filter: blur(4px);
-  }
-  
-  /* Responsive design */
-  @media (max-width: 640px) {
-    .lightbox-thumbnail {
-      width: calc((100% - 2rem) / 5); /* 5 thumbnails en móvil con gaps */
-    }
-  }
-  
-  @media (min-width: 641px) and (max-width: 1024px) {
-    .lightbox-thumbnail {
-      width: calc((100% - 3rem) / 6); /* 6 thumbnails en tablet */
-    }
-  }
-  
-  @media (min-width: 1025px) {
-    .lightbox-thumbnail {
-      width: calc((100% - 4rem) / 8); /* 8 thumbnails en desktop */
-    }
-  }
-  
-  /* Hover effects */
-  @media (hover: hover) {
-    .lightbox-thumbnail:hover {
-      opacity: 1 !important;
-      transform: scale(1.05);
-    }
-  }
-  
-  /* Focus states */
-  .lightbox-thumbnail:focus {
-    outline: 2px solid #ffd700;
-    outline-offset: 2px;
-    opacity: 1 !important;
-  }
-  
-  /* Reduced motion support */
-  @media (prefers-reduced-motion: reduce) {
-    .lightbox-thumbnails-carousel,
-    .lightbox-thumbnail,
-    .lightbox-image {
-      transition: none !important;
-    }
-    
-    .lightbox-thumbnail:hover {
-      transform: none !important;
-    }
-  }
-</style>

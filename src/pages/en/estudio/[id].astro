@@ -1,37 +1,32 @@
 ---
-// pages/estudio/[id].astro
-import Layout from '../../layouts/Layout.astro';
-import LightboxModal from '../../components/LightboxModal.astro';
+// pages/en/[id].astro
+import Layout from '../../../layouts/Layout.astro';
+import LightboxModal from '../../../components/LightboxModal.astro';
 
 // IMPORTAR I18N
-import { getLanguageFromUrl, t, setCurrentLanguage, getStudioData } from '../../i18n/utils/translator';
+import { getLanguageFromUrl, t, setCurrentLanguage, getStudioData } from '../../../i18n/utils/translator';
 
 // Definir rutas estáticas para los estudios
 export function getStaticPaths() {
   const studios = ['jade', 'zian', 'indigo', 'ambar'];
-  const paths: Array<{ params: { id: string } }> = [];
+  const paths: Array<{ params: { id: string } }> = []; // <-- AÑADIR TIPO
   
-  // Generar rutas para español (sin prefijo)
   studios.forEach(id => {
     paths.push({ params: { id } });
-  });
-  
-  // Generar rutas para inglés (con prefijo /en)
-  studios.forEach(id => {
-    paths.push({ params: { id: `en/${id}` } });
   });
   
   return paths;
 }
 
-// Extraer parámetros y detectar idioma
+
+// Extraer parámetros - SOLO INGLÉS  
 const { id } = Astro.params;
-const isEnglish = id?.startsWith('en/');
-const studioId = isEnglish ? id.replace('en/', '') : id;
-const currentLang = isEnglish ? 'en' : 'es';
+const studioId = id; // <-- AÑADIR ESTA LÍNEA
+const currentLang = 'en';
+setCurrentLanguage('en');
+
 
 // Establecer idioma
-setCurrentLanguage(currentLang);
 
 // Validar que el estudio existe
 const validStudios = ['jade', 'zian', 'indigo', 'ambar'];
@@ -97,7 +92,7 @@ const whatsappMessage = t('estudio_detalle.acciones.whatsapp_mensaje').replace('
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mx-2 text-gray-400">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
           </svg>
-          <a href={`${baseUrl}/#espacios`} class="text-gray-500 hover:text-gray-700">{t('estudio_detalle.breadcrumbs.espacios')}</a>
+          <a href="/en#studios" class="text-gray-500 hover:text-gray-700">{t('estudio_detalle.breadcrumbs.espacios')}</a>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mx-2 text-gray-400">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
           </svg>
@@ -413,7 +408,7 @@ const whatsappMessage = t('estudio_detalle.acciones.whatsapp_mensaje').replace('
                     
                     <div class="flex justify-between items-center">
                       <span class={`text-lg font-bold ${otroColors.text}`}>{otroEstudio.precio}</span>
-                      <a ✅ href={`${baseUrl}/${estudioId}`} class={`${otroColors.text} font-medium inline-flex items-center group`}>
+                      <a href={`/en/${estudioId}`} class={`${otroColors.text} font-medium inline-flex items-center group`}>
                         {t('estudio_detalle.otros_estudios.ver_detalles')}
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-1 transform transition-transform group-hover:translate-x-1">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -435,7 +430,6 @@ const whatsappMessage = t('estudio_detalle.acciones.whatsapp_mensaje').replace('
 </Layout>
 
 <!-- Script actualizado con traducciones -->
-<!-- Script unificado del lightbox -->
 <script define:vars={{ 
   lightboxData, 
   studioId, 
@@ -458,172 +452,168 @@ function getReserveButtonText(lang) {
 window.lightboxData = lightboxData || {};
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 Inicializando página de estudio:', estudioNombre);
+    console.log('🚀 Initializing studio page (EN):', estudioNombre);
     
-    // Configuración anti-spam
+    // Anti-spam configuration
     const TIEMPO_INICIO = Date.now();
     const TIEMPO_MINIMO_ENVIO = 3000;
     let formularioEnviado = false;
     
-    // ===== FIX CRÍTICO PARA EL BOTÓN RESERVAR DEL LIGHTBOX =====
-function repararBotonReservarLightbox() {
-    // Buscar el modal del lightbox
-    const modal = document.getElementById('estudio-lightbox');
-    if (!modal) {
-        console.log('⚠️ Modal del lightbox no encontrado');
-        return;
-    }
-    
-    // Función para aplicar fix al botón
-    function aplicarFixBoton() {
-        // Buscar todos los posibles botones de reservar
-        const selectores = [
-            'a[href="#reserva-section"]',
-            'a[href="#reservas"]',
-            'a[href="#reservation"]',        // ✅ Agregado para inglés
-            'a[href="#reserve"]',           // ✅ Agregado para inglés
-            '.lightbox-reserva-link',
-            '#lightboxReservaLink',
-            'button.lightbox-reserva-link'
-        ];
-        
-        let botonEncontrado = null;
-        
-        for (const selector of selectores) {
-            const boton = modal.querySelector(selector);
-            if (boton) {
-                botonEncontrado = boton;
-                console.log('✅ Botón reservar encontrado:', selector);
-                break;
-            }
-        }
-        
-        if (!botonEncontrado) {
-            console.log('❌ Botón reservar no encontrado');
+    // ===== CRITICAL FIX FOR LIGHTBOX RESERVE BUTTON =====
+    function repairLightboxReserveButton() {
+        const modal = document.getElementById('estudio-lightbox');
+        if (!modal) {
+            console.log('⚠️ Lightbox modal not found');
             return;
         }
         
-        // ✅ TRADUCIR EL TEXTO DEL BOTÓN
-        const lang = currentLang || 'es';
-        const textoBoton = getReserveButtonText(lang);
-        const svgElement = botonEncontrado.querySelector('svg');
-        
-        // Actualizar texto ANTES de clonar
-        if (svgElement) {
-            // Si tiene SVG, preservarlo y solo cambiar el texto
-            botonEncontrado.innerHTML = `${textoBoton} ${svgElement.outerHTML}`;
-        } else {
-            // Si no tiene SVG, solo cambiar el texto
-            botonEncontrado.textContent = textoBoton;
-        }
-        
-        // Remover todos los event listeners existentes clonando el elemento
-        const nuevoBoton = botonEncontrado.cloneNode(true);
-        botonEncontrado.parentNode?.replaceChild(nuevoBoton, botonEncontrado);
-        
-        // Agregar el event listener correcto
-        nuevoBoton.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
+        function applyButtonFix() {
+            const selectors = [
+                'a[href="#reserva-section"]',
+                'a[href="#reservas"]', 
+                'a[href="#reservation"]',
+                'a[href="#reserve"]',
+                '.lightbox-reserva-link',
+                '#lightboxReservaLink',
+                'button.lightbox-reserva-link'
+            ];
             
-            console.log(`🎯 ¡Botón "${textoBoton}" clickeado!`);
+            let foundButton = null;
             
-            // Cerrar el lightbox
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            document.body.style.overflow = '';
-            
-            // Disparar evento personalizado para comunicación con formularios
-            setTimeout(() => {
-                const evento = new CustomEvent('estudioSeleccionado', {
-                    detail: {
-                        estudioId: studioId,
-                        estudioNombre: estudioNombre
-                    },
-                    bubbles: true,
-                    cancelable: true
-                });
-                document.dispatchEvent(evento);
-                console.log('📤 Evento estudioSeleccionado enviado');
-            }, 100);
-            
-            // Scroll suave a la sección de reservas
-            setTimeout(() => {
-                const seccionReservas = document.querySelector('#reserva-section') ||
-                                       document.querySelector('#reservas') ||
-                                       document.querySelector('#reservation') ||    // ✅ Para inglés
-                                       document.querySelector('#reserve') ||       // ✅ Para inglés
-                                       document.querySelector('section[id*="reserva"]') ||
-                                       document.querySelector('[data-estudio-form]');
-                
-                if (seccionReservas) {
-                    seccionReservas.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    console.log('⬇️ Scroll a reservas completado');
-                } else {
-                    console.log('⚠️ Sección de reservas no encontrada');
+            for (const selector of selectors) {
+                const button = modal.querySelector(selector);
+                if (button) {
+                    foundButton = button;
+                    console.log('✅ Reserve button found:', selector);
+                    break;
                 }
-            }, 300);
-        });
-        
-        console.log(`✅ Fix del botón reservar aplicado: "${textoBoton}"`);
+            }
+            
+            if (!foundButton) {
+                console.log('❌ Reserve button not found');
+                return;
+            }
+
+
+    const textoBoton = getReserveButtonText(currentLang || 'en');
+    const svgElement = foundButton.querySelector('svg');
+    
+    if (svgElement) {
+        // Si tiene SVG, preservarlo y solo cambiar el texto
+        foundButton.innerHTML = `${textoBoton} ${svgElement.outerHTML}`;
+    } else {
+        // Si no tiene SVG, solo cambiar el texto
+        foundButton.textContent = textoBoton;
     }
     
-    // Aplicar fix inmediatamente
-    aplicarFixBoton();
+    // Remove all existing event listeners by cloning the element
+    const newButton = foundButton.cloneNode(true);
+    foundButton.parentNode?.replaceChild(newButton, foundButton);
     
-    // Observer para cuando se abre el lightbox
-    const observer = new MutationObserver(() => {
-        if (!modal.classList.contains('hidden')) {
-            aplicarFixBoton();
-        }
+    // Add the correct event listener
+    newButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        console.log(`🎯 Lightbox "${textoBoton}" clicked!`);
+        
+        // Close the lightbox
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+        
+        // Dispatch custom event for form communication
+        setTimeout(() => {
+            const event = new CustomEvent('estudioSeleccionado', {
+                detail: {
+                    estudioId: studioId,
+                    estudioNombre: estudioNombre
+                },
+                bubbles: true,
+                cancelable: true
+            });
+            document.dispatchEvent(event);
+            console.log('📤 Studio selected event dispatched');
+        }, 100);
+        
+        // Smooth scroll to reservation section
+        setTimeout(() => {
+            const reservationSection = document.querySelector('#reserva-section') || 
+                                    document.querySelector('#reservas') ||
+                                    document.querySelector('#reservation') ||
+                                    document.querySelector('#reserve') ||
+                                    document.querySelector('section[id*="reserva"]') ||
+                                    document.querySelector('[data-estudio-form]');
+            
+            if (reservationSection) {
+                reservationSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                console.log('⬇️ Scroll to reservation completed');
+            } else {
+                console.log('⚠️ Reservation section not found');
+            }
+        }, 300);
     });
     
-    observer.observe(modal, {
-        attributes: true,
-        attributeFilter: ['class', 'style']
-    });
-}    
-    // ===== APLICAR FIX AL CARGAR LA PÁGINA =====
-    repararBotonReservarLightbox();
+    console.log(`✅ Reserve button fix applied: "${textoBoton}"`);
+}
+        
+        // Apply fix immediately
+        applyButtonFix();
+        
+        // Also apply fix when lightbox opens (in case content is regenerated)
+        const observer = new MutationObserver(() => {
+            if (!modal.classList.contains('hidden')) {
+                applyButtonFix();
+            }
+        });
+        
+        observer.observe(modal, {
+            attributes: true,
+            attributeFilter: ['class', 'style']
+        });
+    }
     
-    // ===== APLICAR FIX TAMBIÉN DESPUÉS DE UN DELAY (por si el lightbox se carga tarde) =====
+    // ===== APPLY FIX ON PAGE LOAD =====
+    repairLightboxReserveButton();
+    
+    // ===== ALSO APPLY FIX AFTER DELAY (in case lightbox loads late) =====
     setTimeout(() => {
-        repararBotonReservarLightbox();
+        repairLightboxReserveButton();
     }, 1000);
     
-    // ===== TU CÓDIGO EXISTENTE DEL FORMULARIO AQUÍ =====
-    // (Mantén todo tu código de validaciones anti-spam y formulario)
+    // ===== YOUR EXISTING FORM CODE HERE =====
+    // (Keep all your anti-spam validation and form code)
     
-    // Validaciones anti-spam
-    function validarAntiSpam(datos) {
-        // Validar honeypot
+    // Anti-spam validations
+    function validateAntiSpam(data) {
+        // Validate honeypot
         const honeypotField = document.getElementById('website_url_estudio');
         const honeypotValue = honeypotField ? honeypotField.value.trim() : '';
         if (honeypotValue !== '') {
-            console.log('🚫 Spam detectado - honeypot lleno');
+            console.log('🚫 Spam detected - honeypot filled');
             return false;
         }
         
-        // Validar tiempo
-        const tiempoTranscurrido = Date.now() - TIEMPO_INICIO;
-        if (tiempoTranscurrido < TIEMPO_MINIMO_ENVIO) {
-            console.log('🚫 Spam detectado - envío muy rápido');
+        // Validate timing
+        const timeElapsed = Date.now() - TIEMPO_INICIO;
+        if (timeElapsed < TIEMPO_MINIMO_ENVIO) {
+            console.log('🚫 Spam detected - submission too fast');
             return false;
         }
         
-        // Validar patrones
-        const textoCompleto = `${datos.nombre} ${datos.email} ${datos.expectativas}`.toLowerCase();
-        const patronesSpam = [
+        // Validate patterns
+        const fullText = `${data.nombre} ${data.email} ${data.expectativas}`.toLowerCase();
+        const spamPatterns = [
             /\b(viagra|cialis|casino|loan|credit|bitcoin|crypto)\b/i,
             /\b(click here|visit now|buy now|limited time)\b/i,
             /https?:\/\//i
         ];
         
-        if (patronesSpam.some(patron => patron.test(textoCompleto))) {
-            console.log('🚫 Spam detectado - patrones sospechosos');
+        if (spamPatterns.some(pattern => pattern.test(fullText))) {
+            console.log('🚫 Spam detected - suspicious patterns');
             return false;
         }
         

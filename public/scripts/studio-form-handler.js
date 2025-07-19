@@ -40,7 +40,6 @@ class StudioFormHandler {
         if (titleText.includes('jade')) this.currentStudio = { id: 'jade', nombre: 'Estudio Jade' };
         else if (titleText.includes('zian')) this.currentStudio = { id: 'zian', nombre: 'Estudio Zian' };
         else if (titleText.includes('índigo') || titleText.includes('indigo')) this.currentStudio = { id: 'indigo', nombre: 'Estudio Índigo' };
-        else if (titleText.includes('ámbar') || titleText.includes('ambar')) this.currentStudio = { id: 'ambar', nombre: 'Estudio Ámbar' };
       }
     }
   }
@@ -50,7 +49,6 @@ class StudioFormHandler {
       'jade': 'Estudio Jade',
       'zian': 'Estudio Zian', 
       'indigo': 'Estudio Índigo',
-      'ambar': 'Estudio Ámbar'
     };
     return nombres[id] || `Estudio ${id}`;
   }

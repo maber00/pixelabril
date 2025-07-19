@@ -1,73 +1,79 @@
 ---
+// IMPORTAR I18N
+import { getLanguageFromUrl, t, setCurrentLanguage } from '../i18n/utils/translator';
+
+// Detectar idioma actual
+const currentLang = getLanguageFromUrl(Astro.url.pathname);
+setCurrentLanguage(currentLang);
 ---
 
 <section id="precios" class="section bg-white">
   <div class="container">
     <!-- Header de la sección -->
     <div class="text-center mb-12 mx-0 md:mx-20">
-      <span class="inline-block text-pixel-brown font-semibold text-sm uppercase tracking-wider mb-2">Precios transparentes</span>
-      <h2 class="text-4xl md:text-6xl font-normal mb-6">Arrienda tu apartaestudio en el <span class="text-pixel-brown">coliving más flexible</span> del norte de Bogotá</h2>
+      <span class="inline-block text-pixel-brown font-semibold text-sm uppercase tracking-wider mb-2">{t('precios.badge')}</span>
+      <h2 class="text-4xl md:text-6xl font-normal mb-6">{t('precios.title')} <span class="text-pixel-brown">{t('precios.title_highlight')}</span> {t('precios.title_end')}</h2>
       <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-4">
-        En Pixel Living, todo es fácil y transparente: elige la duración, un solo pago mensual.
+        {t('precios.description')}
       </p>
       <!-- Destacar USP principal -->
       <div class="inline-flex items-center bg-pixel-brown/10 rounded-full px-6 py-3">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pixel-brown mr-2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <span class="text-pixel-brown font-bold text-lg">Sin codeudor - Solo tu documento de identificación</span>
+        <span class="text-pixel-brown font-bold text-lg">{t('precios.usp')}</span>
       </div>
     </div>
 
     <!-- Tabla de precios principal -->
     <div class="max-w-4xl mx-auto mb-16">
       <div class="bg-pixel-brown/5 rounded-xl p-8">
-        <h3 class="text-2xl font-normal text-center mb-8 text-pixel-brown">Tarifas Mensuales</h3>
+        <h3 class="text-2xl font-normal text-center mb-8 text-pixel-brown">{t('precios.tabla_titulo')}</h3>
         
         <div class="overflow-x-auto">
           <table class="w-full">
             <thead>
               <tr class="border-b-2 border-pixel-brown">
-                <th class="text-left py-4 px-6 font-semibold text-gray-800">Duración</th>
-                <th class="text-right py-4 px-6 font-semibold text-gray-800">Precio Mensual</th>
-                <th class="text-right py-4 px-6 font-semibold text-pixel-brown">Ahorro</th>
+                <th class="text-left py-4 px-6 font-semibold text-gray-800">{t('precios.tabla_headers.duracion')}</th>
+                <th class="text-right py-4 px-6 font-semibold text-gray-800">{t('precios.tabla_headers.precio')}</th>
+                <th class="text-right py-4 px-6 font-semibold text-pixel-brown">{t('precios.tabla_headers.ahorro')}</th>
               </tr>
             </thead>
             <tbody>
               <tr class="border-b border-gray-200">
-                <td class="py-4 px-6">1 mes</td>
-                <td class="py-4 px-6 text-right font-semibold">$3.100.000</td>
-                <td class="py-4 px-6 text-right text-gray-500">-</td>
+                <td class="py-4 px-6">{t('precios.duraciones.1_mes')}</td>
+                <td class="py-4 px-6 text-right font-semibold">{t('precios.precios.1_mes')}</td>
+                <td class="py-4 px-6 text-right text-gray-500">{t('precios.ahorros.1_mes')}</td>
               </tr>
               <tr class="border-b border-gray-200">
-                <td class="py-4 px-6">3 meses</td>
-                <td class="py-4 px-6 text-right font-semibold">$2.950.000</td>
-                <td class="py-4 px-6 text-right text-pixel-brown font-semibold">$150K</td>
+                <td class="py-4 px-6">{t('precios.duraciones.3_meses')}</td>
+                <td class="py-4 px-6 text-right font-semibold">{t('precios.precios.3_meses')}</td>
+                <td class="py-4 px-6 text-right text-pixel-brown font-semibold">{t('precios.ahorros.3_meses')}</td>
               </tr>
               <tr class="border-b border-gray-200 bg-pixel-brown/10">
-                <td class="py-4 px-6">6 meses</td>
-                <td class="py-4 px-6 text-right font-semibold">$2.750.000</td>
-                <td class="py-4 px-6 text-right text-pixel-brown font-semibold">$350K</td>
+                <td class="py-4 px-6">{t('precios.duraciones.6_meses')}</td>
+                <td class="py-4 px-6 text-right font-semibold">{t('precios.precios.6_meses')}</td>
+                <td class="py-4 px-6 text-right text-pixel-brown font-semibold">{t('precios.ahorros.6_meses')}</td>
               </tr>
               <tr class="bg-pixel-brown text-white">
-                <td class="py-4 px-6 font-semibold">12 meses ⭐ Recomendado</td>
-                <td class="py-4 px-6 text-right font-bold text-xl">$2.650.000</td>
-                <td class="py-4 px-6 text-right font-bold text-pixel-yellow">$450K</td>
+                <td class="py-4 px-6 font-semibold">{t('precios.duraciones.12_meses')}</td>
+                <td class="py-4 px-6 text-right font-bold text-xl">{t('precios.precios.12_meses')}</td>
+                <td class="py-4 px-6 text-right font-bold text-pixel-yellow">{t('precios.ahorros.12_meses')}</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <p class="text-center text-sm text-gray-600 mt-6">
-          Valores en pesos colombianos. Pago mensual.<br>
-          <strong>Todo incluido:</strong> apartaestudio amoblado, servicios públicos, administración y acceso a todas las zonas comunes.
+          {t('precios.tabla_nota')}<br>
+          <strong>{t('precios.todo_incluido')}</strong> {t('precios.incluye_descripcion')}
         </p>
 
         <!-- Proceso de reserva fácil -->
         <div class="mt-6 p-4 bg-white rounded-lg border border-pixel-brown/20">
-          <h4 class="font-semibold text-pixel-brown mb-2 text-center">✨ Reserva fácil y rápido:</h4>
+          <h4 class="font-semibold text-pixel-brown mb-2 text-center">{t('precios.reserva_facil')}</h4>
           <p class="text-sm text-gray-600 text-center">
-            Déjanos tus datos y nos pondremos en contacto contigo para finalizar tu proceso de arriendo.
+            {t('precios.reserva_descripcion')}
           </p>
         </div>
       </div>
@@ -76,10 +82,10 @@
     <!-- Tabla comparativa -->
     <div class="max-w-6xl mx-auto mb-16">
       <div class="text-center mb-8">
-        <h3 class="text-4xl font-normal mb-4">¿Aún dudas si Pixel Living es para ti?</h3>
+        <h3 class="text-4xl font-normal mb-4">{t('precios.comparativa_titulo')}</h3>
         <p class="text-lg text-gray-600">
-          Compara lo que te costaría vivir solo en arriendo tradicional versus todo lo que obtienes con Pixel Living.
-          <strong>Verás que aquí ahorras tiempo, dinero y preocupaciones.</strong>
+          {t('precios.comparativa_descripcion')}
+          <strong>{t('precios.comparativa_enfasis')}</strong>
         </p>
       </div>
 
@@ -87,77 +93,77 @@
         <table class="w-full">
           <thead>
             <tr class="bg-gray-50">
-              <th class="text-left py-4 px-6 font-semibold">Concepto</th>
-              <th class="text-center py-4 px-6 font-semibold text-red-600">Arriendo Tradicional</th>
-              <th class="text-center py-4 px-6 font-semibold text-pixel-brown">Pixel Living</th>
+              <th class="text-left py-4 px-6 font-semibold">{t('precios.comparativa_headers.concepto')}</th>
+              <th class="text-center py-4 px-6 font-semibold text-red-600">{t('precios.comparativa_headers.tradicional')}</th>
+              <th class="text-center py-4 px-6 font-semibold text-pixel-brown">{t('precios.comparativa_headers.pixel')}</th>
             </tr>
           </thead>
           <tbody>
             <tr class="border-b border-gray-100">
-              <td class="py-3 px-6">Arriendo</td>
-              <td class="py-3 px-6 text-center">$2.000.000</td>
-              <td class="py-3 px-6 text-center text-pixel-brown font-semibold">✓ Incluido</td>
+              <td class="py-3 px-6">{t('precios.comparativa_conceptos.arriendo')}</td>
+              <td class="py-3 px-6 text-center">{t('precios.comparativa_tradicional.arriendo')}</td>
+              <td class="py-3 px-6 text-center text-pixel-brown font-semibold">{t('precios.comparativa_pixel.incluido')}</td>
             </tr>
             <tr class="border-b border-gray-100">
-              <td class="py-3 px-6">Servicios públicos</td>
-              <td class="py-3 px-6 text-center">$350.000</td>
-              <td class="py-3 px-6 text-center text-pixel-brown font-semibold">✓ Incluido</td>
+              <td class="py-3 px-6">{t('precios.comparativa_conceptos.servicios')}</td>
+              <td class="py-3 px-6 text-center">{t('precios.comparativa_tradicional.servicios')}</td>
+              <td class="py-3 px-6 text-center text-pixel-brown font-semibold">{t('precios.comparativa_pixel.incluido')}</td>
             </tr>
             <tr class="border-b border-gray-100">
-              <td class="py-3 px-6">Wifi</td>
-              <td class="py-3 px-6 text-center">$120.000</td>
-              <td class="py-3 px-6 text-center text-pixel-brown font-semibold">✓ Incluido</td>
+              <td class="py-3 px-6">{t('precios.comparativa_conceptos.wifi')}</td>
+              <td class="py-3 px-6 text-center">{t('precios.comparativa_tradicional.wifi')}</td>
+              <td class="py-3 px-6 text-center text-pixel-brown font-semibold">{t('precios.comparativa_pixel.incluido')}</td>
             </tr>
             <tr class="border-b border-gray-100">
-              <td class="py-3 px-6">Administración</td>
-              <td class="py-3 px-6 text-center">$300.000</td>
-              <td class="py-3 px-6 text-center text-pixel-brown font-semibold">✓ Incluido</td>
+              <td class="py-3 px-6">{t('precios.comparativa_conceptos.administracion')}</td>
+              <td class="py-3 px-6 text-center">{t('precios.comparativa_tradicional.administracion')}</td>
+              <td class="py-3 px-6 text-center text-pixel-brown font-semibold">{t('precios.comparativa_pixel.incluido')}</td>
             </tr>
             <tr class="border-b border-gray-100">
-              <td class="py-3 px-6">Mobiliario</td>
-              <td class="py-3 px-6 text-center">$400.000</td>
-              <td class="py-3 px-6 text-center text-pixel-brown font-semibold">✓ Incluido</td>
+              <td class="py-3 px-6">{t('precios.comparativa_conceptos.mobiliario')}</td>
+              <td class="py-3 px-6 text-center">{t('precios.comparativa_tradicional.mobiliario')}</td>
+              <td class="py-3 px-6 text-center text-pixel-brown font-semibold">{t('precios.comparativa_pixel.incluido')}</td>
             </tr>
             <tr class="border-b border-gray-100">
-              <td class="py-3 px-6">Lavadora y electrodomésticos</td>
-              <td class="py-3 px-6 text-center">$200.000</td>
-              <td class="py-3 px-6 text-center text-pixel-brown font-semibold">✓ Incluido</td>
+              <td class="py-3 px-6">{t('precios.comparativa_conceptos.electrodomesticos')}</td>
+              <td class="py-3 px-6 text-center">{t('precios.comparativa_tradicional.electrodomesticos')}</td>
+              <td class="py-3 px-6 text-center text-pixel-brown font-semibold">{t('precios.comparativa_pixel.incluido')}</td>
             </tr>
             <tr class="bg-pixel-brown text-white font-bold">
-              <td class="py-4 px-6 text-lg">Total mensual</td>
-              <td class="py-4 px-6 text-center text-xl">$3.370.000</td>
-              <td class="py-4 px-6 text-center text-xl text-pixel-yellow">Desde $2.650.000</td>
+              <td class="py-4 px-6 text-lg">{t('precios.comparativa_conceptos.total')}</td>
+              <td class="py-4 px-6 text-center text-xl">{t('precios.comparativa_tradicional.total')}</td>
+              <td class="py-4 px-6 text-center text-xl text-pixel-yellow">{t('precios.comparativa_pixel.total')}</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <div class="text-center mt-8 p-6 bg-pixel-brown/10 rounded-lg">
-        <h4 class="text-2xl font-normal text-pixel-brown mb-2">💰 Ahorras $720.000 cada mes</h4>
-        <p class="text-gray-600 mb-2">Valores referenciales en pesos colombianos. Todo incluido, sin sorpresas.</p>
+        <h4 class="text-2xl font-normal text-pixel-brown mb-2">{t('precios.ahorro_principal')}</h4>
+        <p class="text-gray-600 mb-2">{t('precios.ahorro_nota')}</p>
         <p class="text-sm text-pixel-brown font-medium">
-          🏆 Más de $8.600.000 de ahorro anual + tiempo y tranquilidad
+          {t('precios.ahorro_anual')}
         </p>
       </div>
     </div>
 
     <!-- CTA final -->
     <div class="text-center">
-      <h3 class="text-4xl font-normal mb-4">¡Vivir bien y sin complicaciones sí es posible!</h3>
+      <h3 class="text-4xl font-normal mb-4">{t('precios.cta_titulo')}</h3>
       <p class="text-lg text-gray-600 mb-8">
-        ¿Listo para vivir, ahorrar y disfrutar más?<br>
-        Reserva tu espacio en Pixel Living hoy y comienza a experimentar el verdadero coliving en Bogotá.
+        {t('precios.cta_descripcion')}<br>
+        {t('precios.cta_descripcion_2')}
       </p>
       
       <a href="#reservas" class="btn bg-pixel-brown hover:bg-brown-600 text-white text-lg px-8 py-4 rounded-lg inline-flex items-center">
-        Reserva tu espacio ahora
+        {t('precios.cta_boton')}
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
         </svg>
       </a>
       
       <p class="text-sm text-gray-500 mt-4">
-        <strong>Cupos limitados. Solo tu documento de identificación.</strong>
+        <strong>{t('precios.cta_nota')}</strong>
       </p>
     </div>
   </div>

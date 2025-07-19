@@ -1,64 +1,548 @@
 ---
+// src/components/Header.astro - VERSIÓN PARA TYPESCRIPT STRICT
+import { getLanguageFromUrl, t, setCurrentLanguage } from '../i18n/utils/translator';
+import LanguageSelector from './LanguageSelector.astro';
+
+// Detectar idioma actual
+const currentLang = getLanguageFromUrl(Astro.url.pathname);
+setCurrentLanguage(currentLang);
+
+// Navegación optimizada
+const navItems = [
+  { href: "/#vive-pixel", text: t('nav.why_pixel'), id: "vive-pixel" },
+  { href: "/#espacios", text: t('nav.studios'), id: "espacios" },
+  { href: "/#precios", text: t('nav.pricing'), id: "precios" },
+  { href: "/#ubicacion", text: t('nav.location'), id: "ubicacion" },
+  { href: "/#coliving", text: t('nav.coliving'), id: "coliving" },
+  { href: "/#reservas", text: t('nav.booking'), id: "reservas" },
+  { href: "/#faq", text: t('nav.faq'), id: "faq" }
+];
 ---
 
-<header class="fixed w-full bg-black shadow-sm z-50 backdrop-blur-sm">
-    <div class="container flex items-center justify-between py-4">
-      <a href="/" class="flex items-center">
-        <img src="/images/logo-pixel-living.webp" alt="Pixel Living" class="h-11" />
-      </a>
-      
-      <nav class="hidden md:flex space-x-8">
-  <a href="/#vive-pixel" class="text-white hover:text-yellow-100">Vive Pixel</a>
-  <a href="/#espacios" class="text-white hover:text-yellow-100">Espacios</a>
-  <a href="/#precios" class="text-white hover:text-yellow-100">Precios</a>        <!-- NUEVO -->
-  <a href="/#ubicacion" class="text-white hover:text-yellow-100">Ubicación</a>   <!-- NUEVO -->
-  <a href="/#coliving" class="text-white hover:text-yellow-100">Coliving</a>
-  <a href="/#reservas" class="text-white hover:text-yellow-100">Reservas</a>
-  <a href="/#faq" class="text-white hover:text-yellow-100">FAQ</a>
-</nav>
-      
-      <button 
-        id="mobileMenuButton" 
-        class="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
-        aria-label="Abrir menú de navegación"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-      >
-        <span class="sr-only">Menú</span>
-        <!-- Agregar el ícono de hamburguesa aquí -->
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-        </svg>
-      </button>
+<header id="header" class="header">
+  <div class="header-container">
+    
+    <!-- Logo -->
+    <a href={currentLang === 'en' ? '/en' : '/'} class="logo-link" aria-label={t('common.home')}>
+      <img 
+        src="/images/logo-pixel-living.webp" 
+        alt="Pixel Living" 
+        class="logo" 
+        width="120"
+        height="44"
+        loading="eager"
+      />
+    </a>
+    
+    <!-- Desktop Navigation -->
+    <nav class="nav-desktop" role="navigation" aria-label={t('nav.main_navigation')}>
+      {navItems.map((item) => (
+        <a 
+          href={item.href}
+          class="nav-link"
+          data-section={item.id}
+        >
+          {item.text}
+        </a>
+      ))}
+    </nav>
+    
+    <!-- Desktop Actions -->
+    <div class="nav-actions">
+      <LanguageSelector />
     </div>
     
-    <div id="mobileMenu" class="hidden md:hidden bg-black shadow-md absolute w-full left-0">
-  <div class="container py-4 flex flex-col space-y-4">
-    <a href="/#vive-pixel" class="text-white hover:text-yellow-100">Vive Pixel</a>
-    <a href="/#espacios" class="text-white hover:text-yellow-100">Espacios</a>
-    <a href="/#precios" class="text-white hover:text-yellow-100">Precios</a>        <!-- NUEVO -->
-    <a href="/#ubicacion" class="text-white hover:text-yellow-100">Ubicación</a>   <!-- NUEVO -->
-    <a href="/#coliving" class="text-white hover:text-yellow-100">Coliving</a>
-    <a href="/#reservas" class="text-white hover:text-yellow-100">Reservas</a>
-    <a href="/#faq" class="text-white hover:text-yellow-100">FAQ</a>
+    <!-- Mobile Menu -->
+    <div class="mobile-controls">
+      <div class="mobile-lang">
+        <LanguageSelector />
+      </div>
+      
+      <button 
+        id="menuBtn" 
+        class="menu-btn"
+        aria-label="Menú"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        type="button"
+      >
+        <span class="menu-icon"></span>
+        <span class="menu-icon"></span>
+        <span class="menu-icon"></span>
+      </button>
+    </div>
   </div>
-</div>
-  </header>
   
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const mobileMenuButton = document.getElementById('mobileMenuButton');
-      const mobileMenu = document.getElementById('mobileMenu');
+  <!-- Mobile Navigation -->
+  <nav id="mobileNav" class="nav-mobile" aria-hidden="true">
+    {navItems.map((item) => (
+      <a 
+        href={item.href}
+        class="nav-mobile-link"
+        data-section={item.id}
+      >
+        {item.text}
+      </a>
+    ))}
+  </nav>
+</header>
+
+<style>
+  /* ===== VARIABLES CSS ===== */
+  .header {
+    --header-height: 70px;
+    --header-bg: rgba(0, 0, 0, 0.95);
+    --header-border: rgba(255, 255, 255, 0.1);
+    --text-color: #ffffff;
+    --accent-color: #FFCC33;
+    --transition: all 0.2s ease;
+  }
+
+  /* ===== HEADER BASE ===== */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    background: var(--header-bg);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--header-border);
+    z-index: 50;
+    will-change: transform;
+  }
+
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* ===== LOGO ===== */
+  .logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: var(--transition);
+  }
+
+  .logo-link:hover {
+    transform: scale(1.05);
+  }
+
+  .logo {
+    height: auto;
+    max-height: 44px;
+    width: auto;
+  }
+
+  /* ===== DESKTOP NAVIGATION ===== */
+  .nav-desktop {
+    display: none;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .nav-desktop {
+      display: flex;
+    }
+  }
+
+  .nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--accent-color);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* ===== ACTIONS ===== */
+  .nav-actions {
+    display: none;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .nav-actions {
+      display: flex;
+    }
+  }
+
+  /* ===== MOBILE CONTROLS ===== */
+  .mobile-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .mobile-controls {
+      display: none;
+    }
+  }
+
+  .mobile-lang {
+    display: flex;
+    align-items: center;
+  }
+
+  /* ===== MENU BUTTON ===== */
+  .menu-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    transition: var(--transition);
+  }
+
+  .menu-btn:hover {
+    opacity: 0.8;
+  }
+
+  .menu-icon {
+    width: 24px;
+    height: 2px;
+    background: var(--text-color);
+    margin: 2px 0;
+    transition: var(--transition);
+    transform-origin: center;
+  }
+
+  /* Menu button animations */
+  .menu-btn[aria-expanded="true"] .menu-icon:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-btn[aria-expanded="true"] .menu-icon:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-btn[aria-expanded="true"] .menu-icon:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+
+  /* ===== MOBILE NAVIGATION ===== */
+  .nav-mobile {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+  }
+
+  .nav-mobile.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-mobile-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+    border-left: 3px solid transparent;
+    transition: var(--transition);
+  }
+
+  .nav-mobile-link:hover {
+    color: var(--accent-color);
+    border-left-color: var(--accent-color);
+    padding-left: 1.5rem;
+  }
+
+  /* ===== REDUCED MOTION ===== */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+
+  /* ===== ACCESSIBILITY ===== */
+  .menu-btn:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+  }
+
+  .nav-link:focus,
+  .nav-mobile-link:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+  }
+</style>
+
+<!-- TypeScript strict mode compatible script -->
+<script>
+(() => {
+  'use strict';
+  
+  // ===== TYPE ASSERTIONS WITH STRICT CHECKS =====
+  
+  const menuBtn = document.getElementById('menuBtn') as HTMLButtonElement | null;
+  const mobileNav = document.getElementById('mobileNav') as HTMLElement | null;
+  const navLinks = document.querySelectorAll('[data-section]') as NodeListOf<HTMLAnchorElement>;
+  const body = document.body as HTMLBodyElement;
+  
+  // Early return si elementos críticos no existen
+  if (!menuBtn || !mobileNav) {
+    console.warn('Header: Elementos críticos no encontrados');
+    return;
+  }
+  
+  // ===== STATE WITH EXPLICIT TYPES =====
+  
+  let isMenuOpen: boolean = false;
+  let resizeTimer: number | undefined = undefined;
+  
+  // ===== CONSTANTS =====
+  
+  const HEADER_HEIGHT: number = 80;
+  const MOBILE_BREAKPOINT: number = 768;
+  const ANIMATION_DELAY: number = 100;
+  const RESIZE_DEBOUNCE: number = 150;
+  
+  // ===== UTILITY FUNCTIONS =====
+  
+  function isValidNode(target: EventTarget | null): target is Node {
+    return target !== null && target instanceof Node;
+  }
+  
+  function isValidElement(element: Element | null): element is HTMLElement {
+    return element !== null && element instanceof HTMLElement;
+  }
+  
+  function safeQuerySelector<T extends Element = Element>(
+    selector: string
+  ): T | null {
+    try {
+      return document.querySelector<T>(selector);
+    } catch {
+      return null;
+    }
+  }
+  
+  // ===== CORE FUNCTIONS =====
+  
+  function toggleMenu(): void {
+    isMenuOpen = !isMenuOpen;
+    
+    // Batch DOM updates con requestAnimationFrame
+    requestAnimationFrame(() => {
+      if (!menuBtn || !mobileNav) return;
       
-      mobileMenuButton?.addEventListener('click', () => {
-        mobileMenu?.classList.toggle('hidden');
-      });
+      menuBtn.setAttribute('aria-expanded', isMenuOpen.toString());
+      mobileNav.setAttribute('aria-hidden', (!isMenuOpen).toString());
       
-      const mobileLinks = mobileMenu?.querySelectorAll('a');
-      mobileLinks?.forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu?.classList.add('hidden');
-        });
-      });
+      if (isMenuOpen) {
+        mobileNav.classList.add('show');
+        body.style.overflow = 'hidden';
+      } else {
+        mobileNav.classList.remove('show');
+        body.style.overflow = '';
+      }
     });
-  </script>
+  }
+  
+  function closeMenu(): void {
+    if (isMenuOpen) {
+      toggleMenu();
+    }
+  }
+  
+  function handleNavClick(event: Event): void {
+    const target = event.target;
+    
+    // Type guard estricto
+    if (!target || !(target instanceof HTMLAnchorElement)) {
+      return;
+    }
+    
+    const href = target.getAttribute('href');
+    
+    if (!href || !href.startsWith('/#')) {
+      return;
+    }
+    
+    event.preventDefault();
+    
+    const targetId = href.substring(2); // Quitar '/#'
+    const currentPath = window.location.pathname;
+    const isHomepage = currentPath === '/' || currentPath === '/en';
+    
+    if (isHomepage) {
+      // HOMEPAGE: Scroll interno
+      const targetElement = safeQuerySelector<HTMLElement>(`#${targetId}`);
+      
+      if (targetElement) {
+        const header = document.querySelector('header') as HTMLElement | null;
+        const headerHeight = header?.offsetHeight || HEADER_HEIGHT;
+        const targetPosition = targetElement.offsetTop - headerHeight - 20;
+        
+        // Smooth scroll con fallback
+        try {
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        } catch {
+          // Fallback para navegadores que no soportan smooth scroll
+          window.scrollTo(0, targetPosition);
+        }
+        
+        // Update URL
+        try {
+          history.pushState(null, '', href);
+        } catch (error) {
+          console.warn('History API not available:', error);
+        }
+      }
+    } else {
+      // OTRAS PÁGINAS: Redirigir respetando idioma
+      const lang = currentPath.startsWith('/en') ? '/en' : '';
+      window.location.href = `${lang}${href}`;
+    }
+    
+    // Close mobile menu
+    setTimeout(closeMenu, ANIMATION_DELAY);
+  }
+  
+  function handleKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Escape' && isMenuOpen) {
+      closeMenu();
+      
+      // Return focus to menu button
+      if (menuBtn) {
+        menuBtn.focus();
+      }
+    }
+  }
+  
+  function handleOutsideClick(event: Event): void {
+    if (!isMenuOpen || !mobileNav || !menuBtn) {
+      return;
+    }
+    
+    const target = event.target;
+    
+    // Type guard estricto
+    if (!isValidNode(target)) {
+      return;
+    }
+    
+    const clickedInsideMenu = mobileNav.contains(target);
+    const clickedMenuButton = menuBtn.contains(target);
+    
+    if (!clickedInsideMenu && !clickedMenuButton) {
+      closeMenu();
+    }
+  }
+  
+  function handleResize(): void {
+    // Clear previous timer
+    if (resizeTimer !== undefined) {
+      clearTimeout(resizeTimer);
+    }
+    
+    resizeTimer = window.setTimeout(() => {
+      if (window.innerWidth >= MOBILE_BREAKPOINT && isMenuOpen) {
+        closeMenu();
+      }
+      resizeTimer = undefined;
+    }, RESIZE_DEBOUNCE);
+  }
+  
+  // ===== EVENT LISTENERS =====
+  
+  function attachEventListeners(): void {
+    // Menu button click - ya validado arriba
+    menuBtn!.addEventListener('click', toggleMenu, { passive: true });
+    
+    // Navigation links
+    navLinks.forEach((link: HTMLAnchorElement) => {
+      link.addEventListener('click', handleNavClick);
+    });
+    
+    // Global events
+    document.addEventListener('keydown', handleKeydown, { passive: true });
+    document.addEventListener('click', handleOutsideClick, { passive: true });
+    window.addEventListener('resize', handleResize, { passive: true });
+  }
+  
+  // ===== CLEANUP FUNCTION =====
+  
+  function cleanup(): void {
+    if (menuBtn) {
+      menuBtn.removeEventListener('click', toggleMenu);
+    }
+    
+    navLinks.forEach((link: HTMLAnchorElement) => {
+      link.removeEventListener('click', handleNavClick);
+    });
+    
+    document.removeEventListener('keydown', handleKeydown);
+    document.removeEventListener('click', handleOutsideClick);
+    window.removeEventListener('resize', handleResize);
+    
+    if (resizeTimer !== undefined) {
+      clearTimeout(resizeTimer);
+      resizeTimer = undefined;
+    }
+    
+    console.log('🧹 Header cleanup completed');
+  }
+  
+  // ===== INITIALIZATION =====
+  
+  try {
+    attachEventListeners();
+    console.log('✅ Header initialized with strict TypeScript');
+    
+    // Store cleanup function globally for SPA navigation
+    (window as any).PIXEL_HEADER_CLEANUP = cleanup;
+    
+  } catch (error) {
+    console.error('❌ Header initialization failed:', error);
+  }
+  
+})();
+</script>

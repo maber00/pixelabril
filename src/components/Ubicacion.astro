@@ -1,16 +1,24 @@
 ---
+// Ubicacion.astro - TRADUCIDO
+
+// IMPORTAR I18N - AÑADIDO
+import { getLanguageFromUrl, t, setCurrentLanguage } from '../i18n/utils/translator';
+
+// Detectar idioma actual - AÑADIDO
+const currentLang = getLanguageFromUrl(Astro.url.pathname);
+setCurrentLanguage(currentLang);
+
 import pixelLogo from '../assets/logo-pixel.svg';
 ---
 
 <section id="ubicacion" class="section bg-pixel-blue/5">
   <div class="container mx-20 md:mx-20">
-    <!-- Header -->
+    <!-- Header - TRADUCIDO -->
     <div class="text-center mb-12">
-      <span class="inline-block text-pixel-blue font-semibold text-sm uppercase tracking-wider mb-2">Ubicación estratégica</span>
-      <h2 class="text-4xl md:text-6xl font-normal mb-6">Vive donde <span class="text-pixel-blue">todo te queda cerca</span></h2>
+      <span class="inline-block text-pixel-blue font-semibold text-sm uppercase tracking-wider mb-2">{t('ubicacion.badge')}</span>
+      <h2 class="text-4xl md:text-6xl font-normal mb-6">{t('ubicacion.title')} <span class="text-pixel-blue">{t('ubicacion.title_highlight')}</span></h2>
       <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-        Pixel Living está en el norte de Bogotá, en una de las zonas más conectadas y seguras de la ciudad. 
-        Disfruta una ubicación estratégica que te ahorra tiempo y te pone cerca de todo lo que importa.
+        {t('ubicacion.description')}
       </p>
     </div>
 
@@ -26,32 +34,32 @@ import pixelLogo from '../assets/logo-pixel.svg';
                <div class="w-12 h-12  rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
         <img 
           src="/images/movilidad.svg" 
-          alt="Filosofía Pixel Living" 
+          alt="Movilidad Pixel Living" 
           class="w-8 h-8 "
         />
       </div>
-              Movilidad Total
+              {t('ubicacion.movilidad.titulo')}
             </h3>
             <ul class="space-y-3">
               <li class="flex items-start">
                 <span class="text-pixel-blue mr-2">🚗</span>
                 <div>
-                  <strong>A pasos de la Autopista Norte con Calle 100:</strong><br>
-                  <span class="text-gray-600">Acceso inmediato a toda Bogotá</span>
+                  <strong>{t('ubicacion.movilidad.autopista.titulo')}:</strong><br>
+                  <span class="text-gray-600">{t('ubicacion.movilidad.autopista.descripcion')}</span>
                 </div>
               </li>
               <li class="flex items-start">
                 <span class="text-pixel-blue mr-2">🚇</span>
                 <div>
-                  <strong>Dos troncales de TransMilenio:</strong><br>
-                  <span class="text-gray-600">Avenida Suba y Autopista Norte</span>
+                  <strong>{t('ubicacion.movilidad.transmilenio.titulo')}:</strong><br>
+                  <span class="text-gray-600">{t('ubicacion.movilidad.transmilenio.descripcion')}</span>
                 </div>
               </li>
               <li class="flex items-start">
                 <span class="text-pixel-blue mr-2">🚌</span>
                 <div>
-                  <strong>Próximamente Troncal Avenida 68:</strong><br>
-                  <span class="text-gray-600">Conexión directa (2027)</span>
+                  <strong>{t('ubicacion.movilidad.avenida_68.titulo')}:</strong><br>
+                  <span class="text-gray-600">{t('ubicacion.movilidad.avenida_68.descripcion')}</span>
                 </div>
               </li>
             </ul>
@@ -63,14 +71,14 @@ import pixelLogo from '../assets/logo-pixel.svg';
               <div class="w-12 h-12  rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
         <img 
           src="/images/center.svg" 
-          alt="Filosofía Pixel Living" 
+          alt="Centro empresarial Pixel Living" 
           class="w-8 h-8 "
         />
       </div>
-              Zona Empresarial Calle 100
+              {t('ubicacion.zona_empresarial.titulo')}
             </h3>
             <p class="text-gray-600">
-             Multinacionales, oficinas, coworkings, zona franca de salud y el distrito financiero del norte de Bogotá a minutos de tu puerta.
+             {t('ubicacion.zona_empresarial.descripcion')}
             </p>
           </div>
 
@@ -80,41 +88,41 @@ import pixelLogo from '../assets/logo-pixel.svg';
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2 text-pixel-blue">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
               </svg>
-              Cerca de todo lo que necesitas
+              {t('ubicacion.servicios.titulo')}
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
               <div>
-                <h4 class="font-semibold text-pixel-blue mb-2">🎭 Entretenimiento:</h4>
+                <h4 class="font-semibold text-pixel-blue mb-2">{t('ubicacion.servicios.entretenimiento.titulo')}</h4>
                 <ul class="space-y-1 text-gray-600">
-                  <li>• Teatro La Castellana</li>
-                  <li>• Parque de la 93</li>
-                  <li>• Centros comerciales</li>
-                  <li>• Restaurantes y cafés</li>
-                  <li>• Cines</li>
+                  <li>• {t('ubicacion.servicios.entretenimiento.item_1')}</li>
+                  <li>• {t('ubicacion.servicios.entretenimiento.item_2')}</li>
+                  <li>• {t('ubicacion.servicios.entretenimiento.item_3')}</li>
+                  <li>• {t('ubicacion.servicios.entretenimiento.item_4')}</li>
+                  <li>• {t('ubicacion.servicios.entretenimiento.item_5')}</li>
                 </ul>
               </div>
               <div>
-                <h4 class="font-semibold text-pixel-blue mb-2">🏥 Salud:</h4>
+                <h4 class="font-semibold text-pixel-blue mb-2">{t('ubicacion.servicios.salud.titulo')}</h4>
                 <ul class="space-y-1 text-gray-600">
-                  <li>• Clínicas Los Nogales</li>
-                  <li>• Clínica Colsubsidio</li>
-                  <li>• Compensar</li>
-                  <li>• Zona franca de salud</li>
+                  <li>• {t('ubicacion.servicios.salud.item_1')}</li>
+                  <li>• {t('ubicacion.servicios.salud.item_2')}</li>
+                  <li>• {t('ubicacion.servicios.salud.item_3')}</li>
+                  <li>• {t('ubicacion.servicios.salud.item_4')}</li>
                 </ul>
               </div>
               <div>
-                <h4 class="font-semibold text-pixel-blue mb-2">🎓 Educación:</h4>
+                <h4 class="font-semibold text-pixel-blue mb-2">{t('ubicacion.servicios.educacion.titulo')}</h4>
                 <ul class="space-y-1 text-gray-600">
-                  <li>• Universidad Militar Nueva Granada</li>
-                  <li>• Zona universitaria del norte</li>
+                  <li>• {t('ubicacion.servicios.educacion.item_1')}</li>
+                  <li>• {t('ubicacion.servicios.educacion.item_2')}</li>
                 </ul>
               </div>
               <div>
-                <h4 class="font-semibold text-pixel-blue mb-2">🛒 Comercio:</h4>
+                <h4 class="font-semibold text-pixel-blue mb-2">{t('ubicacion.servicios.comercio.titulo')}</h4>
                 <ul class="space-y-1 text-gray-600">
-                  <li>• Supermercados</li>
-                  <li>• Bancos</li>
-                  <li>• Farmacias 24h</li>
+                  <li>• {t('ubicacion.servicios.comercio.item_1')}</li>
+                  <li>• {t('ubicacion.servicios.comercio.item_2')}</li>
+                  <li>• {t('ubicacion.servicios.comercio.item_3')}</li>
                 </ul>
               </div>
             </div>
@@ -124,22 +132,20 @@ import pixelLogo from '../assets/logo-pixel.svg';
         <!-- Mapa -->
         <div class="bg-white rounded-lg shadow-md overflow-hidden">
           <div class="bg-pixel-blue p-4">
-            <h3 class="text-xl font-bold text-white">Nuestra Ubicación</h3>
-            <p class="text-blue-100">Calle 98a #51-32, La Castellana, Bogotá</p>
+            <h3 class="text-xl font-bold text-white">{t('ubicacion.mapa.titulo')}</h3>
+            <p class="text-blue-100">{t('ubicacion.mapa.direccion')}</p>
           </div>
           
           <!-- Google Maps -->
           <div class="relative h-150 group cursor-pointer" id="mapContainer">
             <iframe
   class="w-full h-full border-0"
-  title="Ubicación de Pixel Living en el norte de Bogotá - Autopista Norte con Calle 100"
+  title={t('ubicacion.mapa.iframe_title')}
   loading="lazy"
   allowfullscreen
   referrerpolicy="no-referrer-when-downgrade"
   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.2985751234567!2d-74.05898758468986!3d4.672845996645678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9b5e3c4d6789%3A0x123456789abcdef!2sCalle%2098a%20%2351-32%2C%20Bogot%C3%A1%2C%20Colombia!5e0!3m2!1ses!2sco!4v1234567890123!5m2!1ses!2sco">
 </iframe>
-            
-            
             
             <!-- Overlay con logo -->
             <div class="absolute inset-0 pointer-events-none">
@@ -157,7 +163,7 @@ import pixelLogo from '../assets/logo-pixel.svg';
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                   </svg>
-                  <span>Cómo llegar a Pixel Living</span>
+                  <span>{t('ubicacion.mapa.hover_text')}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                   </svg>
@@ -170,8 +176,8 @@ import pixelLogo from '../assets/logo-pixel.svg';
           <div class="p-4">
             <div class="flex items-center justify-between">
               <div>
-                <h4 class="font-bold text-gray-900">Calle 98a #51-32</h4>
-                <p class="text-gray-600 text-sm">La Castellana, Bogotá</p>
+                <h4 class="font-bold text-gray-900">{t('ubicacion.mapa.direccion_corta')}</h4>
+                <p class="text-gray-600 text-sm">{t('ubicacion.mapa.barrio')}</p>
               </div>
               <a 
                 href="https://www.google.com/maps/dir/?api=1&destination=Calle+98a+51-32,+La+Castellana,+Bogotá,+Colombia" 
@@ -181,7 +187,7 @@ import pixelLogo from '../assets/logo-pixel.svg';
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
                 </svg>
-                Direcciones
+                {t('ubicacion.mapa.boton_direcciones')}
               </a>
             </div>
           </div>
@@ -189,16 +195,16 @@ import pixelLogo from '../assets/logo-pixel.svg';
       </div>
     </div>
 
-    <!-- Beneficio final -->
+    <!-- Beneficio final - TRADUCIDO -->
     <div class="text-center mt-16 p-8 bg-pixel-blue md:mx-20 mx-0 rounded-xl text-white">
       <h3 class="text-2xl md:text-4xl font-normal mb-4">
-        En Pixel Living | Coliving Bogotá Bogotá, tu vida es más fácil y eficiente
+        {t('ubicacion.cta_final.heading')}
       </h3>
       <p class="text-xl text-blue-100 mb-6">
-        Vive, trabaja y disfruta todo cerca de ti.
+        {t('ubicacion.cta_final.descripcion')}
       </p>
       <a href="#reservas" class="btn bg-white text-pixel-blue hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold">
-       Ver apartaestudios disponibles
+       {t('ubicacion.cta_final.boton')}
      </a>
    </div>
  </div>

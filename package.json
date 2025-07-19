@@ -2,6 +2,7 @@
   "name": "pixelok-living",
   "type": "module",
   "version": "0.0.1",
+  
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -14,4 +15,5 @@
     "cal-sans": "^1.0.1",
     "tailwindcss": "^4.1.4"
   }
+  
 }

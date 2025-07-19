@@ -83,7 +83,6 @@
               'jade': 'Estudio Jade',
               'zian': 'Estudio Zian', 
               'indigo': 'Estudio Índigo',
-              'ambar': 'Estudio Ámbar'
             };
             data.estudio = estudiosMap[estudioId] || 'Consulta general';
           }

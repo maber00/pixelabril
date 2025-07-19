@@ -1,5 +1,12 @@
 ---
-//src/components/Espacios.astro
+//src/components/Espacios.astro - TRADUCIDO
+// IMPORTAR I18N - AÑADIDO
+import { getLanguageFromUrl, t, setCurrentLanguage } from '../i18n/utils/translator';
+
+// Detectar idioma actual - AÑADIDO
+const currentLang = getLanguageFromUrl(Astro.url.pathname);
+setCurrentLanguage(currentLang);
+
 // Importar el componente LightboxModal
 import LightboxModal from '../components/LightboxModal.astro';
 
@@ -35,9 +42,9 @@ const estudiosCompletos: EstudiosRecord = {
     nombre: 'Estudio Jade',
     color: 'bg-green-500',
     imagen: '/images/estudios/jade/pixel-jade-room-004.webp',
-    descripcion: 'Espacio luminoso con toques de verde que evocan naturaleza y tranquilidad.',
+    descripcion: t('estudios.jade.descripcion_1'),
     metros: '29m²',
-    precio: 'Desde $2.650.000',
+    precio: t('estudios.jade.precio'),
     galeria: [ 
       '/images/estudios/jade/pixel-jade-room-005.webp', 
       '/images/estudios/jade/pixel-jade-room-001.webp',  
@@ -75,9 +82,9 @@ incluye: [
     nombre: 'Estudio Zian',
     color: 'bg-blue-500',
     imagen: '/images/estudios/zian/pixel-zian-room-008.webp',
-    descripcion: 'Colores azules que transmiten calma y concentración, ideal para trabajo remoto.',
+    descripcion: t('estudios.zian.descripcion_1'),
     metros: '29m²',
-    precio: 'Desde $2.650.000',
+    precio: t('estudios.zian.precio'),
     galeria: [
       '/images/estudios/zian/pixel-zian-room-001.webp', 
       '/images/estudios/zian/pixel-zian-room-002.webp', 
@@ -118,9 +125,9 @@ incluye: [
     nombre: 'Estudio Índigo',
     color: 'bg-indigo-500',
     imagen: '/images/estudios/indigo/pixel-indigo-room-005.webp',
-    descripcion: 'Tonos violetas que inspiran creatividad y reflexión en un ambiente acogedor.',
+    descripcion: t('estudios.indigo.descripcion_1'),
     metros: '29m²',
-    precio: 'Desde $2.650.000',
+   precio: t('estudios.indigo.precio'),
     galeria: [
       '/images/estudios/indigo/pixel-indigo-room-001.webp', 
       '/images/estudios/indigo/pixel-indigo-room-002.webp', 
@@ -171,31 +178,31 @@ interface Caracteristica {
   texto: string;
 }
 
-// REEMPLAZAR el array caracteristicas por esto:
+// CARACTERÍSTICAS TRADUCIDAS - CAMBIADO
 const caracteristicas: Caracteristica[] = [
   {
     icono: iconoCama,
-    texto: 'Cama doble'
+    texto: t('espacios.caracteristicas.0') // 'Cama doble'
   },
   {
     icono: iconoCocina,
-    texto: 'Cocina equipada'
+    texto: t('espacios.caracteristicas.1') // 'Cocina equipada'
   },
   {
     icono: iconoEscritorio,
-    texto: 'Escritorio de trabajo'
+    texto: t('espacios.caracteristicas.2') // 'Escritorio de trabajo'
   },
   {
     icono: iconoWifi,
-    texto: 'WiFi de alta velocidad'
+    texto: t('espacios.caracteristicas.3') // 'WiFi de alta velocidad'
   },
   {
     icono: iconoServicios,
-    texto: 'Servicios incluidos'
+    texto: t('espacios.caracteristicas.4') // 'Servicios incluidos'
   },
   {
     icono: iconoPrivado,
-    texto: 'Espacio privado y tranquilo'
+    texto: t('espacios.caracteristicas.5') // 'Espacio privado y tranquilo'
   }
 ];
 
@@ -245,37 +252,42 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
 <section id="espacios" class="section bg-pixel-blue/5" role="region" aria-labelledby="espacios-heading">
   <div class="container">
     <div class="text-center bg-pixel-blue rounded-t-2xl  mx-0 md:mx-20">
-      <span class="inline-block text-white font-semibold text-sm uppercase tracking-wider mb-2 pt-8">Apartaestudios Pixel Living</span>
+      <!-- ✅ BADGE TRADUCIDO -->
+      <span class="inline-block text-white font-semibold text-sm uppercase tracking-wider mb-2 pt-8">{t('espacios.badge')}</span>
+      
+      <!-- ✅ TÍTULO TRADUCIDO -->
       <h2 id="espacios-heading" class="text-4xl md:text-7xl font-normal px-4 md:px-18 text-white">
-        Apartaestudios amoblados y <span class="text-blue-200">listos para ti</span>
+        {t('espacios.title')} <span class="text-blue-200">{t('espacios.title_highlight')}</span>
       </h2>
       
       <!-- Mejora del copy según auditoría -->
       <div class="text-lg md:text-xl font-normal text-white max-w-5xl pb-6 px-4 mx-auto mt-6">
         <p class="mb-4">
-          En Pixel Living, cada apartaestudio tiene <strong class="text-blue-200">29 metros cuadrados</strong> y está diseñado para brindarte máxima comodidad, privacidad y flexibilidad, en el coliving más flexible y completo del norte de Bogotá.
-        </p>
+  {t("espacios.description")}{" "}
+  <strong class="text-blue-200">{t("espacios.description2")}</strong>{" "}
+  {t("espacios.description3")} {t("espacios.espacio")}
+</p>
         
         <!-- Destacar beneficios clave según auditoría -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 pb-4">
           <div class="bg-white/10 rounded-lg p-3 backdrop-blur-sm">
-            <div class="text-pixel-yellow font-bold">✓ Habitación adicional</div>
-            <div class="text-sm">Espacio de trabajo + cama auxiliar</div>
+            <div class="text-pixel-yellow font-bold">✓ {t('espacios.beneficios_destacados.habitacion_adicional')}</div>
+            <div class="text-sm">{t('espacios.beneficios_destacados.habitacion_desc')}</div>
           </div>
           <div class="bg-white/10 rounded-lg p-3 backdrop-blur-sm">
-            <div class="text-pixel-yellow font-bold">✓ Balcón privado</div>
-            <div class="text-sm">Para disfrutar el aire libre</div>
+            <div class="text-pixel-yellow font-bold">✓ {t('espacios.beneficios_destacados.balcon_privado')}</div>
+            <div class="text-sm">{t('espacios.beneficios_destacados.balcon_desc')}</div>
           </div>
           <div class="bg-white/10 rounded-lg p-3 backdrop-blur-sm">
-            <div class="text-pixel-yellow font-bold">✓ Todo incluido</div>
-            <div class="text-sm">En un solo pago mensual</div>
+            <div class="text-pixel-yellow font-bold">✓ {t('espacios.beneficios_destacados.todo_incluido')}</div>
+            <div class="text-sm">{t('espacios.beneficios_destacados.todo_desc')}</div>
           </div>
         </div>
       </div>
 
-       <!-- Mensaje final optimizado -->
+       <!-- ✅ MENSAJE FINAL TRADUCIDO -->
       <p class="text-white text-lg md:text-xl  pb-4 px-4 max-w-3xl mx-auto font-normal">
-        Elige vivir fácil, sin trámites, sin codeudor y con la libertad que solo te da Pixel Living.
+        {t('espacios.mensaje_final')}
       </p>
     </div>
     
@@ -398,11 +410,8 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
                           {estudio.precio}
                         </span>
                         <a 
-                          href={`/estudio/${estudio.id}`} 
-                          class="text-pixel-blue font-medium inline-flex items-center group ver-detalles-btn hover:underline focus:underline"
-                          aria-describedby={`estudio-${estudio.id}-title`}
-                        >
-                          Ver detalles
+                          href={currentLang === 'en' ? `/en/estudio/${estudio.id}` : `/estudio/${estudio.id}`} class="text-pixel-blue font-medium inline-flex items-center group ver-detalles-btn hover:underline focus:underline">
+  {t('espacios.ver_detalles')}
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-1 transform transition-transform group-hover:translate-x-1" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                           </svg>
@@ -441,7 +450,8 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
     <!-- Características -->
      <div class="mx-4">
     <div class="bg-white  rounded-lg shadow-lg p-4 md:p-10 max-w-4xl  mt-2 mb-16 border-2 mx-auto  border-pixel-blue">
-      <h3 class="text-4xl font-normal mb-6 text-center text-pixel-blue">Características de nuestros espacios</h3>
+      <!-- ✅ TÍTULO CARACTERÍSTICAS TRADUCIDO -->
+      <h3 class="text-4xl font-normal mb-6 text-center text-pixel-blue">{t('espacios.caracteristicas_titulo')}</h3>
       
       <div class="grid grid-cols-2 md:grid-cols-3 gap-6" role="list">
         {caracteristicas.map((item: { icono: ImageMetadata; texto: string }) => (
@@ -466,7 +476,7 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
           class="btn bg-pixel-blue hover:bg-blue-600 text-white inline-flex items-center border border-blue-700 pixel-hover focus:ring-4 focus:ring-blue-300 transition-all duration-200"
           aria-describedby="reservas-cta-desc"
         >
-          👉 Solicita disponibilidad
+          {t('espacios.cta_disponibilidad')}
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
           </svg>

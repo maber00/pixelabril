@@ -1,9 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
 
 // IMPORTAR I18N
-import { getLanguageFromUrl, t, setCurrentLanguage, tArray } from '../i18n/utils/translator';
+import { getLanguageFromUrl, t, setCurrentLanguage, tArray } from '../../i18n/utils/translator';
 
 // Detectar idioma actual
 const currentLang = getLanguageFromUrl(Astro.url.pathname);
@@ -23,7 +23,7 @@ const metaDescription = t('terminos.meta.description');
         
         <!-- Header -->
         <div class="text-center mb-12">
-         <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 cal-sans">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 cal-sans">
   {t('terminos.hero.titulo')} <span class="text-pixel-brown">{t('terminos.hero.titulo_highlight')}</span>
 </h1>
         </div>

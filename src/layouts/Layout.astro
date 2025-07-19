@@ -1,12 +1,14 @@
 ---
-// src/layouts/Layout.astro - VERSIÓN CORREGIDA SIN ERRORES
-
+// src/layouts/Layout.astro - CODIFICACIÓN UTF-8 CORREGIDA
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 
+// IMPORTAR I18N
+import { getLanguageFromUrl, t, setCurrentLanguage, getAlternateUrls } from '../i18n/utils/translator';
+
 export interface Props {
-	title: string;
+	title?: string;
 	description?: string;
 	ogImage?: string;
 	canonical?: string;
@@ -14,9 +16,16 @@ export interface Props {
 	structuredData?: object;
 }
 
+// Detectar idioma desde URL
+const currentLang = getLanguageFromUrl(Astro.url.pathname);
+setCurrentLanguage(currentLang);
+
+// Generar URLs alternativas para hreflang
+const alternateUrls = getAlternateUrls(Astro.url.pathname);
+
 const { 
-	title, 
-	description = "Pixel Living es coliving en Bogotá para quienes buscan algo más que un arriendo. Apartaestudios diseñados para estadías medianas y largas, con estilo, comodidad y comunidad.", 
+	title = t('meta.title'),
+	description = t('meta.description'),
 	ogImage = "/images/pixel-living-og.jpg",
 	canonical,
 	noindex = false,
@@ -27,7 +36,7 @@ const pathname = Astro.url.pathname;
 const siteUrl = "https://pixelliving.co";
 const canonicalUrl = canonical || `${siteUrl}${pathname}`;
 
-// Structured data por defecto
+// Structured data adaptado por idioma
 const defaultStructuredData = {
 	"@context": "https://schema.org",
 	"@graph": [
@@ -47,7 +56,7 @@ const defaultStructuredData = {
 				"@type": "ContactPoint",
 				"telephone": "+57-301-787-2595",
 				"contactType": "customer service",
-				"availableLanguage": "Spanish"
+				"availableLanguage": currentLang === 'es' ? ["Spanish", "English"] : ["English", "Spanish"]
 			},
 			"address": {
 				"@type": "PostalAddress",
@@ -56,7 +65,6 @@ const defaultStructuredData = {
 			},
 			"sameAs": [
 				"https://instagram.com/pixelliving.co"
-				
 			]
 		},
 		{
@@ -68,6 +76,7 @@ const defaultStructuredData = {
 			"publisher": {
 				"@id": `${siteUrl}/#organization`
 			},
+			"inLanguage": currentLang,
 			"potentialAction": [
 				{
 					"@type": "SearchAction",
@@ -82,8 +91,10 @@ const defaultStructuredData = {
 		{
 			"@type": "Service",
 			"@id": `${siteUrl}/#service`,
-			"name": "Coliving Pixel Living",
-			"description": "Servicio de coliving premium en Bogotá con apartaestudios completamente amoblados",
+			"name": currentLang === 'es' ? "Coliving Pixel Living" : "Pixel Living Coliving",
+			"description": currentLang === 'es' 
+				? "Servicio de coliving premium en Bogotá con apartaestudios completamente amoblados"
+				: "Premium coliving service in Bogotá with fully furnished studios",
 			"provider": {
 				"@id": `${siteUrl}/#organization`
 			},
@@ -101,28 +112,30 @@ const finalStructuredData = structuredData || defaultStructuredData;
 ---
 
 <!DOCTYPE html>
-<html lang="es" dir="ltr">
+<html lang={currentLang} dir="ltr">
 	<head>
+		<!-- 🚨 CHARSET DEBE SER LO PRIMERO -->
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		
-		<!-- 🚀 PRECONNECT HINTS CRÍTICOS - Solo dominios necesarios -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+		<!-- 🚀 PRECONNECT HINTS CRÍTICOS -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
 		
 		<!-- 🌐 DNS PREFETCH para recursos secundarios -->
-		<link rel="dns-prefetch" href="https://maps.googleapis.com">
-		<link rel="dns-prefetch" href="https://formsubmit.co">
-		<link rel="dns-prefetch" href="https://wa.me">
+		<link rel="dns-prefetch" href="https://maps.googleapis.com" />
+		<link rel="dns-prefetch" href="https://formsubmit.co" />
+		<link rel="dns-prefetch" href="https://wa.me" />
+		<link rel="dns-prefetch" href="https://api.ipgeolocation.io" />
 		
-		<!-- 📱 Favicon y iconos - Solo los que existen -->
+		<!-- 📱 Favicon y iconos -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-		<!-- Removido manifest hasta que exista el archivo -->
 		<meta name="theme-color" content="#009185" />
 		<meta name="msapplication-TileColor" content="#009185" />
 		
@@ -134,11 +147,16 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		<!-- 🔗 Canonical URL -->
 		<link rel="canonical" href={canonicalUrl} />
 		
+		<!-- 🌍 HREFLANG TAGS para SEO multiidioma -->
+		<link rel="alternate" hreflang="es" href={`${siteUrl}${alternateUrls.es}`} />
+		<link rel="alternate" hreflang="en" href={`${siteUrl}${alternateUrls.en}`} />
+		<link rel="alternate" hreflang="x-default" href={`${siteUrl}${alternateUrls.es}`} />
+		
 		<!-- 🏷️ Primary Meta Tags -->
 		<title>{title}</title>
 		<meta name="title" content={title} />
 		<meta name="description" content={description} />
-		<meta name="keywords" content="coliving Bogotá, apartaestudios amoblados, hospedaje temporal, vivienda temporal, pixel living, comunidad digital, coworking" />
+		<meta name="keywords" content={t('meta.keywords')} />
 		
 		<!-- 📊 Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
@@ -147,10 +165,10 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={`${siteUrl}${ogImage}`} />
-		<meta property="og:image:alt" content="Pixel Living - Coliving en Bogotá" />
+		<meta property="og:image:alt" content={currentLang === 'es' ? "Pixel Living - Coliving en Bogotá" : "Pixel Living - Coliving in Bogotá"} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:locale" content="es_CO" />
+		<meta property="og:locale" content={currentLang === 'es' ? 'es_CO' : 'en_US'} />
 		
 		<!-- 🐦 Twitter -->
 		<meta name="twitter:card" content="summary_large_image" />
@@ -160,7 +178,7 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
-		<meta name="twitter:image:alt" content="Pixel Living - Coliving en Bogotá" />
+		<meta name="twitter:image:alt" content={currentLang === 'es' ? "Pixel Living - Coliving en Bogotá" : "Pixel Living - Coliving in Bogotá"} />
 		
 		<!-- 📍 Geo tags para ubicación -->
 		<meta name="geo.region" content="CO-DC" />
@@ -168,19 +186,22 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		<meta name="geo.position" content="4.7110;-74.0721" />
 		<meta name="ICBM" content="4.7110, -74.0721" />
 		
-		<!-- ⚡ PRELOAD RECURSOS CRÍTICOS - Solo los que existen -->
-		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cal+Sans:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- ⚡ PRELOAD RECURSOS CRÍTICOS -->
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cal+Sans:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
 		
 		<!-- NOSCRIPT FALLBACK para fuentes -->
 		<noscript>
-			<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-			<link href="https://fonts.googleapis.com/css2?family=Cal+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+			<link href="https://fonts.googleapis.com/css2?family=Cal+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 		</noscript>
 		
-		<!-- 🎯 CRITICAL CSS INLINE - Optimizado -->
+		<!-- 📊 Structured Data JSON-LD -->
+		<script type="application/ld+json" set:html={JSON.stringify(finalStructuredData)} />
+		
+		<!-- 🎯 CRITICAL CSS INLINE -->
 		<style>
-			/* Critical CSS para evitar FOUC y mejorar LCP */
+			/* Critical CSS para evitar FOUC */
 			html { 
 				scroll-behavior: smooth; 
 				font-display: swap; 
@@ -205,7 +226,7 @@ const finalStructuredData = structuredData || defaultStructuredData;
 				backdrop-filter: blur(10px);
 			}
 			
-			/* ♿ Skip links MEJORADOS para accesibilidad */
+			/* ♿ Skip links para accesibilidad */
 			.skip-links { 
 				position: fixed; 
 				top: 0; 
@@ -234,7 +255,7 @@ const finalStructuredData = structuredData || defaultStructuredData;
 				outline-offset: 2px;
 			}
 			
-			/* Prevent FOUC y layout shift */
+			/* Prevent FOUC */
 			.main-content { 
 				min-height: 50vh; 
 			}
@@ -245,133 +266,53 @@ const finalStructuredData = structuredData || defaultStructuredData;
 				max-width: 100%; 
 			}
 			
-			/* 🔥 ESTILOS CRÍTICOS PARA FORMULARIOS */
-			.field-neutral { 
-				border-color: #d1d5db; 
-			}
-			.field-valid { 
-				border-color: #059669 !important; 
-				box-shadow: 0 0 0 1px #059669 !important;
-				background-color: rgba(5, 150, 105, 0.05) !important;
-			}
-			.field-invalid { 
-				border-color: #dc2626 !important; 
-				box-shadow: 0 0 0 1px #dc2626 !important;
-				background-color: rgba(220, 38, 38, 0.05) !important;
-			}
-			.form-loading { 
-				pointer-events: none; 
-				opacity: 0.8; 
-			}
-			
-			/* Validación feedback */
-			.pixel-validation-container {
-				margin-top: 0.5rem;
-				min-height: 1.5rem;
-			}
-			
-			.validation-feedback {
+			/* 🌍 Language detection loading */
+			.lang-detection-overlay {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 64, 153, 0.95);
 				display: flex;
 				align-items: center;
-				gap: 0.5rem;
-				font-size: 0.875rem;
-				transition: all 0.2s ease;
-			}
-			.validation-feedback.validation-valid { color: #059669; }
-			.validation-feedback.validation-invalid { color: #dc2626; }
-			
-			/* Contador de caracteres */
-			.character-counter {
-				margin-top: 0.25rem;
-				font-size: 0.75rem;
-				transition: color 0.2s ease;
-			}
-			.character-counter.counter-normal { color: #6b7280; }
-			.character-counter.counter-warning { color: #d97706; font-weight: 600; }
-			.character-counter.counter-error { color: #dc2626; font-weight: 600; }
-			
-			/* Notificaciones */
-			.pixel-notification {
-				position: fixed;
-				top: 20px;
-				right: 20px;
-				z-index: 9999;
-				max-width: 400px;
-				padding: 1rem 1.5rem;
-				border-radius: 0.5rem;
+				justify-content: center;
+				z-index: 10000;
 				color: white;
-				font-weight: 500;
-				box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-				transform: translateX(100%);
-				transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-			}
-			.pixel-notification.show { transform: translateX(0); }
-			.pixel-notification.notification-success { background: linear-gradient(135deg, #22c55e, #16a34a); }
-			.pixel-notification.notification-error { background: linear-gradient(135deg, #ef4444, #dc2626); }
-			
-			/* Screen reader only utility */
-			.sr-only {
-				position: absolute;
-				width: 1px;
-				height: 1px;
-				padding: 0;
-				margin: -1px;
-				overflow: hidden;
-				clip: rect(0, 0, 0, 0);
-				white-space: nowrap;
-				border: 0;
+				font-family: 'Poppins', sans-serif;
 			}
 			
-			/* Responsive optimizations */
-			@media (max-width: 768px) {
-				.pixel-notification {
-					top: 10px;
-					right: 10px;
-					left: 10px;
-					max-width: none;
-					transform: translateY(-100%);
-				}
-				
-				.pixel-notification.show {
-					transform: translateY(0);
-				}
-				
-				.skip-link {
-					padding: 6px 10px;
-					font-size: 13px;
-				}
+			.lang-detection-hidden {
+				display: none !important;
 			}
 		</style>
-		
-		<!-- 📊 Structured Data -->
-		<script type="application/ld+json" set:html={JSON.stringify(finalStructuredData)}></script>
-		
-		<!-- ⚡ Performance hints -->
-		<meta http-equiv="x-dns-prefetch-control" content="on" />
-		
-		<!-- 🌐 Alternativas de idioma -->
-		<link rel="alternate" hreflang="es" href={canonicalUrl} />
-		<link rel="alternate" hreflang="es-CO" href={canonicalUrl} />
-		<link rel="alternate" hreflang="x-default" href={canonicalUrl} />
 	</head>
 	
-	<body class="font-poppins text-gray-800 bg-white">
-		<!-- ♿ Skip Links MEJORADOS para accesibilidad -->
-		<div class="skip-links" role="navigation" aria-label="Enlaces de acceso rápido">
+	<body>
+		<!-- 🌍 Loading overlay para detección de idioma -->
+		<div id="lang-detection-overlay" class="lang-detection-overlay lang-detection-hidden">
+			<div class="text-center">
+				<div class="mb-4">
+					<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto"></div>
+				</div>
+				<p class="text-lg">Detectando idioma...</p>
+				<p class="text-sm opacity-75">Detecting language...</p>
+			</div>
+		</div>
+		
+		<!-- ♿ Skip links para accesibilidad -->
+		<div class="skip-links" role="navigation" aria-label={currentLang === 'es' ? 'Enlaces de acceso rápido' : 'Skip navigation links'}>
 			<a href="#main-content" class="skip-link">
-				Saltar al contenido principal
+				{currentLang === 'es' ? 'Saltar al contenido principal' : 'Skip to main content'}
 			</a>
 			<a href="#navigation" class="skip-link">
-				Saltar al menú de navegación
+				{currentLang === 'es' ? 'Saltar al menú de navegación' : 'Skip to navigation'}
 			</a>
 			<a href="#espacios" class="skip-link">
-				Saltar a apartaestudios
+				{currentLang === 'es' ? 'Saltar a apartaestudios' : 'Skip to studios'}
 			</a>
 			<a href="#reservas" class="skip-link">
-				Saltar al formulario de reservas
-			</a>
-			<a href="#footer" class="skip-link">
-				Saltar al pie de página
+				{currentLang === 'es' ? 'Saltar al formulario de reservas' : 'Skip to booking form'}
 			</a>
 		</div>
 		
@@ -389,14 +330,27 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		<!-- 📢 Live region para anuncios de screen reader -->
 		<div id="live-region" aria-live="polite" aria-atomic="true" class="sr-only"></div>
 		
-		<!-- 🚀 INICIALIZACIÓN SIMPLIFICADA Y SEGURA -->
+		<!-- 🚀 INICIALIZACIÓN CON DETECCIÓN I18N -->
 		<script is:inline>
+			// Configuración global
+			window.PIXEL_CONFIG = {
+				currentLang: document.documentElement.lang || 'es',
+				isFirstVisit: !localStorage.getItem('pixel_language_preference'),
+				debug: false
+			};
+			
+			console.log('🌍 Pixel Living I18N inicializado:', window.PIXEL_CONFIG);
+			
 			// Inicialización con error handling robusto
 			document.addEventListener('DOMContentLoaded', () => {
 				const initStart = performance.now();
 				
 				try {
 					console.log('✅ Pixel Living: Iniciando sistema...');
+					
+					// Verificar encoding UTF-8
+					const testString = 'Bogotá - Diseño - Información';
+					console.log('🔤 Test UTF-8:', testString);
 					
 					// Verificar elementos básicos
 					const forms = document.querySelectorAll('form');
@@ -406,20 +360,14 @@ const finalStructuredData = structuredData || defaultStructuredData;
 					console.log('📊 Elementos encontrados:', {
 						formularios: forms.length,
 						imágenes: images.length,
-						botones: buttons.length
+						botones: buttons.length,
+						idioma: window.PIXEL_CONFIG.currentLang
 					});
 					
-					// Verificar si existe el sistema de formularios
-					if (typeof window.PIXEL_FORM_UNIFIED_LOADED !== 'undefined' && window.PIXEL_FORM_UNIFIED_LOADED) {
-						console.log('✅ Sistema de formularios cargado');
-						
-						// Test contador de caracteres si existe
-						const textarea = document.querySelector('textarea');
-						if (textarea && window.PIXEL_FORM_UNIFIED && window.PIXEL_FORM_UNIFIED.updateCharacterCounter) {
-							window.PIXEL_FORM_UNIFIED.updateCharacterCounter(textarea);
-						}
-					} else {
-						console.log('ℹ️ Sistema de formularios no disponible (normal en algunas páginas)');
+					// Ocultar overlay de detección si existe
+					const overlay = document.getElementById('lang-detection-overlay');
+					if (overlay) {
+						overlay.classList.add('lang-detection-hidden');
 					}
 					
 					const initTime = Math.round(performance.now() - initStart);
@@ -429,122 +377,6 @@ const finalStructuredData = structuredData || defaultStructuredData;
 					console.error('❌ Error en inicialización:', error);
 				}
 			});
-			
-			// Mejorar skip links con indicador visual
-			try {
-				document.querySelectorAll('.skip-link').forEach(link => {
-					link.addEventListener('focus', function() {
-						document.body.classList.add('skip-link-focused');
-					});
-					
-					link.addEventListener('blur', function() {
-						document.body.classList.remove('skip-link-focused');
-					});
-				});
-			} catch (error) {
-				console.warn('⚠️ Error configurando skip links:', error);
-			}
-		</script>
-		
-		<!-- 🛡️ Error boundary global MEJORADO -->
-		<script is:inline>
-			// Global error handler mejorado
-			window.addEventListener('error', (e) => {
-				console.error('Global error:', {
-					message: e.message,
-					filename: e.filename,
-					line: e.lineno,
-					column: e.colno,
-					error: e.error
-				});
-			});
-			
-			window.addEventListener('unhandledrejection', (e) => {
-				console.error('Unhandled promise rejection:', e.reason);
-			});
 		</script>
 	</body>
 </html>
-
-<!-- 🎨 ESTILOS ADICIONALES -->
-<style>
-	/* Focus management mejorado */
-	.keyboard-navigation *:focus,
-	*:focus-visible {
-		outline: 2px solid #ffd700;
-		outline-offset: 2px;
-		box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.3);
-	}
-	
-	/* Custom scrollbar */
-	::-webkit-scrollbar {
-		width: 8px;
-	}
-	
-	::-webkit-scrollbar-track {
-		background: #f1f1f1;
-	}
-	
-	::-webkit-scrollbar-thumb {
-		background: #c1c1c1;
-		border-radius: 4px;
-	}
-	
-	::-webkit-scrollbar-thumb:hover {
-		background: #a1a1a1;
-	}
-	
-	/* Selection styling */
-	::selection {
-		background-color: #ffd700;
-		color: #000;
-	}
-	
-	::-moz-selection {
-		background-color: #ffd700;
-		color: #000;
-	}
-	
-	/* 🖨️ Print styles */
-	@media print {
-		.skip-links,
-		header,
-		footer,
-		.lightbox-modal,
-		.pixel-spinner,
-		.notification {
-			display: none !important;
-		}
-		
-		body {
-			font-size: 12pt;
-			line-height: 1.4;
-			color: black;
-			background: white;
-		}
-		
-		h1, h2, h3, h4, h5, h6 {
-			page-break-after: avoid;
-		}
-		
-		img {
-			max-width: 100% !important;
-			height: auto !important;
-		}
-	}
-	
-	/* 🎭 Animations con respeto a prefers-reduced-motion */
-	@media (prefers-reduced-motion: reduce) {
-		*,
-		*::before,
-		*::after {
-			animation-duration: 0.01ms !important;
-			animation-iteration-count: 1 !important;
-			transition-duration: 0.01ms !important;
-		}
-		
-		.skip-link {
-			transition: none;
-		}
-	}
-</style>

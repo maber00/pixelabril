@@ -1,0 +1,1021 @@
+{
+  "meta": {
+    "title": "Pixel Living | Coliving en Bogotá",
+    "description": "Pixel Living es coliving en Bogotá para quienes buscan algo más que un arriendo. Apartaestudios diseñados para estadías medianas y largas, con estilo, comodidad y comunidad.",
+    "keywords": "coliving Bogotá, apartaestudios amoblados, hospedaje temporal, vivienda temporal, pixel living, comunidad digital, coworking"
+  },
+
+  "nav": {
+    "why_pixel": "Vive Pixel",
+    "studios": "Espacios", 
+    "pricing": "Precios",
+    "location": "Ubicación",
+    "coliving": "Coliving",
+    "booking": "Reservas",
+    "faq": "FAQ"
+  },
+
+  "hero": {
+    "brand_line_1": "Coliving Bogotá",
+    "brand_line_2": "Pixel Living",
+    "title": "Vive, crea y conecta",
+    "subtitle": "en el norte de Bogotá.",
+    "description": "Pixel Living es tu coliving en Bogotá, donde encuentras apartaestudios modernos y amoblados, todos los servicios incluidos y una comunidad vibrante en la ubicación más estratégica de la ciudad.",
+    "benefits": [
+      "✓ Sin codeudor",
+      "✓ Desde 1 mes", 
+      "✓ Todo incluido",
+      "✓ Listo para habitar"
+    ],
+    "description_extended": "Disfruta la flexibilidad de arrendar desde un mes, sin codeudor y sin complicaciones.",
+    "value_proposition": "Todo lo que necesitas para vivir, trabajar y crecer, está aquí.",
+    "cta_question": "¿Listo para vivir la experiencia Pixel Living?",
+    "button_primary": "Reserva tu espacio ahora",
+    "button_secondary": "Ver precios y disponibilidad",
+    "trust_info": "Cupos limitados • Solo tu documento de identificación",
+    "process_time": "Proceso de reserva en menos de 24 horas",
+    "scroll_text": "Descubre por qué somos diferentes"
+  },
+
+  "espacios": {
+  "badge": "Apartaestudios Pixel Living",
+  "title": "Apartaestudios amoblados y",
+  "title_highlight": "listos para ti",
+
+  "description": "En Pixel Living, cada apartaestudio tiene",
+  "description2": "29 metros cuadrados",
+  "description3": "y está diseñado para brindarte máxima comodidad, privacidad y flexibilidad, en el coliving más flexible y completo del norte de Bogotá.",
+  "espacio": "apartaestudio",
+
+  "beneficios_destacados": {
+    "habitacion_adicional": "Habitación adicional",
+    "habitacion_desc": "Espacio de trabajo + cama auxiliar",
+    "balcon_privado": "Balcón privado",
+    "balcon_desc": "Para disfrutar el aire libre",
+    "todo_incluido": "Todo incluido",
+    "todo_desc": "En un solo pago mensual"
+  },
+
+  "mensaje_final": "Elige vivir fácil, sin trámites, sin codeudor y con la libertad que solo te da Pixel Living.",
+  "caracteristicas_titulo": "Características de nuestros espacios",
+  "caracteristicas": [
+    "Cama doble",
+    "Cocina equipada",
+    "Escritorio de trabajo",
+    "WiFi de alta velocidad",
+    "Servicios incluidos",
+    "Espacio privado y tranquilo"
+  ],
+
+  "cta_disponibilidad": "👉 Solicita disponibilidad",
+  "otros_espacios": "Explora otros espacios",
+  "ver_detalles": "Ver detalles",
+
+  "carousel": {
+    "prev_label": "Ver apartaestudio anterior",
+    "next_label": "Ver apartaestudio siguiente",
+    "indicator_label": "Ver apartaestudio {{index}} de {{total}}"
+  },
+
+  "lightbox": {
+    "abrir_galeria": "Abrir galería completa de {{nombre}}",
+    "ver_imagen": "Ver imagen {{index}} de {{nombre}}",
+    "cerrar": "Cerrar galería",
+    "anterior": "Imagen anterior",
+    "siguiente": "Imagen siguiente"
+  }
+},
+
+  "zonas_comunes": {
+    "badge": "Zonas Comunes y Amenidades",
+    "title": "Mucho más que un apartaestudio: descubre la",
+    "title_highlight": "vida en comunidad",
+    "title_end": "Pixel Living",
+    "description": "En Pixel Living, no solo tienes tu espacio privado, también accedes a zonas comunes pensadas para tu bienestar, productividad y vida social.",
+    "amenidades": {
+      "coworking": {
+        "titulo": "Coworking y Sala de Reuniones",
+        "descripcion": "Espacios modernos con wifi de alta velocidad para trabajar, estudiar o reunirte con otros residentes."
+      },
+      "rooftop": {
+        "titulo": "Rooftop con Fire Pits", 
+        "descripcion": "Disfruta de las mejores vistas del norte de Bogotá, comparte atardeceres únicos y haz nuevos amigos junto al fuego."
+      },
+      "gym": {
+        "titulo": "Área de Ejercicio al Aire Libre y TRX",
+        "descripcion": "Mantente activo y saludable todos los días, sin salir de casa."
+      },
+      "pet_zone": {
+        "titulo": "Pet Zone",
+        "descripcion": "Tu mascota es bienvenida y tiene un espacio propio."
+      },
+      "bike_parking": {
+        "titulo": "Bici Parking con Taller", 
+        "descripcion": "Guarda y cuida tu bicicleta siempre lista para rodar."
+      },
+      "events": {
+        "titulo": "Espacios para Eventos",
+        "descripcion": "Participa en actividades exclusivas de la comunidad Pixel Living."
+      }
+    }
+  },
+
+  "vive_pixel": {
+  "badge": "Nuestra historia",
+  "title": "Descubre",
+  "title_highlight": "por qué Pixel Living",
+  "title_end": "es diferente",
+  "description": "Conoce nuestra filosofía, valores y lo que nos hace únicos en el mundo del coliving",
+  
+  "filosofia": {
+    "titulo": "Nuestra filosofía",
+    "subtitulo": "¿Qué nos inspira cada día?",
+    "heading": "Un hogar temporal para",
+    "heading_highlight": "mentes inquietas",
+    "descripcion_1": "En Pixel creemos que el lugar donde vives debe",
+    "descripcion_highlight": "inspirarte",
+    "descripcion_2": "No somos un arriendo tradicional, tampoco un hotel.",
+    "descripcion_3": "Somos un punto de conexión entre personas que están en movimiento que buscan sentirse en casa mientras exploran nuevos caminos."
+  },
+  
+  "diferenciacion": {
+    "titulo": "¿Qué nos hace únicos?",
+    "subtitulo": "Nuestra propuesta diferencial",
+    "heading": "No somos un arriendo tradicional.<br>Tampoco un hotel.",
+    "descripcion": "Somos algo completamente nuevo: un",
+    "descripcion_highlight": "ecosistema de vida",
+    "descripcion_end": "diseñado para la nueva generación de profesionales.",
+    "beneficio_1": {
+      "titulo": "🏠 Sin codeudor",
+      "descripcion": "Solo tu documento"
+    },
+    "beneficio_2": {
+      "titulo": "📦 Todo incluido", 
+      "descripcion": "Un solo pago mensual"
+    },
+    "beneficio_3": {
+      "titulo": "⚡ Desde 1 mes",
+      "descripcion": "Flexibilidad total"
+    }
+  },
+  
+  "para_quien": {
+    "titulo": "¿Para quién es Pixel?",
+    "subtitulo": "Nuestros residentes ideales", 
+    "heading_brand": "Pixel Living",
+    "heading": "es para quienes valoran los detalles, el diseño y la buena energía",
+    "audiencia_1": {
+      "titulo": "🌍 Nómadas Digitales",
+      "descripcion": "Profesionales remotos que buscan estabilidad temporal con flexibilidad"
+    },
+    "audiencia_2": {
+      "titulo": "💼 Profesionales",
+      "descripcion": "Ejecutivos en transición, traslados de trabajo o proyectos temporales"
+    },
+    "audiencia_3": {
+      "titulo": "🎓 Estudiantes", 
+      "descripcion": "Universitarios, investigadores y estudiantes de posgrado"
+    },
+    "audiencia_4": {
+      "titulo": "🚀 Emprendedores",
+      "descripcion": "Founders y creativos que necesitan networking y inspiración"
+    },
+    "audiencia_5": {
+      "titulo": "🏥 Personal de Salud",
+      "descripcion": "Médicos, enfermeros en rotaciones o especializaciones"
+    },
+    "audiencia_6": {
+      "titulo": "🌐 Expertos Internacionales",
+      "descripcion": "Consultores, diplomáticos y profesionales extranjeros"
+    }
+  },
+  
+  "beneficios": {
+    "titulo": "Beneficios",
+    "subtitulo": "Lo que solo Pixel te ofrece",
+    "beneficio_1": {
+      "titulo": "Sentirse en casa",
+      "descripcion": "Espacios diseñados para que te apropies de ellos desde el primer día"
+    },
+    "beneficio_2": {
+      "titulo": "Conectar",
+      "descripcion": "Una comunidad de personas creativas en constante movimiento"
+    },
+    "beneficio_3": {
+      "titulo": "Inspirar",
+      "descripcion": "Un ambiente que estimula la creatividad y el bienestar personal"
+    }
+  },
+  
+  "experiencia": {
+    "titulo": "Tu experiencia Pixel",
+    "subtitulo": "Cómo será tu día a día",
+    "heading": "Vive la experiencia Pixel desde el día 1",
+    "manana": {
+      "titulo": "🌅 Tu mañana",
+      "actividad_1": "Despierta en tu apartaestudio de 29m²",
+      "actividad_2": "Café en la terraza con vista al norte",
+      "actividad_3": "Coworking con wifi de alta velocidad",
+      "actividad_4": "Networking natural con otros residentes"
+    },
+    "tarde_noche": {
+      "titulo": "🌆 Tu tarde-noche",
+      "actividad_1": "Ejercicio en nuestra zona TRX",
+      "actividad_2": "Atardecer en el rooftop con fire pits",
+      "actividad_3": "Eventos exclusivos de comunidad", 
+      "actividad_4": "Descanso en tu espacio privado"
+    }
+  },
+  
+  "cta_final": {
+    "titulo": "¿Listo para Pixel?",
+    "subtitulo": "Tu nuevo hogar te está esperando",
+    "heading": "¡Tu experiencia Pixel comienza aquí!",
+    "descripcion": "Cupos limitados. Solo necesitas tu documento de identificación.",
+    "boton": "Reservar mi espacio",
+    "respuesta": "📞 Respuesta en menos de 1 hora"
+  }
+},
+
+
+"ubicacion": {
+  "badge": "Ubicación estratégica",
+  "title": "Vive donde", 
+  "title_highlight": "todo te queda cerca",
+  "description": "Pixel Living está en el norte de Bogotá...",
+  
+  "movilidad": {
+    "titulo": "Movilidad Total",
+    "autopista": {
+      "titulo": "A pasos de la Autopista Norte con Calle 100",
+      "descripcion": "Acceso inmediato a toda Bogotá"
+    },
+    "transmilenio": {
+      "titulo": "Dos troncales de TransMilenio", 
+      "descripcion": "Avenida Suba y Autopista Norte"
+    },
+    "avenida_68": {
+      "titulo": "Próximamente Troncal Avenida 68",
+      "descripcion": "Conexión directa (2027)"
+    }
+  },
+  
+  "zona_empresarial": {
+    "titulo": "Zona Empresarial Calle 100",
+    "descripcion": "Multinacionales, oficinas, coworkings, zona franca de salud y el distrito financiero del norte de Bogotá a minutos de tu puerta."
+  },
+  
+  "servicios": {
+    "titulo": "Cerca de todo lo que necesitas",
+    "entretenimiento": {
+      "titulo": "🎭 Entretenimiento:",
+      "item_1": "Teatro La Castellana",
+      "item_2": "Parque de la 93", 
+      "item_3": "Centros comerciales",
+      "item_4": "Restaurantes y cafés",
+      "item_5": "Cines"
+    },
+    "salud": {
+      "titulo": "🏥 Salud:",
+      "item_1": "Clínicas Los Nogales",
+      "item_2": "Clínica Colsubsidio",
+      "item_3": "Compensar",
+      "item_4": "Zona franca de salud"
+    },
+    "educacion": {
+      "titulo": "🎓 Educación:",
+      "item_1": "Universidad Militar Nueva Granada",
+      "item_2": "Zona universitaria del norte"
+    },
+    "comercio": {
+      "titulo": "🛒 Comercio:",
+      "item_1": "Supermercados", 
+      "item_2": "Bancos",
+      "item_3": "Farmacias 24h"
+    }
+  },
+  
+  "mapa": {
+    "titulo": "Nuestra Ubicación",
+    "direccion": "Calle 98a #51-32, La Castellana, Bogotá",
+    "direccion_corta": "Calle 98a #51-32",
+    "barrio": "La Castellana, Bogotá", 
+    "iframe_title": "Ubicación de Pixel Living en el norte de Bogotá - Autopista Norte con Calle 100",
+    "hover_text": "Cómo llegar a Pixel Living",
+    "boton_direcciones": "Direcciones"
+  },
+  
+  "cta_final": {
+    "heading": "En Pixel Living | Coliving Bogotá, tu vida es más fácil y eficiente", 
+    "descripcion": "Vive, trabaja y disfruta todo cerca de ti.",
+    "boton": "Ver apartaestudios disponibles"
+  }
+},
+
+  "precios": {
+  "badge": "Precios transparentes",
+  "title": "Arrienda tu apartaestudio en el",
+  "title_highlight": "coliving más flexible",
+  "title_end": "del norte de Bogotá",
+  "description": "En Pixel Living, todo es fácil y transparente: elige la duración, un solo pago mensual.",
+  "usp": "Sin codeudor - Solo tu documento de identificación",
+  
+  "tabla_titulo": "Tarifas Mensuales",
+  "tabla_headers": {
+    "duracion": "Duración",
+    "precio": "Precio Mensual",
+    "ahorro": "Ahorro"
+  },
+  
+  "duraciones": {
+    "1_mes": "1 mes",
+    "3_meses": "3 meses",
+    "6_meses": "6 meses",
+    "12_meses": "12 meses ⭐ Recomendado"
+  },
+  
+  "precios": {
+    "1_mes": "$3.100.000",
+    "3_meses": "$2.950.000",
+    "6_meses": "$2.750.000",
+    "12_meses": "$2.650.000"
+  },
+  
+  "ahorros": {
+    "1_mes": "-",
+    "3_meses": "$150K",
+    "6_meses": "$350K",
+    "12_meses": "$450K"
+  },
+  
+  "tabla_nota": "Valores en pesos colombianos. Pago mensual.",
+  "todo_incluido": "Todo incluido:",
+  "incluye_descripcion": "apartaestudio amoblado, servicios públicos, administración y acceso a todas las zonas comunes.",
+  
+  "reserva_facil": "✨ Reserva fácil y rápido:",
+  "reserva_descripcion": "Déjanos tus datos y nos pondremos en contacto contigo para finalizar tu proceso de arriendo.",
+  
+  "comparativa_titulo": "¿Aún dudas si Pixel Living es para ti?",
+  "comparativa_descripcion": "Compara lo que te costaría vivir solo en arriendo tradicional versus todo lo que obtienes con Pixel Living.",
+  "comparativa_enfasis": "Verás que aquí ahorras tiempo, dinero y preocupaciones.",
+  
+  "comparativa_headers": {
+    "concepto": "Concepto",
+    "tradicional": "Arriendo Tradicional",
+    "pixel": "Pixel Living"
+  },
+  
+  "comparativa_conceptos": {
+    "arriendo": "Arriendo",
+    "servicios": "Servicios públicos",
+    "wifi": "Wifi",
+    "administracion": "Administración",
+    "mobiliario": "Mobiliario",
+    "electrodomesticos": "Lavadora y electrodomésticos",
+    "total": "Total mensual"
+  },
+  
+  "comparativa_tradicional": {
+    "arriendo": "$2.000.000",
+    "servicios": "$350.000",
+    "wifi": "$120.000",
+    "administracion": "$300.000",
+    "mobiliario": "$400.000",
+    "electrodomesticos": "$200.000",
+    "total": "$3.370.000"
+  },
+  
+  "comparativa_pixel": {
+    "incluido": "✓ Incluido",
+    "total": "Desde $2.650.000"
+  },
+  
+  "ahorro_principal": "💰 Ahorras $720.000 cada mes",
+  "ahorro_nota": "Valores referenciales en pesos colombianos. Todo incluido, sin sorpresas.",
+  "ahorro_anual": "🏆 Más de $8.600.000 de ahorro anual + tiempo y tranquilidad",
+  
+  "cta_titulo": "¡Vivir bien y sin complicaciones sí es posible!",
+  "cta_descripcion": "¿Listo para vivir, ahorrar y disfrutar más?",
+  "cta_descripcion_2": "Reserva tu espacio en Pixel Living hoy y comienza a experimentar el verdadero coliving en Bogotá.",
+  "cta_boton": "Reserva tu espacio ahora",
+  "cta_nota": "Cupos limitados. Solo tu documento de identificación."
+},
+
+"coliving": {
+  "badge": "La experiencia coliving",
+  "title": "Compartimos",
+  "title_highlight": "algo más",
+  "title_end": "que paredes",
+  
+  "community": {
+    "heading": "Vivir en Pixel es ser parte de una comunidad.",
+    "description1": "Aquí puedes estar solo... pero también puedes compartir.",
+    "description2": "Nuestra comunidad está formada por profesionales, creativos, emprendedores y viajeros que buscan un lugar que se sienta como un hogar, pero con la libertad de moverse al ritmo de sus vidas.",
+    "cta": "Únete a nuestra comunidad"
+  },
+  
+  "carousel": {
+    "image1_alt": "Comunidad Pixel Living",
+    "image2_alt": "Espacio compartido Pixel Living",
+    "prev_label": "Ver imagen anterior del apartaestudio",
+    "next_label": "Ver siguiente imagen del apartaestudio", 
+    "prev_title": "Imagen anterior",
+    "next_title": "Imagen siguiente",
+    "prev_sr": "Anterior",
+    "next_sr": "Siguiente",
+    "indicator_label": "Ver imagen {{index}} de {{total}}"
+  },
+  
+  "beneficios": {
+    "espacios_modernos": {
+      "titulo": "Espacios modernos",
+      "descripcion": "Diseño contemporáneo y funcional para vivir con estilo."
+    },
+    "trato_cercano": {
+      "titulo": "Trato cercano", 
+      "descripcion": "Atención personalizada para que te sientas como en casa."
+    },
+    "flexibilidad": {
+      "titulo": "Flexibilidad",
+      "descripcion": "Adaptamos nuestros servicios a tus necesidades de estadía."
+    },
+    "comodidad": {
+      "titulo": "Comodidad",
+      "descripcion": "Todo lo que necesitas para una experiencia confortable."
+    },
+    "buen_ambiente": {
+      "titulo": "Buen ambiente",
+      "descripcion": "Comunidad positiva donde puedes conectar con otros."
+    }
+  }
+},
+
+  "reservas": {
+  "title": "Reserva tu espacio en Pixel Living",
+  "subtitle": "Reserva tu apartaestudio en Pixel Living | Coliving Bogotá",
+  "description": "Completa los siguientes datos para recibir atención personalizada.",
+  "response_time": "¡Te responderemos en menos de 1 hora!",
+  
+  "form": {
+    "name": "Nombre completo",
+    "name_placeholder": "Escribe tu nombre",
+    "email": "Correo electrónico",
+    "email_placeholder": "ejemplo@correo.com",
+    "phone": "Teléfono de contacto",
+    "phone_placeholder": "Celular o WhatsApp",
+    "duration": "¿Cuánto tiempo deseas reservar?",
+    "duration_select": "Selecciona la duración",
+    "duration_options": {
+      "1_month_price": "1 mes - $3.100.000",
+      "3_months_price": "3 meses - $2.950.000",
+      "6_months_price": "6 meses - $2.750.000",
+      "12_months_price": "12 meses - $2.650.000 (Recomendado)"
+    },
+    "date": "Fecha de ingreso preferida",
+    "date_help": "Selecciona tu fecha ideal de mudanza",
+    "people": "Número de personas",
+    "people_options": {
+      "1_person": "1 persona",
+      "2_people": "2 personas (pareja)"
+    },
+    "referral": "¿Cómo conociste Pixel Living?",
+    "referral_select": "Selecciona una opción",
+    "referral_options": {
+      "google": "Google / Búsqueda web",
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "linkedin": "LinkedIn",
+      "friend": "Recomendación de amigo/conocido",
+      "flyer": "Volante / Publicidad física",
+      "other": "Otro"
+    },
+    "message": "Mensaje adicional (opcional)",
+    "message_placeholder": "Cuéntanos algo más sobre tus necesidades específicas...",
+    "characters": "caracteres",
+    "accept_contact": "Acepto ser contactado por Pixel Living y he leído la",
+    "privacy_policy": "política de privacidad",
+    "submit": "Enviar solicitud de reserva",
+    "footer_note": "Tu información está segura y solo será usada para procesar tu reserva."
+  },
+  
+  "whatsapp": {
+    "question": "¿Prefieres contactarnos directamente?",
+    "message": "Hola! Me interesa reservar un apartaestudio en Pixel Living. ¿Podrían darme más información?",
+    "cta": "Chatear por WhatsApp"
+  },
+  
+  "benefits": {
+    "title": "¿Por qué elegir Pixel Living?",
+    "no_guarantor_title": "Sin codeudor",
+    "no_guarantor_desc": "Solo necesitas tu documento de identificación",
+    "all_included_title": "Todo incluido",
+    "all_included_desc": "Servicios, WiFi, mobiliario y zonas comunes",
+    "quick_move_title": "Mudanza rápida",
+    "quick_move_desc": "Proceso de reserva en menos de 24 horas",
+    "flexibility_title": "Máxima flexibilidad",
+    "flexibility_desc": "Desde 1 mes, sin ataduras a largo plazo",
+    "location_title": "Ubicación estratégica",
+    "location_desc": "Norte de Bogotá, cerca de todo lo importante"
+  },
+  
+  "testimonial": {
+    "quote": "Pixel Living cambió mi forma de vivir en Bogotá. La flexibilidad y la comunidad son increíbles.",
+    "author": "- María C., Residente Pixel"
+  },
+  
+  "trust": {
+    "process": "Proceso",
+    "size": "Apartaestudios",
+    "savings": "Ahorro mensual"
+  }
+},
+
+  "faq": {
+  "title": "Preguntas frecuentes",
+  
+  "questions": {
+    "q1": {
+      "question": "¿Qué incluye el precio mensual?",
+      "answer": "Todo está incluido: apartaestudio amoblado, servicios públicos (agua, luz, gas), internet de alta velocidad, administración, aseo de zonas comunes y acceso a todas las amenidades."
+    },
+    "q2": {
+      "question": "¿Necesito codeudor o fiador?",
+      "answer": "No. Solo necesitas tu documento de identificación válido. Este es uno de nuestros principales beneficios: sin codeudor, sin complicaciones."
+    },
+    "q3": {
+      "question": "¿Cuál es la estadía mínima?",
+      "answer": "La estadía mínima es de 1 mes. Ofrecemos máxima flexibilidad para adaptarnos a tus necesidades, ya sea una estadía corta o de largo plazo."
+    },
+    "q4": {
+      "question": "¿Cómo es el proceso de reserva?",
+      "answer": "Super simple: 1) Completa el formulario, 2) Te contactamos en menos de 1 hora, 3) Visita virtual o presencial, 4) Firma del contrato, 5) ¡Mudanza en 24-48 horas!"
+    },
+    "q5": {
+      "question": "¿Qué incluye el apartaestudio?",
+      "answer": "29m² completamente amoblados: cama doble, escritorio, cocina equipada, baño privado, closet, balcón privado y habitación adicional que puedes usar como oficina o para huéspedes."
+    },
+    "q6": {
+      "question": "¿Puedo recibir visitas?",
+      "answer": "Sí, puedes recibir visitas en tu apartaestudio y en las zonas comunes. Solo pedimos que respetes las normas de convivencia y los horarios establecidos."
+    },
+    "q7": {
+      "question": "¿Aceptan mascotas?",
+      "answer": "Sí, tenemos una Pet Zone especialmente diseñada. Aplicamos una pequeña tarifa adicional y algunas normas de convivencia para el bienestar de todos."
+    },
+    "q8": {
+      "question": "¿Dónde están ubicados?",
+      "answer": "Estamos en el norte de Bogotá, en la Autopista Norte con Calle 100. Una ubicación estratégica con fácil acceso a transporte público, centros comerciales y zona empresarial."
+    }
+  },
+  
+  "contact": {
+    "title": "¿Tienes más preguntas?",
+    "description": "Nuestro equipo está listo para resolver todas tus dudas sobre Pixel Living.",
+    "button": "Chatea con nosotros"
+  }
+},
+
+  "footer": {
+  "company": {
+    "description": "Coliving en Bogotá para quienes buscan vivir, crear y conectar en espacios modernos y flexibles."
+  },
+  
+  "social": {
+    "instagram_label": "Síguenos en Instagram"
+  },
+  
+  "quick_links": {
+    "title": "Enlaces rápidos",
+    "why_pixel": "Vive Pixel",
+    "studios": "Espacios",
+    "amenities": "Zonas comunes",
+    "location": "Ubicación",
+    "contact": "Contacto"
+  },
+  
+  "information": {
+    "title": "Información",
+    "privacy": "Política de privacidad",
+    "terms": "Términos y condiciones",
+    "location_text": "Norte de Bogotá, Autopista Norte con Calle 100"
+  },
+  
+  "copyright": "Todos los derechos reservados.",
+  
+  "bottom_links": {
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "cookies": "Cookies"
+  }
+},
+     
+  "estudios": {
+    "jade": {
+      "nombre": "Estudio Jade",
+      "descripcion_1": "Espacio luminoso con toques de verde que evocan naturaleza y tranquilidad.",
+      "descripcion": "Espacio luminoso con balcón privado. Cocina privada, zona de trabajo independiente y habitación auxiliar. Perfecto para estadías largas con ventanas amplias y vistas despejadas. Todo incluido: wifi, servicios, Smart TV. Sin codeudor.",
+      "metros": "29m²",
+      "imagen": "/images/estudios/jade/pixel-jade-room-004.webp",
+      "precio": "Desde $2.650.000",
+      "galeria": [
+        "/images/estudios/jade/pixel-jade-room-005.webp",
+        "/images/estudios/jade/pixel-jade-room-001.webp",  
+        "/images/estudios/jade/pixel-jade-room-002.webp",   
+        "/images/estudios/jade/pixel-jade-room-006.webp",
+        "/images/estudios/jade/pixel-jade-room-007.webp",
+        "/images/estudios/jade/Pixel-jade-001.webp"
+      ],
+      "caracteristicas": [
+        "Apartaestudio de 29 metros cuadrados",
+        "Habitación auxiliar", 
+        "Balcón privado para disfrutar el aire libre",
+        "Cama doble",
+        "Cocina privada con lo necesario",
+        "Wifi ilimitado de alta velocidad",
+        "Smart TV",
+        "Lavadora dentro del apartamento",
+        "Baño privado",
+        "Muebles y electrodomésticos modernos"
+      ],
+      "incluye": [
+        "Servicios públicos, administración y acceso total a las zonas comunes"
+      ]
+    },
+    "zian": {
+      "nombre": "Estudio Zian", 
+      "descripcion_1": "Colores azules que transmiten calma y concentración, ideal para trabajo remoto.",
+      "descripcion": "Diseñado para profesionales remotos con zona de trabajo optimizada. Cocina privada, escritorio amplio y ambiente que favorece la concentración. Ideal para combinar vida y trabajo con estilo. Todo incluido: wifi, servicios, mobiliario. Sin codeudor.",
+      "imagen": "/images/estudios/zian/pixel-zian-room-001.webp",
+      "metros": "29m²",
+      "precio": "Desde $2.650.000",
+      "galeria": [
+        "/images/estudios/zian/pixel-zian-room-001.webp", 
+        "/images/estudios/zian/pixel-zian-room-002.webp", 
+        "/images/estudios/zian/pixel-zian-room-003.webp", 
+        "/images/estudios/zian/pixel-zian-room-004.webp", 
+        "/images/estudios/zian/pixel-zian-room-005.webp",
+        "/images/estudios/zian/pixel-zian-room-006.webp", 
+        "/images/estudios/zian/pixel-zian-room-007.webp", 
+        "/images/estudios/zian/pixel-zian-room-009.webp", 
+        "/images/estudios/zian/pixel-zian-room-010.webp"
+      ],
+      "caracteristicas": [
+        "Apartaestudio de 29 metros cuadrados",
+        "Habitación auxiliar", 
+        "Balcón privado para disfrutar el aire libre",
+        "Cama doble",
+        "Cocina privada con lo necesario",
+        "Wifi ilimitado de alta velocidad",
+        "Smart TV",
+        "Lavadora dentro del apartamento",
+        "Baño privado",
+        "Muebles y electrodomésticos modernos"
+      ],
+      "incluye": [
+        "Servicios públicos, administración y acceso total a las zonas comunes"
+      ]
+    },
+    "indigo": {
+      "nombre": "Estudio Índigo",
+      "descripcion_1": "Tonos violetas que inspiran creatividad y reflexión en un ambiente acogedor.",
+      "descripcion": "Nuestro apartaestudio más espacioso con zona de estar separada del área de descanso. Cocina privada, balcón privado y ambiente acogedor para creativos y emprendedores. Todo incluido, sin codeudor.",
+      "imagen": "/images/estudios/indigo/pixel-indigo-room-001.webp",
+      "metros": "29m²", 
+      "precio": "Desde $2.650.000",
+      "galeria": [
+        "/images/estudios/indigo/pixel-indigo-room-001.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-002.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-003.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-004.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-006.webp",
+        "/images/estudios/indigo/pixel-indigo-room-007.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-008.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-009.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-010.webp",
+        "/images/estudios/indigo/pixel-indigo-room-011.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-012.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-013.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-014.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-016.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-017.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-018.webp"
+      ],
+      "caracteristicas": [
+        "Apartaestudio de 29 metros cuadrados",
+        "Habitación auxiliar", 
+        "Balcón privado para disfrutar el aire libre",
+        "Cama doble",
+        "Cocina privada con lo necesario",
+        "Wifi ilimitado de alta velocidad",
+        "Smart TV",
+        "Lavadora dentro del apartamento",
+        "Baño privado",
+        "Muebles y electrodomésticos modernos"
+      ],
+      "incluye": [
+        "Servicios públicos, administración y acceso total a las zonas comunes"
+      ]
+    }
+  },
+
+  "estudio_detalle": {
+    "breadcrumbs": {
+      "inicio": "Inicio",
+      "espacios": "Espacios"
+    },
+    
+    "galeria": {
+      "imagen_principal": "Imagen principal",
+      "ver_todas": "Ver todas las fotos",
+      "abrir_galeria": "Ver galería completa de"
+    },
+    
+    "info": {
+      "descripcion_titulo": "Descripción",
+      "caracteristicas_titulo": "Tu nuevo espacio incluye:",
+      "incluye_titulo": "Todo incluido en un solo pago mensual:",
+      "interes_titulo": "¿Te interesa este espacio?"
+    },
+    
+    "acciones": {
+      "reservar": "Reservar ahora",
+      "whatsapp": "Consultar por WhatsApp",
+      "whatsapp_mensaje": "Hola, estoy interesado en el {{estudio}}. ¿Está disponible? Gracias."
+    },
+    
+    "formulario": {
+      "titulo": "Reserva tu {{estudio}}",
+      "nombre": "Nombre completo *",
+      "nombre_placeholder": "Ej: María García",
+      "email": "Correo electrónico *",
+      "email_placeholder": "Ej: maria@gmail.com",
+      "telefono": "Teléfono *",
+      "telefono_placeholder": "Ej: 3001234567",
+      "fecha": "Fecha de ingreso estimada",
+      "estadia": "Tiempo estimado de estadía",
+      "estadia_opciones": {
+        "seleccionar": "Selecciona una opción",
+        "1_3_meses": "1-3 meses",
+        "3_6_meses": "3-6 meses", 
+        "6_12_meses": "6-12 meses",
+        "mas_1_ano": "Más de 1 año"
+      },
+      "personas": "Número de personas",
+      "personas_opciones": {
+        "1_persona": "1 persona",
+        "2_personas": "2 personas"
+      },
+      "expectativas": "¿Qué buscas en tu experiencia en Pixel? *",
+      "expectativas_placeholder": "Cuéntanos por qué te interesa el {{estudio}}...",
+      "contador_caracteres": "caracteres",
+      "submit": "👉 Solicita tu {{estudio}} ahora",
+      "footer_note": "Al enviar esta solicitud, aceptas nuestra política de privacidad y términos de servicio."
+    },
+    
+    "otros_estudios": {
+      "titulo": "Explora otros espacios",
+      "ver_detalles": "Ver detalles"
+    },
+    
+    "mensajes": {
+      "exito": "¡Email enviado! ¿Quieres continuar por WhatsApp?",
+      "error": "Error al enviar. ¿Quieres intentar por WhatsApp?",
+      "procesando": "Procesando tu solicitud...",
+      "enviando": "Enviando...",
+      "corregir_errores": "Por favor corrige los errores señalados",
+      "whatsapp_confirmacion": "¿Quieres abrir WhatsApp para continuar la conversación?",
+      "whatsapp_alternativa": "¿Quieres abrir WhatsApp como alternativa?"
+    }
+  },
+  "gracias": {
+      "meta": {
+        "title": "¡Gracias! - Pixel Living | Tu solicitud fue enviada",
+        "description": "Hemos recibido tu solicitud de reserva en Pixel Living. Te contactaremos pronto para confirmar tu apartaestudio en Bogotá."
+      },
+      "hero": {
+        "titulo": "¡Gracias por tu interés!",
+        "subtitulo": "Tu solicitud fue enviada exitosamente",
+        "mensaje": "Hemos recibido tu información y nos pondremos en contacto contigo muy pronto para confirmar los detalles de tu estadía en Pixel Living."
+      },
+      "confirmacion": {
+        "titulo": "¿Qué sigue ahora?",
+        "pasos": [
+          {
+            "numero": "1",
+            "titulo": "Revisamos tu solicitud",
+            "descripcion": "Nuestro equipo revisa tu información y disponibilidad de apartaestudios para las fechas solicitadas."
+          },
+          {
+            "numero": "2", 
+            "titulo": "Te contactamos",
+            "descripcion": "Te escribiremos por WhatsApp o email en las próximas 2 horas para confirmar detalles y resolver dudas."
+          },
+          {
+            "numero": "3",
+            "titulo": "Reservas tu espacio",
+            "descripcion": "Una vez confirmado, puedes hacer el pago y asegurar tu apartaestudio en Pixel Living."
+          }
+        ]
+      },
+      "contacto_urgente": {
+        "titulo": "¿Necesitas ayuda inmediata?",
+        "descripcion": "Si tienes alguna pregunta urgente o quieres acelerar el proceso:",
+        "whatsapp": "Escríbenos por WhatsApp",
+        "telefono": "+57 319 589 5858",
+        "email": "info@pixelliving.co"
+      },
+      "cta": {
+        "volver_inicio": "Volver al inicio",
+        "ver_espacios": "Ver nuestros espacios",
+        "seguir_redes": "Síguenos en redes sociales"
+      }
+    },
+    "privacidad": {
+      "meta": {
+        "title": "Política de Privacidad - Pixel Living | Protección de Datos",
+        "description": "Conoce cómo Pixel Living protege y maneja tu información personal conforme a las leyes colombianas de protección de datos."
+      },
+      "hero": {
+        "titulo": "Política de",
+        "titulo_highlight": "Privacidad",
+        "actualizacion": "Última actualización: Julio 15 de 2025"
+      },
+      "introduccion": {
+        "texto": "En <strong>Pixel Living</strong> valoramos tu privacidad y estamos comprometidos con la protección de tus datos personales. Al completar nuestros formularios, usar nuestro sitio web o comunicarte con nosotros, aceptas las condiciones de esta política."
+      },
+      "secciones": {
+        "recoleccion": {
+          "titulo": "1. ¿Qué datos recolectamos?",
+          "descripcion": "Recolectamos y almacenamos la siguiente información personal:",
+          "lista": [
+            "Nombre completo",
+            "Correo electrónico",
+            "Teléfono de contacto (celular o WhatsApp)",
+            "Nacionalidad y país de residencia (si eres extranjero)",
+            "Preferencia de duración de la estadía",
+            "Comentarios, recomendaciones o mensajes opcionales"
+          ]
+        },
+        "uso": {
+          "titulo": "2. ¿Para qué usamos tus datos?",
+          "descripcion": "Utilizamos tu información únicamente para:",
+          "lista": [
+            "Contactarte y brindarte información personalizada sobre Pixel Living",
+            "Gestionar solicitudes de reserva y atención al cliente",
+            "Cumplir con requisitos legales y migratorios en el caso de extranjeros",
+            "Mejorar nuestro servicio y experiencia digital",
+            "Enviarte comunicaciones importantes relacionadas con tu interés en Pixel Living"
+          ],
+          "adicional": "No compartimos, vendemos ni transferimos tus datos personales a terceros, salvo que la ley lo exija o sea requerido por autoridades migratorias."
+        },
+        "proteccion": {
+          "titulo": "3. Protección y almacenamiento de datos",
+          "parrafos": [
+            "Tus datos son almacenados de forma segura y solo accede a ellos el personal autorizado de Pixel Living.",
+            "Utilizamos medidas técnicas y administrativas para proteger tu información y evitar accesos no autorizados."
+          ]
+        },
+        "extranjeros": {
+          "titulo": "4. Tratamiento de datos personales de extranjeros",
+          "parrafos": [
+            "Si eres ciudadano extranjero o resides fuera de Colombia, tus datos serán tratados conforme a la Ley de Protección de Datos Personales de Colombia (Ley 1581 de 2012) y, cuando aplique, a las normativas internacionales (como el Reglamento General de Protección de Datos de la Unión Europea - GDPR).",
+            "Tus datos podrán ser utilizados para cumplir requisitos legales, migratorios y de alojamiento temporal según la legislación colombiana y, de ser necesario, serán reportados a las autoridades competentes."
+          ]
+        },
+        "derechos": {
+          "titulo": "5. Derechos de los titulares de datos",
+          "descripcion": "Como usuario, tienes derecho a:",
+          "lista": [
+            "Conocer, actualizar y rectificar tus datos personales",
+            "Solicitar prueba de autorización para el tratamiento de tus datos",
+            "Ser informado sobre el uso que damos a tu información",
+            "Presentar quejas ante la Superintendencia de Industria y Comercio si consideras que hay un uso indebido"
+          ],
+          "adicional": "Puedes ejercer estos derechos escribiéndonos a: <strong>info@pixelliving.co</strong>"
+        },
+        "cookies": {
+          "titulo": "6. Cookies y tecnología",
+          "texto": "Nuestro sitio web puede utilizar cookies para mejorar la experiencia de navegación. Puedes configurar tu navegador para aceptar o rechazar cookies según tu preferencia."
+        },
+        "cambios": {
+          "titulo": "7. Cambios en la política",
+          "texto": "Pixel Living puede actualizar esta Política de Privacidad en cualquier momento. La fecha de la última actualización aparecerá siempre al inicio de este documento."
+        },
+        "contacto": {
+          "titulo": "8. Contacto",
+          "descripcion": "Si tienes dudas, comentarios o deseas ejercer tus derechos sobre tus datos personales, comunícate con nosotros:",
+          "datos": "<strong>Correo:</strong> info@pixelliving.co<br><strong>Teléfono/WhatsApp:</strong> +57 319 5895858",
+          "cierre": "Al enviar tus datos a través de nuestros formularios, declaras que has leído y aceptado esta Política de Privacidad."
+        }
+      }
+    },
+    "terminos": {
+      "meta": {
+        "title": "Términos y Condiciones - Pixel Living | Coliving Bogotá",
+        "description": "Lee nuestros términos y condiciones de uso para el servicio de coliving en Pixel Living, Bogotá. Políticas claras y transparentes."
+      },
+      "hero": {
+        "titulo": "Términos y",
+        "titulo_highlight": "Condiciones"
+      },
+      "encabezado": {
+        "titulo": "TÉRMINOS Y CONDICIONES DE USO – COLIVING PIXEL LIVING"
+      },
+      "informacion_general": {
+        "titulo": "Información General",
+        "contenido": "Bienvenido a Pixel Living SAS. Estos términos y condiciones regulan el acceso y uso de los servicios de coliving ofrecidos por Pixel Living en Bogotá, Colombia. Al reservar, pagar o firmar un contrato con nosotros, aceptas estos términos en su totalidad, sin importar tu nacionalidad o país de residencia."
+      },
+      "secciones": {
+        "objeto": {
+          "titulo": "1. Objeto y Alcance",
+          "contenido": [
+            "Pixel Living SAS presta servicios de coliving mediante el alquiler de apartaestudios amoblados y el acceso a zonas comunes, bajo condiciones y reglas de convivencia establecidas.",
+            "El coliving está dirigido exclusivamente a mayores de edad."
+          ]
+        },
+        "reserva": {
+          "titulo": "2. Reserva y Formalización",
+          "contenido": [
+            "La reserva de un apartaestudio puede hacerse a través de nuestros canales oficiales (sitio web, correo electrónico, WhatsApp o presencialmente).",
+            "La reserva será confirmada únicamente con el pago anticipado y la firma de los documentos requeridos (Contrato de Arrendamiento, Acuerdo Complementario y Reglamento de Zonas Comunes).",
+            "Pixel Living SAS podrá solicitar documentos de identidad o antecedentes, y se reserva el derecho de admisión."
+          ]
+        },
+        "estancia": {
+          "titulo": "3. Estancia Mínima y Ocupación",
+          "contenido": [
+            "La estancia mínima es de un (1) mes. Las estancias inferiores no serán aceptadas.",
+            "No se permite subarriendo, cesión o transferencia del derecho de uso sin autorización escrita de Pixel Living SAS.",
+            "Solo podrán ocupar el apartaestudio las personas autorizadas en el contrato.",
+            "Para ciudadanos extranjeros, es obligatorio presentar pasaporte vigente y, si aplica, visa o permiso de permanencia en Colombia."
+          ]
+        },
+        "zonas_comunes": {
+          "titulo": "4. Uso de Zonas Comunes y Servicios",
+          "contenido": [
+            "El uso de zonas comunes se regula por el Reglamento de Zonas Comunes, de obligatorio cumplimiento.",
+            "El acceso podrá restringirse por mantenimiento, sanción o motivos de seguridad.",
+            "El residente debe respetar normas internas, horarios y derechos de otros usuarios."
+          ]
+        },
+        "prohibiciones": {
+          "titulo": "5. Prohibiciones",
+          "contenido": [
+            "Está prohibido fumar, vapear o consumir sustancias psicoactivas en cualquier parte del edificio, excepto en la zona de mascotas (Pet Zone), donde está permitido fumar sin afectar a terceros.",
+            "No se permite el ejercicio de actividades ilícitas, la explotación sexual de menores ni el uso del inmueble para fines comerciales o turísticos tipo Airbnb.",
+            "No se aceptan mascotas exóticas ni especies prohibidas por la ley colombiana."
+          ]
+        },
+        "pago": {
+          "titulo": "6. Pago y Depósito",
+          "contenido": [
+            "El pago del arriendo y servicios adicionales se realiza conforme a lo pactado en el contrato.",
+            "El depósito es exclusivo para cubrir daños, mobiliario, enseres o deudas y no puede ser aplicado al pago del canon."
+          ]
+        },
+        "sanciones": {
+          "titulo": "7. Sanciones y Terminación",
+          "contenido": [
+            "El incumplimiento de estos términos, del contrato o del reglamento de zonas comunes puede resultar en sanciones, suspensión de servicios, multas económicas o terminación inmediata del contrato.",
+            "Las sanciones y procedimientos están detallados en los documentos contractuales y reglamentos internos."
+          ]
+        },
+        "proteccion_datos": {
+          "titulo": "8. Protección de Datos y Privacidad",
+          "contenido": [
+            "Pixel Living SAS procesa datos personales de acuerdo a la Ley 1581 de 2012 de Colombia y la normativa internacional de protección de datos (GDPR para ciudadanos de la Unión Europea, cuando aplique).",
+            "La política de privacidad está disponible en nuestro sitio web y puede ser solicitada en cualquier momento.",
+            "Al usar nuestros servicios, autorizas la recopilación, almacenamiento y uso de tus datos personales para fines contractuales y administrativos."
+          ]
+        },
+        "cambios": {
+          "titulo": "9. Cambios en los Términos y Condiciones",
+          "contenido": [
+            "Pixel Living SAS podrá actualizar estos términos y condiciones en cualquier momento. La versión vigente será la publicada en el sitio web al momento de la reserva o renovación de contrato."
+          ]
+        },
+        "jurisdiccion": {
+          "titulo": "10. Jurisdicción y Ley Aplicable",
+          "contenido": [
+            "Estos términos y condiciones se rigen por la legislación colombiana.",
+            "Para usuarios internacionales, cualquier disputa se resolverá ante las autoridades competentes en Bogotá, Colombia, sin perjuicio de la legislación del país de origen del residente si resultara aplicable."
+          ]
+        },
+        "aceptacion": {
+          "titulo": "11. Aceptación Digital",
+          "contenido": "Al reservar, pagar, firmar digitalmente o ingresar como residente a Pixel Living, declaras que has leído, entendido y aceptado estos Términos y Condiciones, así como los documentos contractuales y reglamentos anexos."
+        }
+      },
+      "contacto": {
+        "titulo": "Para cualquier consulta, puedes contactarnos en:",
+        "correo_label": "Correo:",
+        "correo": "info@pixelliving.co",
+        "whatsapp_label": "WhatsApp:",
+        "whatsapp": "+57 319 5895858",
+        "direccion_label": "Dirección:",
+        "direccion": "Calle 98 # 22-64 Of. 1002, Bogotá, Colombia",
+        "empresa": "Pixel Living SAS – Bogotá, Colombia"
+      }
+    }
+  }
+  
