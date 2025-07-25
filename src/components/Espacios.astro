@@ -405,8 +405,8 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
                     <p class="text-gray-600 mb-3">{estudio.descripcion}</p>
                     
                     <div class="mt-auto">
-                      <div class="flex justify-between items-center">
-                        <span class="text-xl font-bold text-pixel-blue" aria-label={`Precio desde ${estudio.precio}`}>
+                      <div class="grid grid-cols-2 justify-between items-center">
+                        <span class="text-leg col-span-2 font-bold text-pixel-blue" aria-label={`Precio desde ${estudio.precio}`}>
                           {estudio.precio}
                         </span>
                         <a 

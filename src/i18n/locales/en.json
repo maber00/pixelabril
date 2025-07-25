@@ -142,7 +142,7 @@
   "diferenciacion": {
     "titulo": "What makes us unique?",
     "subtitulo": "Our differential proposition",
-    "heading": "We're not a traditional rental.<br>Not a hotel either.",
+    "heading": "We're not a traditional rental. Not a hotel either.",
     "descripcion": "We are something completely new: a",
     "descripcion_highlight": "life ecosystem",
     "descripcion_end": "designed for the new generation of professionals.",
@@ -335,10 +335,10 @@
   },
   
   "precios": {
-    "1_mes": "$3,100,000",
-    "3_meses": "$2,950,000",
-    "6_meses": "$2,750,000",
-    "12_meses": "$2,650,000"
+    "1_mes": "$3,100,000 COP",
+    "3_meses": "$2,950,000 COP",
+    "6_meses": "$2,750,000 COP",
+    "12_meses": "$2,650,000 COP"
   },
   
   "ahorros": {
@@ -376,23 +376,23 @@
   },
   
   "comparativa_tradicional": {
-    "arriendo": "$2,000,000",
-    "servicios": "$350,000",
-    "wifi": "$120,000",
-    "administracion": "$300,000",
-    "mobiliario": "$400,000",
-    "electrodomesticos": "$200,000",
-    "total": "$3,370,000"
+    "arriendo": "$2,000,000 COP",
+    "servicios": "$350,000 COP",
+    "wifi": "$120,000 COP",
+    "administracion": "$300,000 COP",
+    "mobiliario": "$400,000 COP",
+    "electrodomesticos": "$200,000 COP",
+    "total": "$3,370,000 COP"
   },
   
   "comparativa_pixel": {
     "incluido": "✓ Included",
-    "total": "From $2,650,000"
+    "total": "From $2,650,000 COP"
   },
   
-  "ahorro_principal": "💰 You save $720,000 each month!",
+  "ahorro_principal": "💰 You save $720,000 COP each month!",
   "ahorro_nota": "Reference values in Colombian pesos. All-inclusive, no surprises.",
-  "ahorro_anual": "🏆 Over $8,600,000 annual savings + time and peace of mind",
+  "ahorro_anual": "🏆 Over $8,600,000 COP annual savings + time and peace of mind",
   
   "cta_titulo": "Living well and without complications is possible!",
   "cta_descripcion": "Ready to live, save and enjoy more?",
@@ -466,10 +466,10 @@
     "duration": "How long would you like to reserve?",
     "duration_select": "Select duration",
     "duration_options": {
-      "1_month_price": "1 month - $3,100,000",
-      "3_months_price": "3 months - $2,950,000",
-      "6_months_price": "6 months - $2,750,000",
-      "12_months_price": "12 months - $2,650,000 (Recommended)"
+      "1_month_price": "1 month - $3,100,000 COP",
+      "3_months_price": "3 months - $2,950,000 COP",
+      "6_months_price": "6 months - $2,750,000 COP",
+      "12_months_price": "12 months - $2,650,000 COP (Recommended)"
     },
     "date": "Preferred move-in date",
     "date_help": "Select your ideal move-in date",
@@ -616,7 +616,7 @@
       "descripcion": "Bright space with private balcony. Private kitchen, independent work area and auxiliary room. Perfect for long stays with large windows and clear views. All included: wifi, utilities, Smart TV. No guarantor required.",
       "metros": "29m²",
       "imagen": "/images/estudios/jade/pixel-jade-room-004.webp",
-      "precio": "From $2,650,000",
+      "precio": "From $2,650,000 COP",
       "galeria": [
         "/images/estudios/jade/pixel-jade-room-005.webp",
         "/images/estudios/jade/pixel-jade-room-001.webp",  
@@ -645,9 +645,9 @@
       "nombre": "Zian Studio", 
       "descripcion_1": "Blue colors that convey calm and concentration, ideal for remote work.",
       "descripcion": "Designed for remote professionals with optimized work area. Private kitchen, spacious desk and environment that favors concentration. Ideal for combining life and work with style. All included: wifi, utilities, furniture. No guarantor required.",
-      "imagen": "/images/estudios/zian/pixel-zian-room-001.webp",
+      "imagen": "/images/estudios/zian/pixel-zian-room-007.webp",
       "metros": "29m²",
-      "precio": "From $2,650,000",
+      "precio": "From $2,650,000 COP",
       "galeria": [
         "/images/estudios/zian/pixel-zian-room-001.webp", 
         "/images/estudios/zian/pixel-zian-room-002.webp", 
@@ -655,7 +655,6 @@
         "/images/estudios/zian/pixel-zian-room-004.webp", 
         "/images/estudios/zian/pixel-zian-room-005.webp",
         "/images/estudios/zian/pixel-zian-room-006.webp", 
-        "/images/estudios/zian/pixel-zian-room-007.webp", 
         "/images/estudios/zian/pixel-zian-room-009.webp", 
         "/images/estudios/zian/pixel-zian-room-010.webp"
       ],
@@ -681,7 +680,7 @@
       "descripcion": "Our most spacious studio apartment with living area separated from the rest area. Private kitchen, private balcony and cozy environment for creatives and entrepreneurs. All included, no guarantor required.",
       "imagen": "/images/estudios/indigo/pixel-indigo-room-001.webp",
       "metros": "29m²", 
-      "precio": "From $2,650,000",
+      "precio": "From $2,650,000 COP",
       "galeria": [
         "/images/estudios/indigo/pixel-indigo-room-001.webp", 
         "/images/estudios/indigo/pixel-indigo-room-002.webp", 
