@@ -1,16 +1,12 @@
 ---
-// Importar imágenes para el carrusel
 import image1 from '../assets/v5s.jpg';
 import image2 from '../assets/v4s.jpg';
 
-// IMPORTAR I18N
 import { getLanguageFromUrl, t, setCurrentLanguage } from '../i18n/utils/translator';
 
-// Detectar idioma actual
 const currentLang = getLanguageFromUrl(Astro.url.pathname);
 setCurrentLanguage(currentLang);
 
-// Imágenes para el carrusel con alt texts traducidos
 const carouselImages = [
   {
     src: image1.src,
@@ -22,7 +18,6 @@ const carouselImages = [
   },
 ];
 
-// Beneficios traducidos
 const beneficios = [
   {
     icono: 'M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21',
@@ -59,9 +54,7 @@ const beneficios = [
       <h2 class="text-4xl md:text-7xl font-normal mb-6">{t('coliving.title')} <span class="text-pixel-purple">{t('coliving.title_highlight')}</span> {t('coliving.title_end')}</h2>
     </div>
     
-    <!-- Contenedor de dos columnas: texto y carrusel -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto mb-16">
-      <!-- Columna de texto -->
       <div class="flex flex-col justify-center">
         <div class="text-left mb-12">
           <h2 class="text-4xl md:text-5xl font-normal mb-6">
@@ -83,11 +76,8 @@ const beneficios = [
         </div>
       </div>
       
-      <!-- Columna del carrusel -->
       <div class="flex flex-col">
-        <!-- Contenedor de imágenes con aspecto cuadrado -->
         <div class="relative overflow-hidden rounded-lg border-2 border-pixel-purple">
-          <!-- Imágenes del carrusel estilo rollo fotográfico -->
           <div id="coliving-carousel" class="flex transition-transform duration-500">
             {carouselImages.map((image) => (
               <div class="w-full flex-shrink-0">
@@ -102,7 +92,6 @@ const beneficios = [
             ))}
           </div>
           
-          <!-- Indicadores dentro de la imagen -->
           <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
             {carouselImages.map((_, index) => (
               <button 
@@ -114,7 +103,6 @@ const beneficios = [
           </div>
         </div>
         
-       <!-- Controles del carrusel DEBAJO de las imágenes -->
         <div class="flex justify-center items-center space-x-4 mt-4">
           <button 
             id="coliving-prev" 
@@ -143,7 +131,6 @@ const beneficios = [
       </div>
     </div>
     
-    <!-- Sección de beneficios -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 max-w-7xl mx-auto">
       {beneficios.map(beneficio => (
         <div class="bg-pixel-purple p-6 rounded-md shadow-md hover:shadow-lg transition-shadow border-2 border-pixel-purple pixel-hover">
@@ -163,26 +150,20 @@ const beneficios = [
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Elementos del carrusel
     const carousel = document.getElementById('coliving-carousel');
     const prevBtn = document.getElementById('coliving-prev');
     const nextBtn = document.getElementById('coliving-next');
     const indicators = document.querySelectorAll('.coliving-indicator');
     
-    // Número total de imágenes
     const totalImages = indicators.length;
     
-    // Índice actual
     let currentIndex = 0;
     
-    // Función para actualizar el carrusel
     function updateCarousel() {
       if (carousel) {
-        // Calculamos el desplazamiento
         carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
       }
       
-      // Actualizar indicadores
       indicators.forEach((indicator, index) => {
         if (index === currentIndex) {
           indicator.classList.add('opacity-100');
@@ -194,7 +175,6 @@ const beneficios = [
       });
     }
     
-    // Event listeners para los botones
     prevBtn?.addEventListener('click', () => {
       currentIndex = (currentIndex - 1 + totalImages) % totalImages;
       updateCarousel();
@@ -205,7 +185,6 @@ const beneficios = [
       updateCarousel();
     });
     
-    // Event listeners para los indicadores
     indicators.forEach((indicator, index) => {
       indicator.addEventListener('click', () => {
         currentIndex = index;
@@ -213,16 +192,13 @@ const beneficios = [
       });
     });
     
-    // Inicializar
     updateCarousel();
     
-    // Auto-reproducción del carrusel (opcional)
     const interval = setInterval(() => {
       currentIndex = (currentIndex + 1) % totalImages;
       updateCarousel();
     }, 5000);
     
-    // Detener auto-reproducción al pasar el mouse por encima
     carousel?.addEventListener('mouseenter', () => {
       clearInterval(interval);
     });

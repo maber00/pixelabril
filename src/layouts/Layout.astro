@@ -120,16 +120,26 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		
+		<!-- 📊 Google Tag Manager -->
+		<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-KMNCWPVB');</script>
+		<!-- End Google Tag Manager -->
+		
 		<!-- 🚀 PRECONNECT HINTS CRÍTICOS -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+		<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
 		
 		<!-- 🌐 DNS PREFETCH para recursos secundarios -->
 		<link rel="dns-prefetch" href="https://maps.googleapis.com" />
 		<link rel="dns-prefetch" href="https://formsubmit.co" />
 		<link rel="dns-prefetch" href="https://wa.me" />
 		<link rel="dns-prefetch" href="https://api.ipgeolocation.io" />
+		<link rel="dns-prefetch" href="https://www.google-analytics.com" />
 		
 		<!-- 📱 Favicon y iconos -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -289,6 +299,11 @@ const finalStructuredData = structuredData || defaultStructuredData;
 	</head>
 	
 	<body>
+		<!-- 📊 Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KMNCWPVB"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+		
 		<!-- 🌍 Loading overlay para detección de idioma -->
 		<div id="lang-detection-overlay" class="lang-detection-overlay lang-detection-hidden">
 			<div class="text-center">
@@ -372,6 +387,9 @@ const finalStructuredData = structuredData || defaultStructuredData;
 					
 					const initTime = Math.round(performance.now() - initStart);
 					console.log(`✅ Pixel Living: Sistema inicializado en ${initTime}ms`);
+					
+					// Log para GTM debug
+					console.log('📊 GTM: Google Tag Manager inicializado');
 					
 				} catch (error) {
 					console.error('❌ Error en inicialización:', error);

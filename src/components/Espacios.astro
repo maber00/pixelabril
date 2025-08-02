@@ -252,15 +252,12 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
 <section id="espacios" class="section bg-pixel-blue/5" role="region" aria-labelledby="espacios-heading">
   <div class="container">
     <div class="text-center bg-pixel-blue rounded-t-2xl  mx-0 md:mx-20">
-      <!-- ✅ BADGE TRADUCIDO -->
       <span class="inline-block text-white font-semibold text-sm uppercase tracking-wider mb-2 pt-8">{t('espacios.badge')}</span>
       
-      <!-- ✅ TÍTULO TRADUCIDO -->
       <h2 id="espacios-heading" class="text-4xl md:text-7xl font-normal px-4 md:px-18 text-white">
         {t('espacios.title')} <span class="text-blue-200">{t('espacios.title_highlight')}</span>
       </h2>
       
-      <!-- Mejora del copy según auditoría -->
       <div class="text-lg md:text-xl font-normal text-white max-w-5xl pb-6 px-4 mx-auto mt-6">
         <p class="mb-4">
   {t("espacios.description")}{" "}
@@ -268,7 +265,6 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
   {t("espacios.description3")} {t("espacios.espacio")}
 </p>
         
-        <!-- Destacar beneficios clave según auditoría -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 pb-4">
           <div class="bg-white/10 rounded-lg p-3 backdrop-blur-sm">
             <div class="text-pixel-yellow font-bold">✓ {t('espacios.beneficios_destacados.habitacion_adicional')}</div>
@@ -285,26 +281,20 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
         </div>
       </div>
 
-       <!-- ✅ MENSAJE FINAL TRADUCIDO -->
       <p class="text-white text-lg md:text-xl  pb-4 px-4 max-w-3xl mx-auto font-normal">
         {t('espacios.mensaje_final')}
       </p>
     </div>
     
-    <!-- Carrusel de apartaestudios - ESTRUCTURA CORREGIDA -->
     <div class="bg-pixel-blue md:mx-20 mx-0">
-      <!-- Contenedor del carrusel con padding interno -->
       <div class="relative max-w-7xl  mx-auto" id="carousel-container">
         
-        <!-- Área de contenido con padding para los botones -->
         <div class="px-4 md:px-16 py-8  relative overflow-hidden">
           
-          <!-- Instrucciones para lectores de pantalla -->
           <div class="sr-only" id="carousel-instructions">
             Use las flechas izquierda y derecha para navegar, o presione Tab para explorar cada estudio individualmente.
           </div>
           
-          <!-- Botones de navegación - POSICIONADOS CORRECTAMENTE -->
           <button 
             class="absolute left-2 top-1/2 z-10 -translate-y-1/2 bg-white rounded-lg p-3 shadow-lg hover:bg-gray-100 focus:outline-none disabled:opacity-30 disabled:cursor-not-allowed border border-pixel-blue transition-all duration-200 md:hidden" 
             id="prev-btn"
@@ -327,7 +317,6 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
             </svg>
           </button>
           
-          <!-- Carrusel de slides -->
           <div 
             class="flex transition-transform duration-500 ease-in-out -mx-2" 
             id="carousel-slides"
@@ -425,7 +414,6 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
           </div>
         </div>
         
-        <!-- Indicadores -->
         <div class="flex justify-center pb-8" id="carousel-indicators">
   <div class="flex space-x-2" role="tablist" aria-label="Navegación de apartaestudios">
     {estudios.map((_, index) => (
@@ -447,10 +435,8 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
 </div>
     </div>
     
-    <!-- Características -->
      <div class="mx-4">
     <div class="bg-white  rounded-lg shadow-lg p-4 md:p-10 max-w-4xl  mt-2 mb-16 border-2 mx-auto  border-pixel-blue">
-      <!-- ✅ TÍTULO CARACTERÍSTICAS TRADUCIDO -->
       <h3 class="text-4xl font-normal mb-6 text-center text-pixel-blue">{t('espacios.caracteristicas_titulo')}</h3>
       
       <div class="grid grid-cols-2 md:grid-cols-3 gap-6" role="list">
@@ -486,28 +472,23 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
     </div>
     </div>
     
-    <!-- Importar el componente de lightbox responsivo -->
     <LightboxModal id="espacios-lightbox" showDetailsButton={true} showReservaButton={true} />
   </div>
 </section>
 
-<!-- CARGAR EL LIGHTBOX RESPONSIVO INTEGRADO -->
 <script define:vars={{ lightboxData }}>
 document.addEventListener('DOMContentLoaded', () => {
   console.log("=== ESPACIOS CON LIGHTBOX RESPONSIVO ===");
   
-  // ===== HACER LIGHTBOX DATA DISPONIBLE GLOBALMENTE =====
   window.lightboxData = lightboxData || {};
   
-  // ===== CONFIGURACIÓN RESPONSIVA =====
   const getThumbnailsPerView = () => {
     const width = window.innerWidth;
-    if (width < 641) return 5;        // Móvil: 5 thumbnails
-    if (width < 1025) return 6;       // Tablet: 6 thumbnails  
-    return 8;                         // Desktop: 8 thumbnails
+    if (width < 641) return 5;        
+    if (width < 1025) return 6;         
+    return 8;                         
   };
   
-  // ===== HELPERS TYPE-SAFE PARA ASTRO 5.x =====
   const getAccessibilityManager = () => {
     return (typeof window !== 'undefined' && window.PAM) ? window.PAM : null;
   };
@@ -533,7 +514,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
   
-  // Función para dispatch de eventos personalizado compatible con Astro 5.x
   const dispatchEstudioSeleccionado = (estudioId, estudioNombre) => {
     const event = new CustomEvent('estudioSeleccionado', {
       detail: { estudioId, estudioNombre },
@@ -543,7 +523,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.dispatchEvent(event);
   };
   
-  // ===== VERIFICAR ELEMENTOS CRÍTICOS =====
   const container = document.getElementById('carousel-container');
   const slides = document.getElementById('carousel-slides');
   const prevBtn = document.getElementById('prev-btn');
@@ -573,27 +552,21 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // ===== VARIABLES CARRUSEL =====
   let currentIndex = 0;
   let slidesPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
   const totalSlides = indicators.length;
   let isMobile = () => window.innerWidth < 768;
 
-  // ===== FUNCIONES CARRUSEL =====
   function updateCarousel() {
     console.log("Actualizando carrusel:", { currentIndex, slidesPerView, totalSlides, isMobile: isMobile() });
     
-    // Calcular el ancho del slide basado en el contenedor padre
     const containerWidth = slides.parentElement.clientWidth;
     const slideWidth = containerWidth / slidesPerView;
     
-    // Aplicar transformación
     slides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
     
-    // En desktop, deshabilitar botones
     const isDesktop = !isMobile();
     
-    // Actualizar botones - solo funcionales en móvil
     if (isDesktop) {
       prevBtn.disabled = true;
       nextBtn.disabled = true;
@@ -610,11 +583,9 @@ document.addEventListener('DOMContentLoaded', () => {
       nextBtn.style.display = 'block';
     }
     
-    // Actualizar ARIA states
     prevBtn.setAttribute('aria-disabled', String(isDesktop || currentIndex === 0));
     nextBtn.setAttribute('aria-disabled', String(isDesktop || currentIndex >= totalSlides - slidesPerView));
     
-    // Actualizar indicadores
     indicators.forEach((indicator, index) => {
       const isActive = index === currentIndex;
       indicator.classList.toggle('bg-pixel-blue', isActive);
@@ -623,7 +594,6 @@ document.addEventListener('DOMContentLoaded', () => {
       indicator.setAttribute('tabindex', isActive ? '0' : '-1');
     });
     
-    // Anunciar cambio a lectores de pantalla (solo en móvil)
     if (!isDesktop && slideElements[currentIndex]) {
       const currentSlide = slideElements[currentIndex];
       const estudioNombre = currentSlide?.querySelector('h3')?.textContent || '';
@@ -631,9 +601,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ===== EVENTOS CARRUSEL - SOLO EN MÓVIL =====
   prevBtn.addEventListener('click', () => {
-    if (!isMobile()) return; // Bloquear en desktop
+    if (!isMobile()) return; 
     
     if (currentIndex > 0) {
       currentIndex--;
@@ -642,7 +611,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   nextBtn.addEventListener('click', () => {
-    if (!isMobile()) return; // Bloquear en desktop
+    if (!isMobile()) return; 
     
     if (currentIndex < totalSlides - slidesPerView) {
       currentIndex++;
@@ -650,7 +619,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Navegación con teclado en indicadores (funciona en todas las resoluciones)
   indicators.forEach((indicator, index) => {
     indicator.addEventListener('click', () => {
       currentIndex = Math.min(index, totalSlides - slidesPerView);
@@ -687,7 +655,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Responsive handling mejorado
   window.addEventListener('resize', () => {
     const newSlidesPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
     if (newSlidesPerView !== slidesPerView) {
@@ -697,10 +664,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Inicializar carrusel
   updateCarousel();
 
-  // ===== CLASE LIGHTBOX RESPONSIVO INTEGRADA =====
   class ResponsiveLightbox {
     constructor(modalId, lightboxData) {
       this.modalId = modalId;
@@ -722,7 +687,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       
-      // Elementos principales
       this.image = this.modal.querySelector('.lightbox-image');
       this.title = this.modal.querySelector('.lightbox-title');
       this.closeBtn = this.modal.querySelector('.lightbox-close');
@@ -733,7 +697,6 @@ document.addEventListener('DOMContentLoaded', () => {
       this.currentSpan = this.modal.querySelector('.lightbox-current');
       this.totalSpan = this.modal.querySelector('.lightbox-total');
       
-      // Elementos del carrusel de thumbnails
       this.thumbCarousel = this.modal.querySelector('.lightbox-thumbnails-carousel');
       this.thumbPrevBtn = this.modal.querySelector('.thumb-carousel-prev');
       this.thumbNextBtn = this.modal.querySelector('.thumb-carousel-next');
@@ -744,29 +707,22 @@ document.addEventListener('DOMContentLoaded', () => {
     bindEvents() {
       if (!this.modal) return;
       
-      // Cerrar modal
       this.closeBtn?.addEventListener('click', () => this.close());
       
-      // Navegación principal
       this.prevBtn?.addEventListener('click', () => this.navigateImage(-1));
       this.nextBtn?.addEventListener('click', () => this.navigateImage(1));
       
-      // Navegación del carrusel de thumbnails
       this.thumbPrevBtn?.addEventListener('click', () => this.navigateThumbnailCarousel(-1));
       this.thumbNextBtn?.addEventListener('click', () => this.navigateThumbnailCarousel(1));
       
-      // Click fuera del modal
       this.modal.addEventListener('click', (e) => {
         if (e.target === this.modal) this.close();
       });
       
-      // Teclado
       document.addEventListener('keydown', (e) => this.handleKeyboard(e));
       
-      // Responsive
       window.addEventListener('resize', () => this.handleResize());
       
-      // Botón reserva
       this.reservaLink?.addEventListener('click', (e) => {
         e.preventDefault();
         this.close();
@@ -775,7 +731,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
     
-    // ===== FUNCIONES PRINCIPALES =====
     
     open(estudioId, imageIndex = 0) {
       console.log('🎯 Abriendo lightbox responsivo:', { estudioId, imageIndex });
@@ -791,17 +746,13 @@ document.addEventListener('DOMContentLoaded', () => {
       this.currentImageIndex = Math.max(0, Math.min(imageIndex, this.currentImages.length - 1));
       this.thumbCarouselIndex = 0;
       
-      // Actualizar título
       if (this.title) this.title.textContent = estudioData.nombre;
       
-      // Actualizar enlaces
       if (this.detailsLink) this.detailsLink.href = `/estudio/${estudioId}`;
       if (this.reservaLink) this.reservaLink.href = '#reservas';
       
-      // Construir thumbnails
       this.buildThumbnails();
       
-      // Actualizar imagen y mostrar modal
       this.updateImage();
       this.show();
       
@@ -821,7 +772,6 @@ document.addEventListener('DOMContentLoaded', () => {
       this.modal?.classList.add('flex');
       document.body.style.overflow = 'hidden';
       
-      // Focus management
       trapFocus(this.modal);
       if (!getAccessibilityManager()) {
         setTimeout(() => this.closeBtn?.focus(), 100);
@@ -848,12 +798,10 @@ document.addEventListener('DOMContentLoaded', () => {
       this.updateThumbnailCarousel();
     }
     
-    // ===== FUNCIONES DE CONSTRUCCIÓN =====
     
     buildImageArray(estudioData) {
       const images = [];
       
-      // Imagen principal
       if (estudioData.imagenPrincipal) {
         images.push({
           src: estudioData.imagenPrincipal,
@@ -861,7 +809,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
       
-      // Galería adicional
       if (estudioData.imagenes && Array.isArray(estudioData.imagenes)) {
         estudioData.imagenes.forEach((src, index) => {
           images.push({
@@ -902,7 +849,6 @@ document.addEventListener('DOMContentLoaded', () => {
         this.thumbCarousel.appendChild(thumb);
       });
       
-      // Actualizar responsive
       this.updateThumbnailSizes();
       this.updateThumbnailCarousel();
     }
@@ -922,14 +868,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
     
-    // ===== FUNCIONES DE ACTUALIZACIÓN =====
     
     updateImage() {
       if (!this.image || this.currentImages.length === 0) return;
       
       const currentImage = this.currentImages[this.currentImageIndex];
       
-      // Transición suave
       this.image.style.opacity = '0.7';
       
       setTimeout(() => {
@@ -938,14 +882,11 @@ document.addEventListener('DOMContentLoaded', () => {
         this.image.style.opacity = '1';
       }, 150);
       
-      // Actualizar contador
       if (this.currentSpan) this.currentSpan.textContent = (this.currentImageIndex + 1).toString();
       if (this.totalSpan) this.totalSpan.textContent = this.currentImages.length.toString();
       
-      // Actualizar botones de navegación
       this.updateNavigationButtons();
       
-      // Actualizar thumbnails activas
       this.updateActiveThumbnail();
     }
     
@@ -978,7 +919,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const translateX = -(this.thumbCarouselIndex * (100 / this.thumbnailsPerView));
       this.thumbCarousel.style.transform = `translateX(${translateX}%)`;
       
-      // Actualizar botones del carrusel
       this.updateThumbnailCarouselButtons();
     }
     
@@ -1010,7 +950,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     
-    // ===== EVENTOS =====
     
     handleKeyboard(e) {
       if (this.modal?.classList.contains('hidden')) return;
@@ -1038,7 +977,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     
-    // ===== INTEGRACIÓN CON RESERVAS =====
     
     dispatchEstudioSeleccionado() {
       const estudioData = this.lightboxData[this.currentEstudioId];
@@ -1065,17 +1003,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   
-  // ===== INICIALIZAR LIGHTBOX RESPONSIVO =====
   const lightboxInstance = new ResponsiveLightbox('espacios-lightbox', window.lightboxData);
   
-  // Función global para abrir lightbox
   window.openLightbox = function(estudioId, imageIndex = 0) {
     lightboxInstance.open(estudioId, imageIndex);
   };
   
-  // ===== EVENTOS PARA ABRIR LIGHTBOX =====
   
-  // Botón galería
   document.querySelectorAll('.open-gallery-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -1088,7 +1022,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Thumbnails
   document.querySelectorAll('.gallery-thumb').forEach(thumb => {
     thumb.addEventListener('click', (e) => {
       e.preventDefault();
@@ -1102,7 +1035,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Keyboard support for thumbnails
     thumb.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -1111,7 +1043,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Imagen principal
   document.querySelectorAll('.main-image').forEach(img => {
     img.addEventListener('click', (e) => {
       if (e.target !== img) return;
@@ -1122,7 +1053,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Keyboard support for main image
     img.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -1134,7 +1064,6 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log("✅ Espacios con lightbox responsivo inicializado completamente");
   console.log(`📱 Configuración: ${getThumbnailsPerView()} thumbnails por vista`);
   
-  // Debug
   window.espaciosDebug = {
     openLightbox: window.openLightbox,
     lightboxData: window.lightboxData,
@@ -1147,7 +1076,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 <style>
-  /* Screen reader only utility */
   .sr-only {
     position: absolute;
     width: 1px;
@@ -1160,7 +1088,6 @@ document.addEventListener('DOMContentLoaded', () => {
     border: 0;
   }
 
-  /* Enhanced focus styles for keyboard navigation */
   .keyboard-navigation button:focus,
   .keyboard-navigation [role="button"]:focus {
     outline: 2px solid #ffd700;
@@ -1168,27 +1095,22 @@ document.addEventListener('DOMContentLoaded', () => {
     box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.3);
   }
 
-  /* Gallery thumbnail focus */
   .keyboard-navigation .gallery-thumb:focus {
     transform: scale(1.15);
     z-index: 10;
     position: relative;
   }
 
-  /* Carousel indicator focus */
   .keyboard-navigation [data-index]:focus {
     transform: scale(1.3);
     z-index: 10;
   }
 
-  /* Lightbox focus styles */
   .lightbox-modal.flex .keyboard-navigation button:focus {
     box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.8);
   }
 
-  /* NUEVA ESTRUCTURA DE RESPONSIVE NAVIGATION */
   
-  /* Botones de navegación solo en móvil */
   @media (min-width: 768px) {
     #prev-btn,
     #next-btn {
@@ -1196,7 +1118,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* Mejorar área de toque en móvil */
   #prev-btn,
   #next-btn {
     min-width: 44px;
@@ -1204,48 +1125,42 @@ document.addEventListener('DOMContentLoaded', () => {
     -webkit-tap-highlight-color: transparent;
   }
 
-  /* Carrusel responsivo sin cortes */
   #carousel-slides {
     will-change: transform;
   }
 
-  /* Espaciado negativo para compensar padding */
   #carousel-slides.-mx-2 {
     margin-left: -0.5rem;
     margin-right: -0.5rem;
   }
 
-  /* Estilos para el carrusel de thumbnails en el lightbox */
   .lightbox-thumbnails-carousel {
     will-change: transform;
   }
   
-  /* Asegurar que las thumbnails no se deformen */
   .lightbox-thumbnail {
     aspect-ratio: 1;
     flex-shrink: 0;
   }
   
-  /* Responsive design para thumbnails del lightbox */
   @media (max-width: 640px) {
     .lightbox-thumbnail {
-      width: calc((100% - 2rem) / 5); /* 5 thumbnails en móvil con gaps */
+      width: calc((100% - 2rem) / 5); 
     }
   }
   
   @media (min-width: 641px) and (max-width: 1024px) {
     .lightbox-thumbnail {
-      width: calc((100% - 3rem) / 6); /* 6 thumbnails en tablet */
+      width: calc((100% - 3rem) / 6); 
     }
   }
   
   @media (min-width: 1025px) {
     .lightbox-thumbnail {
-      width: calc((100% - 4rem) / 8); /* 8 thumbnails en desktop */
+      width: calc((100% - 4rem) / 8); 
     }
   }
 
-  /* Improved hover effects for accessibility */
   @media (hover: hover) {
     .gallery-thumb:hover,
     .open-gallery-btn:hover {
@@ -1256,7 +1171,6 @@ document.addEventListener('DOMContentLoaded', () => {
       opacity: 0.9;
     }
 
-    /* Hover en botones de navegación solo en móvil */
     @media (max-width: 767px) {
       #prev-btn:hover,
       #next-btn:hover {
@@ -1265,21 +1179,18 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     
-    /* Hover effects para lightbox thumbnails */
     .lightbox-thumbnail:hover {
       opacity: 1 !important;
       transform: scale(1.05);
     }
   }
 
-  /* Focus states para lightbox */
   .lightbox-thumbnail:focus {
     outline: 2px solid #ffd700;
     outline-offset: 2px;
     opacity: 1 !important;
   }
 
-  /* High contrast mode support */
   @media (prefers-contrast: high) {
     .gallery-thumb,
     .open-gallery-btn,
@@ -1294,7 +1205,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* Reduced motion support */
   @media (prefers-reduced-motion: reduce) {
     .gallery-thumb,
     .open-gallery-btn,
@@ -1314,12 +1224,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* Asegurar que el carrusel no se desborde */
   #carousel-container {
     contain: layout;
   }
 
-  /* Prevenir scroll horizontal no deseado */
   .bg-pixel-blue {
     overflow-x: hidden;
   }
