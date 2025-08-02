@@ -688,6 +688,8 @@ ${datos.mensaje || 'Ninguno'}
   elementos.form.addEventListener('submit', async function(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
+
+    
     
     // ✅ PREVENIR MÚLTIPLES ENVÍOS
     if (formularioSubmitido) {

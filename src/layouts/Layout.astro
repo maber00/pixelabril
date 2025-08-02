@@ -128,6 +128,15 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		})(window,document,'script','dataLayer','GTM-KMNCWPVB');</script>
 		<!-- End Google Tag Manager -->
 		
+		<!-- 📊 Google Analytics 4 -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-G1041RMX9Z"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-G1041RMX9Z');
+		</script>
+		
 		<!-- 🚀 PRECONNECT HINTS CRÍTICOS -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -345,7 +354,7 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		<!-- 📢 Live region para anuncios de screen reader -->
 		<div id="live-region" aria-live="polite" aria-atomic="true" class="sr-only"></div>
 		
-		<!-- 🚀 INICIALIZACIÓN CON DETECCIÓN I18N -->
+		<!-- 🚀 INICIALIZACIÓN CON TRACKING DE FORMULARIOS -->
 		<script is:inline>
 			// Configuración global
 			window.PIXEL_CONFIG = {
@@ -354,7 +363,74 @@ const finalStructuredData = structuredData || defaultStructuredData;
 				debug: false
 			};
 			
+			// 📊 PIXEL TRACK - FUNCIONES PARA FORMULARIOS
+			window.pixelTrack = {
+				// Tracking de inicio de formulario
+				formStart: function(formType) {
+					console.log('📝 Form Start:', formType);
+					if (typeof gtag === 'function') {
+						gtag('event', 'begin_checkout', {
+							currency: 'COP',
+							value: 2650000,
+							form_type: formType,
+							event_category: 'form',
+							event_label: formType + '_start'
+						});
+					}
+				},
+				
+				// Tracking de formulario completado
+				formComplete: function(formType) {
+					console.log('✅ Form Complete:', formType);
+					if (typeof gtag === 'function') {
+						gtag('event', 'purchase', {
+							transaction_id: 'pixel_' + Date.now(),
+							currency: 'COP',
+							value: 2650000,
+							form_type: formType,
+							event_category: 'form',
+							event_label: formType + '_complete'
+						});
+					}
+				},
+				
+				// Tracking de contacto (WhatsApp, teléfono)
+				contact: function(method) {
+					console.log('📞 Contact:', method);
+					if (typeof gtag === 'function') {
+						gtag('event', 'contact', {
+							contact_method: method,
+							currency: 'COP',
+							value: 1300000,
+							event_category: 'contact',
+							event_label: method
+						});
+					}
+				},
+				
+				// Tracking de vista de estudio
+				studioView: function(studioName) {
+					console.log('🏠 Studio View:', studioName);
+					if (typeof gtag === 'function') {
+						gtag('event', 'view_item', {
+							currency: 'COP',
+							value: 2650000,
+							items: [{
+								item_id: studioName.toLowerCase(),
+								item_name: studioName,
+								item_category: 'coliving',
+								price: 2650000,
+								quantity: 1
+							}],
+							event_category: 'studio',
+							event_label: studioName
+						});
+					}
+				}
+			};
+			
 			console.log('🌍 Pixel Living I18N inicializado:', window.PIXEL_CONFIG);
+			console.log('📊 pixelTrack functions disponibles:', Object.keys(window.pixelTrack));
 			
 			// Inicialización con error handling robusto
 			document.addEventListener('DOMContentLoaded', () => {
@@ -379,6 +455,45 @@ const finalStructuredData = structuredData || defaultStructuredData;
 						idioma: window.PIXEL_CONFIG.currentLang
 					});
 					
+					// 🔗 AUTO-TRACKING DE ENLACES
+					document.addEventListener('click', function(e) {
+						const link = e.target.closest('a');
+						if (link && link.href) {
+							// WhatsApp links
+							if (link.href.includes('wa.me') || link.href.includes('whatsapp')) {
+								console.log('📱 Auto-tracking WhatsApp click');
+								if (window.pixelTrack) window.pixelTrack.contact('whatsapp');
+							}
+							// Phone links  
+							else if (link.href.includes('tel:')) {
+								console.log('☎️ Auto-tracking Phone click');
+								if (window.pixelTrack) window.pixelTrack.contact('phone');
+							}
+						}
+					});
+					
+					// 📝 AUTO-TRACKING DE FORMULARIOS
+					forms.forEach(form => {
+						// Detectar tipo de formulario
+						let formType = 'general';
+						if (form.id === 'reservaForm' || form.id === 'reservas-form') {
+							formType = 'reservas';
+						} else if (form.id === 'estudioReservaForm') {
+							formType = 'estudio';
+						} else if (form.id === 'contactForm') {
+							formType = 'contacto';
+						}
+						
+						// Solo agregar listener si no existe ya
+						if (!form.hasAttribute('data-tracking-added')) {
+							form.addEventListener('submit', function(e) {
+								console.log('📝 Auto-tracking form submit:', formType);
+								if (window.pixelTrack) window.pixelTrack.formStart(formType);
+							});
+							form.setAttribute('data-tracking-added', 'true');
+						}
+					});
+					
 					// Ocultar overlay de detección si existe
 					const overlay = document.getElementById('lang-detection-overlay');
 					if (overlay) {
@@ -387,9 +502,7 @@ const finalStructuredData = structuredData || defaultStructuredData;
 					
 					const initTime = Math.round(performance.now() - initStart);
 					console.log(`✅ Pixel Living: Sistema inicializado en ${initTime}ms`);
-					
-					// Log para GTM debug
-					console.log('📊 GTM: Google Tag Manager inicializado');
+					console.log('📊 GTM + GA4 + Tracking inicializado correctamente');
 					
 				} catch (error) {
 					console.error('❌ Error en inicialización:', error);

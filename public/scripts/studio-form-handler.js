@@ -368,9 +368,11 @@ Página: ${window.location.pathname}`;
     errorDiv.innerHTML = `
       ${message}
       <br>
-      <a href="https://wa.me/${this.config.whatsapp.number}" target="_blank" class="underline font-medium">
-        📱 Ir a WhatsApp directamente
-      </a>
+      <a href="https://wa.me/573195895858" 
+   target="_blank" 
+   class="underline font-medium">
+   📱 Ir a WhatsApp directamente
+</a>
     `;
     
     form.parentNode.insertBefore(errorDiv, form);
