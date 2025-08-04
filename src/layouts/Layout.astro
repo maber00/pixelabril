@@ -4,7 +4,6 @@ import '../styles/global.css';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 
-// IMPORTAR I18N
 import { getLanguageFromUrl, t, setCurrentLanguage, getAlternateUrls } from '../i18n/utils/translator';
 
 export interface Props {
@@ -16,11 +15,9 @@ export interface Props {
 	structuredData?: object;
 }
 
-// Detectar idioma desde URL
 const currentLang = getLanguageFromUrl(Astro.url.pathname);
 setCurrentLanguage(currentLang);
 
-// Generar URLs alternativas para hreflang
 const alternateUrls = getAlternateUrls(Astro.url.pathname);
 
 const { 
@@ -121,21 +118,17 @@ const finalStructuredData = structuredData || defaultStructuredData;
 <!DOCTYPE html>
 <html lang={currentLang} dir="ltr">
 	<head>
-		<!-- 🚨 CHARSET DEBE SER LO PRIMERO -->
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		
-		<!-- 📊 Google Tag Manager -->
 		<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 		})(window,document,'script','dataLayer','GTM-KMNCWPVB');</script>
-		<!-- End Google Tag Manager -->
 		
-		<!-- 📊 Google Analytics 4 -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-G1041RMX9Z"></script>
 		<script is:inline>
 			window.dataLayer = window.dataLayer || [];
@@ -144,20 +137,17 @@ const finalStructuredData = structuredData || defaultStructuredData;
 			gtag('config', 'G-G1041RMX9Z');
 		</script>
 		
-		<!-- 🚀 PRECONNECT HINTS CRÍTICOS -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
 		<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
 		
-		<!-- 🌐 DNS PREFETCH para recursos secundarios -->
 		<link rel="dns-prefetch" href="https://maps.googleapis.com" />
 		<link rel="dns-prefetch" href="https://formsubmit.co" />
 		<link rel="dns-prefetch" href="https://wa.me" />
 		<link rel="dns-prefetch" href="https://api.ipgeolocation.io" />
 		<link rel="dns-prefetch" href="https://www.google-analytics.com" />
 		
-		<!-- 📱 Favicon y iconos -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -165,7 +155,6 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		<meta name="theme-color" content="#009185" />
 		<meta name="msapplication-TileColor" content="#009185" />
 		
-		<!-- 📋 Meta tags básicos -->
 		<meta name="generator" content={Astro.generator} />
 		<meta name="author" content="Pixel Living" />
 <meta name="robots" content={noindex ? 
@@ -174,7 +163,6 @@ const finalStructuredData = structuredData || defaultStructuredData;
 
 
 		
-		<!-- 🔗 Canonical URL -->
 		<link rel="canonical" href={canonicalUrl} />
 		
 		<!-- 🌍 HREFLANG TAGS para SEO multiidioma -->

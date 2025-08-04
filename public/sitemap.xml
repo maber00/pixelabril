@@ -2,9 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- ========================== -->
-  <!-- HOMEPAGE (MÁXIMA PRIORIDAD) -->
-  <!-- ========================== -->
+ 
   <url>
     <loc>https://pixelliving.co/</loc>
     <lastmod>2025-08-04</lastmod>
@@ -38,11 +36,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pixelliving.co/" />
   </url>
 
-  <!-- ========================== -->
-  <!-- ESTUDIOS (ALTA PRIORIDAD) -->
-  <!-- ========================== -->
-  
-  <!-- Estudio Jade -->
+ 
   <url>
     <loc>https://pixelliving.co/estudio/jade</loc>
     <lastmod>2025-08-04</lastmod>
@@ -73,7 +67,6 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/jade" />
   </url>
 
-  <!-- Estudio Zian -->
   <url>
     <loc>https://pixelliving.co/estudio/zian</loc>
     <lastmod>2025-08-04</lastmod>
@@ -104,7 +97,7 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/zian" />
   </url>
 
-  <!-- Estudio Índigo -->
+  <!-- Estudio Índigo 
   <url>
     <loc>https://pixelliving.co/estudio/indigo</loc>
     <lastmod>2025-08-04</lastmod>
