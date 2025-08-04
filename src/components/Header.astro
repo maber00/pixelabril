@@ -1,5 +1,5 @@
 ---
-// src/components/Header.astro - VERSIÓN PARA TYPESCRIPT STRICT
+// src/components/Header.astro - ✅ CORREGIDO PARA 3 IDIOMAS
 import { getLanguageFromUrl, t, setCurrentLanguage } from '../i18n/utils/translator';
 import LanguageSelector from './LanguageSelector.astro';
 
@@ -7,23 +7,33 @@ import LanguageSelector from './LanguageSelector.astro';
 const currentLang = getLanguageFromUrl(Astro.url.pathname);
 setCurrentLanguage(currentLang);
 
-// Navegación optimizada
+// ⭐ GENERAR PREFIJO DE URL SEGÚN IDIOMA
+const langPrefix = 
+  currentLang === 'en' ? '/en' :
+  currentLang === 'zh' ? '/zh' : '';
+
+// ⭐ NAVEGACIÓN CON PREFIJO DE IDIOMA
 const navItems = [
-  { href: "/#vive-pixel", text: t('nav.why_pixel'), id: "vive-pixel" },
-  { href: "/#espacios", text: t('nav.studios'), id: "espacios" },
-  { href: "/#precios", text: t('nav.pricing'), id: "precios" },
-  { href: "/#ubicacion", text: t('nav.location'), id: "ubicacion" },
-  { href: "/#coliving", text: t('nav.coliving'), id: "coliving" },
-  { href: "/#reservas", text: t('nav.booking'), id: "reservas" },
-  { href: "/#faq", text: t('nav.faq'), id: "faq" }
+  { href: `${langPrefix}/#vive-pixel`, text: t('nav.why_pixel'), id: "vive-pixel" },
+  { href: `${langPrefix}/#espacios`, text: t('nav.studios'), id: "espacios" },
+  { href: `${langPrefix}/#precios`, text: t('nav.pricing'), id: "precios" },
+  { href: `${langPrefix}/#ubicacion`, text: t('nav.location'), id: "ubicacion" },
+  { href: `${langPrefix}/#coliving`, text: t('nav.coliving'), id: "coliving" },
+  { href: `${langPrefix}/#reservas`, text: t('nav.booking'), id: "reservas" },
+  { href: `${langPrefix}/#faq`, text: t('nav.faq'), id: "faq" }
 ];
+
+// ⭐ LOGO HREF CON IDIOMA
+const logoHref = 
+  currentLang === 'en' ? '/en' :
+  currentLang === 'zh' ? '/zh' : '/';
 ---
 
 <header id="header" class="header">
   <div class="header-container">
     
-    <!-- Logo -->
-    <a href={currentLang === 'en' ? '/en' : '/'} class="logo-link" aria-label={t('common.home')}>
+    <!-- Logo con URL correcta -->
+    <a href={logoHref} class="logo-link" aria-label={t('common.home')}>
       <img 
         src="/images/logo-pixel-living.webp" 
         alt="Pixel Living" 
@@ -113,13 +123,13 @@ const navItems = [
   }
 
   .header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
   }
 
   /* ===== LOGO ===== */
@@ -127,20 +137,20 @@ const navItems = [
     display: flex;
     align-items: center;
     text-decoration: none;
-    transition: var(--transition);
-  }
-
-  .logo-link:hover {
-    transform: scale(1.05);
+    z-index: 60;
   }
 
   .logo {
-    height: auto;
-    max-height: 44px;
+    height: 44px;
     width: auto;
+    transition: var(--transition);
   }
 
-  /* ===== DESKTOP NAVIGATION ===== */
+  .logo:hover {
+    transform: scale(1.05);
+  }
+
+  /* ===== NAVIGATION DESKTOP ===== */
   .nav-desktop {
     display: none;
     align-items: center;
@@ -160,21 +170,23 @@ const navItems = [
     font-size: 0.95rem;
     transition: var(--transition);
     position: relative;
+    padding: 0.5rem 0;
+  }
+
+  .nav-link:hover {
+    color: var(--accent-color);
+    transform: translateY(-1px);
   }
 
   .nav-link::after {
     content: '';
     position: absolute;
-    bottom: -4px;
+    bottom: 0;
     left: 0;
     width: 0;
     height: 2px;
     background: var(--accent-color);
     transition: width 0.3s ease;
-  }
-
-  .nav-link:hover {
-    color: var(--accent-color);
   }
 
   .nav-link:hover::after {
@@ -185,6 +197,7 @@ const navItems = [
   .nav-actions {
     display: none;
     align-items: center;
+    gap: 1rem;
   }
 
   @media (min-width: 768px) {
@@ -197,7 +210,7 @@ const navItems = [
   .mobile-controls {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
   }
 
   @media (min-width: 768px) {
@@ -207,8 +220,7 @@ const navItems = [
   }
 
   .mobile-lang {
-    display: flex;
-    align-items: center;
+    display: block;
   }
 
   /* ===== MENU BUTTON ===== */
@@ -218,29 +230,25 @@ const navItems = [
     justify-content: center;
     width: 32px;
     height: 32px;
-    background: none;
+    background: transparent;
     border: none;
     cursor: pointer;
-    padding: 4px;
-    transition: var(--transition);
-  }
-
-  .menu-btn:hover {
-    opacity: 0.8;
+    padding: 0;
+    z-index: 60;
   }
 
   .menu-icon {
     width: 24px;
     height: 2px;
     background: var(--text-color);
-    margin: 2px 0;
+    margin: 3px 0;
     transition: var(--transition);
     transform-origin: center;
   }
 
-  /* Menu button animations */
+  /* Menu button animation */
   .menu-btn[aria-expanded="true"] .menu-icon:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(6px, 6px);
   }
 
   .menu-btn[aria-expanded="true"] .menu-icon:nth-child(2) {
@@ -248,25 +256,24 @@ const navItems = [
   }
 
   .menu-btn[aria-expanded="true"] .menu-icon:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
+    transform: rotate(-45deg) translate(6px, -6px);
   }
 
   /* ===== MOBILE NAVIGATION ===== */
   .nav-mobile {
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: var(--header-height);
     left: 0;
     right: 0;
     background: var(--header-bg);
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--header-border);
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    padding: 2rem 1rem;
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;
-    transition: var(--transition);
+    transition: all 0.3s ease;
+    z-index: 40;
   }
 
   .nav-mobile.show {
@@ -276,273 +283,250 @@ const navItems = [
   }
 
   .nav-mobile-link {
+    display: block;
     color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
-    padding: 0.75rem 1rem;
-    border-left: 3px solid transparent;
+    font-size: 1.1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: var(--transition);
   }
 
   .nav-mobile-link:hover {
     color: var(--accent-color);
-    border-left-color: var(--accent-color);
-    padding-left: 1.5rem;
+    padding-left: 1rem;
   }
 
-  /* ===== REDUCED MOTION ===== */
-  @media (prefers-reduced-motion: reduce) {
-    * {
-      transition: none !important;
-      animation: none !important;
+  .nav-mobile-link:last-child {
+    border-bottom: none;
+  }
+
+  /* ===== RESPONSIVE ADJUSTMENTS ===== */
+  @media (max-width: 768px) {
+    .header-container {
+      padding: 0 1rem;
+    }
+    
+    .logo {
+      height: 38px;
     }
   }
 
   /* ===== ACCESSIBILITY ===== */
-  .menu-btn:focus {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 2px;
+  @media (prefers-reduced-motion: reduce) {
+    .header,
+    .nav-link,
+    .menu-icon,
+    .nav-mobile {
+      transition: none;
+    }
   }
 
-  .nav-link:focus,
-  .nav-mobile-link:focus {
+  /* Focus states */
+  .logo-link:focus-visible,
+  .nav-link:focus-visible,
+  .menu-btn:focus-visible {
     outline: 2px solid var(--accent-color);
     outline-offset: 2px;
+    border-radius: 4px;
   }
 </style>
 
-<!-- TypeScript strict mode compatible script -->
 <script>
-(() => {
-  'use strict';
+  // TypeScript para Header con manejo de errores mejorado
   
-  // ===== TYPE ASSERTIONS WITH STRICT CHECKS =====
+  // Types para mejor type safety
+  interface HeaderElements {
+    menuBtn: HTMLButtonElement | null;
+    mobileNav: HTMLElement | null;
+    navLinks: NodeListOf<HTMLAnchorElement>;
+    body: HTMLBodyElement;
+  }
   
-  const menuBtn = document.getElementById('menuBtn') as HTMLButtonElement | null;
-  const mobileNav = document.getElementById('mobileNav') as HTMLElement | null;
-  const navLinks = document.querySelectorAll('[data-section]') as NodeListOf<HTMLAnchorElement>;
-  const body = document.body as HTMLBodyElement;
+  // Elementos del DOM con types estrictos
+  const elements: HeaderElements = {
+    menuBtn: document.getElementById('menuBtn') as HTMLButtonElement | null,
+    mobileNav: document.getElementById('mobileNav') as HTMLElement | null,
+    navLinks: document.querySelectorAll('[data-section]') as NodeListOf<HTMLAnchorElement>,
+    body: document.body as HTMLBodyElement
+  };
   
   // Early return si elementos críticos no existen
-  if (!menuBtn || !mobileNav) {
+  if (!elements.menuBtn || !elements.mobileNav) {
     console.warn('Header: Elementos críticos no encontrados');
-    return;
-  }
-  
-  // ===== STATE WITH EXPLICIT TYPES =====
-  
-  let isMenuOpen: boolean = false;
-  let resizeTimer: number | undefined = undefined;
-  
-  // ===== CONSTANTS =====
-  
-  const HEADER_HEIGHT: number = 80;
-  const MOBILE_BREAKPOINT: number = 768;
-  const ANIMATION_DELAY: number = 100;
-  const RESIZE_DEBOUNCE: number = 150;
-  
-  // ===== UTILITY FUNCTIONS =====
-  
-  function isValidNode(target: EventTarget | null): target is Node {
-    return target !== null && target instanceof Node;
-  }
-  
-  function isValidElement(element: Element | null): element is HTMLElement {
-    return element !== null && element instanceof HTMLElement;
-  }
-  
-  function safeQuerySelector<T extends Element = Element>(
-    selector: string
-  ): T | null {
-    try {
-      return document.querySelector<T>(selector);
-    } catch {
-      return null;
-    }
-  }
-  
-  // ===== CORE FUNCTIONS =====
-  
-  function toggleMenu(): void {
-    isMenuOpen = !isMenuOpen;
+  } else {
     
-    // Batch DOM updates con requestAnimationFrame
-    requestAnimationFrame(() => {
-      if (!menuBtn || !mobileNav) return;
+    // ===== STATE WITH EXPLICIT TYPES =====
+    let isMenuOpen: boolean = false;
+    let resizeTimer: number | undefined = undefined;
+    
+    // ===== CONSTANTS =====
+    const HEADER_HEIGHT: number = 80;
+    const MOBILE_BREAKPOINT: number = 768;
+    const ANIMATION_DELAY: number = 100;
+    const RESIZE_DEBOUNCE: number = 150;
+    
+    // ===== UTILITY FUNCTIONS =====
+    function isValidNode(target: EventTarget | null): target is Node {
+      return target !== null && target instanceof Node;
+    }
+    
+    function isValidElement(element: Element | null): element is HTMLElement {
+      return element !== null && element instanceof HTMLElement;
+    }
+    
+    function safeQuerySelector<T extends Element = Element>(
+      selector: string
+    ): T | null {
+      try {
+        return document.querySelector<T>(selector);
+      } catch {
+        return null;
+      }
+    }
+    
+    // ===== CORE FUNCTIONS =====
+    function toggleMenu(): void {
+      isMenuOpen = !isMenuOpen;
       
-      menuBtn.setAttribute('aria-expanded', isMenuOpen.toString());
-      mobileNav.setAttribute('aria-hidden', (!isMenuOpen).toString());
-      
+      // Batch DOM updates con requestAnimationFrame
+      requestAnimationFrame(() => {
+        if (!elements.menuBtn || !elements.mobileNav) return;
+        
+        elements.menuBtn.setAttribute('aria-expanded', isMenuOpen.toString());
+        elements.mobileNav.setAttribute('aria-hidden', (!isMenuOpen).toString());
+        
+        if (isMenuOpen) {
+          elements.mobileNav.classList.add('show');
+          elements.body.style.overflow = 'hidden';
+        } else {
+          elements.mobileNav.classList.remove('show');
+          elements.body.style.overflow = '';
+        }
+      });
+    }
+    
+    function closeMenu(): void {
       if (isMenuOpen) {
-        mobileNav.classList.add('show');
-        body.style.overflow = 'hidden';
+        toggleMenu();
+      }
+    }
+    
+    function handleNavClick(event: Event): void {
+      const target = event.target;
+      
+      // Type guard estricto
+      if (!target || !(target instanceof HTMLAnchorElement)) {
+        return;
+      }
+      
+      const href = target.getAttribute('href');
+      
+      if (!href || !href.includes('/#')) {
+        return;
+      }
+      
+      event.preventDefault();
+      
+      // ⭐ EXTRAER SECCIÓN DESDE HREF (FUNCIONA CON PREFIJOS DE IDIOMA)
+      const sectionMatch = href.match(/#(.+)$/);
+      const targetId = sectionMatch ? sectionMatch[1] : null;
+      
+      if (!targetId) return;
+      
+      const currentPath = window.location.pathname;
+      const isHomepage = 
+        currentPath === '/' || 
+        currentPath === '/en' || 
+        currentPath === '/zh';
+      
+      if (isHomepage) {
+        // HOMEPAGE: Scroll interno
+        const targetElement = safeQuerySelector<HTMLElement>(`#${targetId}`);
+        
+        if (targetElement) {
+          const header = document.querySelector('header') as HTMLElement | null;
+          const headerHeight = header?.offsetHeight || HEADER_HEIGHT;
+          const targetPosition = targetElement.offsetTop - headerHeight - 20;
+          
+          // Smooth scroll con fallback
+          try {
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          } catch {
+            // Fallback para navegadores que no soportan smooth scroll
+            window.scrollTo(0, targetPosition);
+          }
+          
+          // Update URL
+          try {
+            history.pushState(null, '', href);
+          } catch (error) {
+            console.warn('History API not available:', error);
+          }
+        }
       } else {
-        mobileNav.classList.remove('show');
-        body.style.overflow = '';
-      }
-    });
-  }
-  
-  function closeMenu(): void {
-    if (isMenuOpen) {
-      toggleMenu();
-    }
-  }
-  
-  function handleNavClick(event: Event): void {
-    const target = event.target;
-    
-    // Type guard estricto
-    if (!target || !(target instanceof HTMLAnchorElement)) {
-      return;
-    }
-    
-    const href = target.getAttribute('href');
-    
-    if (!href || !href.startsWith('/#')) {
-      return;
-    }
-    
-    event.preventDefault();
-    
-    const targetId = href.substring(2); // Quitar '/#'
-    const currentPath = window.location.pathname;
-    const isHomepage = currentPath === '/' || currentPath === '/en';
-    
-    if (isHomepage) {
-      // HOMEPAGE: Scroll interno
-      const targetElement = safeQuerySelector<HTMLElement>(`#${targetId}`);
-      
-      if (targetElement) {
-        const header = document.querySelector('header') as HTMLElement | null;
-        const headerHeight = header?.offsetHeight || HEADER_HEIGHT;
-        const targetPosition = targetElement.offsetTop - headerHeight - 20;
+        // ⭐ OTRAS PÁGINAS: Redirigir respetando idioma
+        const lang = 
+          currentPath.startsWith('/zh') ? 'zh' :
+          currentPath.startsWith('/en') ? 'en' : 'es';
         
-        // Smooth scroll con fallback
-        try {
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-        } catch {
-          // Fallback para navegadores que no soportan smooth scroll
-          window.scrollTo(0, targetPosition);
-        }
+        const langPrefix = 
+          lang === 'en' ? '/en' :
+          lang === 'zh' ? '/zh' : '';
         
-        // Update URL
-        try {
-          history.pushState(null, '', href);
-        } catch (error) {
-          console.warn('History API not available:', error);
-        }
+        window.location.href = `${langPrefix}/#${targetId}`;
       }
-    } else {
-      // OTRAS PÁGINAS: Redirigir respetando idioma
-      const lang = currentPath.startsWith('/en') ? '/en' : '';
-      window.location.href = `${lang}${href}`;
-    }
-    
-    // Close mobile menu
-    setTimeout(closeMenu, ANIMATION_DELAY);
-  }
-  
-  function handleKeydown(event: KeyboardEvent): void {
-    if (event.key === 'Escape' && isMenuOpen) {
-      closeMenu();
       
-      // Return focus to menu button
-      if (menuBtn) {
-        menuBtn.focus();
-      }
-    }
-  }
-  
-  function handleOutsideClick(event: Event): void {
-    if (!isMenuOpen || !mobileNav || !menuBtn) {
-      return;
-    }
-    
-    const target = event.target;
-    
-    // Type guard estricto
-    if (!isValidNode(target)) {
-      return;
-    }
-    
-    const clickedInsideMenu = mobileNav.contains(target);
-    const clickedMenuButton = menuBtn.contains(target);
-    
-    if (!clickedInsideMenu && !clickedMenuButton) {
+      // Cerrar menú móvil
       closeMenu();
     }
-  }
-  
-  function handleResize(): void {
-    // Clear previous timer
-    if (resizeTimer !== undefined) {
+    
+    function handleResize(): void {
       clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => {
+        if (window.innerWidth >= MOBILE_BREAKPOINT && isMenuOpen) {
+          closeMenu();
+        }
+      }, RESIZE_DEBOUNCE);
     }
     
-    resizeTimer = window.setTimeout(() => {
-      if (window.innerWidth >= MOBILE_BREAKPOINT && isMenuOpen) {
-        closeMenu();
-      }
-      resizeTimer = undefined;
-    }, RESIZE_DEBOUNCE);
-  }
-  
-  // ===== EVENT LISTENERS =====
-  
-  function attachEventListeners(): void {
-    // Menu button click - ya validado arriba
-    menuBtn!.addEventListener('click', toggleMenu, { passive: true });
+    // ===== EVENT LISTENERS =====
     
-    // Navigation links
-    navLinks.forEach((link: HTMLAnchorElement) => {
+    // Menu toggle
+    elements.menuBtn.addEventListener('click', toggleMenu);
+    
+    // Navigation clicks
+    elements.navLinks.forEach(link => {
       link.addEventListener('click', handleNavClick);
     });
     
-    // Global events
-    document.addEventListener('keydown', handleKeydown, { passive: true });
-    document.addEventListener('click', handleOutsideClick, { passive: true });
-    window.addEventListener('resize', handleResize, { passive: true });
-  }
-  
-  // ===== CLEANUP FUNCTION =====
-  
-  function cleanup(): void {
-    if (menuBtn) {
-      menuBtn.removeEventListener('click', toggleMenu);
-    }
+    // Resize handler
+    window.addEventListener('resize', handleResize);
     
-    navLinks.forEach((link: HTMLAnchorElement) => {
-      link.removeEventListener('click', handleNavClick);
+    // Close menu on outside click
+    document.addEventListener('click', (event: Event) => {
+      if (!isMenuOpen || !isValidNode(event.target)) return;
+      
+      const target = event.target as Node;
+      const header = document.querySelector('header');
+      
+      if (header && !header.contains(target)) {
+        closeMenu();
+      }
     });
     
-    document.removeEventListener('keydown', handleKeydown);
-    document.removeEventListener('click', handleOutsideClick);
-    window.removeEventListener('resize', handleResize);
+    // Keyboard navigation
+    document.addEventListener('keydown', (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isMenuOpen) {
+        closeMenu();
+        elements.menuBtn?.focus();
+      }
+    });
     
-    if (resizeTimer !== undefined) {
-      clearTimeout(resizeTimer);
-      resizeTimer = undefined;
-    }
-    
-    console.log('🧹 Header cleanup completed');
+    console.log('✅ Header: Inicializado correctamente con soporte 3 idiomas');
   }
-  
-  // ===== INITIALIZATION =====
-  
-  try {
-    attachEventListeners();
-    console.log('✅ Header initialized with strict TypeScript');
-    
-    // Store cleanup function globally for SPA navigation
-    (window as any).PIXEL_HEADER_CLEANUP = cleanup;
-    
-  } catch (error) {
-    console.error('❌ Header initialization failed:', error);
-  }
-  
-})();
 </script>
