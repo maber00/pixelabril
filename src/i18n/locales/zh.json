@@ -17,7 +17,7 @@
     "studios": "分隔式公寓", 
     "pricing": "价格",
     "location": "位置",
-    "coliving": "共居",
+    "coliving": "共居生活",
     "booking": "预订",
     "faq": "问题"
   },
@@ -25,7 +25,7 @@
   "hero": {
     "brand_line_1": "波哥大共居",
     "brand_line_2": "像素生活",
-    "title": "生活、创造与连接",
+    "title": "共居空间 - 像素生活",
     "subtitle": "在波哥大北部。",
     "description": "Pixel Living 是您在波哥大的共享居住空间，这里提供现代化的家具齐全的公寓，所有服务一应俱全，并且位于城市最核心的区域，拥有充满活力的社区氛围。",
     "benefits": [
@@ -407,15 +407,16 @@
 },
 
 "coliving": {
-  "badge": "共居体验",
-  "title": "我们分享",
-  "title_highlight": "其他",
+  "badge": "共居生活体验",
+  "title": "我们共享的",
+  "title_highlight": "不只是",
   "title_end": "墙壁",
+
   
   "community": {
-    "heading": "住在Pixel，就是成为一个社区的一员。",
-    "description1": "在这里，你可以独处……但也可以与人分享。",
-    "description2": "我们的社区由专业人士、创意人士、企业家和旅行者组成，他们寻求一个既能让人感到宾至如归，又能随心所欲地按照自己生活节奏自由活动的场所。",
+    "heading": "在像素生活就是成为社区的一部分。",
+    "description1": "在这里你可以独处...但也可以分享。",
+    "description2": "我们的社区由专业人士、创意工作者、企业家和旅行者组成，他们寻找一个感觉像家的地方，但也有按照自己生活节奏自由活动的空间。",
     "cta": "加入我们的社区"
   },
   
@@ -433,27 +434,28 @@
   
   "beneficios": {
     "espacios_modernos": {
-      "titulo": "现代空间",
-      "descripcion": "现代与功能并重的设计，让生活充满格调。"
+      "titulo": "现代化空间",
+      "descripcion": "时尚功能的当代设计，让生活更有品味。"
     },
     "trato_cercano": {
-      "titulo": "亲切对待", 
-      "descripcion": "个性化服务，让您倍感宾至如归。"
+      "titulo": "贴心服务", 
+      "descripcion": "个性化关怀，让您宾至如归。"
     },
     "flexibilidad": {
       "titulo": "灵活性",
-      "descripcion": "我们根据您的住宿需求定制服务。"
+      "descripcion": "我们根据您的住宿需求调整服务。"
     },
     "comodidad": {
       "titulo": "舒适性",
-      "descripcion": "您所需的一切，让您享受舒适体验。"
+      "descripcion": "舒适体验所需的一切。"
     },
     "buen_ambiente": {
-      "titulo": "良好的氛围",
-      "descripcion": "一个积极向上的社区，让你能够与他人建立联系。"
+      "titulo": "良好氛围",
+      "descripcion": "积极的社区环境，您可以与他人建立联系。"
     }
   }
 },
+
 
   "reservas": {
   "title": "立即预订Pixel Living的专属空间",
