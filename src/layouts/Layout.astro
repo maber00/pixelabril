@@ -168,7 +168,11 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		<!-- 📋 Meta tags básicos -->
 		<meta name="generator" content={Astro.generator} />
 		<meta name="author" content="Pixel Living" />
-		<meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"} />
+<meta name="robots" content={noindex ? 
+  "noindex, nofollow" : 
+  "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"} />
+
+
 		
 		<!-- 🔗 Canonical URL -->
 		<link rel="canonical" href={canonicalUrl} />
@@ -179,6 +183,19 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		<link rel="alternate" hreflang="zh" href={`${siteUrl}${alternateUrls.zh}`} />
 
 		<link rel="alternate" hreflang="x-default" href={`${siteUrl}${alternateUrls.es}`} />
+
+		<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "url": "${canonicalUrl}",
+  "inLanguage": "${currentLang}",
+  "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://pixelliving.co"
+  }
+}
+</script>
 		
 		<!-- 🏷️ Primary Meta Tags -->
 		<title>{title}</title>

@@ -7,11 +7,12 @@ import LightboxModal from '../../components/LightboxModal.astro';
 import { getLanguageFromUrl, t, setCurrentLanguage, getStudioData } from '../../i18n/utils/translator';
 
 // Definir rutas estáticas para los estudios
+// Definir rutas estáticas para los estudios - ESPAÑOL
 export function getStaticPaths() {
   const studios = ['jade', 'zian', 'indigo'];
   const paths: Array<{ params: { id: string } }> = [];
   
-  // SOLO generar rutas para español
+  // ✅ SOLO generar rutas para ESPAÑOL
   studios.forEach(id => {
     paths.push({ params: { id } });
   });
@@ -19,10 +20,14 @@ export function getStaticPaths() {
   return paths;
 }
 
-// Extraer parámetros y detectar idioma
+// ✅ Configuración específica para ESPAÑOL
 const { id } = Astro.params;
 const studioId = id;
-const currentLang = 'es';
+const currentLang = 'es';  // ← ESPAÑOL
+setCurrentLanguage('es');
+
+// ✅ URL base sin prefijo para español
+const baseUrl = '';
 
 // Establecer idioma
 setCurrentLanguage(currentLang);
@@ -39,8 +44,6 @@ if (!estudio) {
   return Astro.redirect('/404');
 }
 
-// Configurar URLs base según idioma
-const baseUrl = '';
 // Clases de color por estudio
 const colorClasses: Record<string, {
   bg: string; text: string; border: string;

@@ -1,0 +1,119 @@
+# Robots.txt para Pixel Living - Basado en estructura real del proyecto
+# Actualizado: Agosto 2025
+# https://pixelliving.co/robots.txt
+
+# ✅ PERMITIR ACCESO COMPLETO - CONFIGURACIÓN REAL DEL PROYECTO
+User-agent: *
+Allow: /
+
+# ✅ RUTAS ESPECÍFICAS EXISTENTES EN EL PROYECTO
+Allow: /estudio/jade
+Allow: /estudio/zian  
+Allow: /estudio/indigo
+Allow: /en/jade
+Allow: /en/zian
+Allow: /en/indigo
+Allow: /zh/jade
+Allow: /zh/zian
+Allow: /zh/indigo
+
+# ✅ PÁGINAS DE CONTENIDO REALES
+Allow: /contacto
+Allow: /en/contact
+Allow: /zh/contact
+Allow: /privacidad
+Allow: /en/privacy
+Allow: /zh/privacy
+Allow: /gracias
+Allow: /en/thanks
+Allow: /zh/thanks
+
+# ❌ BLOQUEAR DIRECTORIOS TÉCNICOS DEL PROYECTO ASTRO
+Disallow: /_astro/
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /.astro/
+Disallow: /dist/
+
+# ❌ BLOQUEAR ARCHIVOS DE CONFIGURACIÓN EXISTENTES
+Disallow: /astro.config.mjs
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /tsconfig.json
+Disallow: /tailwind.config.js
+
+# ❌ BLOQUEAR APIs Y ENDPOINTS (detectados en el proyecto)
+Disallow: /api/
+
+# ❌ BLOQUEAR PARÁMETROS DE URL NO DESEADOS
+Disallow: /*?debug=*
+Disallow: /*?test=*
+Disallow: /*utm_*
+
+# ❌ BLOQUEAR ARCHIVOS DE DESARROLLO
+Disallow: /.env
+Disallow: /.env.*
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /.vscode/
+Disallow: /README.md
+
+# 🔍 CONFIGURACIONES ESPECÍFICAS PARA BOTS
+
+# Google Bot - Acceso completo (proyecto usa Google Analytics GA-G1041RMX9Z)
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bing Bot - Acceso completo  
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Baidu (importante para contenido /zh/ chino)
+User-agent: Baiduspider
+Allow: /
+Allow: /zh/
+Crawl-delay: 2
+
+# Facebook Bot (proyecto usa Open Graph)
+User-agent: facebookexternalhit
+Allow: /
+
+# Twitter Bot (proyecto implementa Twitter Cards)
+User-agent: Twitterbot
+Allow: /
+
+# WhatsApp Bot (proyecto usa WhatsApp para contacto)
+User-agent: WhatsApp
+Allow: /
+
+# Instagram Bot (proyecto enlaza a @pixelliving.co)
+User-agent: InstagramBot
+Allow: /
+
+# ❌ BLOQUEAR BOTS DE SCRAPING PROBLEMÁTICOS
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MegaIndex
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# 🗺️ SITEMAP (Astro genera automáticamente)
+Sitemap: https://pixelliving.co/sitemap.xml
+
+# 📧 INFORMACIÓN DE CONTACTO (del proyecto real)
+# Host: pixelliving.co
+# Contact: info@pixelliving.co

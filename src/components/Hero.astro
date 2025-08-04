@@ -123,15 +123,9 @@ const altTexts = currentLang === 'es' ? [
 })}
       </div>
       
-      <!-- Descripción específica - OCULTA EN MÓVIL -->
-      <p class="hidden md:block text-lg md:text-xl text-white mb-6 max-w-2xl">
-  {t('hero.description_extended')}
-</p>
+      
 
-      <!-- Texto principal - OCULTO EN MÓVIL -->
-      <p class="hidden md:block text-xl md:text-2xl text-white mb-4 font-semibold">
-  {t('hero.value_proposition')}
-</p>
+  
 
       <!-- Pregunta CTA - OCULTA EN MÓVIL -->
       <p class="hidden md:block text-lg text-pixel-yellow mb-8 font-medium">
@@ -164,15 +158,7 @@ const altTexts = currentLang === 'es' ? [
   </div>
   
   <!-- Indicadores del carousel -->
-  <div class="absolute bottom-20 invisible md:visible mb-5 left-1/2 transform -translate-x-1/2 z-30">
-    <div class="flex space-x-3 carousel-indicators">
-      <button class="carousel-dot active" data-slide="0" aria-label={currentLang === 'es' ? 'Imagen 1' : 'Image 1'}></button>
-<button class="carousel-dot" data-slide="1" aria-label={currentLang === 'es' ? 'Imagen 2' : 'Image 2'}></button>
-<button class="carousel-dot" data-slide="2" aria-label={currentLang === 'es' ? 'Imagen 3' : 'Image 3'}></button>
-<button class="carousel-dot" data-slide="3" aria-label={currentLang === 'es' ? 'Imagen 4' : 'Image 4'}></button>
-<button class="carousel-dot" data-slide="4" aria-label={currentLang === 'es' ? 'Imagen 5' : 'Image 5'}></button>
-    </div>
-  </div>
+  
   
   <!-- Indicador de scroll -->
   <div class="absolute md:bottom-8 invisible md:visible md:left-1/2 transform -translate-x-1/2 text-white z-30">
@@ -187,9 +173,109 @@ const altTexts = currentLang === 'es' ? [
   </div>
 </section>
 
-<!-- Estilos mantenidos del original -->
+<script is:inline>
+(function() {
+  'use strict';
+  
+  function initHeroCarousel() {
+    console.log('🎠 Inicializando Hero Carousel...');
+    
+    var slides = document.querySelectorAll('.carousel-slide');
+    var heroSection = document.getElementById('hero-section');
+    
+    if (!slides.length) {
+      console.error('❌ No se encontraron slides');
+      return;
+    }
+    
+    // ===== CONFIGURACIÓN SIMPLE =====
+    var currentSlide = 0;
+    var totalSlides = slides.length;
+    var isPlaying = true;
+    var intervalId = null;
+    var SLIDE_DURATION = 3000; // ✅ 3 segundos - MÁS RÁPIDO
+    
+    console.log('📊 ' + totalSlides + ' slides encontrados');
+    
+    // ===== FUNCIÓN PRINCIPAL =====
+    function nextSlide() {
+      if (!isPlaying) return;
+      
+      // Quitar clase active del slide actual
+      slides[currentSlide].classList.remove('active');
+      
+      // Siguiente slide
+      currentSlide = (currentSlide + 1) % totalSlides;
+      
+      // Activar nuevo slide
+      slides[currentSlide].classList.add('active');
+      
+      console.log('🖼️ Slide: ' + (currentSlide + 1));
+    }
+    
+    function startAutoplay() {
+      if (intervalId) clearInterval(intervalId);
+      intervalId = setInterval(nextSlide, SLIDE_DURATION);
+      console.log('▶️ Autoplay iniciado');
+    }
+    
+    function stopAutoplay() {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+      console.log('⏸️ Autoplay detenido');
+    }
+    
+    // ===== EVENTOS SIMPLES =====
+    if (heroSection) {
+      heroSection.addEventListener('mouseenter', function() {
+        isPlaying = false;
+        stopAutoplay();
+      });
+      
+      heroSection.addEventListener('mouseleave', function() {
+        isPlaying = true;
+        startAutoplay();
+      });
+    }
+    
+    // ===== INICIALIZACIÓN SIMPLE =====
+    // Limpiar slides
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].classList.remove('active');
+    }
+    
+    // Activar primer slide
+    slides[0].classList.add('active');
+    console.log('⏱️ Primera imagen - cambiará en ' + SLIDE_DURATION + 'ms');
+    
+    // ✅ INICIAR AUTOPLAY INMEDIATAMENTE
+    startAutoplay();
+    
+    console.log('✅ Carousel inicializado');
+    
+    // API simple
+    window.heroCarousel = {
+      next: nextSlide,
+      play: function() { isPlaying = true; startAutoplay(); },
+      pause: function() { isPlaying = false; stopAutoplay(); },
+      current: function() { return currentSlide + 1; }
+    };
+  }
+  
+  // Ejecutar
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeroCarousel);
+  } else {
+    initHeroCarousel();
+  }
+})();
+</script>
+
+<!-- 3. CSS CORREGIDO - SIN ESTILOS DE DOTS -->
 <style>
-  /* ===== TODOS LOS ESTILOS ORIGINALES DEL CAROUSEL ===== */
+  /* ===== ESTILOS DEL CARRUSEL (SIN DOTS) ===== */
   .carousel-container {
     position: relative;
     width: 150%;
@@ -197,7 +283,6 @@ const altTexts = currentLang === 'es' ? [
     overflow: hidden;
   }
   
-  /* Tamaño optimizado para laptop/desktop */
   @media (min-width: 1024px) {
     .carousel-container {
       width: 125%;
@@ -237,6 +322,7 @@ const altTexts = currentLang === 'es' ? [
     left: 0;
   }
   
+  /* Animaciones de zoom para cada imagen */
   .zoom-image-1 { animation: zoomEffect1 8s ease-in-out infinite alternate; }
   .zoom-image-2 { animation: zoomEffect2 10s ease-in-out infinite alternate; }
   .zoom-image-3 { animation: zoomEffect3 7s ease-in-out infinite alternate; }
@@ -268,49 +354,14 @@ const altTexts = currentLang === 'es' ? [
     100% { transform: scale(1.1) translate(0, -1%); }
   }
   
-  .carousel-indicators {
-    backdrop-filter: blur(10px);
-    background: rgba(0, 0, 0, 0.2);
-    padding: 12px 20px;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    pointer-events: none;
-    z-index: 50;
-    position: relative;
-  }
-  
-  .carousel-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    pointer-events: auto;
-    z-index: 51;
-  }
-  
-  .carousel-dot::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    right: -8px;
-    bottom: -8px;
-  }
-  
-  .carousel-dot:hover {
-    border-color: rgba(255, 255, 255, 0.8);
-    transform: scale(1.1);
-  }
-  
-  .carousel-dot.active {
-    background: #fbbf24;
-    border-color: #fbbf24;
-    box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
-  }
+  /* ❌ ELIMINAR TODOS LOS ESTILOS DE DOTS */
+  /* 
+  .carousel-indicators { ... }  - ELIMINAR
+  .carousel-dot { ... }          - ELIMINAR
+  .carousel-dot::before { ... }  - ELIMINAR
+  .carousel-dot:hover { ... }    - ELIMINAR
+  .carousel-dot.active { ... }   - ELIMINAR
+  */
   
   /* Responsive optimizado */
   @media (max-width: 768px) {
@@ -318,29 +369,12 @@ const altTexts = currentLang === 'es' ? [
       font-size: 2.5rem;
       line-height: 1.1;
     }
-    
-    .carousel-indicators {
-      bottom: 16px;
-      padding: 8px 16px;
-    }
-    
-    .carousel-dot {
-      width: 10px;
-      height: 10px;
-    }
-    
-    /* Grid responsive para beneficios */
-    .grid-cols-2 {
-      grid-template-columns: 1fr;
-    }
   }
   
   /* Mejoras de accesibilidad */
   @media (prefers-reduced-motion: reduce) {
     .carousel-slide { transition: opacity 0.5s ease-in-out; }
     .zoom-image { animation: none !important; }
-    .animate-pulse { animation: none !important; }
-    .animate-bounce { animation: none !important; }
   }
   
   /* Focus states mejorados */
@@ -349,187 +383,3 @@ const altTexts = currentLang === 'es' ? [
     outline-offset: 2px;
   }
 </style>
-
-<!-- Script del carousel mantenido del original -->
-<script is:inline>
-// [MANTENER TODO EL SCRIPT ORIGINAL DEL CAROUSEL]
-(function() {
-  'use strict';
-  
-  function initHeroCarousel() {
-    console.log('🎠 Inicializando Hero Carousel...');
-    
-    // ===== ELEMENTOS =====
-    var slides = document.querySelectorAll('.carousel-slide');
-    var dots = document.querySelectorAll('.carousel-dot');
-    var heroSection = document.getElementById('hero-section');
-    
-    if (!slides.length || !dots.length) {
-      console.error('❌ No se encontraron slides o dots');
-      return;
-    }
-    
-    // ===== CONFIGURACIÓN =====
-    var CONFIG = {
-      duration: 4000,
-      fadeTime: 1200,
-      currentSlide: 0,
-      totalSlides: slides.length,
-      isPlaying: true,
-      intervalId: null,
-      isTransitioning: false
-    };
-    
-    console.log('📊 ' + CONFIG.totalSlides + ' slides encontrados');
-    
-    // ===== FUNCIONES =====
-    function goToSlide(slideIndex) {
-      if (slideIndex < 0 || slideIndex >= CONFIG.totalSlides) return;
-      if (CONFIG.isTransitioning) return;
-      if (slideIndex === CONFIG.currentSlide) return;
-      
-      CONFIG.isTransitioning = true;
-      
-      slides[CONFIG.currentSlide].classList.remove('active');
-      dots[CONFIG.currentSlide].classList.remove('active');
-      CONFIG.currentSlide = slideIndex;
-      slides[CONFIG.currentSlide].classList.add('active');
-      dots[CONFIG.currentSlide].classList.add('active');
-      
-      setTimeout(function() {
-        CONFIG.isTransitioning = false;
-      }, CONFIG.fadeTime);
-      
-      if (CONFIG.isPlaying) resetAutoplay();
-    }
-    
-    function nextSlide() {
-      var nextIndex = (CONFIG.currentSlide + 1) % CONFIG.totalSlides;
-      goToSlide(nextIndex);
-    }
-    
-    function startAutoplay() {
-      stopAutoplay();
-      CONFIG.intervalId = setInterval(function() {
-        if (CONFIG.isPlaying && !CONFIG.isTransitioning) {
-          nextSlide();
-        }
-      }, CONFIG.duration);
-    }
-    
-    function stopAutoplay() {
-      if (CONFIG.intervalId) {
-        clearInterval(CONFIG.intervalId);
-        CONFIG.intervalId = null;
-      }
-    }
-    
-    function resetAutoplay() {
-      stopAutoplay();
-      startAutoplay();
-    }
-    
-    // ===== EVENT LISTENERS =====
-    for (var i = 0; i < dots.length; i++) {
-      var dot = dots[i];
-      dot.setAttribute('data-slide-index', i.toString());
-      
-      dot.addEventListener('click', function(e) {
-        e.preventDefault();
-        var clickedIndex = parseInt(this.getAttribute('data-slide-index'));
-        goToSlide(clickedIndex);
-      });
-      
-      dot.setAttribute('tabindex', '0');
-      dot.setAttribute('role', 'button');
-dot.setAttribute('aria-label', (currentLang === 'es' ? 'Ir a imagen ' : 'Go to image ') + (i + 1));
-      
-      dot.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          var clickedIndex = parseInt(this.getAttribute('data-slide-index'));
-          goToSlide(clickedIndex);
-        }
-      });
-    }
-    
-    if (heroSection) {
-      heroSection.addEventListener('mouseenter', function() {
-        CONFIG.isPlaying = false;
-      });
-      
-      heroSection.addEventListener('mouseleave', function() {
-        CONFIG.isPlaying = true;
-      });
-    }
-    
-    document.addEventListener('keydown', function(e) {
-      if (!heroSection) return;
-      var rect = heroSection.getBoundingClientRect();
-      var heroVisible = rect.top < window.innerHeight / 2;
-      if (!heroVisible) return;
-      
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        var prevIndex = CONFIG.currentSlide === 0 ? CONFIG.totalSlides - 1 : CONFIG.currentSlide - 1;
-        goToSlide(prevIndex);
-      } else if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        nextSlide();
-      }
-    });
-    
-    document.addEventListener('visibilitychange', function() {
-      if (document.hidden) {
-        CONFIG.isPlaying = false;
-        stopAutoplay();
-      } else {
-        CONFIG.isPlaying = true;
-        startAutoplay();
-      }
-    });
-    
-    var observer = new IntersectionObserver(function(entries) {
-      for (var j = 0; j < entries.length; j++) {
-        var entry = entries[j];
-        if (entry.isIntersecting) {
-          CONFIG.isPlaying = true;
-          startAutoplay();
-        } else {
-          CONFIG.isPlaying = false;
-          stopAutoplay();
-        }
-      }
-    }, { threshold: 0.5 });
-    
-    if (heroSection) observer.observe(heroSection);
-    
-    // ===== INICIALIZACIÓN =====
-    slides[0].classList.add('active');
-    dots[0].classList.add('active');
-    startAutoplay();
-    
-    console.log('✅ Hero Carousel inicializado');
-    
-    // API para debug
-    window.heroCarousel = {
-      goToSlide: goToSlide,
-      nextSlide: nextSlide,
-      prevSlide: prevSlide,
-      play: function() { CONFIG.isPlaying = true; startAutoplay(); },
-      pause: function() { CONFIG.isPlaying = false; stopAutoplay(); },
-      config: function() { return CONFIG; }
-    };
-  }
-  function prevSlide() {
-  var prevIndex = CONFIG.currentSlide === 0 ? CONFIG.totalSlides - 1 : CONFIG.currentSlide - 1;
-  goToSlide(prevIndex);
-}
-  
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initHeroCarousel);
-  } else {
-    initHeroCarousel();
-  }
-})();
-</script>

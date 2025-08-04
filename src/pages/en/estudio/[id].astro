@@ -11,7 +11,7 @@ export function getStaticPaths() {
   const studios = ['jade', 'zian', 'indigo'];
   const paths: Array<{ params: { id: string } }> = [];
   
-  // SOLO generar rutas para español
+  // ✅ SOLO generar rutas para INGLÉS
   studios.forEach(id => {
     paths.push({ params: { id } });
   });
@@ -19,15 +19,14 @@ export function getStaticPaths() {
   return paths;
 }
 
-
-// Extraer parámetros - SOLO INGLÉS  
 const { id } = Astro.params;
-const studioId = id; // <-- AÑADIR ESTA LÍNEA
-const currentLang = 'en';
+const studioId = id;
+const currentLang = 'en';  
 setCurrentLanguage('en');
 
+// ✅ URL base con prefijo /en para inglés
+const baseUrl = '/en';
 
-// Establecer idioma
 
 // Validar que el estudio existe
 const validStudios = ['jade', 'zian', 'indigo'];
@@ -42,7 +41,6 @@ if (!estudio) {
 }
 
 // Configurar URLs base según idioma
-const baseUrl = currentLang === 'en' ? '/en' : '';
 
 // Clases de color por estudio
 const colorClasses: Record<string, {

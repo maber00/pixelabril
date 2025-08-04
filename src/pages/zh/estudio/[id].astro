@@ -11,7 +11,7 @@ export function getStaticPaths() {
   const studios = ['jade', 'zian', 'indigo'];
   const paths: Array<{ params: { id: string } }> = [];
   
-  // SOLO generar rutas para español
+  // ✅ SOLO generar rutas para CHINO
   studios.forEach(id => {
     paths.push({ params: { id } });
   });
@@ -19,14 +19,15 @@ export function getStaticPaths() {
   return paths;
 }
 
-
+// ✅ Configuración específica para CHINO
 const { id } = Astro.params;
 const studioId = id;
-const currentLang = 'zh';
+const currentLang = 'zh'; 
 setCurrentLanguage('zh');
 
+// ✅ URL base con prefijo /zh para chino
+const baseUrl = '/zh';
 
-// Establecer idioma
 
 // Validar que el estudio existe
 const validStudios = ['jade', 'zian', 'indigo'];
@@ -40,7 +41,6 @@ if (!estudio) {
   return Astro.redirect('/404');
 }
 
-const baseUrl = '/zh';
 
 // Clases de color por estudio
 const colorClasses: Record<string, {
