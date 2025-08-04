@@ -1,41 +1,40 @@
-// src/i18n/utils/geo.ts - CORREGIDO TIMEOUT ERROR
-
-// Configuración de países LATAM para español
+// src/i18n/utils/geo.ts
 const LATAM_COUNTRIES = [
   'AR', 'BO', 'BR', 'CL', 'CO', 'CR', 'CU', 'DO', 
   'EC', 'SV', 'GT', 'HN', 'MX', 'NI', 'PA', 'PY', 
   'PE', 'PR', 'UY', 'VE', 'ES'
 ];
 
+const CHINESE_COUNTRIES = [
+  'CN', 'TW', 'HK', 'MO', 'SG'  
+];
+
 const STORAGE_KEY = 'pixel_language_preference';
 const DETECTION_STORAGE_KEY = 'pixel_geo_detected';
 
-export type Language = 'es' | 'en';
+export type Language = 'es' | 'en' | 'zh';
 
-/**
- * Detecta el idioma del usuario basado en ubicación geográfica
- */
+
 export async function detectUserLanguage(): Promise<Language> {
-  // 1. Verificar si ya hay preferencia guardada
   const savedPreference = getSavedLanguagePreference();
   if (savedPreference) {
     console.log('🌍 Idioma desde preferencia guardada:', savedPreference);
     return savedPreference;
   }
 
-  // 2. Verificar si ya se hizo detección geográfica hoy
   const todayDetection = getTodayDetection();
   if (todayDetection) {
     console.log('🌍 Idioma desde detección de hoy:', todayDetection);
     return todayDetection;
   }
 
-  // 3. Intentar detección por IP
   try {
     const country = await getLocationFromIP();
-    const language = country && LATAM_COUNTRIES.includes(country) ? 'es' : 'en';
     
-    // Guardar detección del día
+    const language = 
+      country && LATAM_COUNTRIES.includes(country) ? 'es' :
+      country && CHINESE_COUNTRIES.includes(country) ? 'zh' : 'en';
+    
     saveTodayDetection(language, country);
     
     console.log('🌍 Idioma detectado por IP:', language, 'País:', country);
@@ -90,6 +89,12 @@ function getBrowserLanguage(): Language {
   if (typeof navigator === 'undefined') return 'es';
   
   const lang = navigator.language || navigator.languages?.[0] || 'es';
+  
+  // Detectar chino mandarín
+  if (lang.toLowerCase().startsWith('zh')) {
+    return 'zh';
+  }
+  
   return lang.toLowerCase().startsWith('es') ? 'es' : 'en';
 }
 
@@ -115,7 +120,7 @@ export function getSavedLanguagePreference(): Language | null {
   
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
-    return saved === 'es' || saved === 'en' ? saved : null;
+    return saved === 'es' || saved === 'en' || saved === 'zh' ? saved : null;
   } catch (error) {
     return null;
   }
@@ -152,7 +157,7 @@ function getTodayDetection(): Language | null {
     const detection = JSON.parse(stored);
     const today = new Date().toDateString();
     
-    if (detection.date === today && (detection.language === 'es' || detection.language === 'en')) {
+    if (detection.date === today && (detection.language === 'es' || detection.language === 'en' || detection.language === 'zh')) {
       return detection.language;
     }
     

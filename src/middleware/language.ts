@@ -1,3 +1,4 @@
+// src/middleware/language.ts - ACTUALIZADO PARA 3 IDIOMAS
 import { defineMiddleware } from 'astro:middleware';
 import { detectUserLanguage, saveLanguagePreference } from '../i18n/utils/geo';
 
@@ -10,9 +11,10 @@ export const onRequest = defineMiddleware(async (context, next) => {
     return next();
   }
   
-  // Detectar idioma actual desde URL
+  // Detectar idioma actual desde URL - ACTUALIZADO PARA 3 IDIOMAS
+  const isChinesePath = pathname.startsWith('/zh');
   const isEnglishPath = pathname.startsWith('/en');
-  const currentLang = isEnglishPath ? 'en' : 'es';
+  const currentLang = isChinesePath ? 'zh' : (isEnglishPath ? 'en' : 'es');
   
   // Verificar si es primera visita (no hay preferencia)
   const hasPreference = context.request.headers.get('cookie')?.includes('pixel_language_preference');
@@ -22,11 +24,15 @@ export const onRequest = defineMiddleware(async (context, next) => {
     try {
       const detectedLang = await detectUserLanguage();
       
-      // Solo redirigir si se detectó inglés y no está ya en /en
+      // Redirigir según idioma detectado
       if (detectedLang === 'en') {
         console.log('🌍 Redirigiendo a inglés por detección geográfica');
         return redirect('/en', 302);
+      } else if (detectedLang === 'zh') {
+        console.log('🌍 Redirigiendo a chino por detección geográfica');
+        return redirect('/zh', 302);
       }
+      // Si es 'es', no redirigir (es el default)
     } catch (error) {
       console.warn('⚠️ Error en detección automática:', error);
       // Continuar sin redirección si hay error
@@ -36,9 +42,14 @@ export const onRequest = defineMiddleware(async (context, next) => {
   // Establecer headers de idioma
   const response = await next();
   
-  // Añadir headers para SEO y debugging
+  // Añadir headers para SEO y debugging - ACTUALIZADO
   response.headers.set('Content-Language', currentLang);
   response.headers.set('X-Detected-Language', currentLang);
+  
+  // Añadir headers adicionales para chino
+  if (currentLang === 'zh') {
+    response.headers.set('X-Language-Region', 'zh-CN');
+  }
   
   return response;
 });

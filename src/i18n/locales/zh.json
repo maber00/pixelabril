@@ -1,0 +1,1025 @@
+{
+  "meta": {
+    "title": "像素生活 | 波哥大共居空间",
+    "description": "Pixel Living 是波哥大的一家共居空间，专为那些追求超越普通租赁体验的人士打造。我们提供专为中长期居住设计的公寓，融合了时尚、舒适与社区氛围。",
+    "keywords": "波哥大共居空间，带家具的公寓式宿舍，短期住宿，临时住房，像素生活，数字社区，联合办公"
+  },
+  "common": {
+    "home": "开始",
+    "loading": "正在加载...",
+    "error": "错误",
+    "success": "成功"
+  },
+
+ "nav": {
+    "main_navigation": "主导航",
+    "why_pixel": "为什么选择Pixel",
+    "studios": "分隔式公寓", 
+    "pricing": "价格",
+    "location": "位置",
+    "coliving": "共居",
+    "booking": "预订",
+    "faq": "问题"
+  },
+
+  "hero": {
+    "brand_line_1": "波哥大共居",
+    "brand_line_2": "像素生活",
+    "title": "生活、创造与连接",
+    "subtitle": "在波哥大北部。",
+    "description": "Pixel Living 是您在波哥大的共享居住空间，这里提供现代化的家具齐全的公寓，所有服务一应俱全，并且位于城市最核心的区域，拥有充满活力的社区氛围。",
+    "benefits": [
+      "✓ 无共同借款人",
+      "✓ 1个月起", 
+      "✓ 全包",
+      "✓ 随时可入住"
+    ],
+    "description_extended": "享受灵活的租赁服务，最短可租一个月，无需担保人，流程简便。",
+    "value_proposition": "您所需的一切，无论是生活、工作还是成长，都在这里。",
+    "cta_question": "准备好体验Pixel Living了吗？",
+    "button_primary": "立即预订您的席位",
+    "button_secondary": "查看价格和可用性",
+    "trust_info": "名额有限 • 仅需携带您的身份证件",
+    "process_time": "预订流程在24小时内完成",
+    "scroll_text": "了解我们为何与众不同"
+  },
+
+  "espacios": {
+  "badge": "像素生活单间公寓",
+    "title": "带家具的单间公寓和",
+    "title_highlight": "随时为您服务",
+    "description": "在Pixel Living，每个单间公寓都配备了",
+    "description2": "29平方米",
+    "description3": "它专为为您提供最大程度的舒适、隐私和灵活性而设计，是波哥大北部最灵活、最全面的共享居住空间。",
+    "espacio": "公寓式工作室",
+  "beneficios_destacados": {
+    "habitacion_adicional": "额外房间",
+    "habitacion_desc": "工作区 + 辅助床",
+    "balcon_privado": "私人阳台",
+    "balcon_desc": "享受户外活动",
+    "todo_incluido": "一价全包",
+    "todo_desc": "每月一次性支付"
+  },
+
+  "mensaje_final": "选择轻松生活，无需繁琐手续，无需共同借款人，享受Pixel Living独有的自由。",
+  "caracteristicas_titulo": "我们的空间特点",
+  "caracteristicas": [
+    "双人床",
+    "配备齐全的厨房",
+    "办公桌",
+    "高速无线网络",
+    "包含的服务",
+    "私密且宁静的空间"
+  ],
+
+  "cta_disponibilidad": " 👉 查询可用性",
+  "otros_espacios": "探索其他空间",
+  "ver_detalles": "查看详情",
+
+  "carousel": {
+    "prev_label": "查看上一间公寓",
+    "next_label": "查看下一间公寓",
+    "indicator_label": "查看公寓 {{索引}} 中的 {{总计}}"
+  },
+
+  "lightbox": {
+    "abrir_galeria": "打开{{名称}}的完整图库",
+    "ver_imagen": "查看图片 {{索引}} 来自 {{名称}}",
+    "cerrar": "关闭画廊",
+    "anterior": "上一张图片",
+    "siguiente": "下一张图片"
+  }
+},
+
+  "zonas_comunes": {
+    "badge": "公共区域及设施",
+    "title": "远不止是一间公寓：探索",
+    "title_highlight": "社区生活",
+    "title_end": "像素生活",
+    "description": "在Pixel Living，您不仅拥有自己的私人空间，还能使用专为您的健康、效率和社交生活设计的公共区域。",
+    "amenidades": {
+      "coworking": {
+        "titulo": "联合办公空间与会议室",
+        "descripcion": "现代化的空间，配备高速Wi-Fi，适合工作、学习或与其他居民会面。"
+      },
+      "rooftop": {
+        "titulo": "屋顶露台配有火坑", 
+        "descripcion": "尽享波哥大北部的绝佳景色，与亲朋好友共赏独一无二的日落美景，并在篝火旁结识新朋友。"
+      },
+      "gym": {
+        "titulo": "户外健身区和TRX训练区",
+        "descripcion": "每天保持活跃和健康，无需外出。."
+      },
+      "pet_zone": {
+        "titulo": "宠物专区",
+        "descripcion": "您的宠物欢迎入住，并有专属空间。"
+      },
+      "bike_parking": {
+        "titulo": "自行车停车场配维修车间", 
+        "descripcion": "随时准备好你的自行车，随时可以骑行。."
+      },
+      "events": {
+        "titulo": "活动场地",
+        "descripcion": "参与Pixel Living社区的专属活动。"
+      }
+    }
+  },
+
+  "vive_pixel": {
+  "badge": "我们的历史",
+  "title": "探索",
+  "title_highlight": "为什么选择Pixel Living？",
+  "title_end": "不一样",
+  "description": "了解我们的理念、价值观以及我们在共居领域中独树一帜之处。",
+  
+  "filosofia": {
+    "titulo": "我们的理念",
+    "subtitulo": "是什么每天激励着我们？",
+    "heading": "一个临时住所",
+    "heading_highlight": "不安分的心灵",
+    "descripcion_1": "在Pixel，我们相信你居住的地方应该",
+    "descripcion_highlight": "激发灵感",
+    "descripcion_2": "我们不是传统的租赁服务，也不是酒店。",
+    "descripcion_3": "我们是连接那些在旅途中的人们的纽带，他们渴望在探索新道路的同时，也能感受到家的温暖。"
+  },
+  
+  "diferenciacion": {
+    "titulo": "是什么让我们与众不同？",
+    "subtitulo": "我们的独特提案",
+    "heading": "我们不是传统的租赁服务。也不是酒店。",
+    "descripcion": "我们是全新的存在：一个",
+    "descripcion_highlight": "生命生态系统",
+    "descripcion_end": "专为新一代专业人士设计。",
+    "beneficio_1": {
+      "titulo": " 🏠 无共同借款人",
+      "descripcion": "仅限您的文件"
+    },
+    "beneficio_2": {
+      "titulo": " 📦 一应俱全", 
+      "descripcion": "每月仅需支付一次"
+    },
+    "beneficio_3": {
+      "titulo": "⚡ 自1个月起",
+      "descripcion": "完全灵活"
+    }
+  },
+  
+  "para_quien": {
+    "titulo": "Pixel适合谁？",
+    "subtitulo": "我们的理想居民", 
+    "heading_brand": "像素生活",
+    "heading": "专为注重细节、设计与积极能量的人士打造。",
+    "audiencia_1": {
+      "titulo": " 🌍 数字游牧者",
+      "descripcion": "寻求临时稳定性与灵活性的远程专业人士"
+    },
+    "audiencia_2": {
+      "titulo": " 💼 专业人士",
+      "descripcion": "处于职业过渡期的管理人员、工作调动或临时项目"
+    },
+    "audiencia_3": {
+      "titulo": " 🎓 学生", 
+      "descripcion": "大学生、研究人员和研究生"
+    },
+    "audiencia_4": {
+      "titulo": " 🚀 创业者",
+      "descripcion": "创始人及创意人士，需要拓展人脉与获取灵感"
+    },
+    "audiencia_5": {
+      "titulo": " 🏥 医疗人员",
+      "descripcion": "医生、护士（轮岗或专科培训）"
+    },
+    "audiencia_6": {
+      "titulo": " 🌐 国际专家",
+      "descripcion": "顾问、外交官和外国专业人士"
+    }
+  },
+  
+  "beneficios": {
+    "titulo": "好处",
+    "subtitulo": "只有Pixel才能为你提供的独特体验",
+    "beneficio_1": {
+      "titulo": "感觉像在家一样",
+      "descripcion": "专为让你从第一天起就能轻松驾驭而设计的空间。"
+    },
+    "beneficio_2": {
+      "titulo": "连接",
+      "descripcion": "一个充满创意且不断发展的社区"
+    },
+    "beneficio_3": {
+      "titulo": "启发",
+      "descripcion": "一个激发创造力并促进个人福祉的环境。"
+    }
+  },
+  
+  "experiencia": {
+    "titulo": "你的Pixel体验",
+    "subtitulo": "你的日常生活会是怎样的？",
+    "heading": "从第一天起，尽享Pixel体验。",
+    "manana": {
+      "titulo": " 🌅 你的早晨",
+      "actividad_1": "在您29平方米的单间公寓中醒来",
+      "actividad_2": "北向露台咖啡",
+      "actividad_3": "共享办公空间，配备高速Wi-Fi ",
+      "actividad_4": "与其他居民的自然社交"
+    },
+    "tarde_noche": {
+      "titulo": " 🌆 你的傍晚至深夜",
+      "actividad_1": " TRX训练在我们的区域",
+      "actividad_2": "屋顶上的日落，伴着火坑的温暖",
+      "actividad_3": "社区专属活动", 
+      "actividad_4": "在你的私人空间休息"
+    }
+  },
+  
+  "cta_final": {
+    "titulo": "准备好迎接Pixel了吗？",
+    "subtitulo": "你的新家正在等待着你。",
+    "heading": "您的Pixel体验从这里开始！",
+    "descripcion": "名额有限。只需携带您的身份证件即可。",
+    "boton": "预订我的位置",
+    "respuesta": " 📞 1小时内回复"
+  }
+},
+
+
+"ubicacion": {
+  "badge": "战略位置",
+  "title": "住在", 
+  "title_highlight": "一切尽在咫尺",
+  "description": "像素生活位于波哥大北部...",
+  
+  "movilidad": {
+    "titulo": "全面移动性",
+    "autopista": {
+      "titulo": "距离北高速公路和100街仅几步之遥",
+      "descripcion": "立即前往波哥大各地"
+    },
+    "transmilenio": {
+      "titulo": "两条TransMilenio主干线", 
+      "descripcion": "苏巴大道和北高速公路"
+    },
+    "avenida_68": {
+      "titulo": "即将开通的68号大道主干道",
+      "descripcion": "直接连接（2027）"
+    }
+  },
+  
+  "zona_empresarial": {
+    "titulo": "商业区100街",
+    "descripcion": "跨国公司、办公楼、共享办公空间、健康自由区以及波哥大北部的金融区，均位于您家门口的几分钟路程内。"
+  },
+  
+  "servicios": {
+    "titulo": "靠近您所需的一切",
+    "entretenimiento": {
+      "titulo": " 🎭 娱乐:",
+      "item_1": "卡斯蒂利亚剧院",
+      "item_2": " 93公园", 
+      "item_3": "购物中心",
+      "item_4": "餐厅和咖啡馆",
+      "item_5": "电影院"
+    },
+    "salud": {
+      "titulo": " 🏥 健康:",
+      "item_1": "洛斯诺加莱斯诊所",
+      "item_2": "科隆苏比迪奥诊所",
+      "item_3": "补偿",
+      "item_4": "健康自由区"
+    },
+    "educacion": {
+      "titulo": " 🎓 教育:",
+      "item_1": "新格拉纳达军事大学",
+      "item_2": "北部大学区"
+    },
+    "comercio": {
+      "titulo": " 🛒 商业:",
+      "item_1": "超市", 
+      "item_2": "银行",
+      "item_3": " 24小时药店"
+    }
+  },
+  
+  "mapa": {
+    "titulo": "我们的位置",
+    "direccion": " 98街51-32号，拉卡斯泰拉纳，波哥大",
+    "direccion_corta": " 98街51-32号",
+    "barrio": "卡斯蒂利亚娜，波哥大", 
+    "iframe_title": " Pixel Living位于波哥大北部 - 北部高速公路与100街交汇处",
+    "hover_text": "如何前往Pixel Living ",
+    "boton_direcciones": "地址"
+  },
+  
+  "cta_final": {
+    "heading": "在Pixel Living | 哥伦比亚波哥大共居空间，您的生活将更加轻松高效。", 
+    "descripcion": "生活、工作和享受，一切尽在咫尺之间。",
+    "boton": "查看可用的学生公寓"
+  }
+},
+
+  "precios": {
+  "badge": "透明定价",
+  "title": "出租你的单间公寓在",
+  "title_highlight": "更灵活的合租生活",
+  "title_end": "波哥大北部",
+  "description": "在Pixel Living，一切都简单透明：选择租期，每月只需支付一次。",
+  "usp": "无需担保人 - 仅需您的身份证件",
+  
+  "tabla_titulo": "月费",
+  "tabla_headers": {
+    "duracion": "持续时间",
+    "precio": "月费",
+    "ahorro": "储蓄"
+  },
+  
+  "duraciones": {
+    "1_mes": "1个月",
+    "3_meses": "3个月",
+    "6_meses": "6个月",
+    "12_meses": "12个月 ⭐ 推荐"
+  },
+  
+  "precios": {
+    "1_mes": "$3.100.000",
+    "3_meses": "$2.950.000",
+    "6_meses": "$2.750.000",
+    "12_meses": "$2.650.000"
+  },
+  
+  "ahorros": {
+    "1_mes": "-",
+    "3_meses": "$150,000",
+    "6_meses": "$350,000",
+    "12_meses": "$450,000"
+  },
+  
+  "tabla_nota": "以哥伦比亚比索为单位的金额。每月支付。",
+  "todo_incluido": "一价全包：",
+  "incluye_descripcion": "带家具的单间公寓，包含公共设施、管理服务及所有公共区域的访问权限。",
+  
+  "reserva_facil": "✨ 轻松快捷的预订：",
+  "reserva_descripcion": "请留下您的联系方式，我们将与您联系以完成您的租赁流程。",
+  
+  "comparativa_titulo": "你还在犹豫Pixel Living是否适合你吗？",
+  "comparativa_descripcion": "比较传统租房与Pixel Living所提供的服务，看看两者在成本上的差异。",
+  "comparativa_enfasis": "你会发现，在这里你可以节省时间、金钱和烦恼。",
+  
+  "comparativa_headers": {
+    "concepto": "概念",
+    "tradicional": "传统租赁",
+    "pixel": "像素生活"
+  },
+  
+  "comparativa_conceptos": {
+    "arriendo": "出租",
+    "servicios": "公共服务",
+    "wifi": "Wi-fi",
+    "administracion": "管理",
+    "mobiliario": "家具",
+    "electrodomesticos": "洗衣机和家用电器",
+    "total": "每月总计"
+  },
+  
+  "comparativa_tradicional": {
+    "arriendo": "$2.000.000",
+    "servicios": "$350.000",
+    "wifi": "$120.000",
+    "administracion": "$300.000",
+    "mobiliario": "$400.000",
+    "electrodomesticos": "$200.000",
+    "total": "$3.370.000"
+  },
+  
+  "comparativa_pixel": {
+    "incluido": "✓ 包含在内",
+    "total": "从$2,650,000起"
+  },
+  
+  "ahorro_principal": " 💰 每月节省$720,000",
+  "ahorro_nota": "参考价格以哥伦比亚比索为单位。所有费用均已包含，无额外费用。",
+  "ahorro_anual": " 🏆 每年节省超过$8,600,000 + 节省时间和安心",
+  
+  "cta_titulo": "过上美好而无忧无虑的生活，确实是可能的！",
+  "cta_descripcion": "准备好过上更充实、更节俭、更愉悦的生活了吗？",
+  "cta_descripcion_2": "立即预订Pixel Living的居住空间，开始体验波哥大真正的共居生活。",
+  "cta_boton": "立即预订您的席位",
+  "cta_nota": "名额有限。仅需携带您的身份证件。"
+},
+
+"coliving": {
+  "badge": "共居体验",
+  "title": "我们分享",
+  "title_highlight": "其他",
+  "title_end": "墙壁",
+  
+  "community": {
+    "heading": "住在Pixel，就是成为一个社区的一员。",
+    "description1": "在这里，你可以独处……但也可以与人分享。",
+    "description2": "我们的社区由专业人士、创意人士、企业家和旅行者组成，他们寻求一个既能让人感到宾至如归，又能随心所欲地按照自己生活节奏自由活动的场所。",
+    "cta": "加入我们的社区"
+  },
+  
+  "carousel": {
+    "image1_alt": "像素生活社区",
+    "image2_alt": "共享空间像素生活",
+    "prev_label": "查看上一张一室公寓的图片",
+    "next_label": "查看下一张公寓图片", 
+    "prev_title": "上一张图片",
+    "next_title": "下一张图片",
+    "prev_sr": "前一页",
+    "next_sr": "接下来",
+    "indicator_label": "查看图片 {{索引}}，共 {{总计}} 张。"
+  },
+  
+  "beneficios": {
+    "espacios_modernos": {
+      "titulo": "现代空间",
+      "descripcion": "现代与功能并重的设计，让生活充满格调。"
+    },
+    "trato_cercano": {
+      "titulo": "亲切对待", 
+      "descripcion": "个性化服务，让您倍感宾至如归。"
+    },
+    "flexibilidad": {
+      "titulo": "灵活性",
+      "descripcion": "我们根据您的住宿需求定制服务。"
+    },
+    "comodidad": {
+      "titulo": "舒适性",
+      "descripcion": "您所需的一切，让您享受舒适体验。"
+    },
+    "buen_ambiente": {
+      "titulo": "良好的氛围",
+      "descripcion": "一个积极向上的社区，让你能够与他人建立联系。"
+    }
+  }
+},
+
+  "reservas": {
+  "title": "立即预订Pixel Living的专属空间",
+  "subtitle": "预订您的单间公寓，尽在Pixel Living | 波哥大共享居住空间",
+  "description": "请填写以下信息以获得个性化服务。",
+  "response_time": "我们将在1小时内回复您！",
+  
+  "form": {
+    "name": "全名",
+    "name_placeholder": "请输入您的姓名",
+    "email": "电子邮件",
+    "email_placeholder": "ejemplo@correo.com",
+    "phone": "联系电话",
+    "phone_placeholder": "手机或WhatsApp ",
+    "duration": "您希望预订多长时间？",
+    "duration_select": "选择时长",
+    "duration_options": {
+      "1_month_price": "1个月 - $3.100.000",
+      "3_months_price": "3个月 - $2.950.000",
+      "6_months_price": "6个月 - $2.750.000",
+      "12_months_price": "12个月 - $2.650.000 （推荐）"
+    },
+    "date": "首选入住日期",
+    "date_help": "选择您理想的搬家日期",
+    "people": "人数",
+    "people_options": {
+      "1_person": "1人",
+      "2_people": "2人（夫妻）"
+    },
+    "referral": "你是如何了解到Pixel Living的？",
+    "referral_select": "选择一个选项",
+    "referral_options": {
+      "google": "谷歌 / 网络搜索",
+      "instagram": "Instagram",
+      "facebook": "脸书",
+      "linkedin": "领英",
+      "friend": "朋友/熟人推荐",
+      "flyer": "传单 / 实体广告",
+      "other": "另一个"
+    },
+    "message": "附加信息（可选）",
+    "message_placeholder": "请告诉我们更多关于您的具体需求...",
+    "characters": "字符",
+    "accept_contact": "我同意Pixel Living与我联系，并且我已经阅读了",
+    "privacy_policy": "隐私政策",
+    "submit": "提交预订申请",
+    "footer_note": "您的信息是安全的，且仅用于处理您的预订。"
+  },
+  
+  "whatsapp": {
+    "question": "您更愿意直接联系我们吗？",
+    "message": "你好！我对预订Pixel Living的单间公寓感兴趣。能提供更多信息吗？",
+    "cta": "通过WhatsApp聊天"
+  },
+  
+  "benefits": {
+    "title": "为什么选择Pixel Living？",
+    "no_guarantor_title": "无担保人",
+    "no_guarantor_desc": "您只需携带您的身份证件即可。",
+    "all_included_title": "一价全包",
+    "all_included_desc": "服务、Wi-Fi、家具及公共区域",
+    "quick_move_title": "快速搬家",
+    "quick_move_desc": "预订流程在24小时内完成",
+    "flexibility_title": "最大灵活性",
+    "flexibility_desc": "自1个月起，无需长期绑定。",
+    "location_title": "战略位置",
+    "location_desc": "波哥大北部，靠近所有重要地点"
+  },
+  
+  "testimonial": {
+    "quote": " Pixel Living 彻底改变了我在波哥大的生活方式。这里的灵活性和社区氛围令人惊叹。",
+    "author": "- 玛丽亚·C，像素居民"
+  },
+  
+  "trust": {
+    "process": "流程",
+    "size": "单间公寓",
+    "savings": "每月储蓄"
+  }
+},
+
+  "faq": {
+  "title": "常见问题解答",
+  
+  "questions": {
+    "q1": {
+      "question": "月费包含哪些内容？",
+      "answer": "一切费用全包：带家具的单间公寓、公共设施（水、电、气）、高速互联网、物业管理、公共区域清洁以及所有设施的使用权。"
+    },
+    "q2": {
+      "question": "我需要共同借款人或担保人吗？",
+      "answer": "不需要。您只需提供有效的身份证明文件即可。这是我们的一大优势：无需担保人，流程简便。"
+    },
+    "q3": {
+      "question": "最低住宿天数是多少？",
+      "answer": "最低住宿期限为1个月。我们提供最大程度的灵活性，以满足您的需求，无论是短期住宿还是长期住宿。"
+    },
+    "q4": {
+      "question": "预订流程是怎样的？",
+      "answer": "非常简单：1) 填写表格，2) 我们将在1小时内与您联系，3) 虚拟或现场参观，4) 签署合同，5) 24-48小时内完成搬家！"
+    },
+    "q5": {
+      "question": "公寓式套房包含哪些设施？",
+      "answer": "29平方米，全套家具：双人床、书桌、配备齐全的厨房、私人浴室、衣橱、私人阳台以及一间额外的房间，可作为办公室或客房使用。"
+    },
+    "q6": {
+      "question": "我可以接待访客吗？",
+      "answer": "是的，您可以在您的公寓和公共区域接待访客。我们仅要求您遵守共同生活规范并遵守既定时间安排。"
+    },
+    "q7": {
+      "question": "是否接受宠物？",
+      "answer": "是的，我们专门设计了一个宠物专区。为了确保所有人的舒适与安全，我们收取少量额外费用并制定了一些行为规范。"
+    },
+    "q8": {
+      "question": "他们位于哪里？",
+      "answer": "我们位于波哥大北部，北环高速公路与100街交汇处。这里地理位置优越，交通便利，靠近公共交通枢纽、购物中心和商业区。"
+    }
+  },
+  
+  "contact": {
+    "title": "还有其他问题吗？",
+    "description": "我们的团队已准备好解答您关于Pixel Living的所有疑问。",
+    "button": "与我们聊天"
+  }
+},
+
+  "footer": {
+  "company": {
+    "description": "波哥大共居空间，专为寻求在现代灵活空间中生活、创作与社交的人士打造。"
+  },
+  
+  "social": {
+    "instagram_label": "关注我们在Instagram "
+  },
+  
+  "quick_links": {
+    "title": "快速链接",
+    "why_pixel": "体验像素",
+    "studios": "空间",
+    "amenities": "公共区域",
+    "location": "位置",
+    "contact": "联系"
+  },
+  
+  "information": {
+    "title": "信息",
+    "privacy": "隐私政策",
+    "terms": "条款与条件",
+    "location_text": "波哥大北部，北部高速公路与100街交汇处"
+  },
+  
+  "copyright": "版权所有.",
+  
+  "bottom_links": {
+    "privacy": "隐私",
+    "terms": "条款",
+    "cookies": "Cookies"
+  }
+},
+     
+  "estudios": {
+    "jade": {
+      "nombre": "玉石研究",
+      "descripcion_1": "明亮的空间，点缀着绿色元素，让人联想到自然与宁静。",
+      "descripcion": "明亮的空间，带私人阳台。配备私人厨房、独立工作区和辅助房间。适合长期居住，拥有宽敞的落地窗和开阔的视野。所有设施一应俱全：Wi-Fi、服务、智能电视。无需担保人。",
+      "metros": "29平方米",
+      "imagen": "/images/研究/玉石/像素玉石房间-004.webp ",
+      "precio": "自 $2.650.000",
+      "galeria": [
+        "/images/estudios/jade/pixel-jade-room-005.webp",
+        "/images/estudios/jade/pixel-jade-room-001.webp",  
+        "/images/estudios/jade/pixel-jade-room-002.webp",   
+        "/images/estudios/jade/pixel-jade-room-006.webp",
+        "/images/estudios/jade/pixel-jade-room-007.webp",
+        "/images/estudios/jade/Pixel-jade-001.webp"
+      ],
+      "caracteristicas": [
+        " 29平方米的单间公寓",
+        "辅助房间", 
+        "私人阳台，尽享户外时光",
+        "双人床",
+        "私人厨房，配备齐全。",
+        "无限高速Wi-Fi ",
+        "智能电视",
+        "洗衣机位于公寓内",
+        "私人浴室",
+        "现代家具和家电"
+      ],
+      "incluye": [
+        "公共服务、管理及对公共区域的全面访问权限"
+      ]
+    },
+    "zian": {
+      "nombre": " Zian 工作室", 
+      "descripcion_1": "蓝色调传递出宁静与专注的氛围，非常适合远程工作。",
+      "descripcion": "专为远程办公专业人士设计，配备优化工作区。私人厨房、宽敞书桌及有利于专注的工作环境。完美融合生活与工作，尽显格调。一应俱全：Wi-Fi、服务、家具。无需担保人。",
+      "metros": "29平方米",
+      "imagen": "/images/estudios/zian/pixel-zian-room-001.webp",
+      "precio": "自 $2.650.000",
+      "galeria": [
+        "/images/estudios/zian/pixel-zian-room-001.webp", 
+        "/images/estudios/zian/pixel-zian-room-002.webp", 
+        "/images/estudios/zian/pixel-zian-room-003.webp", 
+        "/images/estudios/zian/pixel-zian-room-004.webp", 
+        "/images/estudios/zian/pixel-zian-room-005.webp",
+        "/images/estudios/zian/pixel-zian-room-006.webp", 
+        "/images/estudios/zian/pixel-zian-room-007.webp", 
+        "/images/estudios/zian/pixel-zian-room-009.webp", 
+        "/images/estudios/zian/pixel-zian-room-010.webp"
+      ],
+      "caracteristicas": [
+        " 29平方米的单间公寓",
+        "辅助房间", 
+        "私人阳台，尽享户外时光",
+        "双人床",
+        "私人厨房，配备齐全。",
+        "无限高速Wi-Fi ",
+        "智能电视",
+        "洗衣机位于公寓内",
+        "私人浴室",
+        "现代家具和家电"
+      ],
+      "incluye": [
+        "公共服务、管理及对公共区域的全面访问权限"
+      ]
+    },
+    "indigo": {
+      "nombre": "靛蓝研究",
+      "descripcion_1": "紫色调营造出一个温馨的环境，激发创造力和思考。",
+      "descripcion": "我们最宽敞的单间公寓，起居区与休息区分离。配备私人厨房、私人阳台，为创意人士和创业者打造温馨舒适的居住环境。全包式服务，无需担保人。",
+      "imagen": "/images/estudios/indigo/pixel-indigo-room-001.webp",
+      "metros": "29平方米", 
+      "precio": "自 $2.650.000",
+      "galeria": [
+        "/images/estudios/indigo/pixel-indigo-room-001.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-002.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-003.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-004.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-006.webp",
+        "/images/estudios/indigo/pixel-indigo-room-007.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-008.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-009.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-010.webp",
+        "/images/estudios/indigo/pixel-indigo-room-011.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-012.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-013.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-014.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-016.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-017.webp", 
+        "/images/estudios/indigo/pixel-indigo-room-018.webp"
+      ],
+      "caracteristicas": [
+        " 29平方米的单间公寓",
+        "辅助房间", 
+        "私人阳台，尽享户外时光",
+        "双人床",
+        "私人厨房，配备齐全。",
+        "无限高速Wi-Fi ",
+        "智能电视",
+        "洗衣机位于公寓内",
+        "私人浴室",
+        "现代家具和家电"
+      ],
+      "incluye": [
+        "公共服务、管理及对公共区域的全面访问权限"
+      ]
+    }
+  },
+
+  "estudio_detalle": {
+    "breadcrumbs": {
+      "inicio": "首页",
+      "espacios": "空间"
+    },
+    
+    "galeria": {
+      "imagen_principal": "主图像",
+      "ver_todas": "查看所有照片",
+      "abrir_galeria": "查看完整图库"
+    },
+    
+    "info": {
+      "descripcion_titulo": "描述",
+      "caracteristicas_titulo": "你的新空间包括:",
+      "incluye_titulo": "所有费用均包含在每月一次性支付中：",
+      "interes_titulo": "您对这个空间感兴趣吗？"
+    },
+    
+    "acciones": {
+      "reservar": "立即预订",
+      "whatsapp": "通过WhatsApp咨询",
+      "whatsapp_mensaje": "你好，我对{{研究}}感兴趣。它有空吗？谢谢。"
+    },
+    
+    "formulario": {
+      "titulo": "预订您的{{工作室}}",
+      "nombre": "全名 *",
+      "nombre_placeholder": "例如：玛丽亚·加西亚",
+      "email": "电子邮件 *",
+      "email_placeholder": "例如：maria@gmail.com ",
+      "telefono": "电话 *",
+      "telefono_placeholder": "例如： 3001234567",
+      "fecha": "预计入院日期",
+      "estadia": "预计停留时间",
+      "estadia_opciones": {
+        "seleccionar": "选择一个选项",
+        "1_3_meses": "1至3个月",
+        "3_6_meses": "3至6个月", 
+        "6_12_meses": "6至12个月",
+        "mas_1_ano": "超过1年"
+      },
+      "personas": "人数",
+      "personas_opciones": {
+        "1_persona": "1人",
+        "2_personas": "2人"
+      },
+      "expectativas": "你在Pixel的体验中追求什么？ *",
+      "expectativas_placeholder": "请告诉我们您对{{研究}}感兴趣的原因...",
+      "contador_caracteres": "字符",
+      "submit": " 👉 立即申请您的{{研究}} ",
+      "footer_note": "提交此申请即表示您同意我们的隐私政策和服务条款。"
+    },
+    
+    "otros_estudios": {
+      "titulo": "探索其他空间",
+      "ver_detalles": "查看详情"
+    },
+    
+    "mensajes": {
+      "exito": "邮件已发送！您想继续通过WhatsApp联系吗？",
+      "error": "发送失败。您想尝试通过WhatsApp发送吗？",
+      "procesando": "正在处理您的请求...",
+      "enviando": "正在发送...",
+      "corregir_errores": "请更正所指出的错误。",
+      "whatsapp_confirmacion": "你想打开WhatsApp继续聊天吗？",
+      "whatsapp_alternativa": "你想用WhatsApp作为替代方案吗？"
+    }
+  },
+  "gracias": {
+      "meta": {
+        "title": "谢谢！ - Pixel Living | 您的申请已提交",
+        "description": "我们已收到您在Pixel Living的预订申请。我们将尽快与您联系，确认您在波哥大的公寓式酒店预订。"
+      },
+      "hero": {
+        "titulo": "感谢您的关注！",
+        "subtitulo": "您的申请已成功提交。",
+        "mensaje": "我们已收到您的信息，并将尽快与您联系以确认您在Pixel Living的住宿详情。"
+      },
+      "confirmacion": {
+        "titulo": "接下来该怎么办？",
+        "pasos": [
+          {
+            "numero": "1",
+            "titulo": "我们正在审核您的申请。",
+            "descripcion": "我们的团队将审核您提供的信息及所选日期段内的公寓房源可用情况。"
+          },
+          {
+            "numero": "2", 
+            "titulo": "我们会与您联系。",
+            "descripcion": "我们将在未来2小时内通过WhatsApp或电子邮件与您联系，以确认细节并解答疑问。"
+          },
+          {
+            "numero": "3",
+            "titulo": "预订您的席位",
+            "descripcion": "确认后，您可以进行支付并锁定Pixel Living的公寓。"
+          }
+        ]
+      },
+      "contacto_urgente": {
+        "titulo": "需要立即帮助吗？",
+        "descripcion": "如果您有任何紧急问题或希望加快处理流程：",
+        "whatsapp": "通过WhatsApp联系我们",
+        "telefono": "+57 319 589 5858",
+        "email": "info@pixelliving.co"
+      },
+      "cta": {
+        "volver_inicio": "返回首页",
+        "ver_espacios": "查看我们的空间",
+        "seguir_redes": "关注我们在社交媒体上"
+      }
+    },
+    "privacidad": {
+      "meta": {
+        "title": "隐私政策 - Pixel Living | 数据保护",
+        "description": "了解Pixel Living如何根据哥伦比亚数据保护法律保护和处理您的个人数据。"
+      },
+      "hero": {
+        "titulo": "政策",
+        "titulo_highlight": "隐私",
+        "actualizacion": "最后更新：2025年7月15日"
+      },
+      "introduccion": {
+        "texto": "在<strong>Pixel Living</strong>，我们重视您的隐私，并致力于保护您的个人数据。当您填写我们的表格、使用我们的网站或与我们联系时，即表示您接受本政策的条款。"
+      },
+      "secciones": {
+        "recoleccion": {
+          "titulo": "1. 我们收集哪些数据？",
+          "descripcion": "我们收集并存储以下个人数据：",
+          "lista": [
+            "全名",
+            "电子邮件",
+            "联系电话（手机或WhatsApp）",
+            "国籍和居住国家（如果您是外国人）",
+            "住宿时长偏好",
+            "评论、建议或可选消息"
+          ]
+        },
+        "uso": {
+          "titulo": "2. 我们如何使用您的数据？",
+          "descripcion": "我们仅将您的信息用于以下目的：",
+          "lista": [
+            "与您联系并为您提供关于Pixel Living的个性化信息。",
+            "处理预订请求和客户服务",
+            "遵守法律和移民规定，适用于外国人。",
+            "提升我们的服务和数字体验",
+            "向您发送与您对Pixel Living感兴趣相关的的重要通知。"
+          ],
+          "adicional": "我们不会与第三方共享、出售或转让您的个人数据，除非法律要求或移民当局要求。"
+        },
+        "proteccion": {
+          "titulo": "3. 数据保护与存储",
+          "parrafos": [
+            "您的数据将被安全存储，且仅限Pixel Living授权人员访问。",
+            "我们采取技术和管理措施来保护您的信息并防止未经授权的访问。"
+          ]
+        },
+        "extranjeros": {
+          "titulo": "4. 外国人个人数据的处理",
+          "parrafos": [
+            "如果您是外国公民或居住在哥伦比亚境外，您的个人数据将根据哥伦比亚《个人数据保护法》（2012年第1581号法律）进行处理，并在适用情况下，遵循国际法规（如欧盟《通用数据保护条例》- GDPR）。",
+            "您的个人信息可能会根据哥伦比亚法律用于满足法律、移民及临时住宿要求，必要时将向相关当局报告。"
+          ]
+        },
+        "derechos": {
+          "titulo": "5. 数据主体的权利",
+          "descripcion": "作为用户，您有权：",
+          "lista": [
+            "了解、更新和更正您的个人数据",
+            "申请处理您个人数据的授权证明",
+            "了解我们如何使用您的信息",
+            "如果您认为存在不当使用行为，可向工业与商业监督局提出投诉。"
+          ],
+          "adicional": "您可以通过向以下邮箱发送邮件来行使这些权利：<strong>info@pixelliving.co</strong>"
+        },
+        "cookies": {
+          "titulo": "6. cookie 和技术",
+          "texto": "我们的网站可能会使用cookies来提升您的浏览体验。您可以根据个人偏好设置浏览器以接受或拒绝cookies。."
+        },
+        "cambios": {
+          "titulo": "7. 政策变更",
+          "texto": " Pixel Living 有权随时更新本隐私政策。本文件开头将始终显示最后更新日期。"
+        },
+        "contacto": {
+          "titulo": "8. 联系方式",
+          "descripcion": "如有任何疑问、意见或希望行使您对个人数据的权利，请与我们联系：",
+          "datos": "<strong>Correo:</strong> info@pixelliving.co<br><strong>Teléfono/WhatsApp:</strong> +57 319 5895858",
+          "cierre": "通过我们的表单提交您的信息时，您声明已阅读并同意本隐私政策。"
+        }
+      }
+    },
+    "terminos": {
+      "meta": {
+        "title": "条款与条件 - Pixel Living | 共享居住空间 波哥大",
+        "description": "请阅读我们在波哥大Pixel Living提供的共居服务的使用条款和条件。政策清晰透明。"
+      },
+      "hero": {
+        "titulo": "条款和",
+        "titulo_highlight": "条件"
+      },
+      "encabezado": {
+        "titulo": "使用条款与条件 - 共居像素生活"
+      },
+      "informacion_general": {
+        "titulo": "一般信息",
+        "contenido": "欢迎来到Pixel Living SAS。本条款与条件适用于您对哥伦比亚波哥大Pixel Living提供的共居服务的使用及访问。当您预订、支付或与我们签订合同时，即表示您已完全接受本条款，无论您的国籍或居住国家。"
+      },
+      "secciones": {
+        "objeto": {
+          "titulo": "1. 目的与范围",
+          "contenido": [
+            " Pixel Living SAS 提供共享居住服务，通过出租带家具的公寓式住宅及提供共用区域的使用权，遵循既定的居住条件与规则。",
+            "共居服务仅面向成年人。"
+          ]
+        },
+        "reserva": {
+          "titulo": "2. 预订与确认",
+          "contenido": [
+            "公寓式酒店的预订可通过我们的官方渠道（官方网站、电子邮件、WhatsApp或现场办理）进行。",
+            "预订仅在支付定金并签署所需文件（租赁合同、补充协议及公共区域管理规定）后方可确认。",
+            " Pixel Living SAS 有权要求提供身份证明文件或背景资料，并保留拒绝入场的权利。"
+          ]
+        },
+        "estancia": {
+          "titulo": "3. 最低住宿天数及入住率",
+          "contenido": [
+            "最低住宿期限为一个月（1个月）。低于此期限的住宿申请将不予受理。",
+            "未经Pixel Living SAS书面授权，不得转租、转让或转移使用权。",
+            "仅限合同中授权的人员可入住该公寓式酒店。",
+            "对于外国公民，必须出示有效护照，如适用，还需出示签证或在哥伦比亚的居留许可。"
+          ]
+        },
+        "zonas_comunes": {
+          "titulo": "4. 公共区域及服务的使用",
+          "contenido": [
+            "公共区域的使用受《公共区域管理规定》的约束，该规定具有强制执行力。",
+            "访问可能因维护、处罚或安全原因而受到限制。",
+            "居民应遵守内部规定、作息时间及尊重其他用户的权益。"
+          ]
+        },
+        "禁令": {
+          "titulo": "5. 禁止事项",
+          "contenido": [
+            "禁止在建筑物的任何区域吸烟、使用电子烟或使用致幻物质，但宠物区（Pet Zone）除外，该区域允许吸烟，但不得影响他人。",
+            "禁止从事非法活动、对未成年人进行性剥削，以及将该房产用于商业或旅游目的（如Airbnb）。",
+            "不接受异国宠物或哥伦比亚法律禁止的物种。"
+          ]
+        },
+        "pago": {
+          "titulo": "6. 支付与存款",
+          "contenido": [
+            "租金及附加费用的支付应按照合同约定进行。",
+            "押金仅用于赔偿损坏、家具、用品或债务，不得用于支付租金。"
+          ]
+        },
+        "sanciones": {
+          "titulo": "7. 处罚与终止",
+          "contenido": [
+            "违反本条款、合同或公共区域管理规定可能导致处罚、服务暂停、经济罚款或立即终止合同。",
+            "处罚措施和程序在合同文件和内部规章制度中都有详细规定。"
+          ]
+        },
+        "proteccion_datos": {
+          "titulo": "8. 数据保护与隐私",
+          "contenido": [
+            " Pixel Living SAS 根据哥伦比亚 2012 年第 1581 号法律以及国际数据保护法规（适用于欧盟公民的 GDPR，如适用）处理个人数据。",
+            "隐私政策可在我们的网站上查阅，并可随时索取。",
+            "使用我们的服务时，您即授权我们收集、存储和使用您的个人数据，用于合同和行政目的。"
+          ]
+        },
+        "cambios": {
+          "titulo": "9. 条款与条件变更",
+          "contenido": [
+            " Pixel Living SAS 有权随时更新本条款及条件。生效版本为在预订或续约时网站上发布的版本。"
+          ]
+        },
+        "jurisdiccion": {
+          "titulo": "10. 管辖权及适用法律",
+          "contenido": [
+            "本条款和条件受哥伦比亚法律管辖。",
+            "对于国际用户，任何争议均应提交至哥伦比亚波哥大的相关主管当局解决，但不影响居民所在国家法律的适用性（如适用）。"
+          ]
+        },
+        "aceptacion": {
+          "titulo": "11. 数字接受",
+          "contenido": "在预订、支付、进行数字签名或以居民身份入住Pixel Living时，您声明已阅读、理解并接受本条款与条件，以及附带的合同文件和规章制度。"
+        }
+      },
+      "contacto": {
+        "titulo": "如有任何疑问，您可以通过以下方式联系我们：",
+        "correo_label": "电子邮件：",
+        "correo": "info@pixelliving.co",
+        "whatsapp_label": "WhatsApp:",
+        "whatsapp": "+57 319 5895858",
+        "direccion_label": "地址：",
+        "direccion": "哥伦比亚波哥大98街22-64号1002室",
+        "empresa": "像素生活有限公司 – 波哥大，哥伦比亚"
+      }
+    }
+  }

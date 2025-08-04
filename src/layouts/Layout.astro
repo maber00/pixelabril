@@ -56,7 +56,10 @@ const defaultStructuredData = {
 				"@type": "ContactPoint",
 				"telephone": "+57-301-787-2595",
 				"contactType": "customer service",
-				"availableLanguage": currentLang === 'es' ? ["Spanish", "English"] : ["English", "Spanish"]
+				"availableLanguage": 
+					currentLang === 'es' ? ["Spanish", "English", "Chinese"] : 
+					currentLang === 'en' ? ["English", "Spanish", "Chinese"] :
+					["Chinese", "Spanish", "English"]
 			},
 			"address": {
 				"@type": "PostalAddress",
@@ -91,10 +94,14 @@ const defaultStructuredData = {
 		{
 			"@type": "Service",
 			"@id": `${siteUrl}/#service`,
-			"name": currentLang === 'es' ? "Coliving Pixel Living" : "Pixel Living Coliving",
-			"description": currentLang === 'es' 
-				? "Servicio de coliving premium en Bogotá con apartaestudios completamente amoblados"
-				: "Premium coliving service in Bogotá with fully furnished studios",
+			"name": 
+				currentLang === 'es' ? "Coliving Pixel Living" : 
+				currentLang === 'en' ? "Pixel Living Coliving" :
+				"像素生活共居空间",
+			"description": 
+				currentLang === 'es' ? "Servicio de coliving premium en Bogotá con apartaestudios completamente amoblados" :
+				currentLang === 'en' ? "Premium coliving service in Bogotá with fully furnished studios" :
+				"波哥大优质共居服务，提供全套家具配置的公寓工作室",
 			"provider": {
 				"@id": `${siteUrl}/#organization`
 			},
@@ -169,6 +176,8 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		<!-- 🌍 HREFLANG TAGS para SEO multiidioma -->
 		<link rel="alternate" hreflang="es" href={`${siteUrl}${alternateUrls.es}`} />
 		<link rel="alternate" hreflang="en" href={`${siteUrl}${alternateUrls.en}`} />
+		<link rel="alternate" hreflang="zh" href={`${siteUrl}${alternateUrls.zh}`} />
+
 		<link rel="alternate" hreflang="x-default" href={`${siteUrl}${alternateUrls.es}`} />
 		
 		<!-- 🏷️ Primary Meta Tags -->
@@ -184,10 +193,18 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={`${siteUrl}${ogImage}`} />
-		<meta property="og:image:alt" content={currentLang === 'es' ? "Pixel Living - Coliving en Bogotá" : "Pixel Living - Coliving in Bogotá"} />
+		<meta property="og:image:alt" content={
+					currentLang === 'es' ? "Pixel Living - Coliving en Bogotá" : 
+					currentLang === 'en' ? "Pixel Living - Coliving in Bogotá" :
+					"Pixel Living - 波哥大共居空间"	} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:locale" content={currentLang === 'es' ? 'es_CO' : 'en_US'} />
+				<meta property="og:locale" content={
+			currentLang === 'es' ? 'es_CO' : 
+			currentLang === 'en' ? 'en_US' : 
+			'zh_CN'
+		} />
+
 		
 		<!-- 🐦 Twitter -->
 		<meta name="twitter:card" content="summary_large_image" />

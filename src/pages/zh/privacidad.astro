@@ -1,0 +1,108 @@
+---
+// src/pages/zh/privacy.astro - PÁGINA DE PRIVACIDAD CHINA
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+
+// IMPORTAR I18N
+import { getLanguageFromUrl, t, setCurrentLanguage, tArray } from '../../i18n/utils/translator';
+
+// Detectar idioma actual
+const currentLang = getLanguageFromUrl(Astro.url.pathname);
+setCurrentLanguage(currentLang);
+
+// Configurar meta tags
+const metaTitle = t('privacidad.meta.title');
+const metaDescription = t('privacidad.meta.description');
+---
+
+<Layout title={metaTitle} description={metaDescription}>
+  <Header />
+  
+  <main class="pt-32 pb-16">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Header -->
+        <div class="text-center mb-12">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 cal-sans">
+            {t('privacidad.hero.titulo')} <span class="text-pixel-brown">{t('privacidad.hero.titulo_highlight')}</span>
+          </h1>
+          <p class="text-sm text-gray-500 mt-4">
+            {t('privacidad.hero.actualizacion')}
+          </p>
+        </div>
+
+        <!-- Contenido de la política -->
+        <div class="prose prose-lg max-w-none">
+          
+          <div class="bg-white border border-gray-200 rounded-lg p-8">
+            <p class="text-lg text-gray-700 mb-6" set:html={t('privacidad.introduccion.texto')}>
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">{t('privacidad.secciones.recoleccion.titulo')}</h2>
+            <p class="text-gray-700 mb-3">{t('privacidad.secciones.recoleccion.descripcion')}</p>
+            <ul class="list-disc list-inside space-y-1 text-gray-700 mb-6">
+              {tArray('privacidad.secciones.recoleccion.lista').map((item: string) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">{t('privacidad.secciones.uso.titulo')}</h2>
+            <p class="text-gray-700 mb-3">{t('privacidad.secciones.uso.descripcion')}</p>
+            <ul class="list-disc list-inside space-y-1 text-gray-700 mb-3">
+              {tArray('privacidad.secciones.uso.lista').map((item: string) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+            <p class="text-gray-700 mb-6">
+              {t('privacidad.secciones.uso.adicional')}
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">{t('privacidad.secciones.proteccion.titulo')}</h2>
+            {tArray('privacidad.secciones.proteccion.parrafos').map((parrafo: string) => (
+              <p class="text-gray-700 mb-3">{parrafo}</p>
+            ))}
+            <div class="mb-6"></div>
+
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">{t('privacidad.secciones.extranjeros.titulo')}</h2>
+            {tArray('privacidad.secciones.extranjeros.parrafos').map((parrafo: string) => (
+              <p class="text-gray-700 mb-3">{parrafo}</p>
+            ))}
+            <div class="mb-6"></div>
+
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">{t('privacidad.secciones.derechos.titulo')}</h2>
+            <p class="text-gray-700 mb-3">{t('privacidad.secciones.derechos.descripcion')}</p>
+            <ul class="list-disc list-inside space-y-1 text-gray-700 mb-3">
+              {tArray('privacidad.secciones.derechos.lista').map((item: string) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+            <p class="text-gray-700 mb-6" set:html={t('privacidad.secciones.derechos.adicional')}>
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">{t('privacidad.secciones.cookies.titulo')}</h2>
+            <p class="text-gray-700 mb-6">
+              {t('privacidad.secciones.cookies.texto')}
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">{t('privacidad.secciones.cambios.titulo')}</h2>
+            <p class="text-gray-700 mb-6">
+              {t('privacidad.secciones.cambios.texto')}
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">{t('privacidad.secciones.contacto.titulo')}</h2>
+            <p class="text-gray-700 mb-3">
+              {t('privacidad.secciones.contacto.descripcion')}
+            </p>
+            <p class="text-gray-700 mb-3" set:html={t('privacidad.secciones.contacto.datos')}>
+            </p>
+            <p class="text-gray-700">
+              {t('privacidad.secciones.contacto.cierre')}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+</Layout>

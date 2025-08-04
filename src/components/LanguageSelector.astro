@@ -1,46 +1,84 @@
 ---
 // @ts-nocheck
-import { getLanguageFromUrl, getAlternateUrls } from '../i18n/utils/translator';
+import { getLanguageFromUrl, getAlternateUrls, getLanguageNativeName } from '../i18n/utils/translator';
 
-const languages = ['es', 'en'];
+const languages = ['es', 'en', 'zh']; // ← ACTUALIZADO PARA 3 IDIOMAS
 const currentPath = Astro.url.pathname;
 const currentLang = getLanguageFromUrl(currentPath);
 const alternateUrls = getAlternateUrls(currentPath);
 
 // Helper para acceso seguro a URLs
 function getUrlForLang(lang) {
-  return lang === 'es' ? alternateUrls.es : alternateUrls.en;
+  switch(lang) {
+    case 'es': return alternateUrls.es;
+    case 'en': return alternateUrls.en;
+    case 'zh': return alternateUrls.zh;
+    default: return alternateUrls.es;
+  }
+}
+
+// Helper para obtener nombres nativos
+function getDisplayName(lang) {
+  switch(lang) {
+    case 'es': return 'Español';
+    case 'en': return 'English';
+    case 'zh': return '中文';
+    default: return 'Español';
+  }
+}
+
+// Helper para obtener banderas/íconos
+function getLanguageIcon(lang) {
+  switch(lang) {
+    case 'es': return '🇪🇸';
+    case 'en': return '🇺🇸';
+    case 'zh': return '🇨🇳';
+    default: return '🌍';
+  }
 }
 ---
 
 <nav lang={currentLang} aria-label="Selector de idioma" class="relative">
-  <!-- Desktop -->
+  <!-- Desktop Version -->
   <div class="hidden md:inline-flex overflow-hidden rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm">
     {languages.map((lang) => (
       <a
         href={getUrlForLang(lang)}
         data-lang={lang}
-        class={`px-3 py-2 text-sm font-medium transition ${
+        class={`flex items-center gap-2 px-3 py-2 text-sm font-medium transition ${
           currentLang === lang
             ? 'bg-white/20 text-white font-semibold'
             : 'text-white/80 hover:bg-white/10 hover:text-white'
         }`}
         aria-current={currentLang === lang ? 'page' : undefined}
+        title={`Cambiar a ${getDisplayName(lang)}`}
       >
-        {lang.toUpperCase()}
+        <span class="text-xs">{getLanguageIcon(lang)}</span>
+        <span>{lang.toUpperCase()}</span>
+        {currentLang === lang && (
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-pixel-green" fill="none"
+               viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M4.5 12.75l6 6 9-13.5" />
+          </svg>
+        )}
       </a>
     ))}
   </div>
 
-  <!-- Mobile -->
-  <details class="md:hidden group p-2 relative">
-    <summary class="flex items-center gap-2 px-2 py-2 rounded-lg border border-white/20 bg-black/80 text-white/90 cursor-pointer list-none">
+  <!-- Mobile Version -->
+  <details class="md:hidden group relative">
+    <summary class="flex items-center gap-2 px-3 py-2 rounded-lg border border-white/20 bg-black/80 text-white/90 cursor-pointer list-none hover:bg-white/10 transition">
       <!-- Globo -->
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round"
               d="M12 21a9 9 0 100-18 9 9 0 000 18zM8.25 9.75h7.5m-7.5 3h7.5" />
       </svg>
+      
+      <!-- Bandera + Código del idioma actual -->
+      <span class="text-xs">{getLanguageIcon(currentLang)}</span>
       <span class="text-sm font-semibold">{currentLang.toUpperCase()}</span>
+      
       <!-- Chevron -->
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-open:rotate-180"
            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -49,17 +87,21 @@ function getUrlForLang(lang) {
       </svg>
     </summary>
 
-    <ul class="absolute right-0 mt-2 w-40 rounded-lg border border-white/20 bg-black/80 backdrop-blur-sm shadow-lg z-50 text-white/90">
+    <!-- Dropdown con 3 opciones -->
+    <ul class="absolute right-0 mt-2 w-44 rounded-lg border border-white/20 bg-black/85 backdrop-blur-sm shadow-xl z-50 text-white/90 overflow-hidden">
       {languages.map((lang) => (
         <li>
           <a
             href={getUrlForLang(lang)}
             data-lang={lang}
-            class={`flex items-center justify-between px-4 py-3 text-sm transition ${
-              currentLang === lang ? 'bg-gray-700/60 font-semibold' : 'hover:bg-white/10'
+            class={`flex items-center justify-between px-4 py-3 text-sm transition hover:bg-white/10 ${
+              currentLang === lang ? 'bg-gray-700/60 font-semibold' : ''
             }`}
           >
-            {lang === 'es' ? 'Español' : 'English'}
+            <div class="flex items-center gap-3">
+              <span class="text-base">{getLanguageIcon(lang)}</span>
+              <span>{getDisplayName(lang)}</span>
+            </div>
             {currentLang === lang && (
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-pixel-green" fill="none"
                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -82,7 +124,7 @@ function getUrlForLang(lang) {
   }
   
   nav[aria-label="Selector de idioma"].animate { 
-    animation: lang-switch 0.25s ease; 
+    animation: lang-switch 0.3s ease; 
   }
 
   /* Ocultar marcador de lista en summary */
@@ -121,6 +163,22 @@ function getUrlForLang(lang) {
     outline: 2px solid #ffd700;
     outline-offset: 2px;
   }
+
+  /* Mejoras visuales para mobile dropdown */
+  details[open] ul li:first-child a {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+  
+  details[open] ul li:last-child a {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+  
+  /* Separadores sutiles entre opciones */
+  details[open] ul li:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
 </style>
 
 <script>
@@ -153,7 +211,7 @@ function getUrlForLang(lang) {
     // Redirigir después de la animación
     setTimeout(function() { 
       window.location.href = url; 
-    }, 150);
+    }, 200);
   }
 
   // Helper para verificar si un elemento tiene el método closest
@@ -197,7 +255,7 @@ function getUrlForLang(lang) {
     }
   });
 
-  // Atajo de teclado Alt + L
+  // Atajo de teclado actualizado para 3 idiomas (Alt + L)
   document.addEventListener('keydown', function(e) {
     if (e.altKey && e.key.toLowerCase() === 'l') {
       e.preventDefault();
@@ -205,7 +263,8 @@ function getUrlForLang(lang) {
       if (!selector) return;
       
       const currentLang = selector.getAttribute('lang');
-      const nextLang = currentLang === 'es' ? 'en' : 'es';
+      // Rotación: es → en → zh → es
+      const nextLang = currentLang === 'es' ? 'en' : currentLang === 'en' ? 'zh' : 'es';
       const link = selector.querySelector('[data-lang="' + nextLang + '"]');
       
       if (link) {
@@ -236,5 +295,5 @@ function getUrlForLang(lang) {
     }
   });
 
-  console.log('✅ Language Selector: Inicializado correctamente');
+  console.log('✅ Language Selector (3 idiomas): Inicializado correctamente');
 </script>
