@@ -23,10 +23,10 @@
   },
 
   "hero": {
-    "brand_line_1": "共居空间",
-    "brand_line_2": "像素生活",
-    "title": "共居空间 - 像素生活",
-    "subtitle": "在波哥大北部。",
+  "brand_line_1": "波哥大共居",
+  "brand_line_2": "像素生活",
+  "title": "生活、创造与连接",
+  "subtitle": "在波哥大北部。",
     "description": "Pixel Living 是您在波哥大的共享居住空间，这里提供现代化的家具齐全的公寓，所有服务一应俱全，并且位于城市最核心的区域，拥有充满活力的社区氛围。",
     "benefits": [
       "✓ 无共同借款人",
