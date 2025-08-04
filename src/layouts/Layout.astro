@@ -1,5 +1,5 @@
 ---
-// src/layouts/Layout.astro - CODIFICACIÓN UTF-8 CORREGIDA
+// src/layouts/Layout.astro 
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
@@ -330,12 +330,9 @@ const finalStructuredData = structuredData || defaultStructuredData;
 	</head>
 	
 	<body>
-		<!-- 📊 Google Tag Manager (noscript) -->
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KMNCWPVB"
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-		<!-- End Google Tag Manager (noscript) -->
 		
-		<!-- 🌍 Loading overlay para detección de idioma -->
 		<div id="lang-detection-overlay" class="lang-detection-overlay lang-detection-hidden">
 			<div class="text-center">
 				<div class="mb-4">
@@ -346,7 +343,6 @@ const finalStructuredData = structuredData || defaultStructuredData;
 			</div>
 		</div>
 		
-		<!-- ♿ Skip links para accesibilidad -->
 		<div class="skip-links" role="navigation" aria-label={currentLang === 'es' ? 'Enlaces de acceso rápido' : 'Skip navigation links'}>
 			<a href="#main-content" class="skip-link">
 				{currentLang === 'es' ? 'Saltar al contenido principal' : 'Skip to main content'}
@@ -362,32 +358,24 @@ const finalStructuredData = structuredData || defaultStructuredData;
 			</a>
 		</div>
 		
-		<!-- 🎯 Header -->
 		<Header />
 		
-		<!-- 📄 Main content wrapper -->
 		<main id="main-content" class="main-content" role="main">
 			<slot />
 		</main>
 		
-		<!-- 🦶 Footer -->
 		<Footer />
 		
-		<!-- 📢 Live region para anuncios de screen reader -->
 		<div id="live-region" aria-live="polite" aria-atomic="true" class="sr-only"></div>
 		
-		<!-- 🚀 INICIALIZACIÓN CON TRACKING DE FORMULARIOS -->
 		<script is:inline>
-			// Configuración global
 			window.PIXEL_CONFIG = {
 				currentLang: document.documentElement.lang || 'es',
 				isFirstVisit: !localStorage.getItem('pixel_language_preference'),
 				debug: false
 			};
 			
-			// 📊 PIXEL TRACK - FUNCIONES PARA FORMULARIOS
 			window.pixelTrack = {
-				// Tracking de inicio de formulario
 				formStart: function(formType) {
 					console.log('📝 Form Start:', formType);
 					if (typeof gtag === 'function') {
@@ -401,7 +389,6 @@ const finalStructuredData = structuredData || defaultStructuredData;
 					}
 				},
 				
-				// Tracking de formulario completado
 				formComplete: function(formType) {
 					console.log('✅ Form Complete:', formType);
 					if (typeof gtag === 'function') {
@@ -416,7 +403,6 @@ const finalStructuredData = structuredData || defaultStructuredData;
 					}
 				},
 				
-				// Tracking de contacto (WhatsApp, teléfono)
 				contact: function(method) {
 					console.log('📞 Contact:', method);
 					if (typeof gtag === 'function') {
@@ -430,7 +416,6 @@ const finalStructuredData = structuredData || defaultStructuredData;
 					}
 				},
 				
-				// Tracking de vista de estudio
 				studioView: function(studioName) {
 					console.log('🏠 Studio View:', studioName);
 					if (typeof gtag === 'function') {
@@ -451,42 +436,28 @@ const finalStructuredData = structuredData || defaultStructuredData;
 				}
 			};
 			
-			console.log('🌍 Pixel Living I18N inicializado:', window.PIXEL_CONFIG);
-			console.log('📊 pixelTrack functions disponibles:', Object.keys(window.pixelTrack));
 			
-			// Inicialización con error handling robusto
+			
 			document.addEventListener('DOMContentLoaded', () => {
 				const initStart = performance.now();
 				
 				try {
-					console.log('✅ Pixel Living: Iniciando sistema...');
 					
-					// Verificar encoding UTF-8
 					const testString = 'Bogotá - Diseño - Información';
-					console.log('🔤 Test UTF-8:', testString);
 					
-					// Verificar elementos básicos
 					const forms = document.querySelectorAll('form');
 					const images = document.querySelectorAll('img');
 					const buttons = document.querySelectorAll('button');
 					
-					console.log('📊 Elementos encontrados:', {
-						formularios: forms.length,
-						imágenes: images.length,
-						botones: buttons.length,
-						idioma: window.PIXEL_CONFIG.currentLang
-					});
 					
-					// 🔗 AUTO-TRACKING DE ENLACES
+					
 					document.addEventListener('click', function(e) {
 						const link = e.target.closest('a');
 						if (link && link.href) {
-							// WhatsApp links
 							if (link.href.includes('wa.me') || link.href.includes('whatsapp')) {
 								console.log('📱 Auto-tracking WhatsApp click');
 								if (window.pixelTrack) window.pixelTrack.contact('whatsapp');
 							}
-							// Phone links  
 							else if (link.href.includes('tel:')) {
 								console.log('☎️ Auto-tracking Phone click');
 								if (window.pixelTrack) window.pixelTrack.contact('phone');
@@ -494,9 +465,7 @@ const finalStructuredData = structuredData || defaultStructuredData;
 						}
 					});
 					
-					// 📝 AUTO-TRACKING DE FORMULARIOS
 					forms.forEach(form => {
-						// Detectar tipo de formulario
 						let formType = 'general';
 						if (form.id === 'reservaForm' || form.id === 'reservas-form') {
 							formType = 'reservas';
@@ -506,7 +475,6 @@ const finalStructuredData = structuredData || defaultStructuredData;
 							formType = 'contacto';
 						}
 						
-						// Solo agregar listener si no existe ya
 						if (!form.hasAttribute('data-tracking-added')) {
 							form.addEventListener('submit', function(e) {
 								console.log('📝 Auto-tracking form submit:', formType);
@@ -516,15 +484,13 @@ const finalStructuredData = structuredData || defaultStructuredData;
 						}
 					});
 					
-					// Ocultar overlay de detección si existe
 					const overlay = document.getElementById('lang-detection-overlay');
 					if (overlay) {
 						overlay.classList.add('lang-detection-hidden');
 					}
 					
 					const initTime = Math.round(performance.now() - initStart);
-					console.log(`✅ Pixel Living: Sistema inicializado en ${initTime}ms`);
-					console.log('📊 GTM + GA4 + Tracking inicializado correctamente');
+					
 					
 				} catch (error) {
 					console.error('❌ Error en inicialización:', error);

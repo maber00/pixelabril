@@ -108,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
       this.currentImageIndex = Math.max(0, Math.min(imageIndex, this.currentImages.length - 1));
       this.thumbCarouselIndex = 0;
       
-      // Actualizar título
       if (this.title) this.title.textContent = estudioData.nombre;
       
       // Actualizar enlaces

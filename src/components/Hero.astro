@@ -84,22 +84,18 @@ const altTexts = currentLang === 'es' ? [
       </div>
     </div>
     
-    <!-- Overlay gradiente -->
     <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10"></div>
   </div>
   
-  <!-- Contenido principal OPTIMIZADO -->
   <div class="container relative z-20 mt-32 mb-32 md:py-0">
     <div class="flex flex-col items-start text-left max-w-4xl">
       
-      <!-- Título principal optimizado -->
       <h1 class="text-sm md:text-3xl font-normal leading-tight mb-1 text-white cal-display hero-title">
       <span class="text-pixel-orange text-xl md:text-4xl">{t('hero.brand_line_1')}</span> 
       <span class="text-xs md:text-xl opacity-60">|</span> 
       <span class="text-pixel-yellow text-xl md:text-4xl">{t('hero.brand_line_2')}</span>
       </h1>
 
-      <!-- Subtítulo -->
       <h2 class="text-5xl md:text-6xl text-white mb-6 font-normal">
         <span class="block">{t('hero.title')}</span>
         <span class="block text-2xl md:text-5xl text-pixel-yellow mt-1">{t('hero.subtitle')}</span>
@@ -111,7 +107,6 @@ const altTexts = currentLang === 'es' ? [
       </p>
 
 
-      <!-- Nuevos beneficios destacados -->
       <div class="flex flex-wrap gap-2 mb-6">
         {benefits.map((benefit, index) => {
   const colors = ['bg-pixel-yellow text-gray-900', 'bg-pixel-yellow text-gray-900', 'bg-pixel-yellow text-gray-900', 'bg-pixel-yellow text-gray-900'];
@@ -127,14 +122,11 @@ const altTexts = currentLang === 'es' ? [
 
   
 
-      <!-- Pregunta CTA - OCULTA EN MÓVIL -->
       <p class="hidden md:block text-lg text-pixel-yellow mb-8 font-medium">
   {t('hero.cta_question')}
 </p>
       
-      <!-- CTAs -->
       <div class="flex flex-col sm:flex-row gap-4">
-        <!-- Botón principal - OCULTO EN MÓVIL, VISIBLE EN DESKTOP -->
         <a href="#reservas" class="hidden md:flex btn bg-pixel-yellow hover:bg-yellow-500 text-gray-900 text-lg font-semibold px-8 py-4 rounded-lg items-center justify-center">
   {t('hero.button_primary')}
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
@@ -147,7 +139,6 @@ const altTexts = currentLang === 'es' ? [
 </a>
       </div>
 
-      <!-- Información de confianza -->
       <p class="text-sm text-gray-300 mt-4">
   {t('hero.trust_info')}
 </p>
@@ -157,10 +148,8 @@ const altTexts = currentLang === 'es' ? [
     </div>
   </div>
   
-  <!-- Indicadores del carousel -->
   
   
-  <!-- Indicador de scroll -->
   <div class="absolute md:bottom-8 invisible md:visible md:left-1/2 transform -translate-x-1/2 text-white z-30">
     <a href="#vive-pixel" class="flex flex-col mt-30 items-center group">
   <span class="mb-2 text-sm font-medium group-hover:text-pixel-yellow transition-colors">
@@ -178,45 +167,34 @@ const altTexts = currentLang === 'es' ? [
   'use strict';
   
   function initHeroCarousel() {
-    console.log('🎠 Inicializando Hero Carousel...');
     
     var slides = document.querySelectorAll('.carousel-slide');
     var heroSection = document.getElementById('hero-section');
     
     if (!slides.length) {
-      console.error('❌ No se encontraron slides');
       return;
     }
     
-    // ===== CONFIGURACIÓN SIMPLE =====
     var currentSlide = 0;
     var totalSlides = slides.length;
     var isPlaying = true;
     var intervalId = null;
-    var SLIDE_DURATION = 3000; // ✅ 3 segundos - MÁS RÁPIDO
+    var SLIDE_DURATION = 3000; 
     
-    console.log('📊 ' + totalSlides + ' slides encontrados');
-    
-    // ===== FUNCIÓN PRINCIPAL =====
     function nextSlide() {
       if (!isPlaying) return;
       
-      // Quitar clase active del slide actual
       slides[currentSlide].classList.remove('active');
       
-      // Siguiente slide
       currentSlide = (currentSlide + 1) % totalSlides;
       
-      // Activar nuevo slide
       slides[currentSlide].classList.add('active');
       
-      console.log('🖼️ Slide: ' + (currentSlide + 1));
     }
     
     function startAutoplay() {
       if (intervalId) clearInterval(intervalId);
       intervalId = setInterval(nextSlide, SLIDE_DURATION);
-      console.log('▶️ Autoplay iniciado');
     }
     
     function stopAutoplay() {
@@ -224,10 +202,8 @@ const altTexts = currentLang === 'es' ? [
         clearInterval(intervalId);
         intervalId = null;
       }
-      console.log('⏸️ Autoplay detenido');
     }
     
-    // ===== EVENTOS SIMPLES =====
     if (heroSection) {
       heroSection.addEventListener('mouseenter', function() {
         isPlaying = false;
@@ -240,22 +216,16 @@ const altTexts = currentLang === 'es' ? [
       });
     }
     
-    // ===== INICIALIZACIÓN SIMPLE =====
-    // Limpiar slides
+  
     for (var i = 0; i < slides.length; i++) {
       slides[i].classList.remove('active');
     }
     
-    // Activar primer slide
     slides[0].classList.add('active');
-    console.log('⏱️ Primera imagen - cambiará en ' + SLIDE_DURATION + 'ms');
     
-    // ✅ INICIAR AUTOPLAY INMEDIATAMENTE
     startAutoplay();
     
-    console.log('✅ Carousel inicializado');
     
-    // API simple
     window.heroCarousel = {
       next: nextSlide,
       play: function() { isPlaying = true; startAutoplay(); },
@@ -273,9 +243,7 @@ const altTexts = currentLang === 'es' ? [
 })();
 </script>
 
-<!-- 3. CSS CORREGIDO - SIN ESTILOS DE DOTS -->
 <style>
-  /* ===== ESTILOS DEL CARRUSEL (SIN DOTS) ===== */
   .carousel-container {
     position: relative;
     width: 150%;

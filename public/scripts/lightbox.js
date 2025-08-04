@@ -72,7 +72,6 @@ class PixelLightbox {
       // Event listeners
       this.setupEventListeners();
       
-      console.log('PixelLightbox: Inicializado correctamente');
     }
   
     /**

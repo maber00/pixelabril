@@ -2,14 +2,11 @@
 // src/pages/gracias.astro
 import Layout from '../../layouts/Layout.astro';
 
-// IMPORTAR I18N
 import { getLanguageFromUrl, t, setCurrentLanguage, tArray } from '../../i18n/utils/translator';
 
-// Detectar idioma actual
 const currentLang = getLanguageFromUrl(Astro.url.pathname);
 setCurrentLanguage(currentLang);
 
-// Configurar meta tags
 const metaTitle = t('gracias.meta.title');
 const metaDescription = t('gracias.meta.description');
 const baseUrl = currentLang === 'en' ? '/en' : '';
@@ -21,11 +18,9 @@ const baseUrl = currentLang === 'en' ? '/en' : '';
   canonical={`https://pixelliving.co${baseUrl}/gracias`}
 >
   <main>
-    <!-- Hero Section -->
     <section class="pt-32 pb-16 bg-gradient-to-br from-green-50 to-blue-50">
       <div class="container text-center">
         <div class="max-w-4xl mx-auto">
-          <!-- Icono de éxito -->
           <div class="mb-8">
             <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-10 h-10 text-white">
@@ -78,7 +73,6 @@ const baseUrl = currentLang === 'en' ? '/en' : '';
       </div>
     </section>
 
-    <!-- Contacto urgente -->
     <section class="py-16 bg-gray-50">
       <div class="container">
         <div class="max-w-3xl mx-auto text-center">
@@ -106,7 +100,6 @@ const baseUrl = currentLang === 'en' ? '/en' : '';
               <p class="text-green-100">{t('gracias.contacto_urgente.telefono')}</p>
             </a>
 
-            <!-- Email -->
             <a 
               href="mailto:info@pixelliving.co" 
               class="bg-blue-500 hover:bg-blue-600 text-white p-6 rounded-lg transition-colors group"
@@ -124,12 +117,10 @@ const baseUrl = currentLang === 'en' ? '/en' : '';
       </div>
     </section>
 
-    <!-- CTAs finales -->
     <section class="py-16 bg-white">
   <div class="container text-center">
     <div class="max-w-2xl mx-auto">
       <div class="space-y-4">
-        <!-- Botón principal -->
         <a 
           href={`${baseUrl}/#espacios`} 
           class="w-full bg-pixel-blue hover:bg-blue-600 text-white py-4 px-8 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex items-center justify-center group"
@@ -143,7 +134,6 @@ const baseUrl = currentLang === 'en' ? '/en' : '';
           </svg>
         </a>
         
-        <!-- Botones secundarios -->
         <div class="grid grid-cols-2 gap-3">
           <a 
             href={baseUrl || '/'} 
@@ -174,7 +164,6 @@ const baseUrl = currentLang === 'en' ? '/en' : '';
 </Layout>
 
 <style>
-  /* Animaciones sutiles */
   .animate-bounce-subtle {
     animation: bounce-subtle 2s infinite;
   }

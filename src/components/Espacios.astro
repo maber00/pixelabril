@@ -478,7 +478,6 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
 
 <script define:vars={{ lightboxData }}>
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("=== ESPACIOS CON LIGHTBOX RESPONSIVO ===");
   
   window.lightboxData = lightboxData || {};
   
@@ -531,16 +530,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightboxModal = document.getElementById('espacios-lightbox');
   const slideElements = document.querySelectorAll('[data-slide-index]');
   
-  console.log("Elementos encontrados:", {
-    container: !!container,
-    slides: !!slides,
-    prevBtn: !!prevBtn,
-    nextBtn: !!nextBtn,
-    indicators: indicators.length,
-    lightboxModal: !!lightboxModal,
-    slideElements: slideElements.length,
-    lightboxData: Object.keys(window.lightboxData || {})
-  });
+  
 
   if (!container || !slides || !prevBtn || !nextBtn) {
     console.error("❌ Elementos del carrusel no encontrados");
@@ -558,7 +548,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let isMobile = () => window.innerWidth < 768;
 
   function updateCarousel() {
-    console.log("Actualizando carrusel:", { currentIndex, slidesPerView, totalSlides, isMobile: isMobile() });
     
     const containerWidth = slides.parentElement.clientWidth;
     const slideWidth = containerWidth / slidesPerView;
@@ -701,7 +690,6 @@ document.addEventListener('DOMContentLoaded', () => {
       this.thumbPrevBtn = this.modal.querySelector('.thumb-carousel-prev');
       this.thumbNextBtn = this.modal.querySelector('.thumb-carousel-next');
       
-      console.log('✅ Elementos del lightbox responsivo inicializados');
     }
     
     bindEvents() {
@@ -1061,8 +1049,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  console.log("✅ Espacios con lightbox responsivo inicializado completamente");
-  console.log(`📱 Configuración: ${getThumbnailsPerView()} thumbnails por vista`);
+  
   
   window.espaciosDebug = {
     openLightbox: window.openLightbox,
