@@ -1,10 +1,8 @@
 ---
-// Ubicacion.astro - TRADUCIDO
+// Ubicacion.astro 
 
-// IMPORTAR I18N - AÑADIDO
 import { getLanguageFromUrl, t, setCurrentLanguage } from '../i18n/utils/translator';
 
-// Detectar idioma actual - AÑADIDO
 const currentLang = getLanguageFromUrl(Astro.url.pathname);
 setCurrentLanguage(currentLang);
 
@@ -13,7 +11,6 @@ import pixelLogo from '../assets/logo-pixel.svg';
 
 <section id="ubicacion" class="section bg-pixel-blue/5">
   <div class="container mx-20 md:mx-20">
-    <!-- Header - TRADUCIDO -->
     <div class="text-center mb-12">
       <span class="inline-block text-pixel-blue font-semibold text-sm uppercase tracking-wider mb-2">{t('ubicacion.badge')}</span>
       <h2 class="text-4xl md:text-6xl font-normal mb-6">{t('ubicacion.title')} <span class="text-pixel-blue">{t('ubicacion.title_highlight')}</span></h2>
@@ -22,13 +19,10 @@ import pixelLogo from '../assets/logo-pixel.svg';
       </p>
     </div>
 
-    <!-- Grid: Información + Mapa -->
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         
-        <!-- Información de ubicación -->
         <div class="space-y-8">
-          <!-- Conectividad principal -->
           <div class="bg-gray-50 p-6 rounded-lg shadow-md">
             <h3 class="text-xl font-bold mb-4 flex items-center">
                <div class="w-12 h-12  rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
@@ -195,7 +189,6 @@ import pixelLogo from '../assets/logo-pixel.svg';
       </div>
     </div>
 
-    <!-- Beneficio final - TRADUCIDO -->
     <div class="text-center mt-16 p-8 bg-pixel-blue md:mx-20 mx-0 rounded-xl text-white">
       <h3 class="text-2xl md:text-4xl font-normal mb-4">
         {t('ubicacion.cta_final.heading')}

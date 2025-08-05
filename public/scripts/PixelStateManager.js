@@ -61,29 +61,19 @@ class PixelStateManager {
     }
     
     this.isInitialized = true;
-    console.log('🎯 PixelStateManager inicializado', {
-      isMobile: this.config.isMobile,
-      isTouch: this.config.isTouch,
-      connection: this.config.connectionType
-    });
+    
   }
 
-  /**
-   * Detectar capacidades del dispositivo
-   */
+
   detectDeviceCapabilities() {
-    // Detectar tipo de conexión
     this.config.connectionType = this.getConnectionType();
     
-    // Detectar performance del dispositivo
     this.config.isLowEnd = this.isLowEndDevice();
     
-    // Detectar soporte de features
     this.config.supportsIntersectionObserver = 'IntersectionObserver' in window;
     this.config.supportsServiceWorker = 'serviceWorker' in navigator;
     this.config.supportsWebP = this.checkWebPSupport();
     
-    // Ajustar configuraciones según capacidades
     if (this.config.isLowEnd) {
       this.config.loadingDelay = 100;
       this.config.skeletonDuration = 400;
@@ -95,9 +85,6 @@ class PixelStateManager {
     }
   }
 
-  /**
-   * Obtener tipo de conexión
-   */
   getConnectionType() {
     if (!navigator.connection) return 'unknown';
     
@@ -173,41 +160,28 @@ class PixelStateManager {
     }
   }
 
-  /**
-   * Manejar performance lenta
-   */
+ 
   handleSlowPerformance(metric, value) {
-    console.warn(`⚠️ Performance lenta detectada: ${metric} = ${value}ms`);
     
-    // Aplicar optimizaciones automáticas
     if (metric === 'lcp') {
       this.enableLowPerformanceMode();
     }
   }
 
-  /**
-   * Habilitar modo de baja performance
-   */
+  
   enableLowPerformanceMode() {
-    console.log('🐌 Activando modo de baja performance');
     
-    // Reducir animaciones
     document.documentElement.style.setProperty('--animation-duration', '0.1s');
     
-    // Desactivar efectos no críticos
     document.querySelectorAll('.pixel-hover').forEach(el => {
       el.classList.add('no-hover-effects');
     });
     
-    // Simplificar transiciones
     document.body.classList.add('reduced-motion');
   }
 
-  /**
-   * Event listeners globales
-   */
+
   bindGlobalEvents() {
-    // Manejo de errores globales
     window.addEventListener('error', (e) => {
       this.handleGlobalError('javascript', e);
     });
@@ -216,7 +190,6 @@ class PixelStateManager {
       this.handleGlobalError('promise', e);
     });
 
-    // Network status
     window.addEventListener('online', () => {
       this.handleNetworkChange(true);
     });
@@ -225,7 +198,6 @@ class PixelStateManager {
       this.handleNetworkChange(false);
     });
 
-    // Resize para mobile
     window.addEventListener('resize', this.debounce(() => {
       const wasMobile = this.config.isMobile;
       this.config.isMobile = window.innerWidth <= 768;
@@ -245,35 +217,26 @@ class PixelStateManager {
     });
   }
 
-  /**
-   * Inicializar optimizaciones mobile
-   */
+  
   initMobileOptimizations() {
-    console.log('📱 Inicializando optimizaciones mobile');
     
-    // Touch feedback mejorado
     this.setupTouchFeedback();
     
-    // Gestos swipe mejorados
+   
     this.setupSwipeGestures();
     
-    // Scroll optimization
     this.setupScrollOptimization();
     
-    // Reducir motion si está configurado
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       this.enableReducedMotion();
     }
 
-    // iOS specific optimizations
     if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
       this.setupiOSOptimizations();
     }
   }
 
-  /**
-   * Configurar feedback táctil
-   */
+
   setupTouchFeedback() {
     const style = document.createElement('style');
     style.textContent = `
@@ -369,7 +332,6 @@ class PixelStateManager {
       
       target.dispatchEvent(swipeEvent);
       
-      console.log(`👆 Swipe ${direction} detectado (${velocity})`, { distance });
     }
   }
 
@@ -460,7 +422,6 @@ class PixelStateManager {
     this.updateStateUI(componentId, state, data);
     
     // Logging para debug
-    console.log(`🎯 Estado: ${componentId} → ${state}`, data);
   }
 
   /**
@@ -810,7 +771,6 @@ class PixelStateManager {
    * Manejar cambio de viewport
    */
   handleViewportChange() {
-    console.log('📱 Viewport cambió:', { isMobile: this.config.isMobile });
     
     // Re-inicializar optimizaciones mobile
     if (this.config.isMobile) {
@@ -843,7 +803,6 @@ class PixelStateManager {
     this.loadingElements.clear();
     this.errorHandlers.clear();
     this.isInitialized = false;
-    console.log('🔴 PixelStateManager destruido');
   }
 }
 
@@ -853,4 +812,3 @@ window.PixelStateManager = new PixelStateManager();
 // Alias para facilidad de uso
 window.PSM = window.PixelStateManager;
 
-console.log('🎯 PixelStateManager script cargado');

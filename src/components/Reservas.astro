@@ -354,50 +354,42 @@ document.addEventListener('DOMContentLoaded', function() {
       const honeypotValue = elementos.campos.honeypot?.value?.trim() || '';
       
       if (honeypotValue !== '') {
-        console.log('🚫 Spam detectado - honeypot lleno:', honeypotValue);
         return false;
       }
       
       return true;
     }
     
-    // 2. Validar tiempo de envío (anti-bot)
     static validarTiempo(): boolean {
       const tiempoTranscurrido = Date.now() - this.tiempoInicioFormulario;
       
       if (tiempoTranscurrido < CONFIG.TIEMPO_MINIMO_ENVIO) {
-        console.log('🚫 Spam detectado - envío muy rápido:', tiempoTranscurrido + 'ms');
         return false;
       }
       
       return true;
     }
     
-    // 3. Validar patrones sospechosos
     static validarPatrones(datos: DatosFormulario): boolean {
       const textoCompleto = `${datos.nombre} ${datos.email} ${datos.mensaje}`.toLowerCase();
       
-      // Patrones sospechosos comunes - SOLO RegExp
       const patronesSpam: RegExp[] = [
         /\b(viagra|cialis|casino|loan|credit|bitcoin|crypto)\b/i,
         /\b(click here|visit now|buy now|limited time)\b/i,
-        /http[s]?:\/\//i // URLs en nombre o mensaje
+        /http[s]?:\/\//i // 
       ];
       
-      // Validar caracteres extraños en email por separado
       const emailInvalido = /[^\w\s@.-]/.test(datos.email);
       
       const esSpam = patronesSpam.some(patron => patron.test(textoCompleto)) || emailInvalido;
       
       if (esSpam) {
-        console.log('🚫 Spam detectado - patrones sospechosos');
         return false;
       }
       
       return true;
     }
     
-    // 4. Validación completa
     static validarCompleto(datos: DatosFormulario): boolean {
       return (
         this.validarHoneypot() &&
@@ -407,7 +399,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // ===== UTILIDADES DE MENSAJES =====
   class MensajeManager {
     static mostrar(tipo: TipoMensaje, mensaje: string): void {
       if (!elementos.messageContainer) return;
@@ -452,7 +443,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // ===== VALIDADOR DE CAMPOS =====
   class ValidadorCampos {
     static validarNombre(valor: string): string | null {
       const nombre = valor.trim();
@@ -590,7 +580,6 @@ document.addEventListener('DOMContentLoaded', function() {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
       
-      console.log('✅ Email enviado exitosamente a:', CONFIG.EMAIL_DESTINO);
     }
     
     static crearMensajeWhatsApp(datos: DatosFormulario): string {
@@ -620,12 +609,10 @@ ${datos.mensaje || 'Ninguno'}
     static abrirWhatsAppControlado(mensaje: string, esEmergencia: boolean = false): void {
       // Solo abrir si es emergencia O si el usuario confirma
       if (esEmergencia) {
-        console.log('🚨 Abriendo WhatsApp de emergencia');
         const whatsappURL = `https://wa.me/${CONFIG.WHATSAPP_NUMERO}?text=${encodeURIComponent(mensaje)}`;
         window.open(whatsappURL, '_blank');
       } else {
         // Para envíos normales, mostrar confirmación
-        console.log('📱 WhatsApp programado - esperando confirmación del usuario');
         setTimeout(() => {
           if (confirm('¿Quieres abrir WhatsApp para continuar la conversación?')) {
             const whatsappURL = `https://wa.me/${CONFIG.WHATSAPP_NUMERO}?text=${encodeURIComponent(mensaje)}`;
@@ -658,7 +645,6 @@ ${datos.mensaje || 'Ninguno'}
       const keyboardEvent = e as KeyboardEvent;
       if (keyboardEvent.key === 'Enter' && campo.tagName !== 'TEXTAREA' && campo.tagName !== 'SELECT') {
         e.preventDefault();
-        console.log('⚠️ Enter bloqueado en campo de texto - usar botón submit');
       }
     });
   });
@@ -693,7 +679,6 @@ ${datos.mensaje || 'Ninguno'}
     
     // ✅ PREVENIR MÚLTIPLES ENVÍOS
     if (formularioSubmitido) {
-      console.log('⚠️ Formulario ya enviado, ignorando nuevo intento');
       return;
     }
     
@@ -740,7 +725,6 @@ ${datos.mensaje || 'Ninguno'}
     try {
       // Verificar si ya se está enviando
       if (enviandoFormulario) {
-        console.log('⚠️ Formulario ya se está enviando, ignorando click adicional');
         return;
       }
       
@@ -761,7 +745,6 @@ ${datos.mensaje || 'Ninguno'}
         mensaje: elementos.campos.mensaje.value.trim()
       };
       
-      console.log('📋 Procesando datos:', datos);
       
       // ✅ ENVIAR EMAIL (CON ANTI-SPAM)
       await EnviadorFormulario.enviarEmail(datos);

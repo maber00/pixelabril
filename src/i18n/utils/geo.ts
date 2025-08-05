@@ -18,13 +18,11 @@ export type Language = 'es' | 'en' | 'zh';
 export async function detectUserLanguage(): Promise<Language> {
   const savedPreference = getSavedLanguagePreference();
   if (savedPreference) {
-    console.log('🌍 Idioma desde preferencia guardada:', savedPreference);
     return savedPreference;
   }
 
   const todayDetection = getTodayDetection();
   if (todayDetection) {
-    console.log('🌍 Idioma desde detección de hoy:', todayDetection);
     return todayDetection;
   }
 
@@ -37,14 +35,11 @@ export async function detectUserLanguage(): Promise<Language> {
     
     saveTodayDetection(language, country);
     
-    console.log('🌍 Idioma detectado por IP:', language, 'País:', country);
     return language;
   } catch (error) {
     console.warn('⚠️ Error en detección geográfica:', error);
     
-    // 4. Fallback a navegador
     const browserLang = getBrowserLanguage();
-    console.log('🌍 Idioma desde navegador:', browserLang);
     return browserLang;
   }
 }
@@ -106,7 +101,6 @@ export function saveLanguagePreference(lang: Language): void {
   
   try {
     localStorage.setItem(STORAGE_KEY, lang);
-    console.log('💾 Preferencia de idioma guardada:', lang);
   } catch (error) {
     console.error('❌ Error guardando preferencia:', error);
   }
@@ -176,7 +170,6 @@ export function clearLanguageData(): void {
   try {
     localStorage.removeItem(STORAGE_KEY);
     localStorage.removeItem(DETECTION_STORAGE_KEY);
-    console.log('🗑️ Datos de idioma limpiados');
   } catch (error) {
     console.error('❌ Error limpiando datos:', error);
   }

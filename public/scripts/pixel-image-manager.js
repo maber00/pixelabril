@@ -19,7 +19,6 @@ class PixelImageManager {
   }
 
   init() {
-    console.log('🖼️ Inicializando PixelImageManager...');
     this.setupLazyLoading();
     this.setupImageOptimization();
   }
@@ -70,4 +69,3 @@ if (document.readyState === 'loading') {
   window.PIM = new PixelImageManager();
 }
 
-console.log('✅ PixelImageManager (LIMPIO) cargado');

@@ -1,13 +1,10 @@
 ---
-//src/components/Espacios.astro - TRADUCIDO
-// IMPORTAR I18N - AÑADIDO
+//src/components/Espacios.astro
 import { getLanguageFromUrl, t, setCurrentLanguage } from '../i18n/utils/translator';
 
-// Detectar idioma actual - AÑADIDO
 const currentLang = getLanguageFromUrl(Astro.url.pathname);
 setCurrentLanguage(currentLang);
 
-// Importar el componente LightboxModal
 import LightboxModal from '../components/LightboxModal.astro';
 
 import iconoCama from '../assets/icoos_24-Breakfast.svg'; 
@@ -17,7 +14,6 @@ import iconoWifi from '../assets/icoos_18-Key.svg';
 import iconoServicios from '../assets/icoos_22-Air condition.svg';
 import iconoPrivado from '../assets/icoos_16-Bed.svg';
 
-// Definición de tipos
 interface Estudio {
   id: string;
   nombre: string;
@@ -35,7 +31,6 @@ interface EstudiosRecord {
   [key: string]: Estudio;
 }
 
-// Estudios completos con datos reales del proyecto
 const estudiosCompletos: EstudiosRecord = {
   'jade': {
     id: 'jade',
@@ -721,7 +716,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     
     open(estudioId, imageIndex = 0) {
-      console.log('🎯 Abriendo lightbox responsivo:', { estudioId, imageIndex });
       
       const estudioData = this.lightboxData[estudioId];
       if (!estudioData) {
@@ -744,7 +738,6 @@ document.addEventListener('DOMContentLoaded', () => {
       this.updateImage();
       this.show();
       
-      console.log('✅ Lightbox responsivo abierto con', this.currentImages.length, 'imágenes');
     }
     
     close() {
@@ -752,7 +745,6 @@ document.addEventListener('DOMContentLoaded', () => {
       this.modal?.classList.remove('flex');
       document.body.style.overflow = '';
       releaseFocusTrap();
-      console.log('🚪 Lightbox responsivo cerrado');
     }
     
     show() {
@@ -972,11 +964,6 @@ document.addEventListener('DOMContentLoaded', () => {
         this.currentEstudioId,
         estudioData ? estudioData.nombre : 'Estudio seleccionado'
       );
-      
-      console.log('📤 Evento estudioSeleccionado enviado:', {
-        estudioId: this.currentEstudioId,
-        estudioNombre: estudioData?.nombre
-      });
     }
     
     scrollToReservas() {
@@ -986,7 +973,6 @@ document.addEventListener('DOMContentLoaded', () => {
           behavior: 'smooth',
           block: 'start'
         });
-        console.log('⬇️ Scroll a reservas completado');
       }
     }
   }
@@ -1004,7 +990,6 @@ document.addEventListener('DOMContentLoaded', () => {
       e.stopPropagation();
       const estudioId = btn.getAttribute('data-estudio-id');
       if (estudioId && window.openLightbox) {
-        console.log("🎯 Abriendo galería:", estudioId);
         window.openLightbox(estudioId, 0);
       }
     });
@@ -1018,7 +1003,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const imgIndex = parseInt(thumb.getAttribute('data-img-index') || '0');
       if (estudioId && window.openLightbox) {
         const lightboxIndex = imgIndex === -1 ? 0 : imgIndex + 1;
-        console.log("🎯 Abriendo thumbnail:", { estudioId, imgIndex, lightboxIndex });
         window.openLightbox(estudioId, lightboxIndex);
       }
     });
@@ -1036,7 +1020,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.target !== img) return;
       const estudioId = img.getAttribute('data-estudio-id');
       if (estudioId && window.openLightbox) {
-        console.log("🎯 Abriendo imagen principal:", estudioId);
         window.openLightbox(estudioId, 0);
       }
     });

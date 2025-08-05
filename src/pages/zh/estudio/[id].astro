@@ -373,51 +373,64 @@ const whatsappMessage = t('estudio_detalle.acciones.whatsapp_mensaje').replace('
     </section>
 
     <!-- Otros estudios -->
-    <section class="py-16">
-      <div class="container">
-        <h2 class="text-3xl font-bold mb-8 text-center">{t('estudio_detalle.otros_estudios.titulo')}</h2>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 px-0 lg:px-40 gap-6">
-          {validStudios
-            .filter(e => e !== studioId)
-            .slice(0, 3)
-            .filter((estudioId: string) => {
-              const otroEstudio = getStudioData(estudioId, currentLang);
-              return otroEstudio && otroEstudio.imagen;
-            })
-            .map((estudioId: string) => {
-              const otroEstudio = getStudioData(estudioId, currentLang)!;
-              const otroColors = colorClasses[estudioId] as typeof colors;
-              return (
-                <div class="bg-white rounded-md overflow-hidden shadow-lg border-2 border-gray-200 transform transition duration-300 hover:-translate-y-2 hover:shadow-xl">
-                  <div class="relative">
-                    <img src={otroEstudio.imagen} alt={otroEstudio.nombre} class="w-full h-48 object-cover" />
-                    <div class={`absolute top-4 right-4 bg-white py-1 px-3 rounded-md shadow-md border ${otroColors.border}`}>
-                      <span class="font-medium text-sm">{otroEstudio.metros}</span>
-                    </div>
-                  </div>
-                  
-                  <div class="p-4">
-                    <h3 class={`text-xl font-bold mb-2 ${otroColors.text}`}>{otroEstudio.nombre}</h3>
-                    <p class="text-gray-600 mb-3 line-clamp-2">{otroEstudio.descripcion}</p>
-                    
-                    <div class="flex justify-between items-center">
-                      <span class={`text-lg font-bold ${otroColors.text}`}>{otroEstudio.precio}</span>
-                      <a href={`/en/${estudioId}`} class={`${otroColors.text} font-medium inline-flex items-center group`}>
-                        {t('estudio_detalle.otros_estudios.ver_detalles')}
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-1 transform transition-transform group-hover:translate-x-1">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
+   <section class="py-16">
+  <div class="container">
+    <h2 class="text-3xl font-bold mb-8 text-center">{t('estudio_detalle.otros_estudios.titulo')}</h2>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 px-0 lg:px-40 gap-6">
+      {validStudios
+        .filter(e => e !== studioId)
+        .slice(0, 3)
+        .filter((estudioId: string) => {
+          const otroEstudio = getStudioData(estudioId, currentLang);
+          return otroEstudio && otroEstudio.imagen;
+        })
+        .map((estudioId: string) => {
+          const otroEstudio = getStudioData(estudioId, currentLang)!;
+          const otroColors = colorClasses[estudioId] as typeof colors;
+          
+          // 🎯 LÓGICA INTELIGENTE: Auto-detecta idioma desde URL actual
+          const urlActual = Astro.url.pathname;
+          const idiomaDetectado = urlActual.startsWith('/en') ? 'en' : 
+                                 urlActual.startsWith('/zh') ? 'zh' : 'es';
+          
+          // ⭐ GENERAR URL CORRECTA AUTOMÁTICAMENTE
+          const enlaceEstudio = idiomaDetectado === 'es' 
+            ? `/estudio/${estudioId}` 
+            : `/${idiomaDetectado}/${estudioId}`;
+          
+          return (
+            <div class="bg-white rounded-md overflow-hidden shadow-lg border-2 border-gray-200 transform transition duration-300 hover:-translate-y-2 hover:shadow-xl">
+              <div class="relative">
+                <img src={otroEstudio.imagen} alt={otroEstudio.nombre} class="w-full h-48 object-cover" />
+                <div class={`absolute top-4 right-4 bg-white py-1 px-3 rounded-md shadow-md border ${otroColors.border}`}>
+                  <span class="font-medium text-sm">{otroEstudio.metros}</span>
                 </div>
-              );
-            })
-          }
-        </div>
-      </div>
-    </section>
+              </div>
+              
+              <div class="p-4">
+                <h3 class={`text-xl font-bold mb-2 ${otroColors.text}`}>{otroEstudio.nombre}</h3>
+                <p class="text-gray-600 mb-3 line-clamp-2">{otroEstudio.descripcion}</p>
+                
+                <div class="flex justify-between items-center">
+                  <span class={`text-lg font-bold ${otroColors.text}`}>{otroEstudio.precio}</span>
+                  
+                  <!-- ✅ URL AUTO-GENERADA: Detecta idioma automáticamente -->
+                  <a href={`/zh/estudio/${estudioId}`}class={`${otroColors.text} font-medium inline-flex items-center group`}>
+                    {t('estudio_detalle.otros_estudios.ver_detalles')}
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-1 transform transition-transform group-hover:translate-x-1">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
   </main>
 
   <!-- Lightbox modal -->
@@ -441,13 +454,17 @@ const whatsappMessage = t('estudio_detalle.acciones.whatsapp_mensaje').replace('
   }
 }}>
 function getReserveButtonText(lang) {
-    return lang === 'en' ? 'Reserve now' : 'Reservar ahora';
+    switch(lang) {
+        case 'en': return 'Reserve now';
+        case 'zh': return '立即预订';
+        case 'es': 
+        default: return 'Reservar ahora';
+    }
 }
 
 window.lightboxData = lightboxData || {};
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 Initializing studio page (EN):', estudioNombre);
     
     // Anti-spam configuration
     const TIEMPO_INICIO = Date.now();
@@ -458,7 +475,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function repairLightboxReserveButton() {
         const modal = document.getElementById('estudio-lightbox');
         if (!modal) {
-            console.log('⚠️ Lightbox modal not found');
             return;
         }
         
@@ -479,13 +495,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const button = modal.querySelector(selector);
                 if (button) {
                     foundButton = button;
-                    console.log('✅ Reserve button found:', selector);
                     break;
                 }
             }
             
             if (!foundButton) {
-                console.log('❌ Reserve button not found');
                 return;
             }
 
@@ -510,7 +524,6 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         e.stopPropagation();
         
-        console.log(`🎯 Lightbox "${textoBoton}" clicked!`);
         
         // Close the lightbox
         modal.classList.add('hidden');
@@ -528,7 +541,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 cancelable: true
             });
             document.dispatchEvent(event);
-            console.log('📤 Studio selected event dispatched');
         }, 100);
         
         // Smooth scroll to reservation section
@@ -545,14 +557,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     behavior: 'smooth',
                     block: 'start'
                 });
-                console.log('⬇️ Scroll to reservation completed');
             } else {
-                console.log('⚠️ Reservation section not found');
             }
         }, 300);
     });
     
-    console.log(`✅ Reserve button fix applied: "${textoBoton}"`);
 }
         
         // Apply fix immediately
@@ -588,14 +597,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const honeypotField = document.getElementById('website_url_estudio');
         const honeypotValue = honeypotField ? honeypotField.value.trim() : '';
         if (honeypotValue !== '') {
-            console.log('🚫 Spam detected - honeypot filled');
             return false;
         }
         
         // Validate timing
         const timeElapsed = Date.now() - TIEMPO_INICIO;
         if (timeElapsed < TIEMPO_MINIMO_ENVIO) {
-            console.log('🚫 Spam detected - submission too fast');
             return false;
         }
         
@@ -608,7 +615,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
         
         if (spamPatterns.some(pattern => pattern.test(fullText))) {
-            console.log('🚫 Spam detected - suspicious patterns');
             return false;
         }
         
@@ -1017,12 +1023,10 @@ ${datos.expectativas}
         }
     });
     
-    console.log('✅ Sistema configurado para:', estudioNombre);
 });
 </script>
 
 <style>
-/* Estilos responsive para el lightbox */
 .lightbox-thumbnail {
   aspect-ratio: 1;
   flex-shrink: 0;

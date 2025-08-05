@@ -194,13 +194,10 @@ function getLanguageIcon(lang) {
       return;
     }
     
-    console.log('🌐 Cambiando idioma a:', lang);
     
     try { 
       localStorage.setItem('pixel_language_preference', lang); 
-      console.log('💾 Preferencia guardada:', lang);
     } catch (error) {
-      console.warn('⚠️ Error guardando preferencia:', error);
     }
     
     // Añadir animación
@@ -239,7 +236,6 @@ function getLanguageIcon(lang) {
     const href = link.getAttribute('href');
     
     if (lang && href) {
-      console.log('🔗 Click en idioma:', lang, 'URL:', href);
       changeLang(href, lang);
     }
   });
@@ -251,7 +247,6 @@ function getLanguageIcon(lang) {
     const details = selector.querySelector('details');
     if (window.innerWidth >= 768 && details && details.open) {
       details.open = false;
-      console.log('📱 Cerrando dropdown por cambio a desktop');
     }
   });
 
@@ -270,7 +265,6 @@ function getLanguageIcon(lang) {
       if (link) {
         const href = link.getAttribute('href');
         if (href) {
-          console.log('⌨️ Atajo de teclado - cambiando a:', nextLang);
           changeLang(href, nextLang);
         }
       }
@@ -290,7 +284,6 @@ function getLanguageIcon(lang) {
       // Si el click no fue dentro del selector, cerrar dropdown
       if (!selector.contains(target)) {
         details.open = false;
-        console.log('📱 Cerrando dropdown por click fuera');
       }
     }
   });

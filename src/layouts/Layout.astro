@@ -377,7 +377,6 @@ const finalStructuredData = structuredData || defaultStructuredData;
 			
 			window.pixelTrack = {
 				formStart: function(formType) {
-					console.log('📝 Form Start:', formType);
 					if (typeof gtag === 'function') {
 						gtag('event', 'begin_checkout', {
 							currency: 'COP',
@@ -390,7 +389,6 @@ const finalStructuredData = structuredData || defaultStructuredData;
 				},
 				
 				formComplete: function(formType) {
-					console.log('✅ Form Complete:', formType);
 					if (typeof gtag === 'function') {
 						gtag('event', 'purchase', {
 							transaction_id: 'pixel_' + Date.now(),
@@ -404,7 +402,6 @@ const finalStructuredData = structuredData || defaultStructuredData;
 				},
 				
 				contact: function(method) {
-					console.log('📞 Contact:', method);
 					if (typeof gtag === 'function') {
 						gtag('event', 'contact', {
 							contact_method: method,
@@ -417,7 +414,6 @@ const finalStructuredData = structuredData || defaultStructuredData;
 				},
 				
 				studioView: function(studioName) {
-					console.log('🏠 Studio View:', studioName);
 					if (typeof gtag === 'function') {
 						gtag('event', 'view_item', {
 							currency: 'COP',
@@ -455,11 +451,9 @@ const finalStructuredData = structuredData || defaultStructuredData;
 						const link = e.target.closest('a');
 						if (link && link.href) {
 							if (link.href.includes('wa.me') || link.href.includes('whatsapp')) {
-								console.log('📱 Auto-tracking WhatsApp click');
 								if (window.pixelTrack) window.pixelTrack.contact('whatsapp');
 							}
 							else if (link.href.includes('tel:')) {
-								console.log('☎️ Auto-tracking Phone click');
 								if (window.pixelTrack) window.pixelTrack.contact('phone');
 							}
 						}
@@ -477,7 +471,6 @@ const finalStructuredData = structuredData || defaultStructuredData;
 						
 						if (!form.hasAttribute('data-tracking-added')) {
 							form.addEventListener('submit', function(e) {
-								console.log('📝 Auto-tracking form submit:', formType);
 								if (window.pixelTrack) window.pixelTrack.formStart(formType);
 							});
 							form.setAttribute('data-tracking-added', 'true');

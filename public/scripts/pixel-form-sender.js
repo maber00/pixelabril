@@ -28,7 +28,6 @@ class PixelFormSender {
   }
 
   init() {
-    console.log('📤 Inicializando PixelFormSender...');
     this.setupFormListeners();
   }
 
@@ -42,7 +41,6 @@ class PixelFormSender {
   async handleValidatedForm(detail) {
     const { formType, formObject, formElement } = detail;
     
-    console.log(`📩 Procesando formulario tipo: ${formType}`, formObject);
 
     // Iniciar timeout y sistema de errores
     const formId = formElement.id;
@@ -72,7 +70,6 @@ class PixelFormSender {
       this.handleSendSuccess(formElement, formType);
       
     } catch (error) {
-      console.error('❌ Error al enviar formulario:', error);
       this.handleSendError(formElement, error);
     } finally {
       // Limpiar timeout
@@ -120,9 +117,7 @@ class PixelFormSender {
     // 2. Enviar a Formspree (backup)
     try {
       await this.sendToFormspree('reservas', data);
-      console.log('✅ Enviado a Formspree como backup');
     } catch (error) {
-      console.warn('⚠️ Error en Formspree backup:', error);
     }
 
     // 3. Mostrar opciones al usuario
@@ -157,9 +152,7 @@ Enviado desde pixelliving.co 🌟`;
     
     try {
       await this.sendToFormspree('contacto', data);
-      console.log('✅ Contacto enviado a Formspree');
     } catch (error) {
-      console.warn('⚠️ Error en Formspree:', error);
     }
 
     this.showSendOptions(formElement, whatsappMessage, 'consulta');
@@ -187,9 +180,7 @@ Enviado desde pixelliving.co 🌟`;
     
     try {
       await this.sendToFormspree('estudio', data);
-      console.log('✅ Formulario de estudio enviado a Formspree');
     } catch (error) {
-      console.warn('⚠️ Error en Formspree:', error);
     }
 
     this.showSendOptions(formElement, whatsappMessage, 'estudio específico');
@@ -405,7 +396,6 @@ Enviado desde pixelliving.co 🌟`;
 
   // ===== MANEJO DE ERRORES =====
   handleSendError(formElement, error) {
-    console.error('❌ Error detallado:', error);
     
     let errorMessage = 'Error al procesar el formulario. ';
     
@@ -500,4 +490,3 @@ if (document.readyState === 'loading') {
   window.PFS = new PixelFormSender();
 }
 
-console.log('✅ PixelFormSender cargado y listo');

@@ -20,14 +20,12 @@ class PixelDebugTools {
   }
 
   init() {
-    console.log('🐛 Inicializando Pixel Debug Tools...');
     
     this.setupDebugUI();
     this.setupKeyboardShortcuts();
     this.setupConsoleHelpers();
     this.attachToSystemEvents();
     
-    console.log('✅ Debug Tools listos - Presiona Ctrl+Shift+D para abrir panel');
   }
 
   // ===== DEBUG UI =====
@@ -298,25 +296,20 @@ class PixelDebugTools {
   showDebugPanel() {
     this.debugUI.classList.remove('hidden');
     this.updateDebugContent();
-    console.log('🐛 Panel de debug abierto');
   }
 
   hideDebugPanel() {
     this.debugUI.classList.add('hidden');
   }
 
-  // ===== CONSOLE HELPERS =====
   setupConsoleHelpers() {
-    // Agregar helpers globales para testing rápido
     window.debugTools = this;
     
-    // Shortcuts de consola
     window.testForms = () => this.runFormTests();
     window.testValidation = () => this.testFormValidation();
     window.systemStatus = () => console.table(window.PIXEL_SYSTEM?.getSystemStatus?.());
     window.pixelConfig = () => console.log(window.PIXEL_CONFIG);
     
-    console.log('🔧 Console helpers agregados: testForms(), testValidation(), systemStatus(), pixelConfig()');
   }
 
   // ===== EVENT MONITORING =====
@@ -332,14 +325,12 @@ class PixelDebugTools {
 
     eventsToMonitor.forEach(eventName => {
       document.addEventListener(eventName, (e) => {
-        console.log(`📡 Evento detectado: ${eventName}`, e.detail);
       });
     });
   }
 
   // ===== TESTING FUNCTIONS =====
   async runAllTests() {
-    console.group('🧪 Ejecutando Suite Completa de Tests');
     
     this.testResults = [];
     
@@ -356,18 +347,15 @@ class PixelDebugTools {
       try {
         const result = await test.test();
         this.testResults.push({ name: test.name, success: true, result });
-        console.log(`✅ ${test.name}: PASS`);
       } catch (error) {
         this.testResults.push({ name: test.name, success: false, error: error.message });
-        console.error(`❌ ${test.name}: FAIL -`, error.message);
       }
     }
 
     const passedTests = this.testResults.filter(r => r.success).length;
     const totalTests = this.testResults.length;
     
-    console.log(`📊 Resultados: ${passedTests}/${totalTests} tests pasaron`);
-    console.groupEnd();
+    
     
     this.displayTestResults();
     
@@ -375,26 +363,21 @@ class PixelDebugTools {
   }
 
   async runFormTests() {
-    console.group('📋 Tests de Formularios');
     
     await this.testFormsDetection();
     await this.testValidationSystem();
     await this.testFormSubmission();
     
-    console.groupEnd();
   }
 
   async runAccessibilityTests() {
-    console.group('♿ Tests de Accesibilidad');
     
     await this.testAccessibility();
     await this.testKeyboardNavigation();
     await this.testScreenReaderSupport();
     
-    console.groupEnd();
   }
 
-  // ===== INDIVIDUAL TESTS =====
   testSystemInitialization() {
     if (!window.PIXEL_SYSTEM) throw new Error('PIXEL_SYSTEM no disponible');
     if (!window.PIXEL_SYSTEM.isInitialized) throw new Error('Sistema no inicializado');
@@ -458,11 +441,9 @@ class PixelDebugTools {
 
   // ===== SIMULATION FUNCTIONS =====
   async testFormValidation() {
-    console.log('🧪 Probando validación de formularios...');
     
     const form = document.querySelector('form[data-form-type]');
     if (!form) {
-      console.warn('No hay formularios para probar');
       return;
     }
 
@@ -478,24 +459,18 @@ class PixelDebugTools {
       }, index * 500);
     });
 
-    console.log(`✅ Test de validación iniciado en ${inputs.length} campos`);
   }
 
   async testFormSubmission() {
-    console.log('📤 Probando envío de formularios...');
     
     const form = document.querySelector('form[data-form-type]');
     if (!form) {
-      console.warn('No hay formularios para probar');
       return;
     }
 
-    // Llenar formulario con datos de prueba
     this.fillFormWithTestData(form);
     
-    // Simular envío después de un delay
     setTimeout(() => {
-      console.log('📤 Simulando envío...');
       const submitBtn = form.querySelector('[type="submit"]');
       if (submitBtn) {
         submitBtn.click();
@@ -504,7 +479,6 @@ class PixelDebugTools {
   }
 
   simulateFormError() {
-    console.log('❌ Simulando error de formulario...');
     
     const form = document.querySelector('form[data-form-type]');
     if (!form && window.PEM) {
@@ -532,7 +506,6 @@ class PixelDebugTools {
       }
     });
 
-    console.log('✅ Formulario llenado con datos de prueba');
   }
 
   // ===== UTILITY FUNCTIONS =====
@@ -556,11 +529,9 @@ class PixelDebugTools {
   }
 
   async reinitializeSystem() {
-    console.log('🔄 Reinicializando sistema...');
     
     if (window.PIXEL_SYSTEM?.reinitialize) {
       await window.PIXEL_SYSTEM.reinitialize();
-      console.log('✅ Sistema reinicializado');
     } else {
       console.warn('Reinicialización no disponible');
     }
@@ -569,7 +540,6 @@ class PixelDebugTools {
   clearLogs() {
     if (window.pixelLogs) {
       window.pixelLogs = [];
-      console.log('🗑️ Logs limpiados');
     }
   }
 

@@ -609,11 +609,11 @@
   }
 },
 
-  "estudios": {
+ "estudios": {
     "jade": {
       "nombre": "Jade Studio",
       "descripcion_1": "Bright space with green touches that evoke nature and tranquility.",
-      "descripcion": "Bright space with private balcony. Private kitchen, independent work area and auxiliary room. Perfect for long stays with large windows and clear views. All included: wifi, utilities, Smart TV. No guarantor required.",
+      "descripcion": "Bright space with private balcony. Private kitchen, independent work area and auxiliary room. Perfect for long stays with large windows and clear views. Everything included: wifi, services, Smart TV. No guarantor needed.",
       "metros": "29m²",
       "imagen": "/images/estudios/jade/pixel-jade-room-004.webp",
       "precio": "From $2,650,000 COP",
@@ -630,8 +630,8 @@
         "Auxiliary room", 
         "Private balcony to enjoy the outdoors",
         "Double bed",
-        "Private kitchen with everything needed",
-        "Unlimited high-speed wifi",
+        "Private kitchen with everything you need",
+        "Unlimited high-speed WiFi",
         "Smart TV",
         "Washing machine inside the apartment",
         "Private bathroom",
@@ -644,9 +644,9 @@
     "zian": {
       "nombre": "Zian Studio", 
       "descripcion_1": "Blue colors that convey calm and concentration, ideal for remote work.",
-      "descripcion": "Designed for remote professionals with optimized work area. Private kitchen, spacious desk and environment that favors concentration. Ideal for combining life and work with style. All included: wifi, utilities, furniture. No guarantor required.",
-      "imagen": "/images/estudios/zian/pixel-zian-room-007.webp",
+      "descripcion": "Designed for remote professionals with optimized work area. Private kitchen, large desk and environment that favors concentration. Perfect combination of life and work with style. Everything included: wifi, services, furniture. No guarantor needed.",
       "metros": "29m²",
+      "imagen":  "/images/estudios/zian/pixel-zian-room-009.webp", 
       "precio": "From $2,650,000 COP",
       "galeria": [
         "/images/estudios/zian/pixel-zian-room-001.webp", 
@@ -655,7 +655,7 @@
         "/images/estudios/zian/pixel-zian-room-004.webp", 
         "/images/estudios/zian/pixel-zian-room-005.webp",
         "/images/estudios/zian/pixel-zian-room-006.webp", 
-        "/images/estudios/zian/pixel-zian-room-009.webp", 
+        "/images/estudios/zian/pixel-zian-room-007.webp", 
         "/images/estudios/zian/pixel-zian-room-010.webp"
       ],
       "caracteristicas": [
@@ -663,8 +663,8 @@
         "Auxiliary room", 
         "Private balcony to enjoy the outdoors",
         "Double bed",
-        "Private kitchen with everything needed",
-        "Unlimited high-speed wifi",
+        "Private kitchen with everything you need",
+        "Unlimited high-speed WiFi",
         "Smart TV",
         "Washing machine inside the apartment",
         "Private bathroom",
@@ -677,12 +677,11 @@
     "indigo": {
       "nombre": "Indigo Studio",
       "descripcion_1": "Purple tones that inspire creativity and reflection in a cozy environment.",
-      "descripcion": "Our most spacious studio apartment with living area separated from the rest area. Private kitchen, private balcony and cozy environment for creatives and entrepreneurs. All included, no guarantor required.",
+      "descripcion": "Our most spacious studio apartment with living area separated from rest area. Private kitchen, private balcony and cozy environment for creatives and entrepreneurs. Everything included, no guarantor needed.",
+      "metros": "29m²",
       "imagen": "/images/estudios/indigo/pixel-indigo-room-001.webp",
-      "metros": "29m²", 
-      "precio": "From $2,650,000 COP",
-      "galeria": [
-        "/images/estudios/indigo/pixel-indigo-room-001.webp", 
+      "precio": "From $3,100,000 COP",
+      "galeria": [ 
         "/images/estudios/indigo/pixel-indigo-room-002.webp", 
         "/images/estudios/indigo/pixel-indigo-room-003.webp", 
         "/images/estudios/indigo/pixel-indigo-room-004.webp", 
@@ -704,8 +703,8 @@
         "Auxiliary room", 
         "Private balcony to enjoy the outdoors",
         "Double bed",
-        "Private kitchen with everything needed",
-        "Unlimited high-speed wifi",
+        "Private kitchen with everything you need",
+        "Unlimited high-speed WiFi",
         "Smart TV",
         "Washing machine inside the apartment",
         "Private bathroom",

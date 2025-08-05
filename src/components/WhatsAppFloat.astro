@@ -20,7 +20,6 @@
       />
     </svg>
     
-    <!-- Tooltip opcional -->
     <span class="whatsapp-tooltip">
       ¡Escríbenos!
     </span>
@@ -68,7 +67,6 @@
     transform: rotate(10deg) scale(1.1);
   }
 
-  /* Tooltip */
   .whatsapp-tooltip {
     position: absolute;
     right: 70px;
@@ -192,11 +190,9 @@
 </style>
 
 <script>
-  // Agregar efecto de pulso ocasional
   const whatsappButton = document.querySelector('.whatsapp-button');
   
   if (whatsappButton) {
-    // Pulso cada 10 segundos
     setInterval(() => {
       whatsappButton.classList.add('notification');
       setTimeout(() => {
@@ -204,10 +200,7 @@
       }, 3000);
     }, 10000);
     
-    // Tracking de clicks (opcional)
     whatsappButton.addEventListener('click', () => {
-      // Aquí puedes agregar analytics si quieres
-      console.log('WhatsApp button clicked');
     });
   }
 </script>

@@ -2,17 +2,14 @@
 // Este script se debe integrar tanto en Espacios.astro como en las páginas individuales de estudio
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('🎯 Inicializando Lightbox Responsivo Mejorado');
   
-  // ===== CONFIGURACIÓN RESPONSIVA =====
   const getThumbnailsPerView = () => {
     const width = window.innerWidth;
-    if (width < 641) return 5;        // Móvil: 5 thumbnails
-    if (width < 1025) return 6;       // Tablet: 6 thumbnails  
-    return 8;                         // Desktop: 8 thumbnails
+    if (width < 641) return 5;        
+    if (width < 1025) return 6;       
+    return 8;                         
   };
   
-  // ===== CLASE LIGHTBOX RESPONSIVO =====
   class ResponsiveLightbox {
     constructor(modalId, lightboxData) {
       this.modalId = modalId;
@@ -30,11 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeElements() {
       this.modal = document.getElementById(this.modalId);
       if (!this.modal) {
-        console.error(`❌ Modal ${this.modalId} no encontrado`);
         return;
       }
       
-      // Elementos principales
       this.image = this.modal.querySelector('.lightbox-image');
       this.title = this.modal.querySelector('.lightbox-title');
       this.closeBtn = this.modal.querySelector('.lightbox-close');
@@ -50,12 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
       this.thumbPrevBtn = this.modal.querySelector('.thumb-carousel-prev');
       this.thumbNextBtn = this.modal.querySelector('.thumb-carousel-next');
       
-      console.log('✅ Elementos inicializados:', {
-        modal: !!this.modal,
-        image: !!this.image,
-        thumbCarousel: !!this.thumbCarousel,
-        thumbButtons: !!(this.thumbPrevBtn && this.thumbNextBtn)
-      });
+      
     }
     
     bindEvents() {
@@ -95,11 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== FUNCIONES PRINCIPALES =====
     
     open(estudioId, imageIndex = 0) {
-      console.log('🎯 Abriendo lightbox:', { estudioId, imageIndex });
       
       const estudioData = this.lightboxData[estudioId];
       if (!estudioData) {
-        console.error('❌ Estudio no encontrado:', estudioId);
         return;
       }
       
@@ -128,14 +116,12 @@ if (this.reservaLink) {
       this.updateImage();
       this.show();
       
-      console.log('✅ Lightbox abierto con', this.currentImages.length, 'imágenes');
     }
     
     close() {
       this.modal?.classList.add('hidden');
       this.modal?.classList.remove('flex');
       document.body.style.overflow = '';
-      console.log('🚪 Lightbox cerrado');
     }
     
     show() {
@@ -143,7 +129,6 @@ if (this.reservaLink) {
       this.modal?.classList.add('flex');
       document.body.style.overflow = 'hidden';
       
-      // Focus en el botón cerrar
       setTimeout(() => this.closeBtn?.focus(), 100);
     }
     
@@ -371,10 +356,6 @@ if (this.reservaLink) {
       });
       document.dispatchEvent(event);
       
-      console.log('📤 Evento estudioSeleccionado enviado:', {
-        estudioId: this.currentEstudioId,
-        estudioNombre: estudioData?.nombre
-      });
     }
     
     scrollToReservas() {
@@ -384,21 +365,17 @@ if (this.reservaLink) {
           behavior: 'smooth',
           block: 'start'
         });
-        console.log('⬇️ Scroll a reservas completado');
       }
     }
   }
   
-  // ===== INICIALIZACIÓN GLOBAL =====
   
-  // Buscar instancias de lightbox en la página
   const lightboxModals = document.querySelectorAll('.lightbox-modal');
   const lightboxInstances = [];
   
   lightboxModals.forEach(modal => {
     const modalId = modal.id;
     
-    // Buscar datos del lightbox en variables globales
     let lightboxData = {};
     if (typeof window.lightboxData !== 'undefined') {
       lightboxData = window.lightboxData;
@@ -409,7 +386,6 @@ if (this.reservaLink) {
     const instance = new ResponsiveLightbox(modalId, lightboxData);
     lightboxInstances.push(instance);
     
-    console.log(`✅ Lightbox ${modalId} inicializado`);
   });
   
   // Función global para abrir lightbox (compatible con código existente)
@@ -466,8 +442,7 @@ if (this.reservaLink) {
     });
   });
   
-  console.log('🎯 Sistema de Lightbox Responsivo inicializado completamente');
-  console.log(`📱 Configuración: ${getThumbnailsPerView()} thumbnails por vista`);
+  
   
   // Debug
   window.lightboxDebug = {

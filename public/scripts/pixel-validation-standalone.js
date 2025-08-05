@@ -13,11 +13,9 @@
   
   // Evitar ejecución múltiple
   if (window.PIXEL_VALIDATION_LOADED) {
-    console.log('⚠️ PixelValidation ya cargado, saltando...');
     return;
   }
 
-  console.log('🚀 Cargando PixelValidation STANDALONE...');
 
   // ===== CONFIGURACIÓN =====
   const config = {
@@ -126,17 +124,14 @@
     
     container.appendChild(counter);
     
-    console.log(`✅ Contador creado para ${field.id}: 0/${maxLength}`);
   }
 
-  // ===== CONTADOR DE CARACTERES =====
   function updateCharacterCounter(field) {
     if (field.tagName !== 'TEXTAREA') return;
 
     const container = document.getElementById(`${field.id}-validation`);
     const counter = container?.querySelector('.character-counter');
     if (!counter) {
-      console.warn(`❌ No se encontró contador para ${field.id}`);
       return;
     }
 
@@ -181,7 +176,6 @@
       `;
     }
 
-    console.log(`📊 Contador actualizado ${field.id}: ${currentCount}/${maxCount}`);
   }
 
   // ===== VALIDACIÓN =====
@@ -285,7 +279,6 @@
 
   // ===== INICIALIZACIÓN DE FORMULARIOS =====
   function initForm(form) {
-    console.log(`🎯 Inicializando formulario: ${form.id}`);
     
     const fields = form.querySelectorAll('input, textarea, select');
     
@@ -335,7 +328,6 @@
       });
 
       if (allValid) {
-        console.log('✅ Formulario válido, procesando...');
         
         // Emitir evento personalizado
         const formData = new FormData(form);
@@ -351,7 +343,6 @@
         document.dispatchEvent(event);
         
       } else {
-        console.log('❌ Formulario inválido');
         if (firstInvalidField) {
           firstInvalidField.focus();
         }
@@ -361,11 +352,9 @@
 
   // ===== INICIALIZACIÓN PRINCIPAL =====
   function init() {
-    console.log('🔧 Inicializando sistema de validación...');
     
     // Buscar formularios existentes
     const forms = document.querySelectorAll('form[data-form-type]');
-    console.log(`📋 Formularios encontrados: ${forms.length}`);
     
     forms.forEach(form => {
       initForm(form);
@@ -395,11 +384,8 @@
       validators: validators
     };
 
-    console.log('✅ Sistema de validación inicializado correctamente');
-    console.log('🧪 API disponible en: window.PIXEL_VALIDATION');
   }
 
-  // ===== ESTILOS CSS CRÍTICOS =====
   function injectCriticalStyles() {
     const styles = `
       /* Estilos críticos para validación */
@@ -442,12 +428,9 @@
     styleSheet.textContent = styles;
     document.head.appendChild(styleSheet);
     
-    console.log('🎨 Estilos críticos inyectados');
   }
 
-  // ===== INICIALIZACIÓN AUTOMÁTICA =====
   function autoInit() {
-    // Inyectar estilos críticos
     injectCriticalStyles();
     
     if (document.readyState === 'loading') {
@@ -459,7 +442,6 @@
     // Marcar como cargado
     window.PIXEL_VALIDATION_LOADED = true;
     
-    console.log('🎉 PixelValidation STANDALONE listo!');
   }
 
   // ===== EJECUTAR =====
@@ -479,7 +461,6 @@
 (function() {
   'use strict';
 
-  console.log('🛑 Cargando fix anti-redirección Formspree...');
 
   // ===== CONFIGURACIÓN =====
   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeokkypj'; // Tu endpoint actual
@@ -504,7 +485,6 @@
         formspreeData.append('_format', 'plain'); // Formato plain text
         formspreeData.append('_language', 'es'); // Idioma español
         
-        console.log('📤 Enviando a Formspree vía AJAX...');
         
         // Enviar vía FETCH (AJAX) en lugar de submit normal
         const response = await fetch(FORMSPREE_ENDPOINT, {
@@ -516,17 +496,12 @@
         });
 
         if (response.ok) {
-          console.log('✅ Formspree: Enviado exitosamente');
           resolve(response);
         } else {
-          console.warn('⚠️ Formspree: Respuesta no exitosa', response.status);
-          // Aún así continuar con WhatsApp
           resolve(response);
         }
 
       } catch (error) {
-        console.warn('⚠️ Error Formspree (continuando con WhatsApp):', error);
-        // No fallar, solo continuar
         resolve(null);
       }
     });
@@ -605,59 +580,44 @@ ${expectativas}
     }, 10000);
   }
 
-  // ===== REEMPLAZAR SUBMIT HANDLER =====
   function interceptarFormularios() {
     const formularios = document.querySelectorAll('form[data-form-type]');
     
-    console.log(`🎯 Interceptando ${formularios.length} formularios...`);
 
     formularios.forEach(form => {
-      // Remover listeners anteriores
       const nuevoForm = form.cloneNode(true);
       form.parentNode.replaceChild(nuevoForm, form);
 
-      // Agregar nuevo listener que evita redirección
       nuevoForm.addEventListener('submit', async function(e) {
         e.preventDefault(); // CRUCIAL: Evitar submit normal
         e.stopPropagation();
 
-        console.log('🚀 Procesando envío sin redirección...');
 
         const boton = nuevoForm.querySelector('button[type="submit"]');
         const textoOriginal = boton ? boton.textContent : '';
         
-        // Estado de carga
         if (boton) {
           boton.textContent = 'Enviando...';
           boton.disabled = true;
         }
 
         try {
-          // Obtener datos del formulario
           const formData = new FormData(nuevoForm);
           
-          // Log para debug
-          console.log('📋 Datos del formulario:', Object.fromEntries(formData));
+         
 
-          // 1. Enviar a Formspree sin redirección
-          console.log('📤 Enviando a Formspree...');
+      
           await enviarFormularioSinRedireccion(nuevoForm, formData);
 
-          // 2. Crear mensaje WhatsApp
           const mensajeWhatsApp = crearMensajeWhatsApp(formData);
-          console.log('📱 Mensaje WhatsApp preparado');
 
-          // 3. Mostrar éxito
           mostrarMensajeExito(nuevoForm, '¡Solicitud enviada exitosamente!');
 
-          // 4. Abrir WhatsApp después de un momento
           setTimeout(() => {
             const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensajeWhatsApp)}`;
-            console.log('🔗 Abriendo WhatsApp:', whatsappUrl);
             window.open(whatsappUrl, '_blank');
           }, 2000);
 
-          // 5. Resetear formulario
           setTimeout(() => {
             nuevoForm.reset();
             if (boton) {
@@ -666,12 +626,9 @@ ${expectativas}
             }
           }, 3000);
 
-          console.log('✅ Proceso completado sin redirección');
 
         } catch (error) {
-          console.error('❌ Error en el proceso:', error);
           
-          // Mostrar error pero aún ofrecer WhatsApp
           mostrarMensajeExito(nuevoForm, 'Hubo un problema técnico. Te redirigimos a WhatsApp...');
           
           setTimeout(() => {
@@ -691,7 +648,6 @@ ${expectativas}
         }
       });
 
-      console.log(`✅ Formulario ${nuevoForm.id} interceptado`);
     });
   }
 
@@ -708,7 +664,6 @@ ${expectativas}
       mutations.forEach((mutation) => {
         mutation.addedNodes.forEach((node) => {
           if (node.nodeType === 1 && node.tagName === 'FORM' && node.getAttribute('data-form-type')) {
-            console.log('🆕 Nuevo formulario detectado, interceptando...');
             interceptarFormularios();
           }
         });
@@ -727,7 +682,6 @@ ${expectativas}
   // ===== EJECUTAR =====
   if (!window.FORMSPREE_REDIRECT_FIX_LOADED) {
     init();
-    console.log('✅ Fix anti-redirección Formspree activado');
   }
 
 })();

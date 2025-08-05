@@ -39,12 +39,9 @@ class PixelAccessibilityManager {
     this.setupFocusManagement();
     this.announcePageChanges();
     
-    console.log('♿ PixelAccessibilityManager inicializado');
   }
 
-  /**
-   * Crear skip links para navegación
-   */
+  
   createSkipLinks() {
     const skipLinksContainer = document.createElement('div');
     skipLinksContainer.className = 'skip-links';
@@ -557,7 +554,6 @@ class PixelAccessibilityManager {
     this.setupLandmarks();
     this.setupScreenReaderSupport();
     
-    console.log('♿ Todas las mejoras de accesibilidad aplicadas');
   }
 
   /**
@@ -588,7 +584,6 @@ class PixelAccessibilityManager {
       this.liveRegion.remove();
     }
     
-    console.log('♿ PixelAccessibilityManager destruido');
   }
 }
 
@@ -607,4 +602,3 @@ if (document.readyState === 'loading') {
   window.PAM.initializeAll();
 }
 
-console.log('♿ PixelAccessibilityManager script cargado');

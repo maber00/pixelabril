@@ -23,14 +23,12 @@ class PixelLightbox {
     this.bindEvents();
     this.setupGlobalHandlers();
     
-    console.log('✅ PixelLightbox inicializado correctamente');
   }
   
   // ===== INICIALIZACIÓN DE ELEMENTOS =====
   initializeElements() {
     this.modal = document.getElementById(this.modalId);
     if (!this.modal) {
-      console.error(`❌ Modal con ID "${this.modalId}" no encontrado`);
       return;
     }
     
@@ -43,35 +41,24 @@ class PixelLightbox {
     this.currentSpan = this.modal.querySelector('.lightbox-current');
     this.totalSpan = this.modal.querySelector('.lightbox-total');
     
-    // Elementos de thumbnails
     this.thumbnailsContainer = this.modal.querySelector('.lightbox-thumbnails-carousel');
     this.thumbPrevBtn = this.modal.querySelector('.lightbox-thumb-prev');
     this.thumbNextBtn = this.modal.querySelector('.lightbox-thumb-next');
     
-    // Botones de acción
     this.detailsLink = this.modal.querySelector('.lightbox-details-link');
     this.reservaLink = this.modal.querySelector('.lightbox-reserva-link');
     
-    console.log('🔍 Elementos del lightbox:', {
-      modal: !!this.modal,
-      image: !!this.image,
-      title: !!this.title,
-      reservaLink: !!this.reservaLink,
-      detailsLink: !!this.detailsLink
-    });
+  
   }
   
-  // ===== CONFIGURACIÓN DE EVENTOS =====
   bindEvents() {
     if (!this.modal) return;
     
-    // Botón cerrar
     this.closeBtn?.addEventListener('click', (e) => {
       e.preventDefault();
       this.close();
     });
     
-    // Navegación de imágenes
     this.prevBtn?.addEventListener('click', (e) => {
       e.preventDefault();
       this.navigateImage(-1);
@@ -82,7 +69,6 @@ class PixelLightbox {
       this.navigateImage(1);
     });
     
-    // Navegación de thumbnails
     this.thumbPrevBtn?.addEventListener('click', (e) => {
       e.preventDefault();
       this.navigateThumbnailCarousel(-1);
@@ -93,37 +79,28 @@ class PixelLightbox {
       this.navigateThumbnailCarousel(1);
     });
     
-    // Click fuera del modal para cerrar
     this.modal.addEventListener('click', (e) => {
       if (e.target === this.modal) this.close();
     });
     
-    // Teclado
     document.addEventListener('keydown', (e) => this.handleKeyboard(e));
     
-    // Responsive
     window.addEventListener('resize', () => this.handleResize());
     
-    // ===== EVENTO CRÍTICO: BOTÓN RESERVAR =====
     this.setupReservaButton();
   }
   
-  // ===== CONFIGURACIÓN ESPECÍFICA DEL BOTÓN RESERVAR =====
   setupReservaButton() {
-    // Remover todos los event listeners previos para evitar duplicados
     if (this.reservaLink) {
-      // Clonar el elemento para remover todos los event listeners
       const newReservaLink = this.reservaLink.cloneNode(true);
       this.reservaLink.parentNode?.replaceChild(newReservaLink, this.reservaLink);
       this.reservaLink = newReservaLink;
       
-      // Configurar el nuevo event listener
       this.reservaLink.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
         
-        console.log('🎯 Botón reservar clickeado desde lightbox');
-        console.log('📋 Estudio actual:', this.currentEstudioId);
+        
         
         // Cerrar lightbox
         this.close();
@@ -135,17 +112,13 @@ class PixelLightbox {
         setTimeout(() => this.scrollToReservas(), 300);
       });
       
-      console.log('✅ Botón reservar configurado correctamente');
     }
   }
   
-  // ===== FUNCIONES PRINCIPALES =====
   open(estudioId, imageIndex = 0) {
-    console.log('🎯 Abriendo lightbox para:', { estudioId, imageIndex });
     
     const estudioData = this.lightboxData[estudioId];
     if (!estudioData) {
-      console.error('❌ Estudio no encontrado:', estudioId);
       return;
     }
     
@@ -154,13 +127,11 @@ class PixelLightbox {
     this.currentImageIndex = Math.max(0, Math.min(imageIndex, this.currentImages.length - 1));
     this.thumbCarouselIndex = 0;
     
-    // Actualizar contenido
     this.updateContent(estudioData);
     this.buildThumbnails();
     this.updateImage();
     this.show();
     
-    console.log('✅ Lightbox abierto exitosamente');
   }
   
   close() {
@@ -168,36 +139,28 @@ class PixelLightbox {
       this.modal.classList.add('hidden');
       this.modal.classList.remove('flex');
       document.body.style.overflow = '';
-      console.log('🔒 Lightbox cerrado');
     }
   }
   
-  // ===== ACTUALIZACIÓN DE CONTENIDO =====
   updateContent(estudioData) {
-    // Actualizar título
     if (this.title) {
       this.title.textContent = estudioData.nombre || 'Apartaestudio';
     }
     
-    // Actualizar enlaces
     if (this.detailsLink) {
       this.detailsLink.href = `/estudio/${this.currentEstudioId}`;
     }
     
-    // Configurar botón de reserva nuevamente por si acaso
     this.setupReservaButton();
   }
   
-  // ===== CONSTRUCCIÓN DE ARRAY DE IMÁGENES =====
   buildImageArray(estudioData) {
     const images = [];
     
-    // Imagen principal
     if (estudioData.imagenPrincipal) {
       images.push(estudioData.imagenPrincipal);
     }
     
-    // Imágenes de galería
     if (estudioData.imagenes && Array.isArray(estudioData.imagenes)) {
       images.push(...estudioData.imagenes);
     }
@@ -205,7 +168,6 @@ class PixelLightbox {
     return images;
   }
   
-  // ===== NAVEGACIÓN DE IMÁGENES =====
   navigateImage(direction) {
     if (this.currentImages.length === 0) return;
     
@@ -221,7 +183,6 @@ class PixelLightbox {
     this.updateThumbnailsVisibility();
   }
   
-  // ===== ACTUALIZACIÓN DE IMAGEN PRINCIPAL =====
   updateImage() {
     if (!this.image || !this.currentImages[this.currentImageIndex]) return;
     
@@ -229,15 +190,12 @@ class PixelLightbox {
     this.image.src = currentImg;
     this.image.alt = `Imagen ${this.currentImageIndex + 1} del apartaestudio`;
     
-    // Actualizar contador
     if (this.currentSpan) this.currentSpan.textContent = this.currentImageIndex + 1;
     if (this.totalSpan) this.totalSpan.textContent = this.currentImages.length;
     
-    // Actualizar thumbnails activos
     this.updateActiveThumbnail();
   }
   
-  // ===== CONSTRUCCIÓN DE THUMBNAILS =====
   buildThumbnails() {
     if (!this.thumbnailsContainer) return;
     
@@ -268,7 +226,6 @@ class PixelLightbox {
     });
   }
   
-  // ===== ACTUALIZACIÓN DE THUMBNAIL ACTIVO =====
   updateActiveThumbnail() {
     const thumbs = this.thumbnailsContainer?.querySelectorAll('.lightbox-thumb img');
     if (!thumbs) return;
@@ -361,14 +318,8 @@ class PixelLightbox {
     });
     
     document.dispatchEvent(event);
-    
-    console.log('📤 Evento estudioSeleccionado enviado:', {
-      estudioId: this.currentEstudioId,
-      estudioNombre: estudioData?.nombre
-    });
   }
   
-  // ===== SCROLL A SECCIÓN RESERVAS =====
   scrollToReservas() {
     const reservasSection = document.querySelector('#reservas');
     if (reservasSection) {
@@ -376,10 +327,7 @@ class PixelLightbox {
         behavior: 'smooth',
         block: 'start'
       });
-      console.log('⬇️ Scroll a reservas completado');
     } else {
-      console.warn('⚠️ Sección #reservas no encontrada');
-      // Fallback: intentar scroll a formulario
       const form = document.querySelector('form[data-estudio-form]');
       if (form) {
         form.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -387,14 +335,11 @@ class PixelLightbox {
     }
   }
   
-  // ===== CONFIGURACIÓN DE HANDLERS GLOBALES =====
   setupGlobalHandlers() {
-    // Exponer función global para abrir lightbox
     window.openPixelLightbox = (estudioId, imageIndex = 0) => {
       this.open(estudioId, imageIndex);
     };
     
-    // Handler para botones de galería
     document.addEventListener('click', (e) => {
       if (e.target.closest('.open-gallery-btn')) {
         e.preventDefault();
@@ -405,7 +350,6 @@ class PixelLightbox {
         }
       }
       
-      // Handler para thumbnails
       if (e.target.closest('.gallery-thumb')) {
         e.preventDefault();
         const thumb = e.target.closest('.gallery-thumb');
@@ -419,36 +363,25 @@ class PixelLightbox {
   }
 }
 
-// =============================================================================
-// INICIALIZACIÓN AUTOMÁTICA
-// =============================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('🚀 Inicializando PixelLightbox...');
   
   // Verificar que lightboxData esté disponible
   const lightboxData = window.lightboxData || {};
   
   if (Object.keys(lightboxData).length === 0) {
-    console.warn('⚠️ lightboxData no encontrado o vacío');
   }
   
   // Inicializar lightbox
   window.pixelLightboxInstance = new PixelLightbox('espacios-lightbox', lightboxData);
   
-  console.log('✅ PixelLightbox inicializado globalmente');
 });
 
-// =============================================================================
-// FUNCIONES DE COMPATIBILIDAD (para código existente)
-// =============================================================================
 
-// Función global de compatibilidad
 window.openLightbox = function(estudioId, imageIndex = 0) {
   if (window.pixelLightboxInstance) {
     window.pixelLightboxInstance.open(estudioId, imageIndex);
   } else {
-    console.error('❌ PixelLightbox no está inicializado');
   }
 };
 

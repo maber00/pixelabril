@@ -31,7 +31,6 @@ class PixelAccessibilityManager {
     this.setupKeyboardNavigation();
     this.setupFocusManagement();
     
-    console.log('♿ PixelAccessibilityManager inicializado');
   }
 
   /**
@@ -203,7 +202,6 @@ class PixelAccessibilityManager {
    */
   initializeAll() {
     // Placeholder para compatibilidad
-    console.log('♿ Todas las mejoras de accesibilidad aplicadas');
   }
 
   /**
@@ -218,7 +216,6 @@ class PixelAccessibilityManager {
       this.liveRegion.remove();
     }
     
-    console.log('♿ PixelAccessibilityManager destruido');
   }
 }
 
@@ -237,4 +234,3 @@ if (document.readyState === 'loading') {
   window.PAM.initializeAll();
 }
 
-console.log('♿ PixelAccessibilityManager script cargado');

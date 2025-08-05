@@ -159,12 +159,7 @@ window.PIXEL_CONFIG = {
 
   // Log de configuración cargada
   if (window.PIXEL_CONFIG.debug.enableLogging) {
-    console.log('🔧 Configuración Pixel Living cargada:', {
-      whatsapp: window.PIXEL_CONFIG.whatsapp.number,
-      formspree: Object.keys(window.PIXEL_CONFIG.formspree.endpoints),
-      debug: window.PIXEL_CONFIG.debug.enableLogging,
-      environment: window.location.hostname
-    });
+    
   }
 })();
 
@@ -180,7 +175,6 @@ window.updatePixelConfig = function(path, value) {
   target[lastKey] = value;
   
   if (window.PIXEL_CONFIG.debug.enableLogging) {
-    console.log(`🔧 Configuración actualizada: ${path} = ${value}`);
   }
 };
 
@@ -208,28 +202,19 @@ window.validatePixelConfig = function() {
   }
 
   if (issues.length > 0) {
-    console.warn('🚨 Problemas de configuración encontrados:');
     issues.forEach(issue => console.warn(issue));
     
     if (config.debug.enableLogging) {
-      console.log('📝 Para corregir:');
-      console.log('1. Editar public/scripts/pixel-config.js');
-      console.log('2. Cambiar los valores marcados con 🔥');
-      console.log('3. Guardar y recargar la página');
     }
   } else {
-    console.log('✅ Configuración completamente validada');
   }
 
   return issues.length === 0;
 };
 
-// ===== EJECUTAR VALIDACIÓN AUTOMÁTICA =====
 document.addEventListener('DOMContentLoaded', () => {
   if (window.PIXEL_CONFIG.debug.enableLogging) {
-    console.log('🔍 Validando configuración...');
     window.validatePixelConfig();
   }
 });
 
-console.log('✅ Pixel Config cargado - WhatsApp: 573195895858');

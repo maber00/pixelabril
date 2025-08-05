@@ -616,14 +616,14 @@
   }
 },
      
-  "estudios": {
+ "estudios": {
     "jade": {
-      "nombre": "玉石研究",
+      "nombre": "翡翠工作室",
       "descripcion_1": "明亮的空间，点缀着绿色元素，让人联想到自然与宁静。",
-      "descripcion": "明亮的空间，带私人阳台。配备私人厨房、独立工作区和辅助房间。适合长期居住，拥有宽敞的落地窗和开阔的视野。所有设施一应俱全：Wi-Fi、服务、智能电视。无需担保人。",
+      "descripcion": "明亮的空间，带私人阳台。私人厨房、独立工作区和辅助房间。适合长期居住，拥有宽敞的落地窗和开阔的视野。全包式服务：Wi-Fi、服务、智能电视。无需担保人。",
       "metros": "29平方米",
-      "imagen": "/images/研究/玉石/像素玉石房间-004.webp ",
-      "precio": "自 $2.650.000 COP",
+      "imagen": "/images/estudios/jade/pixel-jade-room-004.webp",
+      "precio": "从 $2,650,000 起",
       "galeria": [
         "/images/estudios/jade/pixel-jade-room-005.webp",
         "/images/estudios/jade/pixel-jade-room-001.webp",  
@@ -633,12 +633,12 @@
         "/images/estudios/jade/Pixel-jade-001.webp"
       ],
       "caracteristicas": [
-        " 29平方米的单间公寓",
+        "29平方米的单间公寓",
         "辅助房间", 
         "私人阳台，尽享户外时光",
         "双人床",
-        "私人厨房，配备齐全。",
-        "无限高速Wi-Fi ",
+        "配备齐全的私人厨房",
+        "无限高速Wi-Fi",
         "智能电视",
         "洗衣机位于公寓内",
         "私人浴室",
@@ -649,12 +649,12 @@
       ]
     },
     "zian": {
-      "nombre": " Zian 工作室", 
+      "nombre": "紫安工作室", 
       "descripcion_1": "蓝色调传递出宁静与专注的氛围，非常适合远程工作。",
-      "descripcion": "专为远程办公专业人士设计，配备优化工作区。私人厨房、宽敞书桌及有利于专注的工作环境。完美融合生活与工作，尽显格调。一应俱全：Wi-Fi、服务、家具。无需担保人。",
+      "descripcion": "专为远程专业人士设计，配备优化工作区。私人厨房、宽敞书桌及有利于专注的环境。完美融合生活与工作，尽显格调。全包式服务：Wi-Fi、服务、家具。无需担保人。",
       "metros": "29平方米",
-      "imagen": "/images/estudios/zian/pixel-zian-room-001.webp",
-      "precio": "自 $2.650.000 COP",
+      "imagen": "/images/estudios/zian/pixel-zian-room-009.webp",
+      "precio": "从 $2,650,000 起",
       "galeria": [
         "/images/estudios/zian/pixel-zian-room-001.webp", 
         "/images/estudios/zian/pixel-zian-room-002.webp", 
@@ -662,17 +662,16 @@
         "/images/estudios/zian/pixel-zian-room-004.webp", 
         "/images/estudios/zian/pixel-zian-room-005.webp",
         "/images/estudios/zian/pixel-zian-room-006.webp", 
-        "/images/estudios/zian/pixel-zian-room-007.webp", 
-        "/images/estudios/zian/pixel-zian-room-009.webp", 
+        "/images/estudios/zian/pixel-zian-room-007.webp",  
         "/images/estudios/zian/pixel-zian-room-010.webp"
       ],
       "caracteristicas": [
-        " 29平方米的单间公寓",
+        "29平方米的单间公寓",
         "辅助房间", 
         "私人阳台，尽享户外时光",
         "双人床",
-        "私人厨房，配备齐全。",
-        "无限高速Wi-Fi ",
+        "配备齐全的私人厨房",
+        "无限高速Wi-Fi",
         "智能电视",
         "洗衣机位于公寓内",
         "私人浴室",
@@ -683,14 +682,13 @@
       ]
     },
     "indigo": {
-      "nombre": "靛蓝研究",
-      "descripcion_1": "紫色调营造出一个温馨的环境，激发创造力和思考。",
-      "descripcion": "我们最宽敞的单间公寓，起居区与休息区分离。配备私人厨房、私人阳台，为创意人士和创业者打造温馨舒适的居住环境。全包式服务，无需担保人。",
+      "nombre": "靛蓝工作室",
+      "descripcion_1": "紫色调营造出温馨环境，激发创造力和思考。",
+      "descripcion": "我们最宽敞的单间公寓，起居区与休息区分离。私人厨房、私人阳台，为创意人士和创业者营造温馨环境。全包式服务，无需担保人。",
       "imagen": "/images/estudios/indigo/pixel-indigo-room-001.webp",
       "metros": "29平方米", 
-      "precio": "自 $2.650.000 COP",
+      "precio": "从 $2,650,000 起",
       "galeria": [
-        "/images/estudios/indigo/pixel-indigo-room-001.webp", 
         "/images/estudios/indigo/pixel-indigo-room-002.webp", 
         "/images/estudios/indigo/pixel-indigo-room-003.webp", 
         "/images/estudios/indigo/pixel-indigo-room-004.webp", 
@@ -708,12 +706,12 @@
         "/images/estudios/indigo/pixel-indigo-room-018.webp"
       ],
       "caracteristicas": [
-        " 29平方米的单间公寓",
+        "29平方米的单间公寓",
         "辅助房间", 
         "私人阳台，尽享户外时光",
         "双人床",
-        "私人厨房，配备齐全。",
-        "无限高速Wi-Fi ",
+        "配备齐全的私人厨房",
+        "无限高速Wi-Fi",
         "智能电视",
         "洗衣机位于公寓内",
         "私人浴室",

@@ -80,7 +80,6 @@ export function getSection(section: string, lang?: Language): Record<string, any
  */
 export function setCurrentLanguage(lang: Language): void {
   currentLanguage = lang;
-  console.log('🌍 Idioma establecido:', lang);
 }
 
 /**

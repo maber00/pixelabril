@@ -155,7 +155,6 @@ class PixelEventManager {
         }
 
       } catch (error) {
-        console.error(`Error en evento ${eventKey}:`, error);
       }
     }
   }
@@ -385,7 +384,6 @@ class PixelEventManager {
         this.log(`Formulario ${formId} enviado exitosamente`);
 
       } catch (error) {
-        console.error(`Error en formulario ${formId}:`, error);
       } finally {
         formState.isSubmitting = false;
         this.updateFormLoadingState(componentName, false);
@@ -540,13 +538,10 @@ class PixelEventManager {
     const prefix = '[PixelEventManager]';
     switch (type) {
       case 'error':
-        console.error(prefix, message);
         break;
       case 'warn':
-        console.warn(prefix, message);
         break;
       default:
-        console.log(prefix, message);
     }
   }
 
@@ -582,4 +577,3 @@ window.PixelEventManager.setDebugMode(false); // Cambiar a true para debug
 // Alias para facilidad de uso
 window.PEM = window.PixelEventManager;
 
-console.log('PixelEventManager cargado y listo para usar');

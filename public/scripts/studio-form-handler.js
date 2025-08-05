@@ -12,7 +12,6 @@ class StudioFormHandler {
   }
 
   init() {
-    console.log('🏠 Inicializando StudioFormHandler...');
     this.detectCurrentStudio();
     this.setupFormListeners();
     this.setupStudioButtons();
@@ -29,7 +28,6 @@ class StudioFormHandler {
         id: studioMatch[1],
         nombre: this.getStudioName(studioMatch[1])
       };
-      console.log('🎯 Estudio detectado:', this.currentStudio);
     }
 
     // También detectar desde el título de la página o elementos DOM
@@ -71,7 +69,6 @@ class StudioFormHandler {
       if (buttonText.includes('Solicita tu') && 
          (buttonText.includes('Estudio') || buttonText.includes('ahora'))) {
         
-        console.log('🔘 Configurando botón de estudio:', buttonText);
         
         // Si es un botón de formulario
         if (button.type === 'submit') {
@@ -101,7 +98,6 @@ class StudioFormHandler {
       this.handleStudioFormSubmit(form, button);
     });
 
-    console.log('✅ Formulario de estudio configurado:', form.id);
   }
 
   // ===== PRE-SELECCIONAR ESTUDIO ACTUAL =====
@@ -145,7 +141,6 @@ class StudioFormHandler {
 
   // ===== MANEJAR ENVÍO DEL FORMULARIO =====
   async handleStudioFormSubmit(form, button) {
-    console.log('📤 Procesando solicitud de estudio:', this.currentStudio);
 
     // Cambiar estado del botón
     const originalText = button.textContent;
@@ -166,7 +161,6 @@ class StudioFormHandler {
         formObject.estudio = this.currentStudio.nombre;
       }
 
-      console.log('📋 Datos del formulario:', formObject);
 
       // Enviar a sistema de formularios
       await this.sendStudioRequest(formObject, form);
@@ -254,7 +248,6 @@ Página: ${window.location.pathname}`;
       throw new Error(`Error Formspree: ${response.status}`);
     }
 
-    console.log('✅ Backup enviado a Formspree');
   }
 
   // ===== MOSTRAR OPCIONES DE ENVÍO =====
@@ -464,7 +457,6 @@ Página: ${window.location.pathname}`;
       
       // Si es un formulario de estudio o tiene información de estudio
       if (formType === 'estudio' || formObject.estudio || this.currentStudio) {
-        console.log('📋 Formulario de estudio procesado por sistema global');
         // El sistema global ya maneja el envío, solo agregamos info del estudio
         if (this.currentStudio && !formObject.estudio) {
           formObject.estudio = this.currentStudio.nombre;
@@ -483,4 +475,3 @@ if (document.readyState === 'loading') {
   window.StudioFormHandler = new StudioFormHandler();
 }
 
-console.log('✅ StudioFormHandler cargado');

@@ -14,7 +14,6 @@ class PixelValidationManager {
   }
 
   init() {
-    console.log('🚀 Inicializando PixelValidationManager...');
     this.setupFormObserver();
     this.initExistingForms();
     this.setupGlobalEvents();
@@ -104,7 +103,6 @@ class PixelValidationManager {
     const formId = form.id || `form-${Date.now()}`;
     if (this.forms.has(formId)) return;
 
-    console.log(`✅ Inicializando formulario: ${formId}`);
 
     const formConfig = {
       element: form,
@@ -389,7 +387,6 @@ class PixelValidationManager {
 
   // ===== ENVÍO DE FORMULARIO =====
   handleFormSubmit(formConfig) {
-    console.log('📤 Procesando envío de formulario...');
     
     // Validar todos los campos antes del envío
     let allValid = true;
@@ -428,7 +425,6 @@ class PixelValidationManager {
     formConfig.element.dispatchEvent(event);
     document.dispatchEvent(event);
 
-    console.log('✅ Formulario validado y evento emitido:', formObject);
   }
 
   // ===== ESTADOS DEL FORMULARIO =====
@@ -561,4 +557,3 @@ if (document.readyState === 'loading') {
   window.PVM = new PixelValidationManager();
 }
 
-console.log('✅ PixelValidationManager cargado y listo');

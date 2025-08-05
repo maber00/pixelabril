@@ -8,15 +8,11 @@
 (function() {
   'use strict';
 
-  // ===== PREVENIR MÚLTIPLES EJECUCIONES =====
   if (window.PIXEL_FORM_UNIFIED_LOADED) {
-    console.log('⚠️ PixelFormUnified ya cargado, saltando inicialización');
     return;
   }
 
-  console.log('🚀 Cargando PixelFormUnified CORREGIDO...');
 
-  // ===== CONFIGURACIÓN =====
   const CONFIG = {
     formspree: {
       endpoint: 'https://formspree.io/f/xeokkypj',
@@ -46,7 +42,6 @@
     try {
       return document.querySelector(selector);
     } catch (error) {
-      console.warn('Error en selector:', selector, error);
       return null;
     }
   }
@@ -55,7 +50,6 @@
     try {
       return document.querySelectorAll(selector);
     } catch (error) {
-      console.warn('Error en selector:', selector, error);
       return [];
     }
   }
@@ -91,16 +85,13 @@
       
       return data;
     } catch (error) {
-      console.error('Error extrayendo datos del formulario:', error);
       return {};
     }
   }
 
-  // ===== CONTADOR DE CARACTERES =====
   function createCharacterCounter(field) {
     if (field.tagName !== 'TEXTAREA') return;
     
-    // Buscar contenedor existente
     let container = safeQuerySelector(`#${field.id}-validation`);
     
     if (!container) {
@@ -108,16 +99,13 @@
       container.id = `${field.id}-validation`;
       container.className = 'pixel-validation-container';
       
-      // Insertar de forma segura
       try {
         field.parentNode.insertBefore(container, field.nextSibling);
       } catch (error) {
-        console.warn('No se pudo insertar contenedor de validación:', error);
         return;
       }
     }
 
-    // Verificar si ya existe contador
     if (container.querySelector('.character-counter')) {
       return;
     }
@@ -132,7 +120,6 @@
     `;
     
     container.appendChild(counter);
-    console.log(`✅ Contador creado para ${field.id}`);
   }
 
   function updateCharacterCounter(field) {
@@ -186,11 +173,9 @@
         }
       }
     } catch (error) {
-      console.warn('Error actualizando contador:', error);
     }
   }
 
-  // ===== ENVÍO DE FORMULARIOS =====
   async function sendToFormspree(data) {
     try {
       const formData = new FormData();
@@ -214,14 +199,11 @@
       });
 
       if (response.ok) {
-        console.log('✅ Formspree: Enviado exitosamente');
         return true;
       } else {
-        console.warn('⚠️ Formspree: Error', response.status);
         return false;
       }
     } catch (error) {
-      console.warn('⚠️ Error Formspree:', error);
       return false;
     }
   }
@@ -299,93 +281,70 @@ ${textoMensaje}
         }
       }, 10000);
     } catch (error) {
-      console.warn('Error mostrando mensaje de éxito:', error);
     }
   }
 
-  // ===== INICIALIZACIÓN DE FORMULARIOS (CORREGIDA) =====
   function initForm(form) {
     const formId = form.id || `form-${Date.now()}`;
     
-    // Evitar inicialización múltiple
     if (initializedForms.has(formId)) {
-      console.log(`⚠️ Formulario ${formId} ya inicializado, saltando...`);
       return;
     }
     
-    console.log(`🎯 Inicializando formulario: ${formId}`);
     
     try {
       const fields = form.querySelectorAll('input, textarea, select');
       
-      // Inicializar campos con protección contra errores
       fields.forEach(field => {
         try {
-          // Crear contador para textareas
           if (field.tagName === 'TEXTAREA') {
             createCharacterCounter(field);
             
-            // Evento de input para contador
             field.addEventListener('input', () => {
               updateCharacterCounter(field);
             });
             
-            // Inicializar contador
             updateCharacterCounter(field);
           }
           
         } catch (error) {
-          console.warn(`Error inicializando campo ${field.id}:`, error);
         }
       });
 
-      // Submit handler ROBUSTO
       form.addEventListener('submit', async function(e) {
         e.preventDefault();
         e.stopPropagation();
 
-        console.log('🚀 Procesando envío de formulario...');
 
         const boton = form.querySelector('button[type="submit"]');
         const textoOriginal = boton ? boton.textContent : '';
         
         try {
-          // Estado de carga
           if (boton) {
             boton.textContent = 'Enviando...';
             boton.disabled = true;
           }
 
-          // Extraer datos
           const data = extractFormData(form);
-          console.log('📋 Datos extraídos:', data);
 
-          // Validación básica
           if (!data.nombre || !data.email) {
             throw new Error('Faltan datos obligatorios');
           }
 
-          // Enviar a Formspree
-          console.log('📤 Enviando a Formspree...');
           await sendToFormspree(data);
 
-          // Crear mensaje WhatsApp
           const whatsappMessage = createWhatsAppMessage(data);
           
-          // Mostrar éxito
           showSuccessMessage(form);
 
           // Abrir WhatsApp
           setTimeout(() => {
             const whatsappUrl = `${CONFIG.whatsapp.baseUrl}${CONFIG.whatsapp.number}?text=${encodeURIComponent(whatsappMessage)}`;
-            console.log('🔗 Abriendo WhatsApp');
             window.open(whatsappUrl, '_blank');
           }, 2000);
 
-          // Resetear formulario
           setTimeout(() => {
             form.reset();
-            // Re-inicializar contadores
             fields.forEach(field => {
               if (field.tagName === 'TEXTAREA') {
                 updateCharacterCounter(field);
@@ -393,10 +352,8 @@ ${textoMensaje}
             });
           }, 3000);
 
-          console.log('✅ Envío completado exitosamente');
 
         } catch (error) {
-          console.error('❌ Error en envío:', error);
           showSuccessMessage(form, 'Hubo un problema técnico. Te redirigimos a WhatsApp...');
           
           setTimeout(() => {
@@ -407,7 +364,6 @@ ${textoMensaje}
           }, 1000);
 
         } finally {
-          // Restaurar botón
           if (boton) {
             setTimeout(() => {
               boton.textContent = textoOriginal;
@@ -417,30 +373,21 @@ ${textoMensaje}
         }
       });
 
-      // Marcar como inicializado
       initializedForms.add(formId);
-      console.log(`✅ Formulario ${formId} inicializado correctamente`);
 
     } catch (error) {
-      console.error(`❌ Error inicializando formulario ${formId}:`, error);
     }
   }
 
-  // ===== INICIALIZACIÓN PRINCIPAL =====
   function init() {
-    console.log('🔧 Inicializando sistema unificado (versión corregida)...');
     
     try {
-      // Buscar formularios de forma segura
       const forms = safeQuerySelectorAll('form[data-form-type], form[id*="reserva"], form[id*="contacto"]');
-      console.log(`📋 Formularios encontrados: ${forms.length}`);
       
-      // Inicializar cada formulario
       forms.forEach(form => {
         try {
           initForm(form);
         } catch (error) {
-          console.error('Error inicializando formulario individual:', error);
         }
       });
 
@@ -450,10 +397,8 @@ ${textoMensaje}
           mutation.addedNodes.forEach((node) => {
             if (node.nodeType === 1 && node.tagName === 'FORM') {
               try {
-                console.log('🆕 Nuevo formulario detectado');
                 initForm(node);
               } catch (error) {
-                console.error('Error inicializando formulario dinámico:', error);
               }
             }
           });
@@ -465,14 +410,11 @@ ${textoMensaje}
         subtree: true
       });
 
-      console.log('✅ Sistema unificado inicializado (sin bloqueos)');
 
     } catch (error) {
-      console.error('❌ Error en inicialización principal:', error);
     }
   }
 
-  // ===== API GLOBAL =====
   window.PIXEL_FORM_UNIFIED = {
     updateCharacterCounter: updateCharacterCounter,
     extractFormData: extractFormData,
@@ -491,14 +433,11 @@ ${textoMensaje}
       
       // Marcar como cargado
       window.PIXEL_FORM_UNIFIED_LOADED = true;
-      console.log('🎉 PixelFormUnified CORREGIDO listo - Sin bloqueos');
 
     } catch (error) {
-      console.error('❌ Error en auto-inicialización:', error);
     }
   }
 
-  // ===== EJECUTAR =====
   autoInit();
 
 })();

@@ -46,7 +46,6 @@ class PixelValidationManager {
   }
 
   init() {
-    console.log('🚀 Inicializando PixelValidationManager ÚNICO...');
     this.setupFormObserver();
     this.initExistingForms();
     this.setupGlobalEvents();
@@ -65,13 +64,10 @@ if (!window.PIXEL_VALIDATION) {
     document.addEventListener('DOMContentLoaded', () => {
       if (!window.PIXEL_VALIDATION) {
         window.PIXEL_VALIDATION = new PixelValidationManager();
-        console.log('✅ PIXEL_VALIDATION creado en DOMContentLoaded');
       }
     });
   } else {
     window.PIXEL_VALIDATION = new PixelValidationManager();
-    console.log('✅ PIXEL_VALIDATION creado inmediatamente');
   }
 }
 
-console.log('✅ PixelValidationManager ÚNICO cargado');

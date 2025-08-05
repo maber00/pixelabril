@@ -133,5 +133,4 @@ export function getComparisonData(lang: Language) {
  */
 export function updateExchangeRate(newRate: number): void {
   // En una implementación real, esto podría actualizar desde una API
-  console.log('💱 Nueva tasa de cambio:', newRate);
 }
