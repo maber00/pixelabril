@@ -60,9 +60,7 @@ const mapConfig = {
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <div class="bg-white rounded-md shadow-lg overflow-hidden border-2 border-gray-200">
-                <!-- GOOGLE MAPS MEJORADO -->
                 <div class="relative h-64 group cursor-pointer" id="mapContainer">
-                  <!-- Google Maps Iframe -->
                    <iframe
                     class="w-full h-full border-0"
                     loading="lazy"
@@ -71,12 +69,9 @@ const mapConfig = {
                     src="https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=es&amp;q=Calle%2098a%20%2351-40,%20La%20Castellana,%20Bogot%C3%A1,%20Colombia&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
                   </iframe>
                   
-                  <!-- Overlay con logo de Pixel Living -->
                   <div class="absolute inset-0 pointer-events-none">
-                    <!-- Logo como marcador personalizado -->
                     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto">
                       <div class="relative">
-                        <!-- Pin del mapa -->
                         <div class="bg-white rounded-full p-3 shadow-lg border-4 border-black animate-bounce">
                           <img 
                             src={pixelLogo.src} 
@@ -84,13 +79,11 @@ const mapConfig = {
                             class="w-8 h-8 "
                           />
                         </div>
-                        <!-- Sombra del pin -->
                         <div class="absolute top-full left-1/2 transform -translate-x-1/2 w-4 h-2 bg-black/20 rounded-full blur-sm"></div>
                       </div>
                     </div>
                   </div>
                   
-                  <!-- Overlay clickeable para abrir Google Maps -->
                                     <div class="absolute inset-0 bg-transparent hover:bg-black/10 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                     <div class="bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg">
                       <div class="flex items-center space-x-2 text-pixel-blue font-medium">
@@ -134,7 +127,6 @@ const mapConfig = {
             <div class="bg-white rounded-md shadow-lg p-8 border-2 border-gray-200">
               <h3 class="text-2xl font-bold mb-6 cal-sans">Envíanos un mensaje</h3>
               
-              <!-- Contenedor para mensajes dinámicos -->
               <div id="message-container" class="hidden mb-4"></div>
               
               <form id="contactForm" class="space-y-4" data-bypass-intercept="true">
@@ -218,7 +210,6 @@ const mapConfig = {
             </div>
           </div>
           
-          <!-- Píxeles decorativos -->
           <div class="mt-16 grid grid-cols-6 gap-2">
             {[...Array(6)].map((_, i) => (
               <div class={`h-8 rounded-sm ${['bg-pixel-yellow', 'bg-pixel-orange', 'bg-pixel-blue', 'bg-pixel-purple', 'bg-pixel-brown', 'bg-pixel-green'][i % 6]}`}></div>
@@ -383,15 +374,12 @@ const mapConfig = {
       }
     }
     
-    // ===== CONFIGURAR EVENTOS DE VALIDACIÓN =====
     
     campos.forEach(campo => {
-      // Validar al perder el foco
       campo.addEventListener('blur', () => {
         validarCampo(campo);
       });
       
-      // Limpiar error mientras escribe
       campo.addEventListener('input', () => {
         if (campo.classList.contains('border-red-500')) {
           limpiarError(campo);

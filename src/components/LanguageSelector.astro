@@ -39,7 +39,6 @@ function getLanguageIcon(lang) {
 ---
 
 <nav lang={currentLang} aria-label="Selector de idioma" class="relative">
-  <!-- Desktop Version -->
   <div class="hidden md:inline-flex overflow-hidden rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm">
     {languages.map((lang) => (
       <a
@@ -66,20 +65,16 @@ function getLanguageIcon(lang) {
     ))}
   </div>
 
-  <!-- Mobile Version -->
   <details class="md:hidden group relative">
     <summary class="flex items-center gap-2 px-3 py-2 rounded-lg border border-white/20 bg-black/80 text-white/90 cursor-pointer list-none hover:bg-white/10 transition">
-      <!-- Globo -->
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round"
               d="M12 21a9 9 0 100-18 9 9 0 000 18zM8.25 9.75h7.5m-7.5 3h7.5" />
       </svg>
       
-      <!-- Bandera + Código del idioma actual -->
       <span class="text-xs">{getLanguageIcon(currentLang)}</span>
       <span class="text-sm font-semibold">{currentLang.toUpperCase()}</span>
       
-      <!-- Chevron -->
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-open:rotate-180"
            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round"
@@ -87,7 +82,6 @@ function getLanguageIcon(lang) {
       </svg>
     </summary>
 
-    <!-- Dropdown con 3 opciones -->
     <ul class="absolute right-0 mt-2 w-44 rounded-lg border border-white/20 bg-black/85 backdrop-blur-sm shadow-xl z-50 text-white/90 overflow-hidden">
       {languages.map((lang) => (
         <li>

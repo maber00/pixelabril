@@ -24,7 +24,6 @@ setCurrentLanguage(currentLang);
               </p>
             </div>
             
-            <!-- Contenedor para mensajes dinámicos -->
             <div id="message-container" class="hidden mb-4"></div>
             
             <form id="reservaForm" class="space-y-6" data-bypass-intercept="true">
@@ -185,7 +184,6 @@ setCurrentLanguage(currentLang);
                       tabindex="-1" autocomplete="nope" />
               </div>
               
-              <!-- BOTÓN DE SUBMIT QUE FALTABA -->
               <div class="text-center">
                 <button 
                   type="submit" 
@@ -200,7 +198,6 @@ setCurrentLanguage(currentLang);
               </p>
             </form>
 
-            <!-- WhatsApp alternativo -->
             <div class="mt-6 text-center">
               <p class="text-sm text-gray-500 mb-3">{t('reservas.whatsapp.question')}</p>
               <a href={`https://wa.me/573195895858?text=${encodeURIComponent(t('reservas.whatsapp.message'))}`} target="_blank" class="inline-flex items-center text-green-600 font-medium hover:underline">
@@ -253,7 +250,6 @@ setCurrentLanguage(currentLang);
                 </li>
               </ul>
 
-              <!-- Testimonial -->
               <div class="mt-8 p-4 bg-white rounded-lg shadow-sm">
                 <p class="text-sm text-gray-600 italic mb-2">
                   {t('reservas.testimonial.quote')}
@@ -261,7 +257,6 @@ setCurrentLanguage(currentLang);
                 <p class="text-xs text-pixel-brown font-semibold">{t('reservas.testimonial.author')}</p>
               </div>
 
-              <!-- Datos de confianza -->
               <div class="mt-6 grid grid-cols-3 gap-4 text-center">
                 <div class="bg-white rounded-lg p-3 shadow-sm">
                   <div class="text-2xl font-bold text-pixel-brown">24h</div>

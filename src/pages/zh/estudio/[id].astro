@@ -81,7 +81,6 @@ const whatsappMessage = t('estudio_detalle.acciones.whatsapp_mensaje').replace('
   <main>
     <section class="pt-32 pb-16">
       <div class="container">
-        <!-- Breadcrumbs traducidos -->
         <div class="flex items-center mb-6 text-sm">
           <a href={baseUrl || '/'} class="text-gray-500 hover:text-gray-700">{t('estudio_detalle.breadcrumbs.inicio')}</a>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mx-2 text-gray-400">
@@ -95,7 +94,6 @@ const whatsappMessage = t('estudio_detalle.acciones.whatsapp_mensaje').replace('
         </div>
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <!-- Galería de imágenes -->
           <div>
             <div class="relative overflow-hidden rounded-xl border-2 border-gray-200 mb-4 aspect-video">
               <img 
@@ -110,7 +108,6 @@ const whatsappMessage = t('estudio_detalle.acciones.whatsapp_mensaje').replace('
               </div>
             </div>
             
-            <!-- Miniaturas -->
             <div class="grid grid-cols-5 gap-2">
               <div class={`cursor-pointer rounded-md overflow-hidden border-2 ${colors.border} thumbnail-container gallery-thumb`} data-index={-1} data-estudio-id={studioId}>
                 <img 
@@ -135,7 +132,6 @@ const whatsappMessage = t('estudio_detalle.acciones.whatsapp_mensaje').replace('
               ))}
             </div>
             
-            <!-- Botón ver todas las fotos -->
             <button 
               class="w-full mt-4 py-2 bg-gray-800 text-white rounded-md flex items-center justify-center group open-gallery-btn"
               id="openGalleryBtn"
@@ -151,7 +147,6 @@ const whatsappMessage = t('estudio_detalle.acciones.whatsapp_mensaje').replace('
             </button>
           </div>
           
-          <!-- Información del estudio -->
           <div>
             <h1 class="text-4xl font-bold mb-2 cal-sans">
               <span class={colors.text}>{estudio.nombre}</span>
@@ -221,7 +216,6 @@ const whatsappMessage = t('estudio_detalle.acciones.whatsapp_mensaje').replace('
       </div>
     </section>
 
-    <!-- Sección de reserva con formulario traducido -->
     <section id="reserva-section" class={`${colors.light} py-16`}>
       <div class="container">
         <h2 class={`text-3xl font-bold mb-8 text-center ${colors.lightText}`}>
@@ -351,7 +345,6 @@ const whatsappMessage = t('estudio_detalle.acciones.whatsapp_mensaje').replace('
               <div id="expectativas-error" class="hidden text-red-600 text-sm mt-1"></div>
             </div>
             
-            <!-- Honeypot anti-spam -->
             <div style="position: absolute; left: -9999px; visibility: hidden;" aria-hidden="true">
               <input type="text" name="website_url" id="website_url_estudio" value="" 
                     tabindex="-1" autocomplete="nope" />
@@ -372,7 +365,6 @@ const whatsappMessage = t('estudio_detalle.acciones.whatsapp_mensaje').replace('
       </div>
     </section>
 
-    <!-- Otros estudios -->
    <section class="py-16">
   <div class="container">
     <h2 class="text-3xl font-bold mb-8 text-center">{t('estudio_detalle.otros_estudios.titulo')}</h2>
@@ -415,7 +407,6 @@ const whatsappMessage = t('estudio_detalle.acciones.whatsapp_mensaje').replace('
                 <div class="flex justify-between items-center">
                   <span class={`text-lg font-bold ${otroColors.text}`}>{otroEstudio.precio}</span>
                   
-                  <!-- ✅ URL AUTO-GENERADA: Detecta idioma automáticamente -->
                   <a href={`/zh/estudio/${estudioId}`}class={`${otroColors.text} font-medium inline-flex items-center group`}>
                     {t('estudio_detalle.otros_estudios.ver_detalles')}
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-1 transform transition-transform group-hover:translate-x-1">
@@ -433,11 +424,9 @@ const whatsappMessage = t('estudio_detalle.acciones.whatsapp_mensaje').replace('
 </section>
   </main>
 
-  <!-- Lightbox modal -->
   <LightboxModal id="estudio-lightbox" showDetailsButton={false} showReservaButton={true} reservaPath="#reserva-section" />
 </Layout>
 
-<!-- Script actualizado con traducciones -->
 <script define:vars={{ 
   lightboxData, 
   studioId, 
