@@ -2,10 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
- 
+  <!-- ========================== -->
+  <!-- PÁGINAS PRINCIPALES -->
+  <!-- ========================== -->
+  
   <url>
     <loc>https://pixelliving.co/</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/" />
@@ -16,7 +19,7 @@
   
   <url>
     <loc>https://pixelliving.co/en/</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/" />
@@ -27,7 +30,7 @@
   
   <url>
     <loc>https://pixelliving.co/zh/</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/" />
@@ -36,106 +39,44 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pixelliving.co/" />
   </url>
 
- 
+  <!-- ========================== -->
+  <!-- ESTUDIOS (solo /estudio/) -->
+  <!-- ========================== -->
+  
   <url>
     <loc>https://pixelliving.co/estudio/jade</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/estudio/jade" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://pixelliving.co/en/jade" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/jade" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pixelliving.co/" />
   </url>
   
-  <url>
-    <loc>https://pixelliving.co/en/jade</loc>
-    <lastmod>2025-08-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/estudio/jade" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://pixelliving.co/en/jade" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/jade" />
-  </url>
-  
-  <url>
-    <loc>https://pixelliving.co/zh/jade</loc>
-    <lastmod>2025-08-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/estudio/jade" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://pixelliving.co/en/jade" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/jade" />
-  </url>
-
   <url>
     <loc>https://pixelliving.co/estudio/zian</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/estudio/zian" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://pixelliving.co/en/zian" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/zian" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pixelliving.co/" />
   </url>
   
-  <url>
-    <loc>https://pixelliving.co/en/zian</loc>
-    <lastmod>2025-08-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/estudio/zian" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://pixelliving.co/en/zian" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/zian" />
-  </url>
-  
-  <url>
-    <loc>https://pixelliving.co/zh/zian</loc>
-    <lastmod>2025-08-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/estudio/zian" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://pixelliving.co/en/zian" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/zian" />
-  </url>
-
-  <!-- Estudio Índigo -->
   <url>
     <loc>https://pixelliving.co/estudio/indigo</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/estudio/indigo" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://pixelliving.co/en/indigo" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/indigo" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pixelliving.co/" />
   </url>
-  
-  <url>
-    <loc>https://pixelliving.co/en/indigo</loc>
-    <lastmod>2025-08-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/estudio/indigo" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://pixelliving.co/en/indigo" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/indigo" />
-  </url>
-  
-  <url>
-    <loc>https://pixelliving.co/zh/indigo</loc>
-    <lastmod>2025-08-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/estudio/indigo" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://pixelliving.co/en/indigo" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/indigo" />
-  </url> 
 
   <!-- ========================== -->
-  <!-- PÁGINAS DE CONTENIDO -->
+  <!-- PÁGINAS DE CONTACTO -->
   <!-- ========================== -->
   
-  <!-- Contacto -->
   <url>
     <loc>https://pixelliving.co/contacto</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/contacto" />
@@ -145,7 +86,7 @@
   
   <url>
     <loc>https://pixelliving.co/en/contact</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/contacto" />
@@ -155,7 +96,7 @@
   
   <url>
     <loc>https://pixelliving.co/zh/contact</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/contacto" />
@@ -163,10 +104,13 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/contact" />
   </url>
 
-  <!-- Privacidad -->
+  <!-- ========================== -->
+  <!-- PÁGINAS DE PRIVACIDAD -->
+  <!-- ========================== -->
+  
   <url>
     <loc>https://pixelliving.co/privacidad</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/privacidad" />
@@ -176,7 +120,7 @@
   
   <url>
     <loc>https://pixelliving.co/en/privacy</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/privacidad" />
@@ -186,7 +130,7 @@
   
   <url>
     <loc>https://pixelliving.co/zh/privacy</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/privacidad" />
@@ -194,10 +138,13 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/privacy" />
   </url>
 
-  <!-- Términos -->
+  <!-- ========================== -->
+  <!-- TÉRMINOS DE SERVICIO -->
+  <!-- ========================== -->
+  
   <url>
     <loc>https://pixelliving.co/terminos</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/terminos" />
@@ -207,7 +154,7 @@
   
   <url>
     <loc>https://pixelliving.co/en/terms</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/terminos" />
@@ -217,7 +164,7 @@
   
   <url>
     <loc>https://pixelliving.co/zh/terms</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/terminos" />
@@ -225,10 +172,13 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/terms" />
   </url>
 
-  <!-- Cookies -->
+  <!-- ========================== -->
+  <!-- POLÍTICAS DE COOKIES -->
+  <!-- ========================== -->
+  
   <url>
     <loc>https://pixelliving.co/cookies</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/cookies" />
@@ -238,7 +188,7 @@
   
   <url>
     <loc>https://pixelliving.co/en/cookies</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.1</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/cookies" />
@@ -248,7 +198,7 @@
   
   <url>
     <loc>https://pixelliving.co/zh/cookies</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.1</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/cookies" />
@@ -256,10 +206,13 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/cookies" />
   </url>
 
-  <!-- Gracias -->
+  <!-- ========================== -->
+  <!-- PÁGINAS DE AGRADECIMIENTO -->
+  <!-- ========================== -->
+  
   <url>
     <loc>https://pixelliving.co/gracias</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/gracias" />
@@ -269,7 +222,7 @@
   
   <url>
     <loc>https://pixelliving.co/en/thanks</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/gracias" />
@@ -279,7 +232,7 @@
   
   <url>
     <loc>https://pixelliving.co/zh/thanks</loc>
-    <lastmod>2025-08-04</lastmod>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/gracias" />
