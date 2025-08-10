@@ -84,25 +84,7 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/contact" />
   </url>
   
-  <url>
-    <loc>https://pixelliving.co/en/contact</loc>
-    <lastmod>2025-08-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/contacto" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://pixelliving.co/en/contact" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/contact" />
-  </url>
   
-  <url>
-    <loc>https://pixelliving.co/zh/contact</loc>
-    <lastmod>2025-08-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/contacto" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://pixelliving.co/en/contact" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/contact" />
-  </url>
 
   <!-- ========================== -->
   <!-- PÁGINAS DE PRIVACIDAD -->
@@ -119,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://pixelliving.co/en/privacy</loc>
+    <loc>https://pixelliving.co/en/privacidad</loc>
     <lastmod>2025-08-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
@@ -129,7 +111,7 @@
   </url>
   
   <url>
-    <loc>https://pixelliving.co/zh/privacy</loc>
+    <loc>https://pixelliving.co/zh/privacidad</loc>
     <lastmod>2025-08-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
@@ -153,7 +135,7 @@
   </url>
   
   <url>
-    <loc>https://pixelliving.co/en/terms</loc>
+    <loc>https://pixelliving.co/en/terminos</loc>
     <lastmod>2025-08-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
@@ -163,7 +145,7 @@
   </url>
   
   <url>
-    <loc>https://pixelliving.co/zh/terms</loc>
+    <loc>https://pixelliving.co/zh/terminos</loc>
     <lastmod>2025-08-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
@@ -172,39 +154,9 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/terms" />
   </url>
 
-  <!-- ========================== -->
-  <!-- POLÍTICAS DE COOKIES -->
-  <!-- ========================== -->
   
-  <url>
-    <loc>https://pixelliving.co/cookies</loc>
-    <lastmod>2025-08-10</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/cookies" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://pixelliving.co/en/cookies" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/cookies" />
-  </url>
   
-  <url>
-    <loc>https://pixelliving.co/en/cookies</loc>
-    <lastmod>2025-08-10</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.1</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/cookies" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://pixelliving.co/en/cookies" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/cookies" />
-  </url>
-  
-  <url>
-    <loc>https://pixelliving.co/zh/cookies</loc>
-    <lastmod>2025-08-10</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.1</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://pixelliving.co/cookies" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://pixelliving.co/en/cookies" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://pixelliving.co/zh/cookies" />
-  </url>
+ 
 
   <!-- ========================== -->
   <!-- PÁGINAS DE AGRADECIMIENTO -->
@@ -221,7 +173,7 @@
   </url>
   
   <url>
-    <loc>https://pixelliving.co/en/thanks</loc>
+    <loc>https://pixelliving.co/en/gracias</loc>
     <lastmod>2025-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
@@ -231,7 +183,7 @@
   </url>
   
   <url>
-    <loc>https://pixelliving.co/zh/thanks</loc>
+    <loc>https://pixelliving.co/zh/gracias</loc>
     <lastmod>2025-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
