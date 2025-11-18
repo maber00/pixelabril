@@ -8,142 +8,169 @@ const currentLang = getLanguageFromUrl(Astro.url.pathname);
 setCurrentLanguage(currentLang);
 
 const carouselImages = [
-  {
-    src: image1.src,
-    alt: t('coliving.carousel.image1_alt')
-  },
-  {
-    src: image2.src,
-    alt: t('coliving.carousel.image2_alt')
-  },
-];
-
-const beneficios = [
-  {
-    icono: 'M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21',
-    titulo: t('coliving.beneficios.espacios_modernos.titulo'),
-    descripcion: t('coliving.beneficios.espacios_modernos.descripcion')
-  },
-  {
-    icono: 'M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155',
-    titulo: t('coliving.beneficios.trato_cercano.titulo'),
-    descripcion: t('coliving.beneficios.trato_cercano.descripcion')
-  },
-  {
-    icono: 'M9 4.5v15m6-15v15m-10.875 0h15.75c.621 0 1.125-.504 1.125-1.125V5.625c0-.621-.504-1.125-1.125-1.125H4.125C3.504 4.5 3 5.004 3 5.625v12.75c0 .621.504 1.125 1.125 1.125z',
-    titulo: t('coliving.beneficios.flexibilidad.titulo'),
-    descripcion: t('coliving.beneficios.flexibilidad.descripcion')
-  },
-  {
-    icono: 'M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z',
-    titulo: t('coliving.beneficios.comodidad.titulo'),
-    descripcion: t('coliving.beneficios.comodidad.descripcion')
-  },
-  {
-    icono: 'M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z',
-    titulo: t('coliving.beneficios.buen_ambiente.titulo'),
-    descripcion: t('coliving.beneficios.buen_ambiente.descripcion')
-  }
+  { src: image1.src, alt: t('coliving.carousel.image1_alt') },
+  { src: image2.src, alt: t('coliving.carousel.image2_alt') }
 ];
 ---
 
-<section id="coliving" class="section bg-pixel-purple/5">
-  <div class="container mx-0 md:mx-20">
-    <div class="text-center mb-12">
-      <span class="inline-block text-pixel-purple font-semibold text-sm uppercase tracking-wider mb-2">{t('coliving.badge')}</span>
-      <h2 class="text-4xl md:text-7xl font-normal mb-6">{t('coliving.title')} <span class="text-pixel-purple">{t('coliving.title_highlight')}</span> {t('coliving.title_end')}</h2>
+<section
+  id="coliving"
+  class="section bg-gradient-to-b from-pixel-purple/5 via-white to-pixel-purple/10"
+>
+  <div class="container mx-auto px-4 md:px-20">
+
+    <!-- Encabezado -->
+    <div class="text-center mb-12 md:mb-16">
+      <span class="inline-block text-pixel-purple font-semibold text-xs md:text-sm uppercase tracking-[0.2em] mb-3">
+        Comunidad Pixel Living | Bogotá
+      </span>
+      <h2 class="text-3xl md:text-5xl lg:text-6xl font-normal mb-4 md:mb-6 leading-tight">
+        Vive en comunidad, <span class="text-pixel-purple">crece cada día</span>
+      </h2>
+      <p class="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+        Conecta con personas que están viviendo, trabajando y creando proyectos como tú, en el lugar ideal para crecer.
+      </p>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto mb-16">
-      <div class="flex flex-col justify-center">
-        <div class="text-left mb-12">
-          <h2 class="text-4xl md:text-5xl font-normal mb-6">
-            <p>{t('coliving.community.heading')}</p>
-          </h2>
-        </div>
-        <div class="text-lg space-y-4">
-          <p>{t('coliving.community.description1')}</p>
-          <p>{t('coliving.community.description2')}</p>
-        </div>
-        
-        <div class="mt-8">
-          <a href="#reservas" class="btn bg-pixel-purple hover:bg-purple-700 text-white inline-flex items-center">
-            {t('coliving.community.cta')}
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </a>
+    <!-- GRID 2 COLUMNAS: TEXTO + CARRUSEL -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 max-w-7xl mx-auto mb-6 md:mb-10">
+
+      <!-- COLUMNA IZQUIERDA -->
+      <div class="flex">
+        <div class="flex flex-col justify-center space-y-6 md:space-y-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-violet-100 p-6 md:p-8">
+          
+          <!-- Intro -->
+          <div class="space-y-3 md:space-y-4 text-left">
+            <p class="text-base md:text-xl text-gray-900">
+              Pixel Living es mucho más que un lugar para alojarse en Bogotá.
+            </p>
+            <p class="text-base md:text-lg text-gray-700">
+              Aquí te rodeas de personas con sueños, proyectos y ganas de compartir, sin importar si te quedas por unos días o por varios meses.
+            </p>
+            <p class="text-base md:text-lg text-gray-700">
+              La diversidad de nuestra comunidad enriquece tu experiencia y multiplica tus oportunidades.
+            </p>
+          </div>
+
+          <!-- Quiénes se hospedan -->
+          <div class="space-y-2 md:space-y-3 text-left">
+            <h3 class="text-lg md:text-xl font-semibold text-pixel-purple">
+              ¿Quiénes se hospedan en Pixel Living?
+            </h3>
+            <ul class="list-disc list-inside text-gray-700 space-y-1.5 text-sm md:text-base">
+              <li>Profesionales que vienen a Bogotá por proyectos, trabajo o eventos.</li>
+              <li>Nómadas digitales que valoran el networking, la flexibilidad y un ambiente inspirador.</li>
+              <li>Estudiantes universitarios en intercambio, cursos cortos o prácticas profesionales.</li>
+              <li>Emprendedores y freelancers en busca de inspiración, aliados y nuevas ideas.</li>
+              <li>Viajeros urbanos y extranjeros que quieren explorar la ciudad con comodidad.</li>
+              <li>Ejecutivos de empresas, sector salud o diplomacia en misiones temporales.</li>
+            </ul>
+          </div>
+
+          <!-- Lo que la hace única -->
+          <div class="space-y-2 md:space-y-3 text-left">
+            <h3 class="text-lg md:text-xl font-semibold text-pixel-purple">
+              Lo que hace única a nuestra comunidad:
+            </h3>
+            <ul class="list-disc list-inside text-gray-700 space-y-1.5 text-sm md:text-base">
+              <li>Ambiente colaborativo y de apoyo: comparte ideas y buenas conversaciones.</li>
+              <li>Diversidad real: personas de distintas ciudades, países y profesiones.</li>
+              <li>Red de contactos: crece y conecta con personas que suman a tu viaje o proyecto.</li>
+            </ul>
+          </div>
+
+          <p class="text-base md:text-lg text-gray-900">
+            En Pixel Living, encuentras tu espacio y una comunidad que te acompaña, sin importar el tiempo que te quedes.
+          </p>
+
+          <!-- CTA -->
+          <div class="pt-2">
+            <a
+              href="#reservas"
+              class="inline-flex items-center justify-center rounded-full px-6 md:px-8 py-2.5 md:py-3 text-sm md:text-base font-semibold bg-pixel-purple text-white shadow-md hover:shadow-lg hover:bg-purple-700 transition-all"
+            >
+              {t('coliving.community.cta')}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-4 h-4 md:w-5 md:h-5 ml-2"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
       
+      <!-- COLUMNA CARRUSEL -->
       <div class="flex flex-col">
-        <div class="relative overflow-hidden rounded-lg border-2 border-pixel-purple">
-          <div id="coliving-carousel" class="flex transition-transform duration-500">
+        <div class="relative overflow-hidden rounded-2xl border border-pixel-purple/40 bg-white shadow-xl">
+          <div id="coliving-carousel" class="flex transition-transform duration-500 ease-out">
             {carouselImages.map((image) => (
               <div class="w-full flex-shrink-0">
-                <div class="aspect-square">
-                  <img 
-                    src={image.src} 
-                    alt={image.alt} 
+                <div class="aspect-[4/5] md:aspect-square">
+                  <img
+                    src={image.src}
+                    alt={image.alt}
                     class="w-full h-full object-cover"
                   />
                 </div>
               </div>
             ))}
           </div>
-          
+
+          <!-- Indicadores -->
           <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
             {carouselImages.map((_, index) => (
               <button 
-                class="w-2 h-2 rounded-full bg-white opacity-50 hover:opacity-100 transition-opacity coliving-indicator" 
+                class="w-2.5 h-2.5 rounded-full bg-white/80 border border-pixel-purple/60 opacity-60 hover:opacity-100 transition-opacity coliving-indicator"
                 data-index={index}
                 aria-label={t('coliving.carousel.indicator_label').replace('{{index}}', (index + 1).toString())}
               ></button>
             ))}
           </div>
         </div>
-        
+
+        <!-- Controles -->
         <div class="flex justify-center items-center space-x-4 mt-4">
-          <button 
-            id="coliving-prev" 
-            class="bg-pixel-purple text-white p-2 rounded-md hover:bg-purple-700 transition focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
-            aria-label={t('coliving.carousel.prev_label')}
-            title={t('coliving.carousel.prev_title')}
+          <button
+            id="coliving-prev"
+            class="bg-white border border-pixel-purple/40 text-pixel-purple p-2 md:p-2.5 rounded-full shadow-sm hover:shadow-md hover:bg-pixel-purple hover:text-white transition"
           >
-            <span class="sr-only">{t('coliving.carousel.prev_sr')}</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" aria-hidden="true">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-5"
+            >
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
             </svg>
           </button>
 
-          <button 
-            id="coliving-next" 
-            class="bg-pixel-purple text-white p-2 rounded-md hover:bg-purple-700 transition focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
-            aria-label={t('coliving.carousel.next_label')}
-            title={t('coliving.carousel.next_title')}
+          <button
+            id="coliving-next"
+            class="bg-white border border-pixel-purple/40 text-pixel-purple p-2 md:p-2.5 rounded-full shadow-sm hover:shadow-md hover:bg-pixel-purple hover:text-white transition"
           >
-            <span class="sr-only">{t('coliving.carousel.next_sr')}</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" aria-hidden="true">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-5"
+            >
               <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
             </svg>
           </button>
         </div>
+
       </div>
-    </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 max-w-7xl mx-auto">
-      {beneficios.map(beneficio => (
-        <div class="bg-pixel-purple p-6 rounded-md shadow-md hover:shadow-lg transition-shadow border-2 border-pixel-purple pixel-hover">
-          <div class="w-14 h-14 bg-pixel-purple/20 rounded-md flex items-center justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 text-white">
-              <path stroke-linecap="round" stroke-linejoin="round" d={beneficio.icono} />
-            </svg>
-          </div>
-          
-          <h3 class="text-xl text-violet-50 font-semibold mb-2">{beneficio.titulo}</h3>
-          <p class="text-white">{beneficio.descripcion}</p>
-        </div>
-      ))}
+
     </div>
   </div>
 </section>

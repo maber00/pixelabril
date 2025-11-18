@@ -16,47 +16,34 @@ import eventsImg from '../assets/pixel-cowork-001.webp'; // Ya disponible
 const amenidades = [
   {
     icono: 'M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5l-1.5-.5M6.75 7.364V3h-3v18m3-13.636l10.5-3.819',
-    titulo: t('zonas_comunes.amenidades.coworking.titulo'),
-    descripcion: t('zonas_comunes.amenidades.coworking.descripcion'),
+    titulo: "Coworking y sala de reuniones",
+    descripcion: "Espacios modernos con wifi de alta velocidad para trabajar, estudiar o reunirte con otros residentes.",
     color: 'bg-pixel-blue',
     imagen: coworkingImg
   },
   {
     icono: 'M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z',
-    titulo: t('zonas_comunes.amenidades.rooftop.titulo'),
-    descripcion: t('zonas_comunes.amenidades.rooftop.descripcion'),
+    titulo: "Rooftop con fire pits",
+    descripcion: "Disfruta de las mejores vistas del norte de Bogotá, comparte atardeceres únicos y haz nuevos amigos junto al fuego.",
     color: 'bg-pixel-orange',
     imagen: rooftopImg
   },
   {
     icono: 'M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z',
-    titulo: t('zonas_comunes.amenidades.gym.titulo'),
-    descripcion: t('zonas_comunes.amenidades.gym.descripcion'),
+    titulo: "Área de ejercicio al aire libre y TRX",
+    descripcion: "Mantente activo y saludable todos los días sin salir de casa.",
     color: 'bg-pixel-green',
     imagen: gymImg
   },
   {
-    icono: 'M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558-.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z',
-    titulo: t('zonas_comunes.amenidades.pet_zone.titulo'),
-    descripcion: t('zonas_comunes.amenidades.pet_zone.descripcion'),
-    color: 'bg-pixel-purple',
-    imagen: petZoneImg
-  },
-  {
     icono: 'M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z',
-    titulo: t('zonas_comunes.amenidades.bike_parking.titulo'),
-    descripcion: t('zonas_comunes.amenidades.bike_parking.descripcion'),
+    titulo: "Bici parking con taller",
+    descripcion: "Guarda y cuida tu bicicleta en un espacio seguro, siempre lista para rodar.",
     color: 'bg-pixel-brown',
     imagen: bikeImg
-  },
-  {
-    icono: 'M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z',
-    titulo: t('zonas_comunes.amenidades.events.titulo'),
-    descripcion: t('zonas_comunes.amenidades.events.descripcion'),
-    color: 'bg-pixel-yellow',
-    imagen: eventsImg
   }
 ];
+
 ---
 
 <section id="zonas-comunes" class="section bg-pixel-orange/5">
@@ -67,14 +54,14 @@ const amenidades = [
         {t('zonas_comunes.badge')}
       </span>
       <h2 class="text-4xl md:text-6xl font-normal mb-6 cal-sans">
-        {t('zonas_comunes.title')} <span class="text-pixel-orange">{t('zonas_comunes.title_highlight')}</span> {t('zonas_comunes.title_end')}
+        {t('zonas_comunes.title')} 
       </h2>
       <p class="text-lg text-gray-700 max-w-4xl mx-auto">
         {t('zonas_comunes.description')}
       </p>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 md:mx-20 mx-0">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16 md:mx-20 mx-0">
       {amenidades.map((amenidad, index) => (
         <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border-2 border-gray-200 pixel-hover">
           

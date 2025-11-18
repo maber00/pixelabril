@@ -1,0 +1,140 @@
+---
+// IMPORTAR I18N
+import { getLanguageFromUrl, t, setCurrentLanguage } from '../i18n/utils/translator';
+
+// Detectar idioma actual
+const currentLang = getLanguageFromUrl(Astro.url.pathname);
+setCurrentLanguage(currentLang);
+---
+
+<section id="opciones-alojamiento" class="section bg-white">
+  <div class="container">
+    <div class="text-center mb-12 mx-0 md:mx-20">
+      <span class="inline-block text-pixel-brown font-semibold text-sm uppercase tracking-wider mb-2">
+        {t('opciones.badge')}
+      </span>
+      <h2 class="text-4xl md:text-6xl font-normal mb-6">
+        {t('opciones.title')} <span class="text-pixel-brown">{t('opciones.title_highlight')}</span>
+      </h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        {t('opciones.description')}
+      </p>
+    </div>
+
+    {/* Tabla comparativa principal */}
+    <div class="max-w-5xl mx-auto mb-10">
+      <div class="overflow-x-auto bg-white rounded-xl shadow-lg border border-pixel-brown/10">
+        <table class="w-full">
+          <thead>
+            <tr class="bg-pixel-brown/5">
+              <th class="text-left py-4 px-6 font-semibold text-gray-800">
+                {t('opciones.headers.concepto')}
+              </th>
+              <th class="text-center py-4 px-6 font-semibold text-gray-800">
+                {t('opciones.headers.estadia_corta')}
+              </th>
+              <th class="text-center py-4 px-6 font-semibold text-pixel-brown">
+                {t('opciones.headers.coliving')}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-100">
+              <td class="py-4 px-6 text-gray-700">{t('opciones.filas.duracion')}</td>
+              <td class="py-4 px-6 text-center text-gray-900 font-medium">
+                {t('opciones.estadia_corta.duracion')}
+              </td>
+              <td class="py-4 px-6 text-center text-gray-900 font-medium">
+                {t('opciones.coliving.duracion')}
+              </td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-4 px-6 text-gray-700">{t('opciones.filas.precio')}</td>
+              {/* Estadía corta */}
+              <td class="py-4 px-6 text-center">
+                <div class="flex flex-col items-center">
+                  <div>
+                    <span class="text-pixel-brown font-semibold">
+                      {t('opciones.estadia_corta.precio_destacado')}
+                    </span>
+                    <span class="text-gray-600">
+                      {' '}{t('opciones.estadia_corta.precio_unidad')}
+                    </span>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">
+                    {t('opciones.estadia_corta.duracion')}{': '}
+                    <span class="font-medium text-gray-700">
+                      {t('opciones.estadia_corta.precio_total')}
+                    </span>
+                  </div>
+                </div>
+              </td>
+              {/* Coliving */}
+              <td class="py-4 px-6 text-center">
+                <span class="text-pixel-brown font-semibold">
+                  {t('opciones.coliving.precio_destacado')}
+                </span>
+                <span class="text-gray-600">
+                  {' '}{t('opciones.coliving.precio_unidad')}
+                </span>
+              </td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-4 px-6 text-gray-700">{t('opciones.filas.incluye')}</td>
+              <td class="py-4 px-6 text-center text-gray-700">
+                {t('opciones.estadia_corta.incluye')}
+              </td>
+              <td class="py-4 px-6 text-center text-gray-700">
+                {t('opciones.coliving.incluye')}
+              </td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-4 px-6 text-gray-700">{t('opciones.filas.reserva')}</td>
+              <td class="py-4 px-6 text-center text-gray-900">
+                {t('opciones.estadia_corta.reserva')}
+              </td>
+              <td class="py-4 px-6 text-center text-gray-900">
+                {t('opciones.coliving.reserva')}
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 px-6 text-gray-700">{t('opciones.filas.documentos')}</td>
+              <td class="py-4 px-6 text-center text-gray-900">
+                {t('opciones.estadia_corta.documentos')}
+              </td>
+              <td class="py-4 px-6 text-center text-gray-900">
+                {t('opciones.coliving.documentos')}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    {/* Texto + CTAs */}
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-lg text-gray-700 mb-8">
+        {t('opciones.texto_contexto')}
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="#reservas?tipo=short"
+          class="btn bg-pixel-brown hover:bg-brown-700 text-white text-lg px-8 py-4 rounded-lg inline-flex items-center justify-center"
+        >
+          {t('opciones.cta_estadia_corta')}
+        </a>
+        <a
+          href="#reservas?tipo=coliving"
+          class="btn bg-transparent border-2 border-pixel-brown text-pixel-brown hover:bg-pixel-brown hover:text-white text-lg px-8 py-4 rounded-lg inline-flex items-center justify-center"
+        >
+          {t('opciones.cta_coliving')}
+        </a>
+      </div>
+
+      <p class="text-sm text-gray-500 mt-4">
+        {t('opciones.nota_cupos')}
+      </p>
+    </div>
+  </div>
+</section>

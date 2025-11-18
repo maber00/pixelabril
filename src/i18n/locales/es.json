@@ -23,9 +23,9 @@
   },
 
   "hero": {
-    "brand_line_1": "Coliving Bogotá",
-    "brand_line_2": "Pixel Living",
-    "title": "Vive, crea y conecta",
+    "brand_line_1": "Pixel Living – Bogotá ",
+    "brand_line_2": "Apartaestudios Flexibles: Estadías Cortas y Coliving",
+    "title": "Vive, trabaja y disfruta",
     "subtitle": "en el norte de Bogotá.",
     "description": "Pixel Living es tu coliving en Bogotá, donde encuentras apartaestudios modernos y amoblados, todos los servicios incluidos y una comunidad vibrante en la ubicación más estratégica de la ciudad.",
     "benefits": [
@@ -44,14 +44,16 @@
     "scroll_text": "Descubre por qué somos diferentes"
   },
 
+  
+
   "espacios": {
   "badge": "Apartaestudios Pixel Living",
-    "title": "Apartaestudios amoblados y",
-    "title_highlight": "listos para ti",
-    "description": "En Pixel Living, cada apartaestudio tiene",
+    "title": "Apartaestudios amoblados para",
+    "title_highlight": "estadías cortas o coliving",
+    "description": "Cada apartaestudio tiene",
     "description2": "29 metros cuadrados",
-    "description3": "y está diseñado para brindarte máxima comodidad, privacidad y flexibilidad, en el coliving más flexible y completo del norte de Bogotá.",
-    "espacio": "apartaestudio",
+    "description3": "y está diseñado para brindar máxima comodidad y privacidad, ya sea que te quedes por noches o por meses.",
+    "espacio": "",
   "beneficios_destacados": {
     "habitacion_adicional": "Habitación adicional",
     "habitacion_desc": "Espacio de trabajo + cama auxiliar",
@@ -91,12 +93,57 @@
   }
 },
 
+  "opciones": {
+    "badge": "Opciones de alojamiento",
+    "title": "¿Qué opción",
+    "title_highlight": "te conviene?",
+    "description": "¿Vienes por trabajo, estudio, transición o proyecto? Elige la opción de alojamiento que mejor se adapte a tu necesidad.",
+
+    "headers": {
+      "concepto": "Concepto",
+      "estadia_corta": "Estadía corta",
+      "coliving": "Coliving"
+    },
+
+    "filas": {
+      "duracion": "Duración mínima",
+      "precio": "Precio",
+      "incluye": "Incluye",
+      "reserva": "Reserva",
+      "documentos": "Documentos"
+    },
+
+    "estadia_corta": {
+      "duracion": "3 noches",
+      "precio_destacado": "$190.000",
+      "precio_unidad": "/ noche",
+      "precio_total": "$570.000",
+      "incluye": "Servicios, wifi, amoblado, acceso a zonas comunes",
+      "reserva": "Confirmación en menos de 24h",
+      "documentos": "ID y pago online"
+    },
+
+    "coliving": {
+      "duracion": "1 mes",
+      "precio_destacado": "Desde $3.100.000",
+      "precio_unidad": "/ mes",
+      "incluye": "Servicios, wifi, amoblado, acceso a zonas comunes",
+      "reserva": "Sujeta a aprobación",
+      "documentos": "Proceso de validación previa"
+    },
+
+    "texto_contexto": "¿Vienes por trabajo, estudio, transición o proyecto? Elige la opción de alojamiento que mejor se adapte a tu necesidad.",
+    "cta_estadia_corta": "Reserva estadía corta",
+    "cta_coliving": "Solicita coliving",
+    "nota_cupos": "Cupos limitados. Proceso 100 % online."
+},
+
   "zonas_comunes": {
     "badge": "Zonas Comunes y Amenidades",
-    "title": "Mucho más que un apartaestudio: descubre la",
+    "title": "Mucho más que un apartaestudio:",
     "title_highlight": "vida en comunidad",
     "title_end": "Pixel Living",
-    "description": "En Pixel Living, no solo tienes tu espacio privado, también accedes a zonas comunes pensadas para tu bienestar, productividad y vida social.",
+    "description": "En Pixel Living, no solo tienes tu espacio privado, también accedes a zonas comunes pensadas para tu bienestar y productividad:",
     "amenidades": {
       "coworking": {
         "titulo": "Coworking y Sala de Reuniones",
@@ -244,10 +291,10 @@
 
 
 "ubicacion": {
-  "badge": "Ubicación estratégica",
+  "badge": "Ubicación Estratégica | Coliving Bogotá Pixel Living",
   "title": "Vive donde", 
   "title_highlight": "todo te queda cerca",
-  "description": "Pixel Living está en el norte de Bogotá...",
+  "description": "Vive donde todo te queda cerca. Pixel Living está en el norte de Bogotá, en una de las zonas más conectadas y seguras de la ciudad.",
   
   "movilidad": {
     "titulo": "Movilidad Total",
@@ -318,19 +365,13 @@
 },
 
   "precios": {
-  "badge": "Precios transparentes",
-  "title": "Arrienda tu apartaestudio en el",
-  "title_highlight": "coliving más flexible",
-  "title_end": "del norte de Bogotá",
-  "description": "En Pixel Living, todo es fácil y transparente: elige la duración, un solo pago mensual.",
-  "usp": "Sin codeudor - Solo tu documento de identificación",
-  
   "tabla_titulo": "Tarifas Mensuales",
   "tabla_headers": {
     "duracion": "Duración",
     "precio": "Precio Mensual",
     "ahorro": "Ahorro"
   },
+
   
   "duraciones": {
     "1_mes": "1 mes",
@@ -413,11 +454,31 @@
   "title_end": "que paredes",
   
   "community": {
-    "heading": "Vivir en Pixel es ser parte de una comunidad.",
-    "description1": "Aquí puedes estar solo... pero también puedes compartir.",
-    "description2": "Nuestra comunidad está formada por profesionales, creativos, emprendedores y viajeros que buscan un lugar que se sienta como un hogar, pero con la libertad de moverse al ritmo de sus vidas.",
-    "cta": "Únete a nuestra comunidad"
-  },
+  "heading": "Vive en comunidad, crece cada día",
+  "intro_1": "Pixel Living es mucho más que un lugar para alojarse en Bogotá.",
+  "intro_2": "Aquí te rodeas de personas con sueños, proyectos y ganas de compartir, sin importar si te quedas por unos días o por varios meses.",
+  "intro_3": "La diversidad de nuestra comunidad enriquece tu experiencia y multiplica tus oportunidades.",
+
+  "quienes_titulo": "¿Quiénes se hospedan en Pixel Living?",
+  "quienes_lista": [
+    "Profesionales que vienen a Bogotá por proyectos, trabajo o eventos.",
+    "Nómadas digitales que valoran el networking, la flexibilidad y un ambiente inspirador.",
+    "Estudiantes universitarios en intercambio, cursos cortos o prácticas profesionales.",
+    "Emprendedores y freelancers en busca de inspiración, aliados y nuevas ideas.",
+    "Viajeros urbanos y extranjeros que quieren explorar la ciudad con comodidad.",
+    "Ejecutivos de empresas, sector salud o diplomacia en misiones temporales."
+  ],
+
+  "unica_titulo": "Lo que hace única a nuestra comunidad:",
+  "unica_lista": [
+    "Ambiente colaborativo y de apoyo: comparte ideas y buenas conversaciones.",
+    "Diversidad real: personas de distintas ciudades, países y profesiones.",
+    "Red de contactos: crece y conecta con personas que suman a tu viaje o proyecto."
+  ],
+
+  "cierre": "En Pixel Living, encuentras tu espacio y una comunidad que te acompaña, sin importar el tiempo que te quedes.",
+  "cta": "Únete a nuestra comunidad"
+},
   
   "carousel": {
     "image1_alt": "Comunidad Pixel Living",
@@ -430,30 +491,34 @@
     "next_sr": "Siguiente",
     "indicator_label": "Ver imagen {{index}} de {{total}}"
   },
+
+  
   
   "beneficios": {
-    "espacios_modernos": {
-      "titulo": "Espacios modernos",
-      "descripcion": "Diseño contemporáneo y funcional para vivir con estilo."
-    },
-    "trato_cercano": {
-      "titulo": "Trato cercano", 
-      "descripcion": "Atención personalizada para que te sientas como en casa."
-    },
-    "flexibilidad": {
-      "titulo": "Flexibilidad",
-      "descripcion": "Adaptamos nuestros servicios a tus necesidades de estadía."
-    },
-    "comodidad": {
-      "titulo": "Comodidad",
-      "descripcion": "Todo lo que necesitas para una experiencia confortable."
-    },
-    "buen_ambiente": {
-      "titulo": "Buen ambiente",
-      "descripcion": "Comunidad positiva donde puedes conectar con otros."
-    }
+  "espacios_modernos": {
+    "titulo": "Espacios que inspiran",
+    "descripcion": "Apartaestudios modernos, cómodos y luminosos para vivir con estilo."
+  },
+  "trato_cercano": {
+    "titulo": "Atención humana y cercana", 
+    "descripcion": "Estamos contigo cuando lo necesitas, para que siempre te sientas en casa."
+  },
+  "flexibilidad": {
+    "titulo": "Flexibilidad real",
+    "descripcion": "Estadías que se adaptan a tu ritmo de vida, no al revés."
+  },
+  "comodidad": {
+    "titulo": "Confort sin complicaciones",
+    "descripcion": "Todo incluido, sin sorpresas ni trámites innecesarios."
+  },
+  "buen_ambiente": {
+    "titulo": "Comunidad auténtica",
+    "descripcion": "Personas creativas y diversas con las que puedes conectar, colaborar e inspirarte."
   }
+}
 },
+
+
 
   "reservas": {
   "title": "Reserva tu espacio en Pixel Living",
@@ -1021,4 +1086,5 @@
       }
     }
   }
+  
   
