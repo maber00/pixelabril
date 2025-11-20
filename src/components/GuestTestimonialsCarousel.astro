@@ -4,27 +4,32 @@
 const testimonios = [
   {
     nombre: "Jacob Speth",
+    bandera: "🇺🇸",
     rating: "⭐️⭐️⭐️⭐️⭐️",
     texto:
       "I loved staying here! The rooms are beautiful and clean, the location is fantastic, and the terrace on top is the perfect place to relax and enjoy the sounds and sights of Bogotá. Make sure to stop and stay at Pixel Living!",
   },
   {
     nombre: "Ana Prieto",
+    bandera: "🇩🇪",
     rating: "⭐️⭐️⭐️⭐️⭐️",
     texto: "Excelente ubicación e instalaciones",
   },
   {
     nombre: "Rodolfo Álvarez Díaz",
+    bandera: "🇨🇴",
     rating: "⭐️⭐️⭐️⭐️⭐️",
     texto: "Beautiful",
   },
   {
     nombre: "Jonathan Cárdenas",
+    bandera: "🇨🇴",
     rating: "⭐️⭐️⭐️⭐️",
     texto: "Muy buena experiencia en Pixel Living.",
   },
   {
     nombre: "Dario García",
+    bandera: "🇨🇴",
     rating: "⭐️⭐️⭐️⭐️⭐️",
     texto:
       "Excelente lugar, muy cómodo y bien ubicado. Perfecto para mi estadía en Bogotá.",
@@ -108,8 +113,10 @@ const testimonios = [
             <p class="text-sm md:text-base text-gray-800 mb-4 leading-relaxed">“{t.texto}”</p>
 
             <div>
-              <p class="text-sm font-semibold text-gray-900">{t.nombre}</p>
-              <p class="text-xs text-gray-500">Huésped de Pixel Living</p>
+<p class="text-sm font-semibold text-gray-900 flex items-center gap-1">
+  {t.bandera && <span class="text-base">{t.bandera}</span>}
+  <span>{t.nombre}</span>
+</p>              <p class="text-xs text-gray-500">Huésped de Pixel Living</p>
             </div>
           </article>
         ))}
