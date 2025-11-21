@@ -23,103 +23,325 @@
   },
 
   "hero": {
-    "brand_line_1": "Coliving Bogotá",
-    "brand_line_2": "Pixel Living",
-    "title": "Live, create and connect",
-    "subtitle": "in north Bogotá.",
-    "description": "Pixel Living is your coliving in Bogotá, where you'll find modern and furnished studio apartments, all services included and a vibrant community in the city's most strategic location.",
-    "benefits": [
-      "✓ No guarantor required",
-      "✓ From 1 month", 
-      "✓ All-inclusive",
-      "✓ Move-in ready"
-    ],
-    "description_extended": "Enjoy the flexibility of renting from one month, without a guarantor and without complications.",
-    "value_proposition": "Everything you need to live, work and grow is here.",
-    "cta_question": "Ready to live the Pixel Living experience?",
-    "button_primary": "Reserve your space now",
-    "button_secondary": "View pricing and availability",
-    "trust_info": "Limited spots • Only your ID required",
-    "process_time": "Booking process in less than 24 hours",
-    "scroll_text": "Discover why we're different"
+  "brand_line_1": "Pixel Living | Bogotá",
+  "brand_line_2": "Flexible studio apartments: short stays and coliving",
+  "title": "Live, work and enjoy",
+  "subtitle": "in north Bogotá.",
+  "description": "Pixel Living is your best option for flexible accommodation in Bogotá: furnished 29 m² studio apartments, all-inclusive and an international community in a strategic location.",
+  "description_extended": "Enjoy the flexibility of booking from 3 nights or staying several months, with no guarantor and no complications.",
+  "value_proposition": "Everything you need to live, work and enjoy is here.",
+  "bullet_1": "✓ Short stays from 3 nights",
+  "bullet_2": "✓ Coliving from 1 month",
+  "bullet_3": "✓ All-inclusive",
+  "bullet_4": "✓ Move-in ready",
+  "cta_question": "Ready to live the Pixel Living experience?",
+  "button_primary": "Reserve your space now",
+  "button_secondary": "View spaces",
+  "trust_info": "Limited spots.",
+  "process_time": "100% online booking process.",
+  "scroll_text": "Discover why we are different"
+},
+
+"opciones": {
+    "badge": "Stay options",
+    "title": "Flexible stays",
+    "title_highlight": "tailored to you",
+    "description": "Choose how you want to live in Bogotá. At Pixel Living, you can book by nights or by months, always in a private, fully furnished studio ready to move in from day one.",
+    "description2": "Are you coming for work, studies, transition, or a project? Choose the stay option that best fits your needs.",
+
+    "headers": {
+      "concepto": "Concept",
+      "estadia_corta": "Short stay",
+      "coliving": "Coliving"
+    },
+
+    "filas": {
+      "duracion": "Minimum stay",
+      "precio": "Price",
+      "incluye": "Includes",
+      "reserva": "Booking",
+      "documentos": "Documents"
+    },
+
+    "estadia_corta": {
+      "concepto": "Short stay",
+      "duracion_minima": "3 nights",
+      "precio_noche": "$190,000 / night",
+      "precio_3_noches": "3 nights: $570,000",
+      "incluye": "Utilities, WiFi, furnished unit, access to common areas",
+      "reserva": "Confirmation in less than 24 h",
+      "documentos": "ID and online payment"
+    },
+
+    "coliving": {
+      "concepto": "Coliving",
+      "duracion_minima": "1 month",
+      "precio_desde": "From $3,315,000 / month",
+      "incluye": "Utilities, WiFi, furnished unit, access to common areas",
+      "reserva": "Subject to approval",
+      "documentos": "Prior validation process"
+    },
+
+    "cta": {
+      "estadia_corta": "Book short stay",
+      "coliving": "Request coliving",
+      "nota": "Limited availability. 100% online process."
+    }
+  },
+
+ "precios": {
+  "badge": "Rates & reservations",
+  "title": "Choose your stay type",
+  "subtitle": "Clear prices, all-inclusive. Just pay and move in.",
+
+  "short": {
+    "title": "Short stays",
+    "subtitle": "(3 to 29 nights)",
+
+    "row_1_label": "3 nights",
+    "row_1_price": "$ 570,000",
+
+    "row_2_label": "7 nights",
+    "row_2_price": "$ 1,190,000",
+
+    "row_3_label": "15 nights",
+    "row_3_price": "$ 2,175,000",
+
+    "row_4_label": "30 nights",
+    "row_4_price": "$ 3,900,000",
+
+    "note": "From 3 nights: $570,000 · Per night: $190,000",
+    "cta": "Book short stay"
+  },
+
+  "coliving": {
+    "title": "Coliving",
+    "subtitle": "(1 month or more)",
+
+    "row_1_label": "1 month",
+    "row_1_price": "$ 3,900,000",
+
+    "row_2_label": "3 months",
+    "row_2_price": "$ 3,705,000",
+
+    "row_3_label": "6 months",
+    "row_3_price": "$ 3,510,000",
+
+    "row_4_label": "12 months",
+    "row_4_price": "$ 3,315,000",
+
+    "note": "Includes utilities, furniture, high-speed internet and access to common areas.",
+    "cta": "Request coliving"
+  },
+
+  "note_global": "Prices in Colombian pesos. All inclusive: furniture, utilities, internet and common areas.",
+
+  "process": {
+    "title": "How does the booking process work?",
+
+    "step1_title": "1. Choose your stay type:",
+    "step1_short_label": "Short stay (3–29 nights)",
+    "step1_coliving_label": "Coliving (1 month or more)",
+
+    "step2_title": "2. Complete the reservation form:",
+    "step2_text": "In the reservation section, share your information, tentative dates and number of guests. We will contact you to confirm availability.",
+
+    "step3_title": "3. Confirm and you're all set:",
+    "step3_text": "You will receive confirmation, the payment link and all arrival details for your stay at Pixel Living."
+  }
+},
+
+"coliving": {
+  "badge": "The coliving experience",
+  "title": "We share",
+  "title_highlight": "something more",
+  "title_end": "than just walls",
+
+  "community": {
+    "badge": "Pixel Living Community | Bogotá",
+    "heading": "Live in community, grow every day",
+
+    "intro_1": "Connect with people who are living, working and creating projects just like you, in the ideal place to grow.",
+    "intro_2": "Pixel Living is much more than a place to stay in Bogotá.",
+    "intro_3": "Here you are surrounded by people with dreams, projects and the desire to share, whether you stay for a few days or several months.",
+    "intro_4": "The diversity of our community enriches your experience and multiplies your opportunities.",
+
+    "quienes_titulo": "Who stays at Pixel Living?",
+    "quienes_1": "Professionals coming to Bogotá for projects, work or events.",
+    "quienes_2": "Digital nomads who value networking, flexibility and an inspiring environment.",
+    "quienes_3": "University students on exchange, short courses or professional internships.",
+    "quienes_4": "Entrepreneurs and freelancers seeking inspiration, allies and new ideas.",
+    "quienes_5": "Urban travelers and international visitors who want to explore the city comfortably.",
+    "quienes_6": "Corporate, health sector or diplomatic professionals on temporary assignments.",
+
+    "unica_titulo": "What makes our community unique:",
+    "unica_1": "Collaborative and supportive environment: share ideas and great conversations.",
+    "unica_2": "Real diversity: people from different cities, countries and professions.",
+    "unica_3": "A network of contacts: grow and connect with people who add value to your journey or project.",
+
+    "cierre": "At Pixel Living, you find your own space and a community that supports you, no matter how long you stay.",
+    "cta": "Join our community"
+  },
+
+  "carousel": {
+    "image1_alt": "Pixel Living community",
+    "image2_alt": "Pixel Living shared space",
+    "prev_label": "View previous image of the studio",
+    "next_label": "View next image of the studio",
+    "prev_title": "Previous image",
+    "next_title": "Next image",
+    "prev_sr": "Previous",
+    "next_sr": "Next",
+    "indicator_label": "View image {{index}} of {{total}}"
+  }
+},
+
+  "reservas": {
+    "badge": "Book your space",
+"description": "Fill out the form and we will contact you to confirm availability and complete your reservation.",
+
+
+   "form": {
+  "nombre_label": "What is your name? *",
+  "nombre_placeholder": "Full name",
+  
+  "email_label": "Email address *",
+  "email_placeholder": "yourmail@example.com",
+  
+  "tipo_estadia_label": "1. Choose your stay type",
+  "tipo_estadia_opcion_estadia_corta": "Short stay (3–29 nights)",
+  "tipo_estadia_opcion_coliving": "Coliving (1 month or more)",
+  
+  "noches_label": "How many nights would you like to book? *",
+  "noches_placeholder": "Example: 7 nights",
+  "noches_helper": "Available only for short stays (3–29 nights).",
+  
+  "telefono_label": "Phone / WhatsApp *",
+  "telefono_placeholder": "+57 300 000 0000",
+  
+  "duracion_label": "How long would you like to stay? *",
+  "duracion_helper": "If you selected short stay, indicate the number of nights above. If you selected coliving, choose the duration in months here.",
+  
+  "duracion_opcion_placeholder": "Select an option",
+  "duracion_opcion_1": "1 month",
+  "duracion_opcion_3": "3 months",
+  "duracion_opcion_6": "6 months",
+  "duracion_opcion_12": "12 months",
+  
+  "fecha_label": "Arrival date",
+  "fecha_helper": "If you're not sure yet, you may leave this blank.",
+  
+  "personas_label": "How many people will be staying?",
+  "personas_opcion_placeholder": "Select an option",
+  "personas_opcion_1": "1 person",
+  "personas_opcion_2": "2 people",
+  
+  "como_conociste_label": "How did you hear about us?",
+  "como_conociste_opcion_placeholder": "Select an option",
+  "como_conociste_opcion_instagram": "Instagram",
+  "como_conociste_opcion_google": "Google",
+  "como_conociste_opcion_referido": "Friend referral",
+  "como_conociste_opcion_otro": "Other",
+  
+  "mensaje_label": "Additional message",
+  "mensaje_placeholder": "Tell us if you have any special request, estimated arrival time, etc.",
+  "mensaje_contador_inicial": "0/500 characters",
+  
+  "acepta_politica_label": "I accept the privacy policy and the use of my data for managing my reservation.",
+  
+  "boton_enviar": "Send reservation request"
+},
+    "title": "How does the booking process work?",
+
+    "paso_1_titulo": "1. Choose your stay type:",
+    "paso_1_opcion_1": "Short stay (3–29 nights)",
+    "paso_1_opcion_2": "Coliving (1 month or more)",
+
+    "paso_2_titulo": "2. Fill in the reservation form:",
+    "paso_2_texto": "In the reservation section, share your information, tentative dates and number of guests. We will contact you to confirm availability.",
+
+    "paso_3_titulo": "3. Confirm and you're all set:",
+    "paso_3_texto": "You will receive the confirmation, the payment link, and the arrival details for your stay at Pixel Living."
   },
 
   "espacios": {
-    "badge": "Pixel Living Studio Apartments",
-    "title": "Furnished studio apartments",
-    "title_highlight": "ready for you",
-    "description": "At Pixel Living, each studio apartment has",
-    "description2": "29 square meters",
-    "description3": "and is designed to provide you maximum comfort, privacy and flexibility, in the most flexible and complete coliving in north Bogotá.",
-    "espacio": "studio apartment",
-    "beneficios_destacados": {
-      "habitacion_adicional": "Additional room",
-      "habitacion_desc": "Work space + auxiliary bed",
-      "balcon_privado": "Private balcony", 
-      "balcon_desc": "To enjoy the outdoors",
-      "todo_incluido": "All-inclusive",
-      "todo_desc": "One monthly payment"
-    },
-    "mensaje_final": "Choose to live easy, without paperwork, without a guarantor and with the freedom that only Pixel Living gives you.",
-    "caracteristicas_titulo": "Features of our spaces",
-    "caracteristicas": [
-      "Double bed",
-      "Equipped kitchen", 
-      "Work desk",
-      "High-speed WiFi",
-      "Services included",
-      "Private and quiet space"
-    ],
-    "cta_disponibilidad": "👉 Check availability",
-    "otros_espacios": "Explore other spaces",
-    "ver_detalles": "View details",
-    "carousel": {
-      "prev_label": "View previous studio apartment",
-      "next_label": "View next studio apartment",
-      "indicator_label": "View studio apartment {{index}} of {{total}}"
-    },
-    "lightbox": {
-      "abrir_galeria": "Open complete gallery of {{nombre}}",
-      "ver_imagen": "View image {{index}} of {{nombre}}",
-      "cerrar": "Close gallery",
-      "anterior": "Previous image", 
-      "siguiente": "Next image"
-    }
-  },
+  "badge": "Private & flexible studios",
+  "title": "Furnished studio apartments",
+  "title_highlight": "for short stays or coliving",
+  "description": "Furnished studio apartments for short stays or coliving.",
+  "description2": "Each studio apartment has 29 square meters",
+  "description3": "and is designed to provide maximum comfort and privacy, whether you stay for nights or for months. You choose how long you stay, and we make sure everything is ready from day one in your own space at Pixel Living.",
+  "espacio": "",
+  
+  "card_desde_3_noches_label": "From 3 nights:",
+  "card_desde_3_noches_precio": "$ 570,000 COP",
+  "card_valor_noche_label": "Per night:",
+  "card_valor_noche_valor": "$ 190,000 COP",
+
+  "caracteristicas_titulo": "What your Pixel Living studio includes",
+
+  "feature_1": "Double bed",
+  "feature_2": "Additional room with workspace and auxiliary bed",
+  "feature_3": "High-speed WiFi",
+  "feature_4": "Private equipped kitchen",
+  "feature_5": "Smart TV",
+  "feature_6": "Private washer and dryer",
+  "feature_7": "Private bathroom",
+  "feature_8": "Modern furniture and appliances",
+  "feature_9": "Private balcony",
+  "feature_10": "Secure access with TAG and smart lock. Building with concierge.",
+
+  "todo_incluido": "All included in your rate:",
+  "todo_incluido_detalle": "Utilities, building administration and access to all common areas.",
+  "nota": "Note:",
+  "nota_mascotas": "Pets are not allowed at Pixel Living.",
+
+  "cta_disponibilidad": "Check availability",
+  "reservas_cta_desc": "Go to the reservations section to request studio availability.",
+
+  "carousel_instructions": "Use the left and right arrows to navigate, or press Tab to explore each studio.",
+
+  "ver_detalles": "View studio details"
+
+
+  
+},
 
   "zonas_comunes": {
-    "badge": "Common Areas and Amenities",
-    "title": "Much more than a studio apartment: discover",
-    "title_highlight": "community living",
-    "title_end": "at Pixel Living",
-    "description": "At Pixel Living, you not only have your private space, but also access to common areas designed for your well-being, productivity and social life.",
-    "amenidades": {
-      "coworking": {
-        "titulo": "Coworking and Meeting Rooms",
-        "descripcion": "Modern spaces with high-speed wifi to work, study or meet with other residents."
-      },
-      "rooftop": {
-        "titulo": "Rooftop with Fire Pits", 
-        "descripcion": "Enjoy the best views of north Bogotá, share unique sunsets and make new friends by the fire."
-      },
-      "gym": {
-        "titulo": "Outdoor Exercise Area and TRX",
-        "descripcion": "Stay active and healthy every day, without leaving home."
-      },
-      "pet_zone": {
-        "titulo": "Pet Zone",
-        "descripcion": "Your pet is welcome and has its own space."
-      },
-      "bike_parking": {
-        "titulo": "Bike Parking with Workshop", 
-        "descripcion": "Store and care for your bicycle, always ready to ride."
-      },
-      "events": {
-        "titulo": "Event Spaces",
-        "descripcion": "Participate in exclusive Pixel Living community activities."
-      }
+  "badge": "Common Areas & Amenities",
+  "title": "Much more than a studio apartment:",
+  "title_highlight": "community living",
+  "title_end": "at Pixel Living",
+  "description": "At Pixel Living, you not only have your private space — you also have access to common areas designed for your well-being and productivity.",
+  
+  "amenidades": {
+    "coworking": {
+      "titulo": "Coworking & Meeting Room",
+      "descripcion": "Modern areas with high-speed WiFi to work, study or meet with other residents."
+    },
+    "rooftop": {
+      "titulo": "Rooftop with Fire Pits",
+      "descripcion": "Enjoy the best views of northern Bogotá, share unique sunsets and make new friends around the fire."
+    },
+    "gym": {
+      "titulo": "Outdoor Exercise Zone & TRX",
+      "descripcion": "Stay active and healthy every day without leaving home."
+    },
+    "pet_zone": {
+      "titulo": "Pet Zone",
+      "descripcion": "Your pet is welcome and has its own dedicated space."
+    },
+    "bike_parking": {
+      "titulo": "Bike Parking with Workshop",
+      "descripcion": "Store and take care of your bicycle in a safe area, always ready to ride."
+    },
+    "events": {
+      "titulo": "Event Spaces",
+      "descripcion": "Participate in exclusive Pixel Living community activities."
     }
-  },
+  }
+}
+,
 
   "vive_pixel": {
   "badge": "Our story",
@@ -312,268 +534,74 @@
   }
 },
 
-  "precios": {
-  "badge": "Transparent pricing",
-  "title": "Rent your studio apartment in the",
-  "title_highlight": "most flexible coliving",
-  "title_end": "in north Bogotá",
-  "description": "At Pixel Living, everything is easy and transparent: choose the duration, one monthly payment.",
-  "usp": "No guarantor - Only your ID required",
-  
-  "tabla_titulo": "Monthly Rates",
-  "tabla_headers": {
-    "duracion": "Duration",
-    "precio": "Monthly Price",
-    "ahorro": "Savings"
-  },
-  
-  "duraciones": {
-    "1_mes": "1 month",
-    "3_meses": "3 months",
-    "6_meses": "6 months",
-    "12_meses": "12 months ⭐ Recommended"
-  },
-  
-  "precios": {
-    "1_mes": "$3,100,000 COP",
-    "3_meses": "$2,950,000 COP",
-    "6_meses": "$2,750,000 COP",
-    "12_meses": "$2,650,000 COP"
-  },
-  
-  "ahorros": {
-    "1_mes": "-",
-    "3_meses": "$150K",
-    "6_meses": "$350K",
-    "12_meses": "$450K"
-  },
-  
-  "tabla_nota": "Prices in Colombian pesos. Monthly payment.",
-  "todo_incluido": "All-inclusive:",
-  "incluye_descripcion": "furnished studio apartment, utilities, administration and access to all common areas.",
-  
-  "reserva_facil": "✨ Super easy booking process:",
-  "reserva_descripcion": "Leave us your details and we'll contact you to finalize your rental process.",
-  
-  "comparativa_titulo": "Still wondering if Pixel Living is for you?",
-  "comparativa_descripcion": "Compare what it would cost you to live alone in a traditional rental versus everything you get with Pixel Living.",
-  "comparativa_enfasis": "You'll see that here you save time, money and worries.",
-  
-  "comparativa_headers": {
-    "concepto": "Concept",
-    "tradicional": "Traditional Rental",
-    "pixel": "Pixel Living"
-  },
-  
-  "comparativa_conceptos": {
-    "arriendo": "Base rent",
-    "servicios": "Utilities",
-    "wifi": "Internet",
-    "administracion": "Administration",
-    "mobiliario": "Furniture",
-    "electrodomesticos": "Washer and appliances",
-    "total": "Monthly total"
-  },
-  
-  "comparativa_tradicional": {
-    "arriendo": "$2,000,000 COP",
-    "servicios": "$350,000 COP",
-    "wifi": "$120,000 COP",
-    "administracion": "$300,000 COP",
-    "mobiliario": "$400,000 COP",
-    "electrodomesticos": "$200,000 COP",
-    "total": "$3,370,000 COP"
-  },
-  
-  "comparativa_pixel": {
-    "incluido": "✓ Included",
-    "total": "From $2,650,000 COP"
-  },
-  
-  "ahorro_principal": "💰 You save $720,000 COP each month!",
-  "ahorro_nota": "Reference values in Colombian pesos. All-inclusive, no surprises.",
-  "ahorro_anual": "🏆 Over $8,600,000 COP annual savings + time and peace of mind",
-  
-  "cta_titulo": "Living well and without complications is possible!",
-  "cta_descripcion": "Ready to live, save and enjoy more?",
-  "cta_descripcion_2": "Reserve your space at Pixel Living today and start experiencing true coliving in Bogotá.",
-  "cta_boton": "Reserve your space now",
-  "cta_nota": "Limited spots. Only your ID required."
+
+
+
+
+
+
+"politica_cierre": {
+  "badge": "Privacy Policy",
+  "title": "Your data is only used for contact and booking management.",
+  "link_text": "View full policy on the website →",
+
+  "cta_title": "Ready to live, work and enjoy in Bogotá?",
+  "cta_description": "Book your studio apartment at Pixel Living and discover flexible accommodation that really adapts to you.",
+
+  "cta_button_short": "Book short stay",
+  "cta_button_coliving": "Request coliving"
+}, 
+
+"testimonios": {
+  "badge": "Testimonials",
+  "title": "Real guest testimonials",
+  "subtitle": "What guests who have already lived the Pixel Living experience say",
+
+  "prev": "Previous",
+  "next": "Next"
 },
 
- "coliving": {
-  "badge": "The coliving experience",
-  "title": "We share",
-  "title_highlight": "more than",
-  "title_end": "walls",
-  
-  "community": {
-    "heading": "Living at Pixel means being part of a community.",
-    "description1": "Here you can be alone... but you can also share.",
-    "description2": "Our community is made up of professionals, creatives, entrepreneurs and travelers who are looking for a place that feels like home, but with the freedom to move at the pace of their lives.",
-    "cta": "Join our community"
-  },
-  
-  "carousel": {
-    "image1_alt": "Pixel Living Community",
-    "image2_alt": "Pixel Living Shared Space",
-    "prev_label": "View previous studio apartment image",
-    "next_label": "View next studio apartment image", 
-    "prev_title": "Previous image",
-    "next_title": "Next image",
-    "prev_sr": "Previous",
-    "next_sr": "Next",
-    "indicator_label": "View image {{index}} of {{total}}"
-  },
-  
-  "beneficios": {
-    "espacios_modernos": {
-      "titulo": "Modern spaces",
-      "descripcion": "Contemporary and functional design for stylish living."
-    },
-    "trato_cercano": {
-      "titulo": "Personal touch", 
-      "descripcion": "Personalized attention to make you feel at home."
-    },
-    "flexibilidad": {
-      "titulo": "Flexibility",
-      "descripcion": "We adapt our services to your stay needs."
-    },
-    "comodidad": {
-      "titulo": "Comfort",
-      "descripcion": "Everything you need for a comfortable experience."
-    },
-    "buen_ambiente": {
-      "titulo": "Good vibes",
-      "descripcion": "Positive community where you can connect with others."
-    }
-  }
-},
+"contacto": {
+  "badge": "Contact",
+  "title": "Do you have any questions?",
+  "subtitle": "We’re here to help you. Contact us and we’ll get back to you very soon.",
 
-  "reservas": {
-  "title": "Reserve your space at Pixel Living",
-  "subtitle": "Reserve your studio apartment at Pixel Living | Coliving Bogotá",
-  "description": "Complete the following details to receive personalized attention.",
-  "response_time": "We'll respond in less than 1 hour!",
+  "info_title": "Contact information",
+  "direccion_label": "Address:",
+  "telefono_label": "Phone:",
+  "email_label": "Email:",
+
+  "cta_button": "Contact us",
   
-  "form": {
-    "name": "Full name",
-    "name_placeholder": "Enter your name",
-    "email": "Email address",
-    "email_placeholder": "example@email.com",
-    "phone": "Contact phone",
-    "phone_placeholder": "Cell phone or WhatsApp",
-    "duration": "How long would you like to reserve?",
-    "duration_select": "Select duration",
-    "duration_options": {
-      "1_month_price": "1 month - $3,100,000 COP",
-      "3_months_price": "3 months - $2,950,000 COP",
-      "6_months_price": "6 months - $2,750,000 COP",
-      "12_months_price": "12 months - $2,650,000 COP (Recommended)"
-    },
-    "date": "Preferred move-in date",
-    "date_help": "Select your ideal move-in date",
-    "people": "Number of people",
-    "people_options": {
-      "1_person": "1 person",
-      "2_people": "2 people (couple)"
-    },
-    "referral": "How did you hear about Pixel Living?",
-    "referral_select": "Select an option",
-    "referral_options": {
-      "google": "Google / Web search",
-      "instagram": "Instagram",
-      "facebook": "Facebook",
-      "linkedin": "LinkedIn",
-      "friend": "Friend/acquaintance recommendation",
-      "flyer": "Flyer / Physical advertising",
-      "other": "Other"
-    },
-    "message": "Additional message (optional)",
-    "message_placeholder": "Tell us more about your specific needs...",
-    "characters": "characters",
-    "accept_contact": "I agree to be contacted by Pixel Living and have read the",
-    "privacy_policy": "privacy policy",
-    "submit": "Send reservation request",
-    "footer_note": "Your information is safe and will only be used to process your reservation."
-  },
-  
-  "whatsapp": {
-    "question": "Prefer to contact us directly?",
-    "message": "Hi! I'm interested in reserving a studio apartment at Pixel Living. Could you give me more information?",
-    "cta": "Chat on WhatsApp"
-  },
-  
-  "benefits": {
-    "title": "Why choose Pixel Living?",
-    "no_guarantor_title": "No guarantor",
-    "no_guarantor_desc": "You only need your ID document",
-    "all_included_title": "All inclusive",
-    "all_included_desc": "Utilities, WiFi, furniture and common areas",
-    "quick_move_title": "Quick move-in",
-    "quick_move_desc": "Reservation process in less than 24 hours",
-    "flexibility_title": "Maximum flexibility",
-    "flexibility_desc": "From 1 month, no long-term commitments",
-    "location_title": "Strategic location",
-    "location_desc": "North Bogotá, close to everything important"
-  },
-  
-  "testimonial": {
-    "quote": "Pixel Living changed the way I live in Bogotá. The flexibility and community are incredible.",
-    "author": "- María C., Pixel Resident"
-  },
-  
-  "trust": {
-    "process": "Process",
-    "size": "Studio apts",
-    "savings": "Monthly savings"
-  }
+  "ubicacion_title": "Our location",
+  "ubicacion_boton": "Open in Google Maps"
 },
 
  "faq": {
-  "title": "Frequently asked questions",
-  
+  "badge": "Frequently Asked Questions",
+  "title": "Frequently asked questions about",
+  "title_highlight": "Pixel Living",
+
   "questions": {
     "q1": {
-      "question": "What does the monthly price include?",
-      "answer": "Everything is included: furnished studio apartment, utilities (water, electricity, gas), high-speed internet, administration, common area cleaning and access to all amenities."
+      "question": "Can I book by nights or by months?",
+      "answer": "Yes. You can stay from 3 nights (short stay) or choose a coliving plan from 1 month."
     },
     "q2": {
-      "question": "Do I need a guarantor or co-signer?",
-      "answer": "No. You only need your valid ID document. This is one of our main benefits: no guarantor, no complications."
+      "question": "Are pets allowed?",
+      "answer": "No, pets are not allowed at Pixel Living."
     },
     "q3": {
-      "question": "What is the minimum stay?",
-      "answer": "The minimum stay is 1 month. We offer maximum flexibility to adapt to your needs, whether it's a short stay or long-term."
+      "question": "Is cleaning included?",
+      "answer": "Cleaning of the studio apartment is the resident’s responsibility. You can request a cleaning service for an additional cost."
     },
     "q4": {
-      "question": "How is the reservation process?",
-      "answer": "Super simple: 1) Complete the form, 2) We contact you in less than 1 hour, 3) Virtual or in-person visit, 4) Contract signing, 5) Move-in in 24-48 hours!"
-    },
-    "q5": {
-      "question": "What does the studio apartment include?",
-      "answer": "29m² fully furnished: double bed, desk, equipped kitchen, private bathroom, closet, private balcony and additional room that you can use as an office or for guests."
-    },
-    "q6": {
-      "question": "Can I receive visitors?",
-      "answer": "Yes, you can receive visitors in your studio apartment and in the common areas. We just ask that you respect the coexistence rules and established schedules."
-    },
-    "q7": {
-      "question": "Do you accept pets?",
-      "answer": "Yes, we have a specially designed Pet Zone. We apply a small additional fee and some coexistence rules for everyone's wellbeing."
-    },
-    "q8": {
-      "question": "Where are you located?",
-      "answer": "We are in north Bogotá, on Autopista Norte with Calle 100. A strategic location with easy access to public transport, shopping centers and business district."
+      "question": "Can I smoke?",
+      "answer": "Smoking is only allowed in the Pet Zone (designated smoking area)."
     }
-  },
-  
-  "contact": {
-    "title": "Have more questions?",
-    "description": "Our team is ready to resolve all your doubts about Pixel Living.",
-    "button": "Chat with us"
   }
-},
+}
+,
 
  "footer": {
   "company": {
@@ -616,7 +644,8 @@
       "descripcion": "Bright space with private balcony. Private kitchen, independent work area and auxiliary room. Perfect for long stays with large windows and clear views. Everything included: wifi, services, Smart TV. No guarantor needed.",
       "metros": "29m²",
       "imagen": "/images/estudios/jade/pixel-jade-room-004.webp",
-      "precio": "From $2,650,000 COP",
+      "precio": "From 3 nights: $ 570,000 COP Per night: $ 190,000 COP",
+
       "galeria": [
         "/images/estudios/jade/pixel-jade-room-005.webp",
         "/images/estudios/jade/pixel-jade-room-001.webp",  
@@ -647,7 +676,7 @@
       "descripcion": "Designed for remote professionals with optimized work area. Private kitchen, large desk and environment that favors concentration. Perfect combination of life and work with style. Everything included: wifi, services, furniture. No guarantor needed.",
       "metros": "29m²",
       "imagen":  "/images/estudios/zian/pixel-zian-room-009.webp", 
-      "precio": "From $2,650,000 COP",
+      "precio": "From 3 nights: $ 570,000 COP Per night: $ 190,000 COP",
       "galeria": [
         "/images/estudios/zian/pixel-zian-room-001.webp", 
         "/images/estudios/zian/pixel-zian-room-002.webp", 
@@ -679,8 +708,8 @@
       "descripcion_1": "Purple tones that inspire creativity and reflection in a cozy environment.",
       "descripcion": "Our most spacious studio apartment with living area separated from rest area. Private kitchen, private balcony and cozy environment for creatives and entrepreneurs. Everything included, no guarantor needed.",
       "metros": "29m²",
-      "imagen": "/images/estudios/indigo/pixel-indigo-room-001.webp",
-      "precio": "From $3,100,000 COP",
+      "imagen": "/images/estudios/indigo/pixel-indigo-room-001.webp",      
+      "precio": "From 3 nights: $ 570,000 COP Per night: $ 190,000 COP",
       "galeria": [ 
         "/images/estudios/indigo/pixel-indigo-room-002.webp", 
         "/images/estudios/indigo/pixel-indigo-room-003.webp", 
@@ -740,6 +769,7 @@
       "whatsapp": "Inquire via WhatsApp",
       "whatsapp_mensaje": "Hi, I'm interested in the {{estudio}}. Is it available? Thank you."
     },
+
     
     "formulario": {
       "titulo": "Book your {{estudio}}",

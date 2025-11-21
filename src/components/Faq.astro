@@ -1,9 +1,28 @@
 ---
 // src/components/Faq.astro
-import { getLanguageFromUrl, setCurrentLanguage } from '../i18n/utils/translator';
+import { getLanguageFromUrl, t, setCurrentLanguage } from '../i18n/utils/translator';
 
 const currentLang = getLanguageFromUrl(Astro.url.pathname);
 setCurrentLanguage(currentLang);
+
+const faqs = [
+  {
+    questionKey: 'faq.questions.q1.question',
+    answerKey: 'faq.questions.q1.answer'
+  },
+  {
+    questionKey: 'faq.questions.q2.question',
+    answerKey: 'faq.questions.q2.answer'
+  },
+  {
+    questionKey: 'faq.questions.q3.question',
+    answerKey: 'faq.questions.q3.answer'
+  },
+  {
+    questionKey: 'faq.questions.q4.question',
+    answerKey: 'faq.questions.q4.answer'
+  }
+];
 ---
 
 <section
@@ -14,52 +33,26 @@ setCurrentLanguage(currentLang);
     {/* Encabezado */}
     <div class="text-center mb-10 md:mb-14">
       <span class="inline-block text-pixel-brown font-semibold text-xs md:text-sm uppercase tracking-[0.2em] mb-3">
-        Preguntas frecuentes
+        {t('faq.badge')}
       </span>
       <h2 class="text-3xl md:text-5xl font-normal text-gray-900">
-        Preguntas frecuentes sobre
-        <span class="text-pixel-brown"> Pixel Living</span>
+        {t('faq.title')}
+        <span class="text-pixel-brown"> {t('faq.title_highlight')}</span>
       </h2>
     </div>
 
     {/* Lista de preguntas */}
     <div class="max-w-3xl mx-auto space-y-4">
-      <div class="border border-gray-200 rounded-2xl p-4 md:p-5 bg-white shadow-sm">
-        <p class="text-sm md:text-base font-semibold text-gray-900 mb-2">
-          ¿Puedo reservar por noches o por meses?
-        </p>
-        <p class="text-sm md:text-base text-gray-700">
-          Sí. Puedes quedarte desde 3 noches (estancia corta) o elegir un plan coliving desde 1 mes.
-        </p>
-      </div>
-
-      <div class="border border-gray-200 rounded-2xl p-4 md:p-5 bg-white shadow-sm">
-        <p class="text-sm md:text-base font-semibold text-gray-900 mb-2">
-          ¿Se aceptan mascotas?
-        </p>
-        <p class="text-sm md:text-base text-gray-700">
-          No, en Pixel Living no se aceptan mascotas.
-        </p>
-      </div>
-
-      <div class="border border-gray-200 rounded-2xl p-4 md:p-5 bg-white shadow-sm">
-        <p class="text-sm md:text-base font-semibold text-gray-900 mb-2">
-          ¿Incluye limpieza?
-        </p>
-        <p class="text-sm md:text-base text-gray-700">
-          La limpieza del apartaestudio es responsabilidad del residente. Puedes solicitar servicio de limpieza
-          por un valor adicional.
-        </p>
-      </div>
-
-      <div class="border border-gray-200 rounded-2xl p-4 md:p-5 bg-white shadow-sm">
-        <p class="text-sm md:text-base font-semibold text-gray-900 mb-2">
-          ¿Puedo fumar?
-        </p>
-        <p class="text-sm md:text-base text-gray-700">
-          Solo está permitido fumar en la Pet Zone (zona designada para fumar).
-        </p>
-      </div>
+      {faqs.map((item) => (
+        <div class="border border-gray-200 rounded-2xl p-4 md:p-5 bg-white shadow-sm">
+          <p class="text-sm md:text-base font-semibold text-gray-900 mb-2">
+            {t(item.questionKey)}
+          </p>
+          <p class="text-sm md:text-base text-gray-700">
+            {t(item.answerKey)}
+          </p>
+        </div>
+      ))}
     </div>
   </div>
 </section>

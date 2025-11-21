@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
+import Opciones from '../../components/Opcione.astro';
+
 import VivePixel from '../../components/VivePixel.astro';
 import Espacios from '../../components/Espacios.astro';
 import Precios from '../../components/Precios.astro';
@@ -10,19 +12,30 @@ import Reservas from '../../components/Reservas.astro';
 import Faq from '../../components/Faq.astro';
 import ZonasComunes from '../../components/ZonasComunes.astro';
 import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
+import GuestTestimonialsCarousel from '../../components/GuestTestimonialsCarousel.astro';
+import PoliticaCierre from '../../components/PoliticaCierre.astro';
+
+
 ---
 
 <Layout title="Pixel Living | Coliving in Bogotá, Colombia">
-	<main>
+<main>
 		<Hero />
+		<Opciones />
+		<Precios />
 		<Espacios />
+		
 		<ZonasComunes />
 		<VivePixel />
 		<Ubicacion />
-		<Precios />
 		<Coliving />
+		<GuestTestimonialsCarousel />
+
+
 		<Reservas />
 		<Faq />
+		<PoliticaCierre />
+		
 	</main>
 	<WhatsAppFloat />
 </Layout>

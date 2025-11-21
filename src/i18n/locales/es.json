@@ -23,119 +23,114 @@
   },
 
   "hero": {
-    "brand_line_1": "Pixel Living – Bogotá ",
-    "brand_line_2": "Apartaestudios Flexibles: Estadías Cortas y Coliving",
-    "title": "Vive, trabaja y disfruta",
-    "subtitle": "en el norte de Bogotá.",
-    "description": "Pixel Living es tu coliving en Bogotá, donde encuentras apartaestudios modernos y amoblados, todos los servicios incluidos y una comunidad vibrante en la ubicación más estratégica de la ciudad.",
-    "benefits": [
-      "✓ Sin codeudor",
-      "✓ Desde 1 mes", 
-      "✓ Todo incluido",
-      "✓ Listo para habitar"
-    ],
-    "description_extended": "Disfruta la flexibilidad de arrendar desde un mes, sin codeudor y sin complicaciones.",
-    "value_proposition": "Todo lo que necesitas para vivir, trabajar y crecer, está aquí.",
-    "cta_question": "¿Listo para vivir la experiencia Pixel Living?",
-    "button_primary": "Reserva tu espacio ahora",
-    "button_secondary": "Ver precios y disponibilidad",
-    "trust_info": "Cupos limitados • Solo tu documento de identificación",
-    "process_time": "Proceso de reserva en menos de 24 horas",
-    "scroll_text": "Descubre por qué somos diferentes"
-  },
+  "brand_line_1": "Pixel Living | Bogotá",
+  "brand_line_2": "Apartaestudios flexibles: estadías cortas y coliving",
+  "title": "Vive, trabaja y disfruta",
+  "subtitle": "en el norte de Bogotá.",
+"description": "Cada apartaestudio tiene 29 metros cuadrados y está diseñado para brindar máxima comodidad y privacidad,",
+"description2": "ya sea que te quedes por noches o por meses.",
+"description3": "Tú eliges la duración, nosotros nos encargamos de que tengas todo listo desde el primer día en tu",
+"espacio": "propio espacio en Pixel Living.",
+
+"ver_detalles": "Ver detalles del estudio",
+"cta_disponibilidad": "Consultar disponibilidad",
+  "description_extended": "Disfruta la flexibilidad de reservar desde 3 noches o quedarte varios meses, sin codeudor y sin complicaciones.",
+  "value_proposition": "Todo lo que necesitas para vivir, trabajar y disfrutar está aquí.",
+  "bullet_1": "✓ Estadía corta desde 3 noches",
+  "bullet_2": "✓ Coliving desde 1 mes",
+  "bullet_3": "✓ Todo incluido",
+  "bullet_4": "✓ Listo para habitar",
+  "cta_question": "¿Listo para vivir la experiencia Pixel Living?",
+  "button_primary": "Reserva tu espacio ahora",
+  "button_secondary": "Ver espacios",
+  "trust_info": "Cupos limitados.",
+  "process_time": "Proceso 100 % online.",
+  "scroll_text": "Descubre por qué somos diferentes"
+},
 
   
 
   "espacios": {
-  "badge": "Apartaestudios Pixel Living",
-    "title": "Apartaestudios amoblados para",
-    "title_highlight": "estadías cortas o coliving",
-    "description": "Cada apartaestudio tiene",
-    "description2": "29 metros cuadrados",
-    "description3": "y está diseñado para brindar máxima comodidad y privacidad, ya sea que te quedes por noches o por meses.",
-    "espacio": "",
-  "beneficios_destacados": {
-    "habitacion_adicional": "Habitación adicional",
-    "habitacion_desc": "Espacio de trabajo + cama auxiliar",
-    "balcon_privado": "Balcón privado",
-    "balcon_desc": "Para disfrutar el aire libre",
-    "todo_incluido": "Todo incluido",
-    "todo_desc": "En un solo pago mensual"
-  },
-
-  "mensaje_final": "Elige vivir fácil, sin trámites, sin codeudor y con la libertad que solo te da Pixel Living.",
-  "caracteristicas_titulo": "Características de nuestros espacios",
-  "caracteristicas": [
-    "Cama doble",
-    "Cocina equipada",
-    "Escritorio de trabajo",
-    "WiFi de alta velocidad",
-    "Servicios incluidos",
-    "Espacio privado y tranquilo"
-  ],
-
-  "cta_disponibilidad": "👉 Solicita disponibilidad",
-  "otros_espacios": "Explora otros espacios",
+  "badge": "Nuestros espacios",
+  "title": "Estudios diseñados",
+  "title_highlight": "para ti",
+  "description": "Cada apartaestudio en Pixel Living está diseñado para ofrecer",
+  "description2": "comodidad total",
+  "description3": "y un ambiente perfecto para vivir, trabajar y descansar en un mismo lugar.",
+  "espacio": "Explora cada uno y descubre tu próximo hogar en Bogotá.",
+  
   "ver_detalles": "Ver detalles",
+  "cta_disponibilidad": "Solicitar disponibilidad",
+  "caracteristicas_titulo": "Características de nuestros espacios",
 
-  "carousel": {
-    "prev_label": "Ver apartaestudio anterior",
-    "next_label": "Ver apartaestudio siguiente",
-    "indicator_label": "Ver apartaestudio {{index}} de {{total}}"
-  },
+  "feature_1": "Cama doble",
+  "feature_2": "Cuarto adicional con espacio de trabajo y cama auxiliar",
+  "feature_3": "Wifi de alta velocidad",
+  "feature_4": "Cocina privada equipada",
+  "feature_5": "Smart TV",
+  "feature_6": "Lavadora y secadora privada",
+  "feature_7": "Baño privado",
+  "feature_8": "Muebles y electrodomésticos modernos",
+  "feature_9": "Balcón privado",
+  "feature_10": "Acceso seguro con TAG y cerradura inteligente. Edificio con conserjería.",
 
-  "lightbox": {
-    "abrir_galeria": "Abrir galería completa de {{nombre}}",
-    "ver_imagen": "Ver imagen {{index}} de {{nombre}}",
-    "cerrar": "Cerrar galería",
-    "anterior": "Imagen anterior",
-    "siguiente": "Imagen siguiente"
-  }
+  "todo_incluido": "Todo incluido en tu tarifa:",
+  "todo_incluido_detalle": "Servicios públicos, administración y acceso a zonas comunes.",
+  "nota": "Nota:",
+  "nota_mascotas": "No se aceptan mascotas en Pixel Living.",
+  "reservas_cta_desc": "Ir a la sección de reservas para solicitar disponibilidad de apartaestudios",
+
+  "card_desde_3_noches_label": "Desde 3 noches:",
+  "card_desde_3_noches_precio": "$ 570.000",
+  "card_valor_noche_label": "V/NOCHE:",
+  "card_valor_noche_valor": "$ 190.000"
 },
 
-  "opciones": {
-    "badge": "Opciones de alojamiento",
-    "title": "¿Qué opción",
-    "title_highlight": "te conviene?",
-    "description": "¿Vienes por trabajo, estudio, transición o proyecto? Elige la opción de alojamiento que mejor se adapte a tu necesidad.",
+"opciones": {
+  "badge": "Opciones de alojamiento",
+  "title": "Alojamiento flexible",
+  "title_highlight": "hecho a tu medida",
+  "description": "Elige cómo quieres vivir Bogotá. En Pixel Living puedes reservar por noches o por meses, siempre en un apartaestudio privado, totalmente dotado y listo para llegar a vivir.",
+  "description2": "¿Vienes por trabajo, estudio, transición o proyecto? Elige la opción de alojamiento que mejor se adapte a tu necesidad.",
 
-    "headers": {
-      "concepto": "Concepto",
-      "estadia_corta": "Estadía corta",
-      "coliving": "Coliving"
-    },
 
-    "filas": {
-      "duracion": "Duración mínima",
-      "precio": "Precio",
-      "incluye": "Incluye",
-      "reserva": "Reserva",
-      "documentos": "Documentos"
-    },
+  "headers": {
+    "concepto": "Concepto",
+    "estadia_corta": "Estadía corta",
+    "coliving": "Coliving"
+  },
 
-    "estadia_corta": {
-      "duracion": "3 noches",
-      "precio_destacado": "$190.000",
-      "precio_unidad": "/ noche",
-      "precio_total": "$570.000",
-      "incluye": "Servicios, wifi, amoblado, acceso a zonas comunes",
-      "reserva": "Confirmación en menos de 24h",
-      "documentos": "ID y pago online"
-    },
+  "filas": {
+    "duracion": "Duración mínima",
+    "precio": "Precio",
+    "incluye": "Incluye",
+    "reserva": "Reserva",
+    "documentos": "Documentos"
+  },
 
-    "coliving": {
-      "duracion": "1 mes",
-      "precio_destacado": "Desde $3.315.000",
-      "precio_unidad": "/ mes",
-      "incluye": "Servicios, wifi, amoblado, acceso a zonas comunes",
-      "reserva": "Sujeta a aprobación",
-      "documentos": "Proceso de validación previa"
-    },
+  "estadia_corta": {
+    "concepto": "Estadía corta",
+    "duracion_minima": "3 noches",
+    "precio_noche": "$190.000 / noche",
+    "precio_3_noches": "3 noches: $570.000",
+    "incluye": "Servicios, wifi, amoblado, acceso a zonas comunes",
+    "reserva": "Confirmación en menos de 24 h",
+    "documentos": "ID y pago online"
+  },
 
-    "texto_contexto": "¿Vienes por trabajo, estudio, transición o proyecto? Elige la opción de alojamiento que mejor se adapte a tu necesidad.",
-    "cta_estadia_corta": "Reserva estadía corta",
-    "cta_coliving": "Solicita coliving",
-    "nota_cupos": "Cupos limitados. Proceso 100 % online."
+  "coliving": {
+    "concepto": "Coliving",
+    "duracion_minima": "1 mes",
+    "precio_desde": "Desde $3.315.000 / mes",
+    "incluye": "Servicios, wifi, amoblado, acceso a zonas comunes",
+    "reserva": "Sujeta a aprobación",
+    "documentos": "Proceso de validación previa"
+  }, 
+  "cta": {
+    "estadia_corta": "Reserva estadía corta",
+    "coliving": "Solicita coliving",
+    "nota": "Cupos limitados. Proceso 100 % online."
+  }
 },
 
   "zonas_comunes": {
@@ -364,87 +359,68 @@
   }
 },
 
-  "precios": {
-  "tabla_titulo": "Tarifas Mensuales",
-  "tabla_headers": {
-    "duracion": "Duración",
-    "precio": "Precio Mensual",
-    "ahorro": "Ahorro"
+ 
+
+"precios": {
+  "badge": "Tarifas y reservas",
+  "title": "Elige tu tipo de estadía",
+  "subtitle": "Precios claros, todo incluido. Solo paga y llega.",
+
+  "short": {
+    "title": "Estadías cortas",
+    "subtitle": "(3 a 29 noches)",
+
+    "row_1_label": "3 noches",
+    "row_1_price": "$ 570.000",
+
+    "row_2_label": "7 noches",
+    "row_2_price": "$ 1.190.000",
+
+    "row_3_label": "15 noches",
+    "row_3_price": "$ 2.175.000",
+
+    "row_4_label": "30 noches",
+    "row_4_price": "$ 3.900.000",
+
+"note": "Desde 3 noches: $ 580.000 · V/NOCHE: $ 190.000",
+    "cta": "Reservar estadía corta"
   },
 
-  
-  "duraciones": {
-    "1_mes": "1 mes",
-    "3_meses": "3 meses",
-    "6_meses": "6 meses",
-    "12_meses": "12 meses ⭐ Recomendado"
+  "coliving": {
+    "title": "Coliving",
+    "subtitle": "(1 mes o más)",
+
+    "row_1_label": "1 mes",
+    "row_1_price": "$ 3.900.000",
+
+    "row_2_label": "3 meses",
+    "row_2_price": "$ 3.705.000",
+
+    "row_3_label": "6 meses",
+    "row_3_price": "$ 3.510.000",
+
+    "row_4_label": "12 meses",
+    "row_4_price": "$ 3.315.000",
+
+    "note": "Incluye servicios, amoblado, internet de alta velocidad y acceso a zonas comunes.",
+    "cta": "Solicitar coliving"
   },
-  
-  "precios": {
-    "1_mes": "$3.100.000",
-    "3_meses": "$2.950.000",
-    "6_meses": "$2.750.000",
-    "12_meses": "$2.650.000"
-  },
-  
-  "ahorros": {
-    "1_mes": "-",
-    "3_meses": "$150K",
-    "6_meses": "$350K",
-    "12_meses": "$450K"
-  },
-  
-  "tabla_nota": "Valores en pesos colombianos. Pago mensual.",
-  "todo_incluido": "Todo incluido:",
-  "incluye_descripcion": "apartaestudio amoblado, servicios públicos, administración y acceso a todas las zonas comunes.",
-  
-  "reserva_facil": "✨ Reserva fácil y rápido:",
-  "reserva_descripcion": "Déjanos tus datos y nos pondremos en contacto contigo para finalizar tu proceso de arriendo.",
-  
-  "comparativa_titulo": "¿Aún dudas si Pixel Living es para ti?",
-  "comparativa_descripcion": "Compara lo que te costaría vivir solo en arriendo tradicional versus todo lo que obtienes con Pixel Living.",
-  "comparativa_enfasis": "Verás que aquí ahorras tiempo, dinero y preocupaciones.",
-  
-  "comparativa_headers": {
-    "concepto": "Concepto",
-    "tradicional": "Arriendo Tradicional",
-    "pixel": "Pixel Living"
-  },
-  
-  "comparativa_conceptos": {
-    "arriendo": "Arriendo",
-    "servicios": "Servicios públicos",
-    "wifi": "Wifi",
-    "administracion": "Administración",
-    "mobiliario": "Mobiliario",
-    "electrodomesticos": "Lavadora y electrodomésticos",
-    "total": "Total mensual"
-  },
-  
-  "comparativa_tradicional": {
-    "arriendo": "$2.000.000",
-    "servicios": "$350.000",
-    "wifi": "$120.000",
-    "administracion": "$300.000",
-    "mobiliario": "$400.000",
-    "electrodomesticos": "$200.000",
-    "total": "$3.370.000"
-  },
-  
-  "comparativa_pixel": {
-    "incluido": "✓ Incluido",
-    "total": "Desde $2.650.000"
-  },
-  
-  "ahorro_principal": "💰 Ahorras $720.000 cada mes",
-  "ahorro_nota": "Valores referenciales en pesos colombianos. Todo incluido, sin sorpresas.",
-  "ahorro_anual": "🏆 Más de $8.600.000 de ahorro anual + tiempo y tranquilidad",
-  
-  "cta_titulo": "¡Vivir bien y sin complicaciones sí es posible!",
-  "cta_descripcion": "¿Listo para vivir, ahorrar y disfrutar más?",
-  "cta_descripcion_2": "Reserva tu espacio en Pixel Living hoy y comienza a experimentar el verdadero coliving en Bogotá.",
-  "cta_boton": "Reserva tu espacio ahora",
-  "cta_nota": "Cupos limitados. Solo tu documento de identificación."
+
+  "note_global": "Precios en pesos colombianos. Todo incluido: amoblado, servicios, internet y zonas comunes.",
+
+  "process": {
+    "title": "¿Cómo funciona el proceso de reserva?",
+
+    "step1_title": "1. Elige tu tipo de estadía:",
+    "step1_short_label": "Estadía corta (3–29 noches)",
+    "step1_coliving_label": "Coliving (1 mes o más)",
+
+    "step2_title": "2. Diligencia el formulario de reservas:",
+    "step2_text": "En la sección de reservas déjanos tus datos, fechas tentativas y número de personas. Te contactaremos para confirmar disponibilidad.",
+
+    "step3_title": "3. Confirma y listo:",
+    "step3_text": "Recibirás la confirmación, el link de pago y los detalles para tu llegada a Pixel Living."
+  }
 },
 
 "coliving": {
@@ -454,27 +430,26 @@
   "title_end": "que paredes",
   
   "community": {
+  "badge": "Comunidad Pixel Living | Bogotá",
   "heading": "Vive en comunidad, crece cada día",
-  "intro_1": "Pixel Living es mucho más que un lugar para alojarse en Bogotá.",
-  "intro_2": "Aquí te rodeas de personas con sueños, proyectos y ganas de compartir, sin importar si te quedas por unos días o por varios meses.",
-  "intro_3": "La diversidad de nuestra comunidad enriquece tu experiencia y multiplica tus oportunidades.",
+
+  "intro_1": "Conecta con personas que están viviendo, trabajando y creando proyectos como tú, en el lugar ideal para crecer.",
+  "intro_2": "Pixel Living es mucho más que un lugar para alojarse en Bogotá.",
+  "intro_3": "Aquí te rodeas de personas con sueños, proyectos y ganas de compartir, sin importar si te quedas por unos días o por varios meses.",
+  "intro_4": "La diversidad de nuestra comunidad enriquece tu experiencia y multiplica tus oportunidades.",
 
   "quienes_titulo": "¿Quiénes se hospedan en Pixel Living?",
-  "quienes_lista": [
-    "Profesionales que vienen a Bogotá por proyectos, trabajo o eventos.",
-    "Nómadas digitales que valoran el networking, la flexibilidad y un ambiente inspirador.",
-    "Estudiantes universitarios en intercambio, cursos cortos o prácticas profesionales.",
-    "Emprendedores y freelancers en busca de inspiración, aliados y nuevas ideas.",
-    "Viajeros urbanos y extranjeros que quieren explorar la ciudad con comodidad.",
-    "Ejecutivos de empresas, sector salud o diplomacia en misiones temporales."
-  ],
+  "quienes_1": "Profesionales que vienen a Bogotá por proyectos, trabajo o eventos.",
+  "quienes_2": "Nómadas digitales que valoran el networking, la flexibilidad y un ambiente inspirador.",
+  "quienes_3": "Estudiantes universitarios en intercambio, cursos cortos o prácticas profesionales.",
+  "quienes_4": "Emprendedores y freelancers en busca de inspiración, aliados y nuevas ideas.",
+  "quienes_5": "Viajeros urbanos y extranjeros que quieren explorar la ciudad con comodidad.",
+  "quienes_6": "Ejecutivos de empresas, sector salud o diplomacia en misiones temporales.",
 
   "unica_titulo": "Lo que hace única a nuestra comunidad:",
-  "unica_lista": [
-    "Ambiente colaborativo y de apoyo: comparte ideas y buenas conversaciones.",
-    "Diversidad real: personas de distintas ciudades, países y profesiones.",
-    "Red de contactos: crece y conecta con personas que suman a tu viaje o proyecto."
-  ],
+  "unica_1": "Ambiente colaborativo y de apoyo: comparte ideas y buenas conversaciones.",
+  "unica_2": "Diversidad real: personas de distintas ciudades, países y profesiones.",
+  "unica_3": "Red de contactos: crece y conecta con personas que suman a tu viaje o proyecto.",
 
   "cierre": "En Pixel Living, encuentras tu espacio y una comunidad que te acompaña, sin importar el tiempo que te quedes.",
   "cta": "Únete a nuestra comunidad"
@@ -520,129 +495,107 @@
 
 
 
-  "reservas": {
-  "title": "Reserva tu espacio en Pixel Living",
-  "subtitle": "Reserva tu apartaestudio en Pixel Living | Coliving Bogotá",
-  "description": "Completa los siguientes datos para recibir atención personalizada.",
-  "response_time": "¡Te responderemos en menos de 1 hora!",
+"reservas": {
+  "badge": "Reserva tu espacio",
+  "title": "Reserva tu estadía en Pixel Living",
+  "description": "Diligencia el formulario y te contactaremos para confirmar disponibilidad y finalizar tu reserva.",
   
   "form": {
-    "name": "Nombre completo",
-    "name_placeholder": "Escribe tu nombre",
-    "email": "Correo electrónico",
-    "email_placeholder": "ejemplo@correo.com",
-    "phone": "Teléfono de contacto",
-    "phone_placeholder": "Celular o WhatsApp",
-    "duration": "¿Cuánto tiempo deseas reservar?",
-    "duration_select": "Selecciona la duración",
-    "duration_options": {
-      "1_month_price": "1 mes - $3.100.000",
-      "3_months_price": "3 meses - $2.950.000",
-      "6_months_price": "6 meses - $2.750.000",
-      "12_months_price": "12 meses - $2.650.000 (Recomendado)"
-    },
-    "date": "Fecha de ingreso preferida",
-    "date_help": "Selecciona tu fecha ideal de mudanza",
-    "people": "Número de personas",
-    "people_options": {
-      "1_person": "1 persona",
-      "2_people": "2 personas (pareja)"
-    },
-    "referral": "¿Cómo conociste Pixel Living?",
-    "referral_select": "Selecciona una opción",
-    "referral_options": {
-      "google": "Google / Búsqueda web",
-      "instagram": "Instagram",
-      "facebook": "Facebook",
-      "linkedin": "LinkedIn",
-      "friend": "Recomendación de amigo/conocido",
-      "flyer": "Volante / Publicidad física",
-      "other": "Otro"
-    },
-    "message": "Mensaje adicional (opcional)",
-    "message_placeholder": "Cuéntanos algo más sobre tus necesidades específicas...",
-    "characters": "caracteres",
-    "accept_contact": "Acepto ser contactado por Pixel Living y he leído la",
-    "privacy_policy": "política de privacidad",
-    "submit": "Enviar solicitud de reserva",
-    "footer_note": "Tu información está segura y solo será usada para procesar tu reserva."
-  },
-  
-  "whatsapp": {
-    "question": "¿Prefieres contactarnos directamente?",
-    "message": "Hola! Me interesa reservar un apartaestudio en Pixel Living. ¿Podrían darme más información?",
-    "cta": "Chatear por WhatsApp"
-  },
-  
-  "benefits": {
-    "title": "¿Por qué elegir Pixel Living?",
-    "no_guarantor_title": "Sin codeudor",
-    "no_guarantor_desc": "Solo necesitas tu documento de identificación",
-    "all_included_title": "Todo incluido",
-    "all_included_desc": "Servicios, WiFi, mobiliario y zonas comunes",
-    "quick_move_title": "Mudanza rápida",
-    "quick_move_desc": "Proceso de reserva en menos de 24 horas",
-    "flexibility_title": "Máxima flexibilidad",
-    "flexibility_desc": "Desde 1 mes, sin ataduras a largo plazo",
-    "location_title": "Ubicación estratégica",
-    "location_desc": "Norte de Bogotá, cerca de todo lo importante"
-  },
-  
-  "testimonial": {
-    "quote": "Pixel Living cambió mi forma de vivir en Bogotá. La flexibilidad y la comunidad son increíbles.",
-    "author": "- María C., Residente Pixel"
-  },
-  
-  "trust": {
-    "process": "Proceso",
-    "size": "Apartaestudios",
-    "savings": "Ahorro mensual"
+    "nombre_label": "¿Cuál es tu nombre? *",
+    "nombre_placeholder": "Nombre completo",
+    
+    "email_label": "Correo electrónico *",
+    "email_placeholder": "tucorreo@ejemplo.com",
+    
+    "tipo_estadia_label": "1. Elige tu tipo de estadía",
+    "tipo_estadia_opcion_estadia_corta": "Estadía corta (3–29 noches)",
+    "tipo_estadia_opcion_coliving": "Coliving (1 mes o más)",
+    
+    "noches_label": "¿Cuántas noches deseas reservar? *",
+    "noches_placeholder": "Ejemplo: 7 noches",
+    "noches_helper": "Disponible solo para estadías cortas (3–29 noches).",
+    
+    "telefono_label": "Teléfono / WhatsApp *",
+    "telefono_placeholder": "+57 300 000 0000",
+    
+    "duracion_label": "¿Cuánto tiempo deseas reservar? *",
+    "duracion_helper": "Si eliges estadía corta, indícanos el número de noches arriba. Si eliges coliving, selecciona aquí el tiempo en meses.",
+    
+    "duracion_opcion_placeholder": "Selecciona una opción",
+    "duracion_opcion_1": "1 mes",
+    "duracion_opcion_3": "3 meses",
+    "duracion_opcion_6": "6 meses",
+    "duracion_opcion_12": "12 meses",
+    
+    "fecha_label": "Fecha de llegada",
+    "fecha_helper": "Si aún no la tienes clara, puedes dejarla en blanco.",
+    
+    "personas_label": "¿Cuántas personas se hospedarán?",
+    "personas_opcion_placeholder": "Selecciona una opción",
+    "personas_opcion_1": "1 persona",
+    "personas_opcion_2": "2 personas",
+    
+    "como_conociste_label": "¿Cómo nos conociste?",
+    "como_conociste_opcion_placeholder": "Selecciona una opción",
+    "como_conociste_opcion_instagram": "Instagram",
+    "como_conociste_opcion_google": "Google",
+    "como_conociste_opcion_referido": "Recomendación de un amigo",
+    "como_conociste_opcion_otro": "Otro",
+    
+    "mensaje_label": "Mensaje adicional",
+    "mensaje_placeholder": "Cuéntanos si tienes alguna solicitud especial, horario de llegada aproximado, etc.",
+    "mensaje_contador_inicial": "0/500 caracteres",
+    
+    "acepta_politica_label": "Acepto la política de privacidad y el uso de mis datos para la gestión de mi reserva.",
+    
+    "boton_enviar": "Enviar solicitud de reserva"
   }
 },
 
   "faq": {
-  "title": "Preguntas frecuentes",
-  
+  "badge": "Preguntas frecuentes",
+  "title": "Preguntas frecuentes sobre",
+  "title_highlight": "Pixel Living",
+
   "questions": {
     "q1": {
-      "question": "¿Qué incluye el precio mensual?",
-      "answer": "Todo está incluido: apartaestudio amoblado, servicios públicos (agua, luz, gas), internet de alta velocidad, administración, aseo de zonas comunes y acceso a todas las amenidades."
+      "question": "¿Puedo reservar por noches o por meses?",
+      "answer": "Sí. Puedes quedarte desde 3 noches (estancia corta) o elegir un plan coliving desde 1 mes."
     },
     "q2": {
-      "question": "¿Necesito codeudor o fiador?",
-      "answer": "No. Solo necesitas tu documento de identificación válido. Este es uno de nuestros principales beneficios: sin codeudor, sin complicaciones."
+      "question": "¿Se aceptan mascotas?",
+      "answer": "No, en Pixel Living no se aceptan mascotas."
     },
     "q3": {
-      "question": "¿Cuál es la estadía mínima?",
-      "answer": "La estadía mínima es de 1 mes. Ofrecemos máxima flexibilidad para adaptarnos a tus necesidades, ya sea una estadía corta o de largo plazo."
+      "question": "¿Incluye limpieza?",
+      "answer": "La limpieza del apartaestudio es responsabilidad del residente. Puedes solicitar servicio de limpieza por un valor adicional."
     },
     "q4": {
-      "question": "¿Cómo es el proceso de reserva?",
-      "answer": "Super simple: 1) Completa el formulario, 2) Te contactamos en menos de 1 hora, 3) Visita virtual o presencial, 4) Firma del contrato, 5) ¡Mudanza en 24-48 horas!"
-    },
-    "q5": {
-      "question": "¿Qué incluye el apartaestudio?",
-      "answer": "29m² completamente amoblados: cama doble, escritorio, cocina equipada, baño privado, closet, balcón privado y habitación adicional que puedes usar como oficina o para huéspedes."
-    },
-    "q6": {
-      "question": "¿Puedo recibir visitas?",
-      "answer": "Sí, puedes recibir visitas en tu apartaestudio y en las zonas comunes. Solo pedimos que respetes las normas de convivencia y los horarios establecidos."
-    },
-    "q7": {
-      "question": "¿Aceptan mascotas?",
-      "answer": "Sí, tenemos una Pet Zone especialmente diseñada. Aplicamos una pequeña tarifa adicional y algunas normas de convivencia para el bienestar de todos."
-    },
-    "q8": {
-      "question": "¿Dónde están ubicados?",
-      "answer": "Estamos en el norte de Bogotá, en la Autopista Norte con Calle 100. Una ubicación estratégica con fácil acceso a transporte público, centros comerciales y zona empresarial."
+      "question": "¿Puedo fumar?",
+      "answer": "Solo está permitido fumar en la Pet Zone (zona designada para fumar)."
     }
-  },
-  
-  "contact": {
-    "title": "¿Tienes más preguntas?",
-    "description": "Nuestro equipo está listo para resolver todas tus dudas sobre Pixel Living.",
-    "button": "Chatea con nosotros"
   }
+},
+
+"politica_cierre": {
+  "badge": "Política de Privacidad",
+  "title": "Tus datos se usan solo para contacto y gestión de reservas.",
+  "link_text": "Ver política completa en la web →",
+
+  "cta_title": "¿Listo para vivir, trabajar y disfrutar en Bogotá?",
+  "cta_description": "Reserva tu apartaestudio en Pixel Living y descubre el alojamiento flexible que sí se adapta a ti.",
+
+  "cta_button_short": "Reserva estadía corta",
+  "cta_button_coliving": "Solicita coliving"
+},
+
+"testimonios": {
+  "badge": "Testimonios",
+  "title": "Testimonios reales de huéspedes",
+  "subtitle": "Lo que dicen quienes ya vivieron la experiencia Pixel Living",
+
+  "prev": "Anterior",
+  "next": "Siguiente"
 },
 
   "footer": {
@@ -678,6 +631,21 @@
     "cookies": "Cookies"
   }
 },
+"contacto": {
+  "badge": "Contacto",
+  "title": "¿Tienes alguna pregunta?",
+  "subtitle": "Estamos aquí para ayudarte. Contáctanos y te responderemos muy pronto.",
+
+  "info_title": "Información de contacto",
+  "direccion_label": "Dirección:",
+  "telefono_label": "Teléfono:",
+  "email_label": "Correo:",
+
+  "cta_button": "Contáctanos",
+  
+  "ubicacion_title": "Nuestra ubicación",
+  "ubicacion_boton": "Abrir en Google Maps"
+},
      
   "estudios": {
     "jade": {
@@ -686,7 +654,7 @@
       "descripcion": "Espacio luminoso con balcón privado. Cocina privada, zona de trabajo independiente y cuarto auxiliar. Perfecto para estadías largas con ventanales amplios y vistas despejadas. Todo incluido: wifi, servicios, Smart TV. Sin codeudor.",
       "metros": "29m²",
       "imagen": "/images/estudios/jade/pixel-jade-room-004.webp",
-      "precio": "Desde $2.650.000",
+      "precio": "Desde 3 noches: $ 580.000 V/NOCHE: $ 190.000",
       "galeria": [
         "/images/estudios/jade/pixel-jade-room-005.webp",
         "/images/estudios/jade/pixel-jade-room-001.webp",  
@@ -717,7 +685,7 @@
       "descripcion": "Diseñado para profesionales remotos con zona de trabajo optimizada. Cocina privada, escritorio amplio y ambiente que favorece la concentración. Ideal para combinar vida y trabajo con estilo. Todo incluido: wifi, servicios, mobiliario. Sin codeudor.",
       "metros": "29m²",
       "imagen":  "/images/estudios/zian/pixel-zian-room-009.webp",
-      "precio": "Desde $2.650.000",
+      "precio": "Desde 3 noches: $ 580.000 V/NOCHE: $ 190.000",
       "galeria": [
         "/images/estudios/zian/pixel-zian-room-001.webp", 
         "/images/estudios/zian/pixel-zian-room-002.webp", 
@@ -750,7 +718,7 @@
       "descripcion": "Nuestro apartaestudio más espacioso con zona de estar separada del área de descanso. Cocina privada, balcón privado y ambiente acogedor para creativos y emprendedores. Todo incluido, sin codeudor.",
       "imagen": "/images/estudios/indigo/pixel-indigo-room-001.webp",
       "metros": "29m²", 
-      "precio": "Desde $2.650.000",
+      "precio": "Desde 3 noches: $ 580.000 V/NOCHE: $ 190.000",
       "galeria": [
         "/images/estudios/indigo/pixel-indigo-room-002.webp", 
         "/images/estudios/indigo/pixel-indigo-room-003.webp", 
@@ -842,7 +810,7 @@
     
     "otros_estudios": {
       "titulo": "Explora otros espacios",
-      "ver_detalles": "Ver detalles"
+"ver_detalles": "Ver detalles del estudio"
     },
     
     "mensajes": {

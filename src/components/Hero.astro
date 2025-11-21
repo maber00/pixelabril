@@ -5,26 +5,16 @@ import heroImage3 from '../assets/fachada001.webp';
 import heroImage4 from '../assets/pixel-terraza-hero-2.webp';
 import heroImage5 from '../assets/pixel-room-02.jpg';
 
-// Alt texts en español
-const altTexts = [
-  "Pixel Living - Coliving moderno en Bogotá",
-  "Apartaestudios amoblados 29 m² en el norte de Bogotá",
-  "Coliving sin codeudor en Zona Rosa Bogotá",
-  "Terraza Pixel Living - Espacios compartidos",
-  "Habitaciones completamente equipadas Pixel Living"
-];
+// I18N
+import { getLanguageFromUrl, t, setCurrentLanguage } from '../i18n/utils/translator';
 
-// Chips de beneficios
-const benefits = [
-  '✓ Estadía corta desde 3 noches',
-  '✓ Coliving desde 1 mes',
-  '✓ Todo incluido',
-  '✓ Listo para habitar'
-];
+const currentLang = getLanguageFromUrl(Astro.url.pathname);
+setCurrentLanguage(currentLang);
 ---
 
 <section class="relative min-h-screen flex items-center overflow-hidden w-full" id="hero-section" aria-label="Hero Pixel Living Bogotá">
   <div class="absolute inset-0 z-0" aria-hidden="true">
+    <!-- Carrusel de fondo: puedes dejar el mismo que ya tienes -->
     <div class="carousel-container">
       <div class="carousel-slide active">
         <div class="zoom-wrapper">
@@ -58,7 +48,6 @@ const benefits = [
 
   <div class="container relative z-20 mt-28 mb-28 md:py-0">
     <div class="flex flex-col items-start text-left max-w-4xl">
-
       <!-- Línea de marca -->
       <h1 class="text-sm md:text-3xl font-normal leading-tight mb-1 text-white cal-display hero-title">
         <span class="text-pixel-orange text-xl md:text-4xl">Pixel Living</span>
@@ -66,60 +55,66 @@ const benefits = [
         <span class="text-pixel-yellow text-xl md:text-4xl">Bogotá</span>
       </h1>
 
-      <!-- Título principal -->
-      <h2 class="text-5xl md:text-6xl text-white mb-4 font-normal">
-        Apartaestudios Flexibles: Estadías Cortas y Coliving
+      <!-- Título principal (línea de producto) -->
+      <h2 class="text-3xl md:text-5xl lg:text-6xl text-white mb-4 font-normal">
+        {t('hero.brand_line_2')}
       </h2>
 
       <!-- Subtítulo -->
       <p class="text-2xl md:text-4xl text-pixel-yellow mb-6 font-normal">
-        Vive, trabaja y disfruta en el norte de Bogotá.
+        {t('hero.title')} {t('hero.subtitle')}
       </p>
 
       <!-- Descripción -->
       <p class="text-lg md:text-xl text-white/95 mb-3 max-w-2xl leading-relaxed">
-        Pixel Living es tu mejor opción para alojamiento flexible en Bogotá:
+        {t('hero.description')}
       </p>
 
       <ul class="text-base md:text-lg text-white/95 mb-5 space-y-1">
-        <li>• Estadía corta desde 3 noches <span class="opacity-70">(short term rental Bogotá)</span></li>
-        <li>• Coliving desde 1 mes</li>
+        <li>• {t('hero.bullet_1')}</li>
+        <li>• {t('hero.bullet_2')}</li>
       </ul>
 
       <p class="text-base md:text-lg text-white/90 mb-6 max-w-2xl leading-relaxed">
-        Apartaestudios amoblados de 29 m² con todo incluido, comunidad internacional y ubicación estratégica.
+        {t('hero.description_extended')}
       </p>
 
       <!-- Beneficios -->
       <div class="flex flex-wrap gap-2 mb-6" aria-label="Beneficios clave">
-        <span class="bg-pixel-yellow text-gray-900 px-3 py-1 rounded-full text-sm font-medium">✓ Estadía corta desde 3 noches</span>
-        <span class="bg-pixel-yellow text-gray-900 px-3 py-1 rounded-full text-sm font-medium">✓ Coliving desde 1 mes</span>
-        <span class="bg-pixel-yellow text-gray-900 px-3 py-1 rounded-full text-sm font-medium">✓ Todo incluido</span>
-        <span class="bg-pixel-yellow text-gray-900 px-3 py-1 rounded-full text-sm font-medium">✓ Listo para habitar</span>
+        <span class="bg-pixel-yellow text-gray-900 px-3 py-1 rounded-full text-sm font-medium">{t('hero.bullet_1')}</span>
+        <span class="bg-pixel-yellow text-gray-900 px-3 py-1 rounded-full text-sm font-medium">{t('hero.bullet_2')}</span>
+        <span class="bg-pixel-yellow text-gray-900 px-3 py-1 rounded-full text-sm font-medium">{t('hero.bullet_3')}</span>
+        <span class="bg-pixel-yellow text-gray-900 px-3 py-1 rounded-full text-sm font-medium">{t('hero.bullet_4')}</span>
       </div>
 
       <!-- CTA -->
       <div class="flex flex-col sm:flex-row gap-4">
-        <a href="#reservas" class="hidden md:flex btn bg-pixel-yellow hover:bg-yellow-500 text-gray-900 text-lg font-semibold px-8 py-4 rounded-lg items-center justify-center">
-          Reserva tu espacio ahora
+        <a
+          href="#reservas"
+          class="hidden md:flex btn bg-pixel-yellow hover:bg-yellow-500 text-gray-900 text-lg font-semibold px-8 py-4 rounded-lg items-center justify-center"
+        >
+          {t('hero.button_primary')}
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
           </svg>
         </a>
-        <a href="#espacios" class="btn bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 px-6 py-4 rounded-lg">
-          Ver espacios
+        <a
+          href="#espacios"
+          class="btn bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 px-6 py-4 rounded-lg"
+        >
+          {t('hero.button_secondary')}
         </a>
       </div>
 
-      <p class="text-sm text-gray-200 mt-4">Cupos limitados.</p>
-      <p class="text-xs text-gray-400 mt-1">Proceso 100 % online.</p>
+      <p class="text-sm text-gray-200 mt-4">{t('hero.trust_info')}</p>
+      <p class="text-xs text-gray-400 mt-1">{t('hero.process_time')}</p>
     </div>
   </div>
 
   <div class="absolute md:bottom-8 invisible md:visible md:left-1/2 transform -translate-x-1/2 text-white z-30">
     <a href="#vive-pixel" class="flex flex-col mt-30 items-center group">
       <span class="mb-2 text-sm font-medium group-hover:text-pixel-yellow transition-colors">
-        Descubre por qué somos diferentes
+        {t('hero.scroll_text')}
       </span>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 animate-bounce">
         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />

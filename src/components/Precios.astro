@@ -1,168 +1,160 @@
+---
+import { getLanguageFromUrl, t, setCurrentLanguage } from '../i18n/utils/translator';
+
+const currentLang = getLanguageFromUrl(Astro.url.pathname);
+setCurrentLanguage(currentLang);
+---
 <section id="precios" class="section bg-white py-16">
   <div class="container">
-
     <!-- Header -->
     <div class="text-center mb-12">
       <span class="inline-block text-pixel-brown font-semibold text-sm uppercase tracking-wider mb-2">
-        Tarifas y Reservas
+        {t('precios.badge')}
       </span>
       <h2 class="text-3xl md:text-5xl font-normal text-gray-900">
-        Elige tu tipo de estadía
+        {t('precios.title')}
       </h2>
       <p class="text-lg text-gray-600 max-w-2xl mx-auto mt-4">
-        Precios claros, todo incluido. Solo paga y llega.
+        {t('precios.subtitle')}
       </p>
     </div>
 
     <!-- GRID DE DOS CARDS -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-
       <!-- CARD 1: Estadías Cortas -->
       <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 hover:shadow-md transition">
-        <h3 class="text-2xl font-semibold text-gray-900 mb-1">Estadías cortas</h3>
-        <p class="text-gray-600 mb-6">(3 a 29 noches)</p>
+        <h3 class="text-2xl font-semibold text-gray-900 mb-1">
+          {t('precios.short.title')}
+        </h3>
+        <p class="text-gray-600 mb-6">
+          {t('precios.short.subtitle')}
+        </p>
 
         <ul class="space-y-3 text-gray-800 text-lg">
           <li class="flex justify-between">
-            <span>3 noches</span>
-            <span class="font-semibold">$ 570.000</span>
+            <span>{t('precios.short.row_1_label')}</span>
+            <span class="font-semibold">{t('precios.short.row_1_price')}</span>
           </li>
           <li class="flex justify-between">
-            <span>7 noches</span>
-            <span class="font-semibold">$ 1.190.000</span>
+            <span>{t('precios.short.row_2_label')}</span>
+            <span class="font-semibold">{t('precios.short.row_2_price')}</span>
           </li>
           <li class="flex justify-between">
-            <span>15 noches</span>
-            <span class="font-semibold">$ 2.175.000</span>
+            <span>{t('precios.short.row_3_label')}</span>
+            <span class="font-semibold">{t('precios.short.row_3_price')}</span>
           </li>
           <li class="flex justify-between">
-            <span>30 noches</span>
-            <span class="font-semibold">$ 3.900.000</span>
+            <span>{t('precios.short.row_4_label')}</span>
+            <span class="font-semibold">{t('precios.short.row_4_price')}</span>
           </li>
         </ul>
 
         <p class="text-sm text-gray-500 mt-6">
-          Valor por noche desde $130.000 según duración.
+          {t('precios.short.note')}
         </p>
 
         <div class="mt-8 text-center">
-          <a 
+          <a
             href="#reservas"
             class="inline-block bg-pixel-brown text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-pixel-brown/90 transition"
           >
-            Reservar estadía corta
+            {t('precios.short.cta')}
           </a>
         </div>
       </div>
 
       <!-- CARD 2: Coliving -->
       <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 hover:shadow-md transition">
-        <h3 class="text-2xl font-semibold text-gray-900 mb-1">Coliving</h3>
-        <p class="text-gray-600 mb-6">(1 mes o más)</p>
+        <h3 class="text-2xl font-semibold text-gray-900 mb-1">
+          {t('precios.coliving.title')}
+        </h3>
+        <p class="text-gray-600 mb-6">
+          {t('precios.coliving.subtitle')}
+        </p>
 
         <ul class="space-y-3 text-gray-800 text-lg">
           <li class="flex justify-between">
-            <span>1 mes</span>
-            <span class="font-semibold">$ 3.900.000</span>
+            <span>{t('precios.coliving.row_1_label')}</span>
+            <span class="font-semibold">{t('precios.coliving.row_1_price')}</span>
           </li>
           <li class="flex justify-between">
-            <span>3 meses</span>
-            <span class="font-semibold">$ 3.705.000</span>
+            <span>{t('precios.coliving.row_2_label')}</span>
+            <span class="font-semibold">{t('precios.coliving.row_2_price')}</span>
           </li>
           <li class="flex justify-between">
-            <span>6 meses</span>
-            <span class="font-semibold">$ 3.510.000</span>
+            <span>{t('precios.coliving.row_3_label')}</span>
+            <span class="font-semibold">{t('precios.coliving.row_3_price')}</span>
           </li>
           <li class="flex justify-between">
-            <span>12 meses</span>
-            <span class="font-semibold">$ 3.315.000</span>
+            <span>{t('precios.coliving.row_4_label')}</span>
+            <span class="font-semibold">{t('precios.coliving.row_4_price')}</span>
           </li>
         </ul>
 
         <p class="text-sm text-gray-500 mt-6">
-          Incluye servicios, amoblado, internet de alta velocidad y acceso a zonas comunes.
+          {t('precios.coliving.note')}
         </p>
 
         <div class="mt-8 text-center">
-          <a 
+          <a
             href="#reservas"
             class="inline-block border-2 border-pixel-brown text-pixel-brown px-6 py-3 rounded-lg text-lg font-semibold hover:bg-pixel-brown hover:text-white transition"
           >
-            Solicitar coliving
+            {t('precios.coliving.cta')}
           </a>
         </div>
       </div>
-
     </div>
 
     <!-- Nota de precios -->
     <p class="text-center text-gray-600 text-sm mt-10 mb-4">
-      Precios en pesos colombianos. Todo incluido: amoblado, servicios, internet y zonas comunes.
+      {t('precios.note_global')}
     </p>
 
     <!-- CÓMO FUNCIONA EL PROCESO DE RESERVA -->
     <div class="max-w-4xl mx-auto mt-10 bg-gray-50 border border-gray-200 rounded-2xl p-8 md:p-10">
       <h3 class="text-2xl md:text-3xl font-normal text-gray-900 mb-6 text-center">
-        ¿Cómo funciona el proceso de reserva?
+        {t('precios.process.title')}
       </h3>
 
       <div class="space-y-6 text-gray-800 text-base md:text-lg">
-
         <!-- Paso 1 -->
         <div>
-          <p class="font-semibold mb-2">1. Elige tu tipo de estadía:</p>
+          <p class="font-semibold mb-2">
+            {t('precios.process.step1_title')}
+          </p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
             <label class="flex items-center gap-2 bg-white rounded-lg border border-gray-200 px-4 py-3">
               <input type="checkbox" disabled class="w-4 h-4 text-pixel-brown border-gray-300 rounded" />
-              <span>Estadía corta (3–29 noches)</span>
+              <span>{t('precios.process.step1_short_label')}</span>
             </label>
             <label class="flex items-center gap-2 bg-white rounded-lg border border-gray-200 px-4 py-3">
               <input type="checkbox" disabled class="w-4 h-4 text-pixel-brown border-gray-300 rounded" />
-              <span>Coliving (1 mes o más)</span>
+              <span>{t('precios.process.step1_coliving_label')}</span>
             </label>
           </div>
         </div>
 
         <!-- Paso 2 -->
         <div>
-          <p class="font-semibold mb-2">2. Completa el formulario online:</p>
-          <ul class="list-disc list-inside space-y-1 text-gray-700">
-            <li>Nombre</li>
-            <li>Correo</li>
-            <li>Teléfono</li>
-            <li>Fecha de llegada y duración</li>
-            <li>Preferencia: estadía corta o coliving</li>
-          </ul>
+          <p class="font-semibold mb-2">
+            {t('precios.process.step2_title')}
+          </p>
+          <p>
+            {t('precios.process.step2_text')}
+          </p>
         </div>
 
         <!-- Paso 3 -->
         <div>
           <p class="font-semibold mb-2">
-            3. Adjunta tu documento y realiza el pago (estadía corta) o inicia validación (coliving)
+            {t('precios.process.step3_title')}
           </p>
-          <p class="text-gray-700">
-            Para estadías cortas, el proceso se completa con el pago. Para coliving, el equipo de Pixel te contactará para validar tu información y enviar el contrato.
-          </p>
-        </div>
-
-        <!-- Paso 4 -->
-        <div>
-          <p class="font-semibold mb-2">4. Recibe confirmación por email o WhatsApp</p>
-          <p class="text-gray-700">
-            Una vez confirmada la reserva, recibirás todos los detalles de tu estadía y el proceso de llegada a Pixel Living.
+          <p>
+            {t('precios.process.step3_text')}
           </p>
         </div>
-      </div>
-
-      <div class="mt-8 text-center">
-        <a 
-          href="#reservas"
-          class="inline-flex items-center justify-center bg-pixel-brown text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-pixel-brown/90 transition"
-        >
-          Ir al formulario de reservas
-        </a>
       </div>
     </div>
-
   </div>
 </section>

@@ -1,10 +1,10 @@
 ---
-// IMPORTAR I18N
-import { getLanguageFromUrl, t, setCurrentLanguage } from '../i18n/utils/translator';
+ // IMPORTAR I18N
+ import { getLanguageFromUrl, t, setCurrentLanguage } from '../i18n/utils/translator';
 
-// Detectar idioma actual
-const currentLang = getLanguageFromUrl(Astro.url.pathname);
-setCurrentLanguage(currentLang);
+ // Detectar idioma actual
+ const currentLang = getLanguageFromUrl(Astro.url.pathname);
+ setCurrentLanguage(currentLang);
 ---
 
 <section id="reservas" class="py-16 bg-gray-50">
@@ -13,13 +13,13 @@ setCurrentLanguage(currentLang);
       <!-- Header -->
       <div class="text-center mb-12">
         <span class="inline-block text-pixel-brown font-semibold text-sm uppercase tracking-wider mb-2">
-          Reserva tu espacio
+          {t('reservas.badge')}
         </span>
         <h2 class="text-3xl md:text-5xl font-normal text-gray-900 mb-4">
-          Reserva tu estadía en Pixel Living
+          {t('reservas.title')}
         </h2>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          Diligencia el formulario y te contactaremos para confirmar disponibilidad y finalizar tu reserva.
+          {t('reservas.description')}
         </p>
       </div>
 
@@ -43,14 +43,14 @@ setCurrentLanguage(currentLang);
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">
-                ¿Cuál es tu nombre? *
+                {t('reservas.form.nombre_label')}
               </label>
               <input 
                 type="text" 
                 id="nombre" 
                 name="nombre" 
                 class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-pixel-brown focus:border-transparent bg-white" 
-                placeholder="Nombre completo"
+                placeholder={t('reservas.form.nombre_placeholder')}
                 autocomplete="name"
                 required
               />
@@ -59,14 +59,14 @@ setCurrentLanguage(currentLang);
             
             <div>
               <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
-                Correo electrónico *
+                {t('reservas.form.email_label')}
               </label>
               <input 
                 type="email" 
                 id="email" 
                 name="email" 
                 class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-pixel-brown focus:border-transparent bg-white" 
-                placeholder="tucorreo@ejemplo.com"
+                placeholder={t('reservas.form.email_placeholder')}
                 autocomplete="email"
                 required
               />
@@ -77,7 +77,7 @@ setCurrentLanguage(currentLang);
           <!-- 1. Elige tu tipo de estadía -->
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-2">
-              1. Elige tu tipo de estadía
+              {t('reservas.form.tipo_estadia_label')}
             </label>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -89,7 +89,7 @@ setCurrentLanguage(currentLang);
                   class="w-4 h-4 text-pixel-brown focus:ring-pixel-brown border-gray-300"
                 />
                 <span class="text-sm text-gray-800">
-                  Estadía corta (3–29 noches)
+                  {t('reservas.form.tipo_estadia_opcion_estadia_corta')}
                 </span>
               </label>
 
@@ -101,7 +101,7 @@ setCurrentLanguage(currentLang);
                   class="w-4 h-4 text-pixel-brown focus:ring-pixel-brown border-gray-300"
                 />
                 <span class="text-sm text-gray-800">
-                  Coliving (1 mes o más)
+                  {t('reservas.form.tipo_estadia_opcion_coliving')}
                 </span>
               </label>
             </div>
@@ -110,7 +110,7 @@ setCurrentLanguage(currentLang);
           <!-- Campo NOCHES (solo estadía corta) -->
           <div id="campo-noches" class="hidden">
             <label for="noches" class="block text-sm font-medium text-gray-700 mb-1">
-              ¿Cuántas noches deseas reservar? *
+              {t('reservas.form.noches_label')}
             </label>
             <input 
               type="number"
@@ -119,10 +119,10 @@ setCurrentLanguage(currentLang);
               min="3"
               max="29"
               class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-pixel-brown focus:border-transparent bg-white"
-              placeholder="Ejemplo: 7 noches"
+              placeholder={t('reservas.form.noches_placeholder')}
             />
             <p class="text-xs text-gray-500 mt-1">
-              Disponible solo para estadías cortas (3–29 noches).
+              {t('reservas.form.noches_helper')}
             </p>
             <div id="noches-error" class="hidden text-red-600 text-sm mt-1"></div>
           </div>
@@ -131,76 +131,71 @@ setCurrentLanguage(currentLang);
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label for="telefono" class="block text-sm font-medium text-gray-700 mb-1">
-                Teléfono / WhatsApp *
+                {t('reservas.form.telefono_label')}
               </label>
               <input 
                 type="tel" 
                 id="telefono" 
                 name="telefono" 
-                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-pixel-brown focus:border-transparent bg-white" 
-                placeholder="+57 300 000 0000"
+                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-pixel-brown focus:border-transparent bg-white"
+                placeholder={t('reservas.form.telefono_placeholder')}
                 autocomplete="tel"
                 required
               />
               <div id="telefono-error" class="hidden text-red-600 text-sm mt-1"></div>
             </div>
-            
-            <!-- Contenedor de duración (MESES) -->
-            <div id="campo-duracion">
+
+            <div>
               <label for="duracion" class="block text-sm font-medium text-gray-700 mb-1">
-                ¿Cuánto tiempo deseas reservar? *
+                {t('reservas.form.duracion_label')}
               </label>
-              <p class="text-xs text-gray-500 mb-2">
-                Si eliges estadía corta, indícanos el número de noches arriba.
-                Si eliges coliving, selecciona aquí el tiempo en meses.
-              </p>
               <select 
                 id="duracion" 
                 name="duracion" 
-                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-pixel-brown focus:border-transparent bg-white" 
-                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-pixel-brown focus:border-transparent bg-white"
               >
-                <option value="">Selecciona una opción</option>
-                <option value="1-mes-3100000">1 mes</option>
-                <option value="3-meses-2950000">3 meses</option>
-                <option value="6-meses-2750000">6 meses</option>
-                <option value="12-meses-2650000">12 meses</option>
+                <option value="">{t('reservas.form.duracion_opcion_placeholder')}</option>
+                <option value="1">{t('reservas.form.duracion_opcion_1')}</option>
+                <option value="3">{t('reservas.form.duracion_opcion_3')}</option>
+                <option value="6">{t('reservas.form.duracion_opcion_6')}</option>
+                <option value="12">{t('reservas.form.duracion_opcion_12')}</option>
               </select>
+              <p class="text-xs text-gray-500 mt-1">
+                {t('reservas.form.duracion_helper')}
+              </p>
               <div id="duracion-error" class="hidden text-red-600 text-sm mt-1"></div>
             </div>
           </div>
 
-          <!-- Fecha y número de personas -->
+          <!-- Fecha y personas -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label for="fecha" class="block text-sm font-medium text-gray-700 mb-1">
-                Fecha de llegada
+                {t('reservas.form.fecha_label')}
               </label>
               <input 
                 type="date" 
                 id="fecha" 
                 name="fecha" 
-                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-pixel-brown focus:border-transparent bg-white" 
+                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-pixel-brown focus:border-transparent bg-white"
               />
-              <small class="text-gray-500 text-xs">
-                Si aún no la tienes clara, puedes dejarla en blanco.
-              </small>
-              <div id="fecha-error" class="hidden text-red-600 text-sm mt-1"></div>
+              <p class="text-xs text-gray-500 mt-1">
+                {t('reservas.form.fecha_helper')}
+              </p>
             </div>
-            
+
             <div>
               <label for="personas" class="block text-sm font-medium text-gray-700 mb-1">
-                ¿Cuántas personas se hospedarán?
+                {t('reservas.form.personas_label')}
               </label>
               <select 
                 id="personas" 
                 name="personas" 
-                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-pixel-brown focus:border-transparent bg-white" 
-                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-pixel-brown focus:border-transparent bg-white"
               >
-                <option value="">Selecciona una opción</option>
-                <option value="1">1 persona</option>
-                <option value="2">2 personas</option>
+                <option value="">{t('reservas.form.personas_opcion_placeholder')}</option>
+                <option value="1">{t('reservas.form.personas_opcion_1')}</option>
+                <option value="2">{t('reservas.form.personas_opcion_2')}</option>
               </select>
               <div id="personas-error" class="hidden text-red-600 text-sm mt-1"></div>
             </div>
@@ -209,35 +204,35 @@ setCurrentLanguage(currentLang);
           <!-- ¿Cómo nos conociste? -->
           <div>
             <label for="como_conociste" class="block text-sm font-medium text-gray-700 mb-1">
-              ¿Cómo nos conociste?
+              {t('reservas.form.como_conociste_label')}
             </label>
             <select 
               id="como_conociste" 
               name="como_conociste" 
               class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-pixel-brown focus:border-transparent bg-white"
             >
-              <option value="">Selecciona una opción</option>
-              <option value="instagram">Instagram</option>
-              <option value="google">Google</option>
-              <option value="referido">Recomendación de un amigo</option>
-              <option value="otro">Otro</option>
+              <option value="">{t('reservas.form.como_conociste_opcion_placeholder')}</option>
+              <option value="instagram">{t('reservas.form.como_conociste_opcion_instagram')}</option>
+              <option value="google">{t('reservas.form.como_conociste_opcion_google')}</option>
+              <option value="referido">{t('reservas.form.como_conociste_opcion_referido')}</option>
+              <option value="otro">{t('reservas.form.como_conociste_opcion_otro')}</option>
             </select>
           </div>
 
           <!-- Mensaje -->
           <div>
             <label for="mensaje" class="block text-sm font-medium text-gray-700 mb-1">
-              Mensaje adicional
+              {t('reservas.form.mensaje_label')}
             </label>
             <textarea
               id="mensaje"
               name="mensaje"
-              rows={4}
+              rows="4"
               class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-pixel-brown focus:border-transparent bg-white"
-              placeholder="Cuéntanos si tienes alguna solicitud especial, horario de llegada aproximado, etc."
+              placeholder={t('reservas.form.mensaje_placeholder')}
             ></textarea>
             <p id="contador-caracteres" class="mt-1 text-xs text-gray-500 text-right">
-              0/500 caracteres
+              {t('reservas.form.mensaje_contador_inicial')}
             </p>
           </div>
 
@@ -251,7 +246,7 @@ setCurrentLanguage(currentLang);
               required
             />
             <label for="acepta_politica" class="text-sm text-gray-700">
-              Acepto la política de privacidad y el uso de mis datos para la gestión de mi reserva.
+              {t('reservas.form.acepta_politica_label')}
             </label>
           </div>
 
@@ -265,7 +260,7 @@ setCurrentLanguage(currentLang);
               id="submitBtn"
               class="w-full md:w-auto inline-flex items-center justify-center px-8 py-3 rounded-lg bg-pixel-brown text-white font-semibold hover:bg-pixel-brown/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pixel-brown transition"
             >
-              Enviar solicitud de reserva
+              {t('reservas.form.boton_enviar')}
             </button>
           </div>
         </form>
@@ -275,9 +270,9 @@ setCurrentLanguage(currentLang);
 </section>
 
 <script is:inline>
-// @ts-nocheck  ← que TS no moleste aquí
+// @ts-nocheck
 
-document.addEventListener('DOMContentLoaded', function () {
+(function () {
   // ===== CONFIG =====
   const CONFIG = {
     EMAIL_DESTINO: 'comercialpixel98a@gmail.com',
@@ -312,7 +307,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const campoNochesContainer = document.getElementById('campo-noches');
   const campoDuracionContainer = document.getElementById('campo-duracion');
   const inputNoches = document.getElementById('noches');
-  const nochesError = document.getElementById('noches-error');
 
   const errores = {
     nombre: document.getElementById('nombre-error'),
@@ -385,6 +379,7 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
         campoNochesContainer.classList.add('hidden');
         inputNoches.value = '';
+        const nochesError = errores.noches;
         if (nochesError) {
           nochesError.textContent = '';
           nochesError.classList.add('hidden');
@@ -406,7 +401,7 @@ document.addEventListener('DOMContentLoaded', function () {
     r.addEventListener('change', actualizarVisibilidad);
   });
 
-  // Estado inicial: por defecto mostramos meses, ocultamos noches
+  // Estado inicial: mostramos duración (coliving) y ocultamos noches
   actualizarVisibilidad();
 
   // Contador de caracteres
@@ -427,7 +422,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Anti-spam: patrones básicos
+  // Anti-spam: patrones básicos + tiempo mínimo + caracteres raros en email
   function esSpam(datos) {
     const texto = (datos.nombre + ' ' + datos.email + ' ' + datos.mensaje).toLowerCase();
     const patrones = [
@@ -440,7 +435,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (tiempo < CONFIG.TIEMPO_MINIMO_ENVIO) return true;
     if (emailInvalido) return true;
-    if (patrones.some(p => p.test(texto))) return true;
+    if (patrones.some(function (p) { return p.test(texto); })) return true;
 
     return false;
   }
@@ -627,5 +622,5 @@ ${datos.mensaje || 'Ninguno'}
       submitBtn.textContent = 'Enviar solicitud de reserva';
     }
   });
-});
+})();
 </script>

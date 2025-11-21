@@ -22,13 +22,13 @@ const carouselImages = [
     <!-- Encabezado -->
     <div class="text-center mb-12 md:mb-16">
       <span class="inline-block text-pixel-purple font-semibold text-xs md:text-sm uppercase tracking-[0.2em] mb-3">
-        Comunidad Pixel Living | Bogotá
+        {t('coliving.community.badge')}
       </span>
       <h2 class="text-3xl md:text-5xl lg:text-6xl font-normal mb-4 md:mb-6 leading-tight">
-        Vive en comunidad, <span class="text-pixel-purple">crece cada día</span>
+        {t('coliving.community.heading')}
       </h2>
       <p class="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
-        Conecta con personas que están viviendo, trabajando y creando proyectos como tú, en el lugar ideal para crecer.
+        {t('coliving.community.intro_1')}
       </p>
     </div>
     
@@ -41,46 +41,46 @@ const carouselImages = [
           
           <!-- Intro -->
           <div class="space-y-3 md:space-y-4 text-left">
-            <p class="text-base md:text-xl text-gray-900">
-              Pixel Living es mucho más que un lugar para alojarse en Bogotá.
+            <p class="text-base md:text-lg text-gray-900">
+              {t('coliving.community.intro_2')}
             </p>
             <p class="text-base md:text-lg text-gray-700">
-              Aquí te rodeas de personas con sueños, proyectos y ganas de compartir, sin importar si te quedas por unos días o por varios meses.
+              {t('coliving.community.intro_3')}
             </p>
             <p class="text-base md:text-lg text-gray-700">
-              La diversidad de nuestra comunidad enriquece tu experiencia y multiplica tus oportunidades.
+              {t('coliving.community.intro_4')}
             </p>
           </div>
 
           <!-- Quiénes se hospedan -->
           <div class="space-y-2 md:space-y-3 text-left">
             <h3 class="text-lg md:text-xl font-semibold text-pixel-purple">
-              ¿Quiénes se hospedan en Pixel Living?
+              {t('coliving.community.quienes_titulo')}
             </h3>
             <ul class="list-disc list-inside text-gray-700 space-y-1.5 text-sm md:text-base">
-              <li>Profesionales que vienen a Bogotá por proyectos, trabajo o eventos.</li>
-              <li>Nómadas digitales que valoran el networking, la flexibilidad y un ambiente inspirador.</li>
-              <li>Estudiantes universitarios en intercambio, cursos cortos o prácticas profesionales.</li>
-              <li>Emprendedores y freelancers en busca de inspiración, aliados y nuevas ideas.</li>
-              <li>Viajeros urbanos y extranjeros que quieren explorar la ciudad con comodidad.</li>
-              <li>Ejecutivos de empresas, sector salud o diplomacia en misiones temporales.</li>
+              <li>{t('coliving.community.quienes_1')}</li>
+              <li>{t('coliving.community.quienes_2')}</li>
+              <li>{t('coliving.community.quienes_3')}</li>
+              <li>{t('coliving.community.quienes_4')}</li>
+              <li>{t('coliving.community.quienes_5')}</li>
+              <li>{t('coliving.community.quienes_6')}</li>
             </ul>
           </div>
 
           <!-- Lo que la hace única -->
           <div class="space-y-2 md:space-y-3 text-left">
             <h3 class="text-lg md:text-xl font-semibold text-pixel-purple">
-              Lo que hace única a nuestra comunidad:
+              {t('coliving.community.unica_titulo')}
             </h3>
             <ul class="list-disc list-inside text-gray-700 space-y-1.5 text-sm md:text-base">
-              <li>Ambiente colaborativo y de apoyo: comparte ideas y buenas conversaciones.</li>
-              <li>Diversidad real: personas de distintas ciudades, países y profesiones.</li>
-              <li>Red de contactos: crece y conecta con personas que suman a tu viaje o proyecto.</li>
+              <li>{t('coliving.community.unica_1')}</li>
+              <li>{t('coliving.community.unica_2')}</li>
+              <li>{t('coliving.community.unica_3')}</li>
             </ul>
           </div>
 
           <p class="text-base md:text-lg text-gray-900">
-            En Pixel Living, encuentras tu espacio y una comunidad que te acompaña, sin importar el tiempo que te quedes.
+            {t('coliving.community.cierre')}
           </p>
 
           <!-- CTA -->
@@ -128,7 +128,10 @@ const carouselImages = [
               <button 
                 class="w-2.5 h-2.5 rounded-full bg-white/80 border border-pixel-purple/60 opacity-60 hover:opacity-100 transition-opacity coliving-indicator"
                 data-index={index}
-                aria-label={t('coliving.carousel.indicator_label').replace('{{index}}', (index + 1).toString())}
+                aria-label={t('coliving.carousel.indicator_label')
+                  .replace('{{index}}', (index + 1).toString())
+                  .replace('{{total}}', carouselImages.length.toString())
+                }
               ></button>
             ))}
           </div>

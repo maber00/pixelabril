@@ -1,185 +1,56 @@
 ---
-// Importar logo para el mapa (ajusta la ruta según tu proyecto)
-import pixelLogo from '../assets/logo-pixel.svg';
+import { getLanguageFromUrl, t, setCurrentLanguage } from "../i18n/utils/translator";
 
-// Información de contacto ACTUALIZADA según propuesta del cliente
-const contactInfo = [
-  {
-    icono: 'M15 10.5a3 3 0 11-6 0 3 3 0 016 0z M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z',
-    titulo: 'Dirección',
-    texto: 'Calle 98a #51-32, La Castellana',
-    subtexto: 'Bogotá, Colombia',
-   
-  },
-  {
-    icono: 'M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z',
-    titulo: 'WhatsApp',
-    texto: '+57 319 5895858',
-  },
-  {
-    icono: 'M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75',
-    titulo: 'Email',
-    texto: 'info@pixelliving.co',
-  
-  },
-
-];
+const currentLang = getLanguageFromUrl(Astro.url.pathname);
+setCurrentLanguage(currentLang);
 ---
 
-<section class="py-16 bg-gray-100">   
-  <div class="container">
-    
+<section id="contacto" class="py-16 bg-gray-50">
+  <div class="container max-w-5xl mx-auto">
+
     <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6 cal-sans">¿Tienes alguna pregunta?</h2>     
-      <p class="text-lg mb-8 max-w-2xl mx-auto font-light">       
-        Estamos aquí para ayudarte. No dudes en contactarnos para cualquier consulta sobre Pixel Living.     
-      </p>     
-      
-      <a 
-        href="/contacto" 
-        class="btn bg-pixel-blue hover:bg-blue-600 text-white inline-flex items-center pixel-hover px-8 py-3 mb-8"
-      >       
-        Contáctanos       
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">         
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />       
-        </svg>     
+      <span class="inline-block text-pixel-brown font-semibold text-sm uppercase tracking-wider mb-2">
+        {t('contacto.badge')}
+      </span>
+      <h2 class="text-3xl md:text-5xl font-normal text-gray-900 mb-4">
+        {t('contacto.title')}
+      </h2>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        {t('contacto.subtitle')}
+      </p>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+
+      <h3 class="text-xl font-semibold text-gray-900 mb-4">{t('contacto.info_title')}</h3>
+
+      <ul class="space-y-2 text-gray-700">
+        <li><strong>{t('contacto.direccion_label')}</strong> Calle 98a #51-32, Bogotá</li>
+        <li><strong>{t('contacto.telefono_label')}</strong> +57 319 589 5858</li>
+        <li><strong>{t('contacto.email_label')}</strong> comercialpixel98a@gmail.com</li>
+      </ul>
+
+      <div class="mt-8">
+        <a href="https://wa.me/573195895858" target="_blank"
+           class="btn bg-pixel-brown text-white px-8 py-4 rounded-lg font-semibold hover:bg-pixel-brown/90">
+          {t('contacto.cta_button')}
+        </a>
+      </div>
+
+    </div>
+
+    <div class="mt-12 text-center">
+      <h3 class="text-xl font-semibold text-gray-900 mb-4">{t('contacto.ubicacion_title')}</h3>
+
+      <a href="https://maps.app.goo.gl/pixel-living" target="_blank"
+         class="inline-block bg-pixel-blue text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+        {t('contacto.ubicacion_boton')}
       </a>
     </div>
-    
-    <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-gray-200">
-          <div class="bg-pixel-blue p-6">
-            <h3 class="text-2xl font-bold text-white mb-2 cal-sans">Información de contacto</h3>
-            <p class="text-blue-100">Múltiples formas de comunicarte con nosotros</p>
-          </div>
-          
-          <div class="p-3 space-y-2">
-            {contactInfo.map(info => (
-              <div class="flex items-start group hover:bg-gray-50 p-3 rounded-lg transition-colors">
-                <div class="flex-shrink-0 bg-pixel-blue/10 p-3 rounded-xl group-hover:bg-pixel-blue/20 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pixel-blue">
-                    <path stroke-linecap="round" stroke-linejoin="round" d={info.icono} />
-                  </svg>
-                </div>
-                
-                <div class="ml-4 flex-1">
-                  <h4 class="font-bold text-gray-900 mb-1">{info.titulo}</h4>
-                  <p class="text-gray-800 font-medium">{info.texto}</p>
-                  <p class="text-gray-600 text-sm">{info.subtexto}</p>
-                  
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          <div class="bg-gray-50 p-6 border-t border-gray-200">
-            <div class="text-center">
-              <p class="text-gray-600 mb-4">¿Prefieres hablar directamente?</p>
-              <a 
-                href="https://wa.me/573195895858?text=Hola,%20me%20gustaría%20agendar%20una%20visita%20a%20Pixel%20Living" 
-                target="_blank"
-                class="btn bg-green-600 hover:bg-green-700 text-white inline-flex items-center px-6 py-2 text-sm"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-4 h-4 mr-2" viewBox="0 0 16 16">
-                  <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-                </svg>
-                Agendar visita
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- MAPA CON UBICACIÓN ACTUALIZADA -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-gray-200">
-          <!-- Header del mapa -->
-          <div class=" bg-pixel-blue p-6">
-            <h3 class="text-2xl font-bold text-white mb-2 cal-sans">Nuestra ubicación</h3>
-            <p class="text-indigo-100">La Castellana, Bogotá - Fácil acceso</p>
-          </div>
-          
-          <!-- Google Maps con overlay personalizado -->
-          <div class="relative h-80 group cursor-pointer" id="mapContainer">
-            <!-- Google Maps Iframe ACTUALIZADO con dirección correcta -->
-            <iframe
-              class="w-full h-full border-0"
-              loading="lazy"
-              allowfullscreen
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://maps.google.com/maps?width=100%25&amp;height=320&amp;hl=es&amp;q=Calle%2098a%20%2351-32,%20La%20Castellana,%20Bogot%C3%A1,%20Colombia&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
-            </iframe>
-            
-            <!-- Overlay con logo de Pixel Living -->
-            <div class="absolute inset-0 pointer-events-none">
-              <!-- Pin personalizado con logo -->
-              <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto">
-                <div class="relative">
-                  <!-- Pin animado -->
-                  <div class="bg-white rounded-full p-3 shadow-xl border-4 border-pixel-blue animate-bounce">
-                    <img 
-                      src={pixelLogo.src} 
-                      alt="Pixel Living" 
-                      class="w-8 h-8"
-                    />
-                  </div>
-                  <!-- Sombra del pin -->
-                  <div class="absolute top-full left-1/2 transform -translate-x-1/2 w-4 h-2 bg-black/20 rounded-full blur-sm"></div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Overlay de hover para interacción -->
-            <div class="absolute inset-0 bg-transparent hover:bg-black/10 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-              <div class="bg-white/95 backdrop-blur-sm rounded-xl px-6 py-3 shadow-lg border border-white/50">
-                <div class="flex items-center space-x-3 text-pixel-blue font-semibold">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                  </svg>
-                  <span>Cómo llegar a Pixel Living</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Información adicional del mapa ACTUALIZADA -->
-          <div class="p-6">
-            <div class="flex items-center justify-between">
-              <div>
-                <h4 class="font-bold text-gray-900 mb-1">Calle 98a #51-32</h4>
-                <p class="text-gray-600">La Castellana, Bogotá</p>
-              </div>
-              <a 
-                href="https://www.google.com/maps/dir/?api=1&destination=Calle+98a+51-32,+La+Castellana,+Bogotá,+Colombia" 
-                target="_blank"
-                class="btn bg-pixel-blue hover:bg-blue-600 text-white inline-flex items-center px-4 py-2 text-sm"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
-                </svg>
-                Direcciones
-              </a>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-    
-    <!-- Píxeles decorativos al final -->
-    <div class="mt-12 grid grid-cols-6 gap-2 max-w-md mx-auto">
-      <div class="h-6 bg-pixel-yellow rounded-sm opacity-80"></div>
-      <div class="h-6 bg-pixel-orange rounded-sm opacity-80"></div>
-      <div class="h-6 bg-pixel-blue rounded-sm opacity-80"></div>
-      <div class="h-6 bg-pixel-purple rounded-sm opacity-80"></div>
-      <div class="h-6 bg-pixel-brown rounded-sm opacity-80"></div>
-      <div class="h-6 bg-pixel-green rounded-sm opacity-80"></div>
-    </div>
-  </div> 
+
+  </div>
 </section>
+
 
 <!-- Script para interactividad del mapa -->
 <script>

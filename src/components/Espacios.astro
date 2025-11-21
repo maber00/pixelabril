@@ -7,6 +7,12 @@ setCurrentLanguage(currentLang);
 
 import LightboxModal from '../components/LightboxModal.astro';
 
+// 👉 Nuevo tipo para precio (puede ser string o 2 líneas)
+type PrecioEstudio = string | {
+  linea_1: string;
+  linea_2: string;
+};
+
 
 interface Estudio {
   id: string;
@@ -15,7 +21,7 @@ interface Estudio {
   imagen: string;
   descripcion: string;
   metros: string;
-  precio: string;
+  precio: PrecioEstudio;   // 👈 aquí antes era string
   galeria: string[];
   caracteristicas: string[];
   incluye: string[];
@@ -43,28 +49,28 @@ const estudiosCompletos: EstudiosRecord = {
       '/images/estudios/jade/Pixel-jade-001.webp'
     ],
     caracteristicas: [
-  'Apartaestudio de 29 metros cuadrados',
-  'Cuarto adicional con espacio de trabajo y cama auxiliar', 
-  'Balcón privado para disfrutar el aire libre',
-  'Cama doble',
-  'Cocina privada equipada',
-  'Wifi ilimitado de alta velocidad',
-  'Smart TV',
-  'Lavadora dentro del apartamento',
-  'Baño privado',
-  'Muebles y electrodomésticos modernos'
-],
+      'Apartaestudio de 29 metros cuadrados',
+      'Cuarto adicional con espacio de trabajo y cama auxiliar', 
+      'Balcón privado para disfrutar el aire libre',
+      'Cama doble',
+      'Cocina privada equipada',
+      'Wifi ilimitado de alta velocidad',
+      'Smart TV',
+      'Lavadora dentro del apartamento',
+      'Baño privado',
+      'Muebles y electrodomésticos modernos'
+    ],
 
-incluye: [
-  'Todo incluido en un solo pago mensual',
-  'Servicios públicos, administración y acceso total a las zonas comunes',
-  'Wifi de alta velocidad',
-  'Servicios básicos (agua, luz, gas)', 
-  'Limpieza quincenal',
-  'Acceso a zonas comunes',
-  'Smart TV con Netflix',
-  'Ropa de cama y toallas'
-]
+    incluye: [
+      'Todo incluido en un solo pago mensual',
+      'Servicios públicos, administración y acceso total a las zonas comunes',
+      'Wifi de alta velocidad',
+      'Servicios básicos (agua, luz, gas)', 
+      'Limpieza quincenal',
+      'Acceso a zonas comunes',
+      'Smart TV con Netflix',
+      'Ropa de cama y toallas'
+    ]
   },
   'zian': {
     id: 'zian',
@@ -86,37 +92,37 @@ incluye: [
       '/images/estudios/zian/pixel-zian-room-010.webp' 
     ],
     caracteristicas: [
-  'Apartaestudio de 29 metros cuadrados',
-  'Cuarto adicional con espacio de trabajo y cama auxiliar', 
-  'Balcón privado para disfrutar el aire libre',
-  'Cama doble',
-  'Cocina privada equipada',
-  'Wifi ilimitado de alta velocidad',
-  'Smart TV',
-  'Lavadora dentro del apartamento',
-  'Baño privado',
-  'Muebles y electrodomésticos modernos'
-],
+      'Apartaestudio de 29 metros cuadrados',
+      'Cuarto adicional con espacio de trabajo y cama auxiliar', 
+      'Balcón privado para disfrutar el aire libre',
+      'Cama doble',
+      'Cocina privada equipada',
+      'Wifi ilimitado de alta velocidad',
+      'Smart TV',
+      'Lavadora dentro del apartamento',
+      'Baño privado',
+      'Muebles y electrodomésticos modernos'
+    ],
 
-incluye: [
-  'Todo incluido en un solo pago mensual',
-  'Servicios públicos, administración y acceso total a las zonas comunes',
-  'Wifi de alta velocidad',
-  'Servicios básicos (agua, luz, gas)', 
-  'Limpieza quincenal',
-  'Acceso a zonas comunes',
-  'Smart TV con Netflix',
-  'Ropa de cama y toallas'
-]
+    incluye: [
+      'Todo incluido en un solo pago mensual',
+      'Servicios públicos, administración y acceso total a las zonas comunes',
+      'Wifi de alta velocidad',
+      'Servicios básicos (agua, luz, gas)', 
+      'Limpieza quincenal',
+      'Acceso a zonas comunes',
+      'Smart TV con Netflix',
+      'Ropa de cama y toallas'
+    ]
   },
   'indigo': {
-    id: 'indigo',
-    nombre: 'Estudio Índigo',
-    color: 'bg-indigo-500',
-    imagen: '/images/estudios/indigo/pixel-indigo-room-005.webp',
-    descripcion: t('estudios.indigo.descripcion_1'),
-    metros: '29m²',
-   precio: t('estudios.indigo.precio'),
+  id: 'indigo',
+  nombre: 'Estudio Índigo',
+  color: 'bg-indigo-500',
+  imagen: '/images/estudios/indigo/pixel-indigo-room-005.webp',
+  descripcion: t('estudios.indigo.descripcion_1'),
+  metros: '29m²',
+  precio: t('estudios.indigo.precio'),
     galeria: [
       '/images/estudios/indigo/pixel-indigo-room-001.webp', 
       '/images/estudios/indigo/pixel-indigo-room-002.webp', 
@@ -136,31 +142,30 @@ incluye: [
       '/images/estudios/indigo/pixel-indigo-room-018.webp'
     ],
     caracteristicas: [
-  'Apartaestudio de 29 metros cuadrados',
-  'Cuarto adicional con espacio de trabajo y cama auxiliar', 
-  'Balcón privado para disfrutar el aire libre',
-  'Cama doble',
-  'Cocina privada equipada',
-  'Wifi ilimitado de alta velocidad',
-  'Smart TV',
-  'Lavadora dentro del apartamento',
-  'Baño privado',
-  'Muebles y electrodomésticos modernos'
-],
+      'Apartaestudio de 29 metros cuadrados',
+      'Cuarto adicional con espacio de trabajo y cama auxiliar', 
+      'Balcón privado para disfrutar el aire libre',
+      'Cama doble',
+      'Cocina privada equipada',
+      'Wifi ilimitado de alta velocidad',
+      'Smart TV',
+      'Lavadora dentro del apartamento',
+      'Baño privado',
+      'Muebles y electrodomésticos modernos'
+    ],
 
-incluye: [
-  'Todo incluido en un solo pago mensual',
-  'Servicios públicos, administración y acceso total a las zonas comunes',
-  'Wifi de alta velocidad',
-  'Servicios básicos (agua, luz, gas)', 
-  'Limpieza quincenal',
-  'Acceso a zonas comunes',
-  'Smart TV con Netflix',
-  'Ropa de cama y toallas'
-]
+    incluye: [
+      'Todo incluido en un solo pago mensual',
+      'Servicios públicos, administración y acceso total a las zonas comunes',
+      'Wifi de alta velocidad',
+      'Servicios básicos (agua, luz, gas)', 
+      'Limpieza quincenal',
+      'Acceso a zonas comunes',
+      'Smart TV con Netflix',
+      'Ropa de cama y toallas'
+    ]
   }
 };
-
 
 
 // Derivar arrays simplificados
@@ -171,7 +176,7 @@ interface EstudioSimplificado {
   imagen: string;
   descripcion: string;
   metros: string;
-  precio: string;
+  precio: PrecioEstudio;   // 👈 usar el mismo tipo
 }
 
 interface LightboxEstudio {
@@ -217,17 +222,15 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
       
       <div class="text-lg md:text-xl font-normal text-white max-w-5xl pb-6 px-4 mx-auto mt-6">
         <p class="mb-4">
-  {t("espacios.description")}{" "}
-  <strong class="text-blue-200">{t("espacios.description2")}</strong>{" "}
-  {t("espacios.description3")} {t("espacios.espacio")}
-</p>
+          {t("espacios.description")}{" "}
+          <strong class="text-blue-200">{t("espacios.description2")}</strong>{" "}
+          {t("espacios.description3")} {t("espacios.espacio")}
+        </p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 pb-4">
         
         </div>
       </div>
-
-     
     </div>
     
     <div class="bg-pixel-blue md:mx-20 mx-0">
@@ -338,27 +341,31 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
                     <p class="text-gray-600 mb-3">{estudio.descripcion}</p>
                     
                     <div class="mt-auto">
-  <div class="grid grid-cols-2 items-start gap-y-1">
-    <div class="col-span-2">
-      <p class="text-base font-semibold text-pixel-blue">
-        Desde 3 noches: <span class="font-bold">$ 570.000</span>
-      </p>
-      <p class="text-xs text-gray-600 ">
-        V/NOCHE: $ 190.000
-      </p>
-    </div>
+                      <div class="grid grid-cols-2 items-start gap-y-1">
+                        <div class="col-span-2">
+                          <p class="text-base font-semibold text-pixel-blue">
+  {t('espacios.card_desde_3_noches_label')}
+  <span class="font-bold">{t('espacios.card_desde_3_noches_precio')}</span>
+</p>
 
-    <a 
-      href={currentLang === 'en' ? `/en/estudio/${estudio.id}` : `/estudio/${estudio.id}`} 
-      class="text-pixel-blue font-medium inline-flex items-center group ver-detalles-btn hover:underline focus:underline justify-self-end"
-    >
-      {t('espacios.ver_detalles')}
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-1 transform transition-transform group-hover:translate-x-1" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-      </svg>
-    </a>
-  </div>
-</div>
+<p class="text-xs text-gray-600 ">
+  {t('espacios.card_valor_noche_label')}
+  {t('espacios.card_valor_noche_valor')}
+</p>
+
+                        </div>
+
+                        <a 
+                          href={currentLang === 'en' ? `/en/estudio/${estudio.id}` : `/estudio/${estudio.id}`} 
+                          class="text-pixel-blue font-medium inline-flex items-center group ver-detalles-btn hover:underline focus:underline justify-self-end"
+                        >
+                          {t('espacios.ver_detalles')}
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-1 transform transition-transform group-hover:translate-x-1" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
 
                   </div>
                 </div>
@@ -368,284 +375,284 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
         </div>
         
         <div class="flex justify-center pb-8" id="carousel-indicators">
-  <div class="flex space-x-2" role="tablist" aria-label="Navegación de apartaestudios">
-    {estudios.map((_, index) => (
-      <button 
-        class="w-4 h-4 bg-gray-200 focus:outline-none transition-colors duration-300 rounded-sm border border-pixel-blue hover:scale-110 focus:scale-110 focus:ring-2 focus:ring-pixel-blue focus:ring-offset-2" 
-        data-index={index}
-        role="tab"
-        aria-label={`Ver apartaestudio ${index + 1} de ${estudios.length}`}
-        aria-selected={index === 0 ? 'true' : 'false'}
-        aria-controls={`estudio-${index}`}
-        tabindex={index === 0 ? '0' : '-1'}
-        id={`tab-${index}`}
-        data-astro-cid-wjo5qhow=""
-      >
-        <span class="sr-only">Apartaestudio {index + 1}</span>
-      </button>
-    ))}
-  </div>
-</div>
-    </div>
+          <div class="flex space-x-2" role="tablist" aria-label="Navegación de apartaestudios">
+            {estudios.map((_, index) => (
+              <button 
+                class="w-4 h-4 bg-gray-200 focus:outline-none transition-colors duration-300 rounded-sm border border-pixel-blue hover:scale-110 focus:scale-110 focus:ring-2 focus:ring-pixel-blue focus:ring-offset-2" 
+                data-index={index}
+                role="tab"
+                aria-label={`Ver apartaestudio ${index + 1} de ${estudios.length}`}
+                aria-selected={index === 0 ? 'true' : 'false'}
+                aria-controls={`estudio-${index}`}
+                tabindex={index === 0 ? '0' : '-1'}
+                id={`tab-${index}`}
+                data-astro-cid-wjo5qhow=""
+              >
+                <span class="sr-only">Apartaestudio {index + 1}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
     
-     <div class="mx-4">
-    <div class="bg-white  rounded-lg shadow-lg p-4 md:p-10 max-w-4xl  mt-2 mb-16 border-2 mx-auto  border-pixel-blue">
-  <h3 class="text-4xl font-normal mb-6 text-center text-pixel-blue">
-    {t('espacios.caracteristicas_titulo')}
-  </h3>
-      
-  <div class="grid grid-cols-2 md:grid-cols-3 gap-6" role="list">
-    <!-- Cama doble -->
-    <div class="flex items-start space-x-3" role="listitem">
-      <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          class="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.6"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M3 10h18v7H3z" />
-          <path d="M7 10V7.5a1.5 1.5 0 0 1 1.5-1.5H11" />
-        </svg>
+      <div class="mx-4">
+        <div class="bg-white  rounded-lg shadow-lg p-4 md:p-10 max-w-4xl  mt-2 mb-16 border-2 mx-auto  border-pixel-blue">
+          <h3 class="text-4xl font-normal mb-6 text-center text-pixel-blue">
+            {t('espacios.caracteristicas_titulo')}
+          </h3>
+          
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-6" role="list">
+            <!-- Cama doble -->
+            <div class="flex items-start space-x-3" role="listitem">
+              <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 10h18v7H3z" />
+                  <path d="M7 10V7.5a1.5 1.5 0 0 1 1.5-1.5H11" />
+                </svg>
+              </div>
+              <p class="font-normal text-sm md:text-sm">{t('espacios.feature_1')}</p>
+            </div>
+
+            <!-- Cuarto adicional con espacio de trabajo y cama auxiliar -->
+            <div class="flex items-start space-x-3" role="listitem">
+              <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="4" width="18" height="14" rx="2" />
+                  <path d="M8 9h5" />
+                  <path d="M8 13h3" />
+                </svg>
+              </div>
+              <p class="font-normal text-sm md:text-sm">
+                {t('espacios.feature_2')}
+              </p>
+            </div>
+
+            <!-- Wifi de alta velocidad -->
+            <div class="flex items-start space-x-3" role="listitem">
+              <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M4 8a12 12 0 0 1 16 0" />
+                  <path d="M7 11.5a7.5 7.5 0 0 1 10 0" />
+                  <path d="M10 15a3 3 0 0 1 4 0" />
+                  <circle cx="12" cy="18" r="0.8" fill="currentColor" />
+                </svg>
+              </div>
+              <p class="font-normal text-sm md:text-sm">{t('espacios.feature_3')}</p>
+            </div>
+
+            <!-- Cocina privada equipada -->
+            <div class="flex items-start space-x-3" role="listitem">
+              <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="4" y="6" width="16" height="10" rx="2" />
+                  <path d="M8 10h2" />
+                  <path d="M14 10h2" />
+                  <path d="M10 16v2" />
+                  <path d="M14 16v2" />
+                </svg>
+              </div>
+              <p class="font-normal text-sm md:text-sm">{t('espacios.feature_4')}</p>
+            </div>
+
+            <!-- Smart TV -->
+            <div class="flex items-start space-x-3" role="listitem">
+              <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="5" width="18" height="12" rx="2" />
+                  <path d="M10 19h4" />
+                </svg>
+              </div>
+              <p class="font-normal text-sm md:text-sm">{t('espacios.feature_5')}</p>
+            </div>
+
+            <!-- Lavadora y secadora privada -->
+            <div class="flex items-start space-x-3" role="listitem">
+              <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="5" y="3" width="14" height="18" rx="2" />
+                  <circle cx="12" cy="13" r="4" />
+                  <path d="M9 6h2" />
+                  <path d="M13 6h2" />
+                </svg>
+              </div>
+              <p class="font-normal text-sm md:text-sm">
+                {t('espacios.feature_6')}
+              </p>
+            </div>
+
+            <!-- Baño privado -->
+            <div class="flex items-start space-x-3" role="listitem">
+              <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M6 10v6a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-3H6z" />
+                  <path d="M8 7a3 3 0 0 1 6 0v3" />
+                </svg>
+              </div>
+              <p class="font-normal text-sm md:text-sm">{t('espacios.feature_7')}</p>
+            </div>
+
+            <!-- Muebles y electrodomésticos modernos -->
+            <div class="flex items-start space-x-3" role="listitem">
+              <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="4" y="8" width="16" height="8" rx="2" />
+                  <path d="M7 16v3" />
+                  <path d="M17 16v3" />
+                </svg>
+              </div>
+              <p class="font-normal text-sm md:text-sm">
+                {t('espacios.feature_8')}
+              </p>
+            </div>
+
+            <!-- Balcón privado -->
+            <div class="flex items-start space-x-3" role="listitem">
+              <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="5" y="5" width="14" height="10" rx="2" />
+                  <path d="M5 15h14" />
+                  <path d="M7 15v4" />
+                  <path d="M12 15v4" />
+                  <path d="M17 15v4" />
+                </svg>
+              </div>
+              <p class="font-normal text-sm md:text-sm">{t('espacios.feature_9')}</p>
+            </div>
+
+            <!-- Acceso seguro con TAG y cerradura inteligente -->
+            <div class="flex items-start space-x-3" role="listitem">
+              <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="7" y="9" width="10" height="10" rx="2" />
+                  <path d="M9 9V7a3 3 0 0 1 6 0v2" />
+                  <circle cx="12" cy="14" r="0.8" fill="currentColor" />
+                </svg>
+              </div>
+              <p class="font-normal text-sm md:text-sm">
+                {t('espacios.feature_10')}
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-6 border-t border-gray-200 pt-4 space-y-2 text-left">
+            <p class="text-sm md:text-lg">
+              <span class="font-semibold">{t('espacios.todo_incluido')}</span> {t('espacios.todo_incluido_detalle')}
+            </p>
+            <p class="text-xs md:text-sm text-gray-500">
+              <span class="font-semibold">{t('espacios.nota')}</span> {t('espacios.nota_mascotas')}
+            </p>
+          </div>
+
+          <div class="mt-8 text-center">
+            <a 
+              href="#reservas" 
+              class="btn bg-pixel-blue hover:bg-blue-600 text-white inline-flex items-center border border-blue-700 pixel-hover focus:ring-4 focus:ring-blue-300 transition-all duration-200"
+              aria-describedby="reservas-cta-desc"
+            >
+              {t('espacios.cta_disponibilidad')}
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+            <p id="reservas-cta-desc" class="sr-only">
+              {t('espacios.reservas_cta_desc')}
+            </p>
+          </div>
+        </div>
       </div>
-      <p class="font-normal text-sm md:text-sm">Cama doble</p>
-    </div>
-
-    <!-- Cuarto adicional con espacio de trabajo y cama auxiliar -->
-    <div class="flex items-start space-x-3" role="listitem">
-      <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          class="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.6"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <rect x="3" y="4" width="18" height="14" rx="2" />
-          <path d="M8 9h5" />
-          <path d="M8 13h3" />
-        </svg>
-      </div>
-      <p class="font-normal text-sm md:text-sm">
-        Cuarto adicional con espacio de trabajo y cama auxiliar
-      </p>
-    </div>
-
-    <!-- Wifi de alta velocidad -->
-    <div class="flex items-start space-x-3" role="listitem">
-      <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          class="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.6"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M4 8a12 12 0 0 1 16 0" />
-          <path d="M7 11.5a7.5 7.5 0 0 1 10 0" />
-          <path d="M10 15a3 3 0 0 1 4 0" />
-          <circle cx="12" cy="18" r="0.8" fill="currentColor" />
-        </svg>
-      </div>
-      <p class="font-normal text-sm md:text-sm">Wifi de alta velocidad</p>
-    </div>
-
-    <!-- Cocina privada equipada -->
-    <div class="flex items-start space-x-3" role="listitem">
-      <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          class="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.6"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <rect x="4" y="6" width="16" height="10" rx="2" />
-          <path d="M8 10h2" />
-          <path d="M14 10h2" />
-          <path d="M10 16v2" />
-          <path d="M14 16v2" />
-        </svg>
-      </div>
-      <p class="font-normal text-sm md:text-sm">Cocina privada equipada</p>
-    </div>
-
-    <!-- Smart TV -->
-    <div class="flex items-start space-x-3" role="listitem">
-      <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          class="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.6"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <rect x="3" y="5" width="18" height="12" rx="2" />
-          <path d="M10 19h4" />
-        </svg>
-      </div>
-      <p class="font-normal text-sm md:text-sm">Smart TV</p>
-    </div>
-
-    <!-- Lavadora y secadora privada -->
-    <div class="flex items-start space-x-3" role="listitem">
-      <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          class="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.6"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <rect x="5" y="3" width="14" height="18" rx="2" />
-          <circle cx="12" cy="13" r="4" />
-          <path d="M9 6h2" />
-          <path d="M13 6h2" />
-        </svg>
-      </div>
-      <p class="font-normal text-sm md:text-sm">
-        Lavadora y secadora privada
-      </p>
-    </div>
-
-    <!-- Baño privado -->
-    <div class="flex items-start space-x-3" role="listitem">
-      <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          class="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.6"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M6 10v6a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-3H6z" />
-          <path d="M8 7a3 3 0 0 1 6 0v3" />
-        </svg>
-      </div>
-      <p class="font-normal text-sm md:text-sm">Baño privado</p>
-    </div>
-
-    <!-- Muebles y electrodomésticos modernos -->
-    <div class="flex items-start space-x-3" role="listitem">
-      <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          class="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.6"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <rect x="4" y="8" width="16" height="8" rx="2" />
-          <path d="M7 16v3" />
-          <path d="M17 16v3" />
-        </svg>
-      </div>
-      <p class="font-normal text-sm md:text-sm">
-        Muebles y electrodomésticos modernos
-      </p>
-    </div>
-
-    <!-- Balcón privado -->
-    <div class="flex items-start space-x-3" role="listitem">
-      <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          class="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.6"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <rect x="5" y="5" width="14" height="10" rx="2" />
-          <path d="M5 15h14" />
-          <path d="M7 15v4" />
-          <path d="M12 15v4" />
-          <path d="M17 15v4" />
-        </svg>
-      </div>
-      <p class="font-normal text-sm md:text-sm">Balcón privado</p>
-    </div>
-
-    <!-- Acceso seguro con TAG y cerradura inteligente -->
-    <div class="flex items-start space-x-3" role="listitem">
-      <div class="flex-shrink-0 p-1 rounded-md border border-pixel-blue text-pixel-blue" aria-hidden="true">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          class="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.6"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <rect x="7" y="9" width="10" height="10" rx="2" />
-          <path d="M9 9V7a3 3 0 0 1 6 0v2" />
-          <circle cx="12" cy="14" r="0.8" fill="currentColor" />
-        </svg>
-      </div>
-      <p class="font-normal text-sm md:text-sm">
-        Acceso seguro con TAG y cerradura inteligente. Edificio con conserjería.
-      </p>
-    </div>
-  </div>
-
-  <div class="mt-6 border-t border-gray-200 pt-4 space-y-2 text-left">
-    <p class="text-sm md:text-lg">
-      <span class="font-semibold">Todo incluido en tu tarifa:</span> Servicios públicos, administración y acceso a zonas comunes.
-    </p>
-    <p class="text-xs md:text-sm text-gray-500">
-      <span class="font-semibold">Nota:</span> No se aceptan mascotas en Pixel Living.
-    </p>
-  </div>
-
-  <div class="mt-8 text-center">
-    <a 
-      href="#reservas" 
-      class="btn bg-pixel-blue hover:bg-blue-600 text-white inline-flex items-center border border-blue-700 pixel-hover focus:ring-4 focus:ring-blue-300 transition-all duration-200"
-      aria-describedby="reservas-cta-desc"
-    >
-      {t('espacios.cta_disponibilidad')}
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-      </svg>
-    </a>
-    <p id="reservas-cta-desc" class="sr-only">
-      Ir a la sección de reservas para solicitar disponibilidad de apartaestudios
-    </p>
-  </div>
-</div>
-
-    </div>
     
-    <LightboxModal id="espacios-lightbox" showDetailsButton={true} showReservaButton={true} />
+      <LightboxModal id="espacios-lightbox" showDetailsButton={true} showReservaButton={true} />
+    </div>
   </div>
 </section>
 
@@ -1056,7 +1063,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (this.nextBtn) {
         this.nextBtn.disabled = this.currentImageIndex === this.currentImages.length - 1;
-        this.nextBtn.style.opacity = this.currentImageIndex === this.currentImages.length - 1 ? '0.5' : '1';
+        this.nextBtn.style.opacity = this.currentImages.length === this.currentImageIndex + 1 ? '0.5' : '1';
       }
     }
     

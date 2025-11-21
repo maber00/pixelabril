@@ -42,43 +42,34 @@ setCurrentLanguage(currentLang);
             <tr class="border-b border-gray-100">
               <td class="py-4 px-6 text-gray-700">{t('opciones.filas.duracion')}</td>
               <td class="py-4 px-6 text-center text-gray-900 font-medium">
-                {t('opciones.estadia_corta.duracion')}
+                {t('opciones.estadia_corta.duracion_minima')}
               </td>
               <td class="py-4 px-6 text-center text-gray-900 font-medium">
-                {t('opciones.coliving.duracion')}
+                {t('opciones.coliving.precio_desde')}
               </td>
             </tr>
+
             <tr class="border-b border-gray-100">
               <td class="py-4 px-6 text-gray-700">{t('opciones.filas.precio')}</td>
               {/* Estadía corta */}
               <td class="py-4 px-6 text-center">
                 <div class="flex flex-col items-center">
-                  <div>
-                    <span class="text-pixel-brown font-semibold">
-                      {t('opciones.estadia_corta.precio_destacado')}
-                    </span>
-                    <span class="text-gray-600">
-                      {' '}{t('opciones.estadia_corta.precio_unidad')}
-                    </span>
-                  </div>
-                  <div class="text-xs text-gray-500 mt-1">
-                    {t('opciones.estadia_corta.duracion')}{': '}
-                    <span class="font-medium text-gray-700">
-                      {t('opciones.estadia_corta.precio_total')}
-                    </span>
-                  </div>
+                  <span class="text-pixel-brown font-semibold">
+                    {t('opciones.estadia_corta.precio_noche')}
+                  </span>
+                  <span class="text-xs text-gray-600 mt-1">
+                    {t('opciones.estadia_corta.precio_3_noches')}
+                  </span>
                 </div>
               </td>
               {/* Coliving */}
               <td class="py-4 px-6 text-center">
                 <span class="text-pixel-brown font-semibold">
-                  {t('opciones.coliving.precio_destacado')}
-                </span>
-                <span class="text-gray-600">
-                  {' '}{t('opciones.coliving.precio_unidad')}
+                  {t('opciones.coliving.precio_desde')}
                 </span>
               </td>
             </tr>
+
             <tr class="border-b border-gray-100">
               <td class="py-4 px-6 text-gray-700">{t('opciones.filas.incluye')}</td>
               <td class="py-4 px-6 text-center text-gray-700">
@@ -88,6 +79,7 @@ setCurrentLanguage(currentLang);
                 {t('opciones.coliving.incluye')}
               </td>
             </tr>
+
             <tr class="border-b border-gray-100">
               <td class="py-4 px-6 text-gray-700">{t('opciones.filas.reserva')}</td>
               <td class="py-4 px-6 text-center text-gray-900">
@@ -97,6 +89,7 @@ setCurrentLanguage(currentLang);
                 {t('opciones.coliving.reserva')}
               </td>
             </tr>
+
             <tr>
               <td class="py-4 px-6 text-gray-700">{t('opciones.filas.documentos')}</td>
               <td class="py-4 px-6 text-center text-gray-900">
@@ -114,7 +107,7 @@ setCurrentLanguage(currentLang);
     {/* Texto + CTAs */}
     <div class="max-w-3xl mx-auto text-center">
       <p class="text-lg text-gray-700 mb-8">
-        {t('opciones.texto_contexto')}
+        {t('opciones.description2')}
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -122,18 +115,18 @@ setCurrentLanguage(currentLang);
           href="#reservas?tipo=short"
           class="btn bg-pixel-brown hover:bg-brown-700 text-white text-lg px-8 py-4 rounded-lg inline-flex items-center justify-center"
         >
-          {t('opciones.cta_estadia_corta')}
+          {t('opciones.cta.estadia_corta')}
         </a>
         <a
           href="#reservas?tipo=coliving"
           class="btn bg-transparent border-2 border-pixel-brown text-pixel-brown hover:bg-pixel-brown hover:text-white text-lg px-8 py-4 rounded-lg inline-flex items-center justify-center"
         >
-          {t('opciones.cta_coliving')}
+          {t('opciones.cta.coliving')}
         </a>
       </div>
 
       <p class="text-sm text-gray-500 mt-4">
-        {t('opciones.nota_cupos')}
+        {t('opciones.cta.nota')}
       </p>
     </div>
   </div>
