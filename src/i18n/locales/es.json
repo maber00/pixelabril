@@ -589,6 +589,23 @@
   "cta_button_coliving": "Solicita coliving"
 },
 
+"movilidad": {
+  "titulo": "Movilidad Total",
+  "descripcion_general": "Disfruta una ubicación estratégica que te ahorra tiempo y te pone cerca de todo lo que importa.",
+  "autopista": {
+    "titulo": "A pasos de la Autopista Norte con Calle 100",
+    "descripcion": "Acceso inmediato a toda Bogotá"
+  },
+  "transmilenio": {
+    "titulo": "Dos troncales de TransMilenio",
+    "descripcion": "Avenida Suba y Autopista Norte"
+  },
+  "avenida_68": {
+    "titulo": "Próximamente Troncal Avenida 68",
+    "descripcion": "Conexión directa (2027)"
+  }
+},
+
 "testimonios": {
   "badge": "Testimonios",
   "title": "Testimonios reales de huéspedes",

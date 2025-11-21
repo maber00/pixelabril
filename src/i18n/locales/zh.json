@@ -175,6 +175,23 @@
   }
 },
 
+"movilidad": {
+  "titulo": "便捷交通",
+  "descripcion_general": "享受战略性地理位置，为您节省时间，让您靠近所有重要地点。",
+  "autopista": {
+    "titulo": "距离 Autopista Norte 与 Calle 100 仅几步之遥",
+    "descripcion": "直达波哥大全城"
+  },
+  "transmilenio": {
+    "titulo": "两条 TransMilenio 主线路",
+    "descripcion": "Avenida Suba 和 Autopista Norte"
+  },
+  "avenida_68": {
+    "titulo": "即将开通的 Avenida 68 主线路",
+    "descripcion": "直连市区（预计 2027）"
+  }
+},
+
 "politica_cierre": {
   "badge": "隐私政策",
   "title": "您的数据仅用于联系您和管理您的预订。",

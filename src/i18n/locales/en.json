@@ -535,7 +535,22 @@
 },
 
 
-
+"movilidad": {
+  "titulo": "Total Mobility",
+  "descripcion_general": "Enjoy a strategic location that saves you time and puts you close to everything that matters.",
+  "autopista": {
+    "titulo": "Steps from Autopista Norte and Calle 100",
+    "descripcion": "Immediate access to all of Bogotá"
+  },
+  "transmilenio": {
+    "titulo": "Two TransMilenio trunk lines",
+    "descripcion": "Avenida Suba and Autopista Norte"
+  },
+  "avenida_68": {
+    "titulo": "Coming soon: Avenida 68 trunk line",
+    "descripcion": "Direct connection (2027)"
+  }
+},
 
 
 
