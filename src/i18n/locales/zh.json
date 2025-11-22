@@ -336,7 +336,7 @@
       "titulo": "距离 Autopista Norte 与 Calle 100 仅数步之遥",
       "descripcion": "轻松通达整个波哥大"
     },
-    "transmilenio": {
+     "transmilenio": {
       "titulo": "两条 TransMilenio 干线",
       "descripcion": "Suba 大道与 Autopista Norte"
     },
@@ -344,9 +344,59 @@
       "titulo": "即将开通的 Avenida 68 干线",
       "descripcion": "直接连接（2027）"
     }
+  },
+
+  "zona_empresarial": {
+    "titulo": "Calle 100 商务区",
+    "descripcion": "跨国企业、办公楼、共享办公区、医疗自由区以及北部金融区都在几分钟内可达。"
+  },
+
+  "servicios": {
+    "titulo": "靠近你所需的一切",
+    "entretenimiento": {
+      "titulo": "🎭 娱乐：",
+      "item_1": "La Castellana 剧院",
+      "item_2": "93 公园",
+      "item_3": "购物中心",
+      "item_4": "餐厅与咖啡馆",
+      "item_5": "电影院"
+    },
+    "salud": {
+      "titulo": "🏥 医疗：",
+      "item_1": "Los Nogales 诊所",
+      "item_2": "Colsubsidio 诊所",
+      "item_3": "Compensar",
+      "item_4": "医疗自由区"
+    },
+    "educacion": {
+      "titulo": "🎓 教育：",
+      "item_1": "Nueva Granada 军事大学",
+      "item_2": "北部大学区"
+    },
+    "comercio": {
+      "titulo": "🛒 商业：",
+      "item_1": "超市",
+      "item_2": "银行",
+      "item_3": "24 小时药房"
+    }
+  },
+
+  "mapa": {
+    "titulo": "我们的位置",
+    "direccion": "Calle 98a #51-32, La Castellana, Bogotá",
+    "direccion_corta": "Calle 98a #51-32",
+    "barrio": "La Castellana, Bogotá",
+    "iframe_title": "Pixel Living 在波哥大北部的位置 - Autopista Norte 与 Calle 100",
+    "hover_text": "如何前往 Pixel Living",
+    "boton_direcciones": "路线"
+  },
+
+  "cta_final": {
+    "heading": "在 Pixel Living | Coliving Bogotá，你的生活更轻松、更高效",
+    "descripcion": "生活、工作、享受，一切都在你身边。",
+    "boton": "查看可用公寓"
   }
-}
-,
+},
 
 "precios": {
   "badge": "价格与预订",
