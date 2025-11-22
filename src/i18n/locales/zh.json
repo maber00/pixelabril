@@ -488,6 +488,11 @@
     "unica_3": "人脉网络：与你旅程或项目有加分效应的人建立连接。",
     "cierre": "在 Pixel Living，你既有自己的空间，也有一路陪伴你的社区，无论你待多久。",
     "cta": "加入我们的社区"
+  },
+  "carousel": {
+    "image1_alt": "Pixel Living 社区照片",
+    "image2_alt": "Pixel Living 公共空间照片",
+    "indicator_label": "查看第 {{index}} 张，共 {{total}} 张"
   }
 },
 
@@ -534,11 +539,12 @@
     "acepta_politica_label": "我接受隐私政策，并同意为了处理我的预订而使用我的数据。",
     "boton_enviar": "发送预订请求"
   }
-}
-,
-
-  "faq": {
-  "title": "常见问题解答",
+},
+"faq": {
+  "badge": "常见问题",
+  "title": "关于",
+  "title_highlight": "Pixel Living",
+  "title_end": "的常见问题解答",
   
   "questions": {
     "q1": {
@@ -580,6 +586,11 @@
     "description": "我们的团队已准备好解答您关于Pixel Living的所有疑问。",
     "button": "与我们聊天"
   }
+},
+"testimonios": {
+  "badge": "住客评价",
+  "title": "真实住客评价",
+  "subtitle": "曾入住 Pixel Living 的住客怎么说"
 },
 
   "footer": {

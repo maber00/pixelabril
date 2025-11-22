@@ -293,6 +293,7 @@
   
   "movilidad": {
     "titulo": "Movilidad Total",
+      "descripcion_general": "Disfruta una ubicación estratégica que te ahorra tiempo y te pone cerca de todo lo que importa.",
     "autopista": {
       "titulo": "A pasos de la Autopista Norte con Calle 100",
       "descripcion": "Acceso inmediato a toda Bogotá"

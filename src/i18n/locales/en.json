@@ -468,6 +468,8 @@
   
   "movilidad": {
     "titulo": "Total Mobility",
+      "descripcion_general": "Enjoy a strategic location that saves you time and puts you close to everything that matters.",
+
     "autopista": {
       "titulo": "Steps from Autopista Norte with Calle 100",
       "descripcion": "Immediate access to all of Bogotá"
