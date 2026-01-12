@@ -133,39 +133,35 @@
   }
 },
 
+
   "zonas_comunes": {
-    "badge": "Zonas Comunes y Amenidades",
+    "badge": "Zonas comunes",
     "title": "Mucho más que un apartaestudio:",
     "title_highlight": "vida en comunidad",
-    "title_end": "Pixel Living",
-    "description": "En Pixel Living, no solo tienes tu espacio privado, también accedes a zonas comunes pensadas para tu bienestar y productividad:",
+    "title_end": "en Pixel Living",
+    "description": "En Pixel Living no solo tienes tu espacio privado, también accedes a zonas comunes diseñadas para el bienestar, la productividad y la conexión.",
+    "ver_fotos": "Ver fotos",
+    "abrir_galeria": "Abrir galería",
     "amenidades": {
       "coworking": {
         "titulo": "Coworking y Sala de Reuniones",
-        "descripcion": "Espacios modernos con wifi de alta velocidad para trabajar, estudiar o reunirte con otros residentes."
+        "descripcion": "Espacios modernos y cómodos con WiFi de alta velocidad para trabajar, estudiar, reunirte o colaborar con otros residentes."
       },
       "rooftop": {
-        "titulo": "Rooftop con Fire Pits", 
-        "descripcion": "Disfruta de las mejores vistas del norte de Bogotá, comparte atardeceres únicos y haz nuevos amigos junto al fuego."
+        "titulo": "Rooftop con Fire Pits",
+        "descripcion": "Disfruta vistas panorámicas del norte de Bogotá, atardeceres únicos y momentos para compartir alrededor del fuego."
       },
       "gym": {
         "titulo": "Área de Ejercicio al Aire Libre y TRX",
-        "descripcion": "Mantente activo y saludable todos los días, sin salir de casa."
-      },
-      "pet_zone": {
-        "titulo": "Pet Zone",
-        "descripcion": "Tu mascota es bienvenida y tiene un espacio propio."
+        "descripcion": "Mantente activo y saludable todos los días con un espacio exterior diseñado para entrenamiento funcional y TRX."
       },
       "bike_parking": {
-        "titulo": "Bici Parking con Taller", 
-        "descripcion": "Guarda y cuida tu bicicleta siempre lista para rodar."
-      },
-      "events": {
-        "titulo": "Espacios para Eventos",
-        "descripcion": "Participa en actividades exclusivas de la comunidad Pixel Living."
+        "titulo": "Bici Parking con Taller",
+        "descripcion": "Zona segura para guardar tu bicicleta, con espacio básico de mantenimiento para que siempre esté lista para rodar."
       }
     }
   },
+
 
   "vive_pixel": {
   "badge": "Nuestra historia",

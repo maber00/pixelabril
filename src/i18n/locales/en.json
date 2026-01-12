@@ -307,41 +307,33 @@
   
 },
 
-  "zonas_comunes": {
-  "badge": "Common Areas & Amenities",
-  "title": "Much more than a studio apartment:",
-  "title_highlight": "community living",
-  "title_end": "at Pixel Living",
-  "description": "At Pixel Living, you not only have your private space — you also have access to common areas designed for your well-being and productivity.",
-  
-  "amenidades": {
-    "coworking": {
-      "titulo": "Coworking & Meeting Room",
-      "descripcion": "Modern areas with high-speed WiFi to work, study or meet with other residents."
-    },
-    "rooftop": {
-      "titulo": "Rooftop with Fire Pits",
-      "descripcion": "Enjoy the best views of northern Bogotá, share unique sunsets and make new friends around the fire."
-    },
-    "gym": {
-      "titulo": "Outdoor Exercise Zone & TRX",
-      "descripcion": "Stay active and healthy every day without leaving home."
-    },
-    "pet_zone": {
-      "titulo": "Pet Zone",
-      "descripcion": "Your pet is welcome and has its own dedicated space."
-    },
-    "bike_parking": {
-      "titulo": "Bike Parking with Workshop",
-      "descripcion": "Store and take care of your bicycle in a safe area, always ready to ride."
-    },
-    "events": {
-      "titulo": "Event Spaces",
-      "descripcion": "Participate in exclusive Pixel Living community activities."
+    "zonas_comunes": {
+    "badge": "Common Areas & Amenities",
+    "title": "Much more than a studio apartment:",
+    "title_highlight": "community living",
+    "title_end": "at Pixel Living",
+    "description": "At Pixel Living, you don’t just have your private space — you also enjoy access to shared areas designed for productivity, well-being, and connection.",
+    "ver_fotos": "View photos",
+    "abrir_galeria": "Open gallery",
+    "amenidades": {
+      "coworking": {
+        "titulo": "Coworking & Meeting Room",
+        "descripcion": "Modern and comfortable spaces with high-speed WiFi to work, study, hold meetings, or collaborate with other residents."
+      },
+      "rooftop": {
+        "titulo": "Rooftop with Fire Pits",
+        "descripcion": "Enjoy panoramic views of northern Bogotá, unforgettable sunsets, and relaxed moments around the fire."
+      },
+      "gym": {
+        "titulo": "Outdoor Exercise Zone & TRX",
+        "descripcion": "Stay active and healthy every day with an outdoor workout area designed for functional training and TRX."
+      },
+      "bike_parking": {
+        "titulo": "Bike Parking with Workshop",
+        "descripcion": "A secure bike parking area with a basic workshop to store, maintain, and keep your bike ready to ride."
+      }
     }
-  }
-}
-,
+  },
 
   "vive_pixel": {
   "badge": "Our story",

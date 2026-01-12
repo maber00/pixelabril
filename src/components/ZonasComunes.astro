@@ -1,53 +1,86 @@
 ---
-// ZonasComunes.astro 
+// ZonasComunes.astro
 
 import { getLanguageFromUrl, t, setCurrentLanguage } from '../i18n/utils/translator';
+import LightboxModal from '../components/LightboxModal.astro';
 
 const currentLang = getLanguageFromUrl(Astro.url.pathname);
 setCurrentLanguage(currentLang);
 
-import coworkingImg from '../assets/coworking/rooftoop.webp';
-import rooftopImg from '../assets/pixel-terraza-hero-2.webp';
-import gymImg from '../assets/zona-ejercicio.webp';
-import petZoneImg from '../assets/pet-zone.webp';
-import bikeImg from '../assets/bici-parking.webp';
-import eventsImg from '../assets/pixel-cowork-001.webp';
+// IMÁGENES (ajusta/añade más cuando tengas más fotos)
+import coworkingImgA from '../assets/pixel-cowork-001.webp';
+import coworkingImgB from '../assets/coworking/rooftoop.webp';
+import coworkingImgC from '../assets/cowork-001.webp';
+import coworkingImgD from '../assets/looby.webp';
 
-// Usamos t() para que amenidades salga traducido (ES / EN / ZH)
-const amenidades = [
+import rooftopImgA from '../assets/pixel-terraza-hero-2.webp';
+import rooftopImgB from '../assets/Rooftop_002.webp';
+import gymImgA from '../assets/zona-ejercicio.webp';
+import gymImgB from '../assets/Ejercicio_001.webp';
+import gymImgC from '../assets/Ejercicio_002.webp';
+
+
+import bikeImgA from '../assets/bici-parking.webp';
+
+// 4 zonas: 1) Coworking + Sala de Reuniones 2) Rooftop con Fire Pits 3) Área de Ejercicio + TRX 4) Bici Parking con Taller
+const zonas = [
   {
+    id: 'coworking',
     icono:
       'M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5l-1.5-.5M6.75 7.364V3h-3v18m3-13.636l10.5-3.819',
     titulo: t('zonas_comunes.amenidades.coworking.titulo'),
     descripcion: t('zonas_comunes.amenidades.coworking.descripcion'),
     color: 'bg-pixel-blue',
-    imagen: coworkingImg
+    cover: coworkingImgA
   },
   {
+    id: 'rooftop',
     icono:
       'M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z',
     titulo: t('zonas_comunes.amenidades.rooftop.titulo'),
     descripcion: t('zonas_comunes.amenidades.rooftop.descripcion'),
     color: 'bg-pixel-orange',
-    imagen: rooftopImg
+    cover: rooftopImgA
   },
   {
+    id: 'gym',
     icono:
       'M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z',
     titulo: t('zonas_comunes.amenidades.gym.titulo'),
     descripcion: t('zonas_comunes.amenidades.gym.descripcion'),
     color: 'bg-pixel-green',
-    imagen: gymImg
+    cover: gymImgA
   },
   {
+    id: 'bike_parking',
     icono:
       'M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z',
     titulo: t('zonas_comunes.amenidades.bike_parking.titulo'),
     descripcion: t('zonas_comunes.amenidades.bike_parking.descripcion'),
     color: 'bg-pixel-brown',
-    imagen: bikeImg
+    cover: bikeImgA
   }
 ];
+
+// Fotos por zona (puedes agregar más imágenes después)
+const zonasLightboxData = {
+  coworking: {
+    nombre: t('zonas_comunes.amenidades.coworking.titulo'),
+    imagenes: [coworkingImgA.src, coworkingImgB.src, coworkingImgC.src, coworkingImgD.src]
+  },
+  rooftop: {
+    nombre: t('zonas_comunes.amenidades.rooftop.titulo'),
+    imagenes: [rooftopImgA.src, rooftopImgB.src]
+  },
+  gym: {
+    nombre: t('zonas_comunes.amenidades.gym.titulo'),
+    imagenes: [gymImgB.src, gymImgC.src]
+  },
+  bike_parking: {
+    nombre: t('zonas_comunes.amenidades.bike_parking.titulo'),
+    imagenes: [bikeImgA.src]
+  }
+};
 ---
 
 <section id="zonas-comunes" class="section bg-pixel-orange/5">
@@ -59,9 +92,7 @@ const amenidades = [
       </span>
       <h2 class="text-4xl md:text-6xl font-normal mb-6 cal-sans">
         {t('zonas_comunes.title')}{' '}
-        <span class="text-pixel-orange">
-          {t('zonas_comunes.title_highlight')}
-        </span>{' '}
+        <span class="text-pixel-orange">{t('zonas_comunes.title_highlight')}</span>{' '}
         {t('zonas_comunes.title_end')}
       </h2>
       <p class="text-lg text-gray-700 max-w-4xl mx-auto">
@@ -69,87 +100,303 @@ const amenidades = [
       </p>
     </div>
 
-    <!-- Grid de amenidades -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16 md:mx-20 mx-0">
-      {amenidades.map((amenidad) => (
-        <div class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border-2 border-gray-200 pixel-hover">
+    <!-- Grid de zonas (clic para ver fotos) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-10 md:mx-20 mx-0">
+      {zonas.map((z) => (
+        <button
+          type="button"
+          class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border-2 border-gray-200 pixel-hover text-left focus:outline-none focus:ring-4 focus:ring-pixel-orange/30"
+          data-zona-id={z.id}
+          aria-label={`Ver fotos de ${z.titulo}`}
+          title="Ver fotos"
+        >
           <!-- Imagen + overlay de color -->
           <div class="relative h-64 overflow-hidden">
             <img
-              src={amenidad.imagen.src}
-              alt={amenidad.titulo}
+              src={z.cover.src}
+              alt={z.titulo}
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
             />
-            <div class={`absolute inset-0 ${amenidad.color} opacity-85 transition-opacity duration-300 group-hover:opacity-75`}></div>
+            <div class={`absolute inset-0 ${z.color} opacity-85 transition-opacity duration-300 group-hover:opacity-75`}></div>
+
+            
           </div>
 
           <!-- Contenido -->
           <div class="absolute inset-0 p-6 flex flex-col justify-between">
             <div class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-8 h-8 text-white"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" d={amenidad.icono} />
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d={z.icono} />
               </svg>
             </div>
 
             <div class="mt-auto">
-              <h3 class="text-2xl font-bold text-white mb-3 cal-sans">
-                {amenidad.titulo}
-              </h3>
-              <p class="text-white/95 leading-relaxed text-sm">
-                {amenidad.descripcion}
-              </p>
+              <h3 class="text-2xl font-bold text-white mb-3 cal-sans">{z.titulo}</h3>
+              <p class="text-white/95 leading-relaxed text-sm">{z.descripcion}</p>
+
+              <div class="mt-4 inline-flex items-center gap-2 text-white/95 text-sm font-semibold">
+                <span class="underline underline-offset-4">{t('zonas_comunes.abrir_galeria') ?? 'Abrir galería'}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+              </div>
             </div>
           </div>
-        </div>
+        </button>
       ))}
     </div>
+
+    <!-- Modal Lightbox (reutiliza el componente existente) -->
+    <LightboxModal id="zonas-comunes-lightbox" showDetailsButton={false} showReservaButton={false} />
   </div>
 </section>
 
+<script define:vars={{ zonasLightboxData }}>
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('zonas-comunes-lightbox');
+  if (!modal) return;
+
+  const titleEl = modal.querySelector('.lightbox-title');
+  const imgEl = modal.querySelector('.lightbox-image');
+  const closeBtn = modal.querySelector('.lightbox-close');
+  const prevBtn = modal.querySelector('.lightbox-prev');
+  const nextBtn = modal.querySelector('.lightbox-next');
+  const thumbsRow = modal.querySelector('.lightbox-thumbnails-carousel');
+  const thumbPrevBtn = modal.querySelector('.lightbox-thumb-prev');
+  const thumbNextBtn = modal.querySelector('.lightbox-thumb-next');
+  const currentEl = modal.querySelector('.lightbox-current');
+  const totalEl = modal.querySelector('.lightbox-total');
+
+  const THUMB_SIZE = 64; // px
+  const THUMB_GAP = 8;   // px
+  const STEP = THUMB_SIZE + THUMB_GAP;
+
+  const thumbsPerView = () => {
+    const w = window.innerWidth;
+    if (w < 480) return 4;
+    if (w < 768) return 5;
+    if (w < 1024) return 7;
+    return 9;
+  };
+
+  let currentIndex = 0;
+  let currentImages = [];
+  let thumbCarouselIndex = 0;
+
+  function lockBody(lock) {
+    document.body.style.overflow = lock ? 'hidden' : '';
+  }
+
+  function showModal() {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    lockBody(true);
+  }
+
+  function hideModal() {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    lockBody(false);
+    currentIndex = 0;
+    currentImages = [];
+    thumbCarouselIndex = 0;
+    if (thumbsRow) {
+      thumbsRow.innerHTML = '';
+      thumbsRow.style.transform = 'translateX(0px)';
+    }
+  }
+
+  function updateCounters() {
+    if (currentEl) currentEl.textContent = String(currentIndex + 1);
+    if (totalEl) totalEl.textContent = String(Math.max(1, currentImages.length));
+  }
+
+  function updateThumbCarousel() {
+    if (!thumbsRow) return;
+    thumbsRow.style.transform = `translateX(-${thumbCarouselIndex * STEP}px)`;
+
+    const perView = thumbsPerView();
+    const max = Math.max(0, currentImages.length - perView);
+
+    if (thumbPrevBtn) thumbPrevBtn.style.display = thumbCarouselIndex > 0 ? '' : 'none';
+    if (thumbNextBtn) thumbNextBtn.style.display = thumbCarouselIndex < max ? '' : 'none';
+  }
+
+  function ensureThumbVisible() {
+    const perView = thumbsPerView();
+    const max = Math.max(0, currentImages.length - perView);
+
+    if (currentIndex < thumbCarouselIndex) thumbCarouselIndex = currentIndex;
+    if (currentIndex >= thumbCarouselIndex + perView) thumbCarouselIndex = Math.min(max, currentIndex - perView + 1);
+
+    updateThumbCarousel();
+  }
+
+  function setActiveThumb() {
+    if (!thumbsRow) return;
+    const btns = thumbsRow.querySelectorAll('[data-thumb-index]');
+    btns.forEach((btn) => {
+      const idx = Number(btn.getAttribute('data-thumb-index'));
+      const isActive = idx === currentIndex;
+      btn.classList.toggle('ring-2', isActive);
+      btn.classList.toggle('ring-pixel-yellow', isActive);
+      btn.classList.toggle('border-white', isActive);
+      btn.classList.toggle('border-transparent', !isActive);
+      btn.setAttribute('aria-current', isActive ? 'true' : 'false');
+    });
+  }
+
+  function updateNavButtons() {
+    const many = currentImages.length > 1;
+    if (prevBtn) prevBtn.style.display = many ? '' : 'none';
+    if (nextBtn) nextBtn.style.display = many ? '' : 'none';
+  }
+
+  function updateImage() {
+    if (!imgEl || !currentImages.length) return;
+
+    imgEl.style.opacity = '0.2';
+    imgEl.src = currentImages[currentIndex];
+    imgEl.onload = () => { imgEl.style.opacity = '1'; };
+
+    updateCounters();
+    updateNavButtons();
+    setActiveThumb();
+    ensureThumbVisible();
+  }
+
+  function buildThumbnails() {
+    if (!thumbsRow) return;
+    thumbsRow.innerHTML = '';
+    thumbsRow.style.transform = 'translateX(0px)';
+
+    currentImages.forEach((src, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.setAttribute('data-thumb-index', String(idx));
+      btn.setAttribute('aria-label', `Ver imagen ${idx + 1}`);
+      btn.className = 'lightbox-thumbnail rounded-md overflow-hidden border-2 border-transparent hover:border-white focus:border-yellow-400 transition-all duration-200';
+      btn.style.width = `${THUMB_SIZE}px`;
+      btn.style.height = `${THUMB_SIZE}px`;
+      btn.style.flex = `0 0 ${THUMB_SIZE}px`;
+
+      btn.innerHTML = `<img src="${src}" alt="" class="w-full h-full object-cover" loading="lazy" />`;
+
+      btn.addEventListener('click', () => {
+        currentIndex = idx;
+        updateImage();
+      });
+
+      thumbsRow.appendChild(btn);
+    });
+
+    thumbCarouselIndex = 0;
+    updateThumbCarousel();
+    setActiveThumb();
+  }
+
+  function openZona(zonaId) {
+    const data = zonasLightboxData?.[zonaId];
+    if (!data?.imagenes?.length) return;
+
+    currentImages = data.imagenes;
+    currentIndex = 0;
+    thumbCarouselIndex = 0;
+
+    if (titleEl) titleEl.textContent = data.nombre || 'Galería';
+
+    buildThumbnails();
+    showModal();
+    updateImage();
+
+    setTimeout(() => closeBtn?.focus?.(), 50);
+  }
+
+  function nextImage() {
+    if (currentImages.length <= 1) return;
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    updateImage();
+  }
+
+  function prevImage() {
+    if (currentImages.length <= 1) return;
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    updateImage();
+  }
+
+  // Abrir al hacer click en cada card
+  document.querySelectorAll('[data-zona-id]').forEach((el) => {
+    el.addEventListener('click', () => {
+      const zonaId = el.getAttribute('data-zona-id');
+      if (zonaId) openZona(zonaId);
+    });
+
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const zonaId = el.getAttribute('data-zona-id');
+        if (zonaId) openZona(zonaId);
+      }
+    });
+  });
+
+  closeBtn?.addEventListener('click', hideModal);
+  prevBtn?.addEventListener('click', prevImage);
+  nextBtn?.addEventListener('click', nextImage);
+
+  thumbPrevBtn?.addEventListener('click', () => {
+    thumbCarouselIndex = Math.max(0, thumbCarouselIndex - 1);
+    updateThumbCarousel();
+  });
+
+  thumbNextBtn?.addEventListener('click', () => {
+    const perView = thumbsPerView();
+    const max = Math.max(0, currentImages.length - perView);
+    thumbCarouselIndex = Math.min(max, thumbCarouselIndex + 1);
+    updateThumbCarousel();
+  });
+
+  // Cerrar si se da click en el fondo
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) hideModal();
+  });
+
+  // Teclado dentro del modal
+  document.addEventListener('keydown', (e) => {
+    const isOpen = modal.classList.contains('flex') && !modal.classList.contains('hidden');
+    if (!isOpen) return;
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      hideModal();
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      nextImage();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      prevImage();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    updateThumbCarousel();
+    ensureThumbVisible();
+  });
+});
+</script>
+
 <style>
-  /* Animaciones mejoradas para las cards con imágenes */
-  .pixel-hover:hover {
-    transform: translateY(-8px) scale(1.02);
-  }
-  
-  /* Efecto parallax sutil en hover */
-  .group:hover img {
-    transform: scale(1.1);
-  }
-  
-  /* Responsive para móviles */
+  .pixel-hover:hover { transform: translateY(-8px) scale(1.02); }
+  .group:hover img { transform: scale(1.1); }
+
   @media (max-width: 768px) {
-    .pixel-hover:hover {
-      transform: translateY(-4px);
-    }
-    
-    .group:hover img {
-      transform: scale(1.05);
-    }
+    .pixel-hover:hover { transform: translateY(-4px); }
+    .group:hover img { transform: scale(1.05); }
   }
-  
-  /* Improved accessibility */
+
   @media (prefers-reduced-motion: reduce) {
-    .pixel-hover,
-    .group img {
-      transition: none;
-    }
-    
-    .pixel-hover:hover,
-    .group:hover img {
-      transform: none;
-    }
-  }
-  
-  /* Efecto de overlay en hover */
-  .group:hover .absolute.inset-0 {
-    background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
+    .pixel-hover, .group img { transition: none; }
+    .pixel-hover:hover, .group:hover img { transform: none; }
   }
 </style>
