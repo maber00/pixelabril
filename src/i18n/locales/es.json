@@ -81,9 +81,9 @@
   "reservas_cta_desc": "Ir a la sección de reservas para solicitar disponibilidad de apartaestudios",
 
   "card_desde_3_noches_label": "Desde 3 noches:",
-  "card_desde_3_noches_precio": "$ 570.000",
+  "card_desde_3_noches_precio": "$ 540.000",
   "card_valor_noche_label": "V/NOCHE:",
-  "card_valor_noche_valor": "$ 190.000"
+  "card_valor_noche_valor": "$ 180.000"
 },
 
 "opciones": {
@@ -111,8 +111,8 @@
   "estadia_corta": {
     "concepto": "Estadía corta",
     "duracion_minima": "3 noches",
-    "precio_noche": "$190.000 / noche",
-    "precio_3_noches": "3 noches: $570.000",
+    "precio_noche": "$180.000 / noche",
+    "precio_3_noches": "3 noches: $540.000",
     "incluye": "Servicios, wifi, amoblado, acceso a zonas comunes",
     "reserva": "Confirmación en menos de 24 h",
     "documentos": "ID y pago online"
@@ -121,7 +121,7 @@
   "coliving": {
     "concepto": "Coliving",
     "duracion_minima": "1 mes",
-    "precio_desde": "Desde $3.315.000 / mes",
+    "precio_desde": "Desde $ 3.450.000 / mes",
     "incluye": "Servicios, wifi, amoblado, acceso a zonas comunes",
     "reserva": "Sujeta a aprobación",
     "documentos": "Proceso de validación previa"
@@ -372,18 +372,18 @@
     "subtitle": "(3 a 29 noches)",
 
     "row_1_label": "3 noches",
-    "row_1_price": "$ 570.000",
+    "row_1_price": "$ 540.000",
 
     "row_2_label": "7 noches",
-    "row_2_price": "$ 1.190.000",
+    "row_2_price": "$ 1,120,000",
 
     "row_3_label": "15 noches",
-    "row_3_price": "$ 2.175.000",
+    "row_3_price": "$ 2,025,000",
 
     "row_4_label": "30 noches",
-    "row_4_price": "$ 3.900.000",
+    "row_4_price": "$ 3,450,000",
 
-"note": "Desde 3 noches: $ 580.000 · V/NOCHE: $ 190.000",
+"note": "Desde 3 noches: $ 540.000 · V/NOCHE: $ 180.000",
     "cta": "Reservar estadía corta"
   },
 
@@ -392,16 +392,16 @@
     "subtitle": "(1 mes o más)",
 
     "row_1_label": "1 mes",
-    "row_1_price": "$ 3.900.000",
+    "row_1_price": "$ 3.450.000",
 
     "row_2_label": "3 meses",
-    "row_2_price": "$ 3.705.000",
+    "row_2_price": "$ 2.950.000",
 
     "row_3_label": "6 meses",
-    "row_3_price": "$ 3.510.000",
+    "row_3_price": "$ 2.850.000",
 
     "row_4_label": "12 meses",
-    "row_4_price": "$ 3.315.000",
+    "row_4_price": "$ 2.800.000",
 
     "note": "Incluye servicios, amoblado, internet de alta velocidad y acceso a zonas comunes.",
     "cta": "Solicitar coliving"
