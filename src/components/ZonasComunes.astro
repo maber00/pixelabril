@@ -7,7 +7,7 @@ import LightboxModal from '../components/LightboxModal.astro';
 const currentLang = getLanguageFromUrl(Astro.url.pathname);
 setCurrentLanguage(currentLang);
 
-// IMÁGENES (ajusta/añade más cuando tengas más fotos)
+// IMÁGENES
 import coworkingImgA from '../assets/pixel-cowork-001.webp';
 import coworkingImgB from '../assets/coworking/rooftoop.webp';
 import coworkingImgC from '../assets/cowork-001.webp';
@@ -15,14 +15,15 @@ import coworkingImgD from '../assets/looby.webp';
 
 import rooftopImgA from '../assets/pixel-terraza-hero-2.webp';
 import rooftopImgB from '../assets/Rooftop_002.webp';
+
 import gymImgA from '../assets/zona-ejercicio.webp';
 import gymImgB from '../assets/Ejercicio_001.webp';
 import gymImgC from '../assets/Ejercicio_002.webp';
 
-
 import bikeImgA from '../assets/bici-parking.webp';
 
 // 4 zonas: 1) Coworking + Sala de Reuniones 2) Rooftop con Fire Pits 3) Área de Ejercicio + TRX 4) Bici Parking con Taller
+// ✅ Bici Parking: mantiene movimiento/hover, pero NO abre galería y NO muestra "Abrir galería"
 const zonas = [
   {
     id: 'coworking',
@@ -31,7 +32,8 @@ const zonas = [
     titulo: t('zonas_comunes.amenidades.coworking.titulo'),
     descripcion: t('zonas_comunes.amenidades.coworking.descripcion'),
     color: 'bg-pixel-blue',
-    cover: coworkingImgA
+    cover: coworkingImgA,
+    hasGallery: true
   },
   {
     id: 'rooftop',
@@ -40,7 +42,8 @@ const zonas = [
     titulo: t('zonas_comunes.amenidades.rooftop.titulo'),
     descripcion: t('zonas_comunes.amenidades.rooftop.descripcion'),
     color: 'bg-pixel-orange',
-    cover: rooftopImgA
+    cover: rooftopImgA,
+    hasGallery: true
   },
   {
     id: 'gym',
@@ -49,7 +52,8 @@ const zonas = [
     titulo: t('zonas_comunes.amenidades.gym.titulo'),
     descripcion: t('zonas_comunes.amenidades.gym.descripcion'),
     color: 'bg-pixel-green',
-    cover: gymImgA
+    cover: gymImgA,
+    hasGallery: true
   },
   {
     id: 'bike_parking',
@@ -58,11 +62,12 @@ const zonas = [
     titulo: t('zonas_comunes.amenidades.bike_parking.titulo'),
     descripcion: t('zonas_comunes.amenidades.bike_parking.descripcion'),
     color: 'bg-pixel-brown',
-    cover: bikeImgA
+    cover: bikeImgA,
+    hasGallery: false // ✅ NO abre galería (pero sigue siendo botón con hover)
   }
 ];
 
-// Fotos por zona (puedes agregar más imágenes después)
+// Fotos por zona (solo las que sí abren galería)
 const zonasLightboxData = {
   coworking: {
     nombre: t('zonas_comunes.amenidades.coworking.titulo'),
@@ -75,11 +80,8 @@ const zonasLightboxData = {
   gym: {
     nombre: t('zonas_comunes.amenidades.gym.titulo'),
     imagenes: [gymImgB.src, gymImgC.src]
-  },
-  bike_parking: {
-    nombre: t('zonas_comunes.amenidades.bike_parking.titulo'),
-    imagenes: [bikeImgA.src]
   }
+  // ✅ bike_parking no tiene galería
 };
 ---
 
@@ -100,15 +102,15 @@ const zonasLightboxData = {
       </p>
     </div>
 
-    <!-- Grid de zonas (clic para ver fotos) -->
+    <!-- Grid de zonas (clic para ver fotos en 3 / sin galería en bike_parking) -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-10 md:mx-20 mx-0">
       {zonas.map((z) => (
         <button
           type="button"
           class="group relative overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border-2 border-gray-200 pixel-hover text-left focus:outline-none focus:ring-4 focus:ring-pixel-orange/30"
-          data-zona-id={z.id}
-          aria-label={`Ver fotos de ${z.titulo}`}
-          title="Ver fotos"
+          data-zona-id={z.hasGallery ? z.id : undefined}
+          aria-label={z.hasGallery ? `Abrir galería de ${z.titulo}` : z.titulo}
+          title={z.hasGallery ? 'Abrir galería' : ''}
         >
           <!-- Imagen + overlay de color -->
           <div class="relative h-64 overflow-hidden">
@@ -119,14 +121,13 @@ const zonasLightboxData = {
               loading="lazy"
             />
             <div class={`absolute inset-0 ${z.color} opacity-85 transition-opacity duration-300 group-hover:opacity-75`}></div>
-
-            
           </div>
 
           <!-- Contenido -->
           <div class="absolute inset-0 p-6 flex flex-col justify-between">
             <div class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-8 h-8 text-white" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d={z.icono} />
               </svg>
             </div>
@@ -135,19 +136,25 @@ const zonasLightboxData = {
               <h3 class="text-2xl font-bold text-white mb-3 cal-sans">{z.titulo}</h3>
               <p class="text-white/95 leading-relaxed text-sm">{z.descripcion}</p>
 
-              <div class="mt-4 inline-flex items-center gap-2 text-white/95 text-sm font-semibold">
-                <span class="underline underline-offset-4">{t('zonas_comunes.abrir_galeria') ?? 'Abrir galería'}</span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                </svg>
-              </div>
+              {z.hasGallery && (
+                <div class="mt-4 inline-flex items-center gap-2 text-white/95 text-sm font-semibold">
+                  <span class="underline underline-offset-4">
+                    {t('zonas_comunes.abrir_galeria') ?? 'Abrir galería'}
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-4 h-4" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                  </svg>
+                </div>
+              )}
             </div>
           </div>
         </button>
       ))}
     </div>
 
-    <!-- Modal Lightbox (reutiliza el componente existente) -->
+    <!-- Modal Lightbox -->
     <LightboxModal id="zonas-comunes-lightbox" showDetailsButton={false} showReservaButton={false} />
   </div>
 </section>
@@ -325,18 +332,17 @@ document.addEventListener('DOMContentLoaded', () => {
     updateImage();
   }
 
-  // Abrir al hacer click en cada card
+  // ✅ Abre solo si tiene data-zona-id (bike_parking NO lo tendrá)
   document.querySelectorAll('[data-zona-id]').forEach((el) => {
-    el.addEventListener('click', () => {
-      const zonaId = el.getAttribute('data-zona-id');
-      if (zonaId) openZona(zonaId);
-    });
+    const zonaId = el.getAttribute('data-zona-id');
+    if (!zonaId) return;
+
+    el.addEventListener('click', () => openZona(zonaId));
 
     el.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        const zonaId = el.getAttribute('data-zona-id');
-        if (zonaId) openZona(zonaId);
+        openZona(zonaId);
       }
     });
   });
@@ -357,12 +363,10 @@ document.addEventListener('DOMContentLoaded', () => {
     updateThumbCarousel();
   });
 
-  // Cerrar si se da click en el fondo
   modal.addEventListener('click', (e) => {
     if (e.target === modal) hideModal();
   });
 
-  // Teclado dentro del modal
   document.addEventListener('keydown', (e) => {
     const isOpen = modal.classList.contains('flex') && !modal.classList.contains('hidden');
     if (!isOpen) return;
