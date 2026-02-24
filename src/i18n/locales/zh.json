@@ -40,7 +40,7 @@
   "description_extended": "享受从 3 晚起预订或长期停留的灵活性，无需担保人、无复杂流程。",
   "value_proposition": "生活、工作与享受所需的一切，都在这里。",
   
-  "bullet_1": "✓ 短租（从 3 晚起）",
+  "bullet_1": "✓ 短租（从 2 晚起）",
   "bullet_2": "✓ 合住 Coliving（从 1 个月起）",
   "bullet_3": "✓ 全包费用",
   "bullet_4": "✓ 拎包入住",
@@ -88,7 +88,7 @@
   "reservas_cta_desc": "前往预订页面申请公寓可用性",
 
   "card_desde_3_noches_label": "3 晚起：",
-  "card_desde_3_noches_precio": "$ 540,000 COP",
+  "card_desde_3_noches_precio": "$ 298,000 COP",
   "card_valor_noche_label": "每晚：",
   "card_valor_noche_valor": "$ 180,000 COP"
 },
@@ -118,7 +118,7 @@
     "concepto": "短期住宿",
     "duracion_minima": "3 晚",
     "precio_noche": "$180,000 / 每晚",
-    "precio_3_noches": "3 晚：$540,000",
+    "precio_3_noches": "3 晚：$298,000",
     "incluye": "水电、WiFi、家具、公共区域使用",
     "reserva": "24 小时内确认",
     "documentos": "身份证与线上支付"
@@ -127,7 +127,7 @@
   "coliving": {
     "concepto": "Coliving 合住",
     "duracion_minima": "1 个月",
-    "precio_desde": "月租自 $3,450,000 起",
+    "precio_desde": "月租自 $2,997,000 起",
     "incluye": "水电、WiFi、家具、公共区域使用",
     "reserva": "需审核通过",
     "documentos": "预先验证流程"
@@ -409,18 +409,18 @@
     "subtitle": "(3 至 29 晚)",
 
     "row_1_label": "3 晚",
-    "row_1_price": "$ 540,000",
+    "row_1_price": "$ 298,000",
 
     "row_2_label": "7 晚",
-    "row_2_price": "$ 1,120,000",
+    "row_2_price": "$ 980,000",
 
     "row_3_label": "15 晚",
-    "row_3_price": "$ 2,025,000",
+    "row_3_price": "$ 1,800,000",
 
     "row_4_label": "30 智",
-    "row_4_price": "$ 3,450,000",
+    "row_4_price": "$ 2,997,000",
 
-    "note": "从 3 晚起：$ 540,000 · 每晚：$ 180,000",
+    "note": "从 3 晚起：$ 298,000 · 每晚：$ 180,000",
     "cta": "预订短期住宿"
   },
 
@@ -429,10 +429,10 @@
     "subtitle": "(1 个月或更长)",
 
     "row_1_label": "1 个月",
-    "row_1_price": "$ 3.450.000",
+    "row_1_price": "$ 2.990.000",
 
     "row_2_label": "3 个月",
-    "row_2_price": "$ 2.950.000",
+    "row_2_price": "$ 2.900.000",
 
     "row_3_label": "6 个月",
     "row_3_price": "$ 2.850.000",
@@ -635,7 +635,7 @@
       "descripcion": "明亮的空间，带私人阳台。私人厨房、独立工作区和辅助房间。适合长期居住，拥有宽敞的落地窗和开阔的视野。全包式服务：Wi-Fi、服务、智能电视。无需担保人。",
       "metros": "29平方米",
       "imagen": "/images/estudios/jade/pixel-jade-room-004.webp",
-      "precio": "3 晚起：COP$ 540,000 · 每晚：COP$ 180,000",
+      "precio": "3 晚起：COP$ 298,000 · 每晚：COP$ 180,000",
       "galeria": [
         "/images/estudios/jade/pixel-jade-room-005.webp",
         "/images/estudios/jade/pixel-jade-room-001.webp",  
@@ -666,7 +666,7 @@
       "descripcion": "专为远程专业人士设计，配备优化工作区。私人厨房、宽敞书桌及有利于专注的环境。完美融合生活与工作，尽显格调。全包式服务：Wi-Fi、服务、家具。无需担保人。",
       "metros": "29平方米",
       "imagen": "/images/estudios/zian/pixel-zian-room-009.webp",
-      "precio": "3 晚起：COP$ 540,000 · 每晚：COP$ 180,000",
+      "precio": "3 晚起：COP$ 298,000 · 每晚：COP$ 180,000",
       "galeria": [
         "/images/estudios/zian/pixel-zian-room-001.webp", 
         "/images/estudios/zian/pixel-zian-room-002.webp", 
@@ -699,7 +699,7 @@
       "descripcion": "我们最宽敞的单间公寓，起居区与休息区分离。私人厨房、私人阳台，为创意人士和创业者营造温馨环境。全包式服务，无需担保人。",
       "imagen": "/images/estudios/indigo/pixel-indigo-room-001.webp",
       "metros": "29平方米", 
-      "precio": "3 晚起：COP$ 540,000 · 每晚：COP$ 180,000",
+      "precio": "3 晚起：COP$ 298,000 · 每晚：COP$ 180,000",
       "galeria": [
         "/images/estudios/indigo/pixel-indigo-room-002.webp", 
         "/images/estudios/indigo/pixel-indigo-room-003.webp", 

@@ -81,7 +81,7 @@
   "reservas_cta_desc": "Ir a la sección de reservas para solicitar disponibilidad de apartaestudios",
 
   "card_desde_3_noches_label": "Desde 2 noches:",
-  "card_desde_3_noches_precio": "$ 298.000",
+  "card_desde_3_noches_precio": "$ 298,000",
   "card_valor_noche_label": "V/NOCHE:",
   "card_valor_noche_valor": "$ 149.000"
 },
@@ -110,9 +110,9 @@
 
   "estadia_corta": {
     "concepto": "Estadía corta",
-    "duracion_minima": "3 noches",
+    "duracion_minima": "2 noches",
     "precio_noche": "$149.000 / noche",
-    "precio_3_noches": "3 noches: $298.000",
+    "precio_3_noches": "2 noches: $298,000",
     "incluye": "Servicios, wifi, amoblado, acceso a zonas comunes",
     "reserva": "Confirmación en menos de 24 h",
     "documentos": "ID y pago online"
@@ -121,7 +121,7 @@
   "coliving": {
     "concepto": "Coliving",
     "duracion_minima": "1 mes",
-    "precio_desde": "Desde $ 3.450.000 / mes",
+    "precio_desde": "Desde $ 2.990.000 / mes",
     "incluye": "Servicios, wifi, amoblado, acceso a zonas comunes",
     "reserva": "Sujeta a aprobación",
     "documentos": "Proceso de validación previa"
@@ -368,7 +368,7 @@
     "subtitle": "(2 a 30 noches)",
 
     "row_1_label": "2 noches",
-    "row_1_price": "$ 298.000",
+    "row_1_price": "$ 298,000",
 
     "row_2_label": "7 noches",
     "row_2_price": "$ 980,000",
@@ -379,7 +379,7 @@
     "row_4_label": "30 noches",
     "row_4_price": "$ 2,997,000",
 
-"note": "Desde 2 noches: $ 298.000 · V/NOCHE: $ 149.000",
+"note": "Desde 2 noches: $ 298,000 · V/NOCHE: $ 149.000",
     "cta": "Reservar estadía corta"
   },
 
