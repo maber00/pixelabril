@@ -66,7 +66,7 @@
     "estadia_corta": {
       "concepto": "Short stay",
       "duracion_minima": "2 nights",
-      "precio_noche": "$180,000 / night",
+      "precio_noche": "$149.000 / night",
       "precio_3_noches": "2 nights: $298,000",
       "incluye": "Utilities, WiFi, furnished unit, access to common areas",
       "reserva": "Confirmation in less than 24 h",
@@ -110,7 +110,7 @@
     "row_4_label": "30 nights",
     "row_4_price": "$ 2,997,000",
 
-    "note": "From 2 nights: $298,000 · Per night: $180,000",
+    "note": "From 2 nights: $298,000 · Per night: $149.000",
     "cta": "Book short stay"
   },
 
@@ -276,7 +276,7 @@
   "card_desde_3_noches_label": "From 2 nights:",
   "card_desde_3_noches_precio": "$ 298,000 COP",
   "card_valor_noche_label": "Per night:",
-  "card_valor_noche_valor": "$ 180,000 COP",
+  "card_valor_noche_valor": "$ 149.000 COP",
 
   "caracteristicas_titulo": "What your Pixel Living studio includes",
 
@@ -653,7 +653,7 @@
       "descripcion": "Bright space with private balcony. Private kitchen, independent work area and auxiliary room. Perfect for long stays with large windows and clear views. Everything included: wifi, services, Smart TV. No guarantor needed.",
       "metros": "29m²",
       "imagen": "/images/estudios/jade/pixel-jade-room-004.webp",
-      "precio": "From 2 nights: $ 298,000 COP Per night: $ 180,000 COP",
+      "precio": "From 2 nights: $ 298,000 COP Per night: $ 149.000 COP",
 
       "galeria": [
         "/images/estudios/jade/pixel-jade-room-005.webp",
@@ -685,7 +685,7 @@
       "descripcion": "Designed for remote professionals with optimized work area. Private kitchen, large desk and environment that favors concentration. Perfect combination of life and work with style. Everything included: wifi, services, furniture. No guarantor needed.",
       "metros": "29m²",
       "imagen":  "/images/estudios/zian/pixel-zian-room-009.webp", 
-      "precio": "From 2 nights: $ 298,000 COP Per night: $ 180,000 COP",
+      "precio": "From 2 nights: $ 298,000 COP Per night: $ 149.000 COP",
       "galeria": [
         "/images/estudios/zian/pixel-zian-room-001.webp", 
         "/images/estudios/zian/pixel-zian-room-002.webp", 
@@ -718,7 +718,7 @@
       "descripcion": "Our most spacious studio apartment with living area separated from rest area. Private kitchen, private balcony and cozy environment for creatives and entrepreneurs. Everything included, no guarantor needed.",
       "metros": "29m²",
       "imagen": "/images/estudios/indigo/pixel-indigo-room-001.webp",      
-      "precio": "From 2 nights: $ 298,000 COP Per night: $ 180,000 COP",
+      "precio": "From 2 nights: $ 298,000 COP Per night: $ 149.000 COP",
       "galeria": [ 
         "/images/estudios/indigo/pixel-indigo-room-002.webp", 
         "/images/estudios/indigo/pixel-indigo-room-003.webp", 
