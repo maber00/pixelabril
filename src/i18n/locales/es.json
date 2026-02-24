@@ -34,9 +34,9 @@
 
 "ver_detalles": "Ver detalles del estudio",
 "cta_disponibilidad": "Consultar disponibilidad",
-  "description_extended": "Disfruta la flexibilidad de reservar desde 3 noches o quedarte varios meses, sin codeudor y sin complicaciones.",
+  "description_extended": "Disfruta la flexibilidad de reservar Desde 2 noches o quedarte varios meses, sin codeudor y sin complicaciones.",
   "value_proposition": "Todo lo que necesitas para vivir, trabajar y disfrutar está aquí.",
-  "bullet_1": "✓ Estadía corta desde 3 noches",
+  "bullet_1": "✓ Estadía corta Desde 2 noches",
   "bullet_2": "✓ Coliving desde 1 mes",
   "bullet_3": "✓ Todo incluido",
   "bullet_4": "✓ Listo para habitar",
@@ -80,10 +80,10 @@
   "nota_mascotas": "No se aceptan mascotas en Pixel Living.",
   "reservas_cta_desc": "Ir a la sección de reservas para solicitar disponibilidad de apartaestudios",
 
-  "card_desde_3_noches_label": "Desde 3 noches:",
-  "card_desde_3_noches_precio": "$ 540.000",
+  "card_desde_3_noches_label": "Desde 2 noches:",
+  "card_desde_3_noches_precio": "$ 298.000",
   "card_valor_noche_label": "V/NOCHE:",
-  "card_valor_noche_valor": "$ 180.000"
+  "card_valor_noche_valor": "$ 149.000"
 },
 
 "opciones": {
@@ -111,8 +111,8 @@
   "estadia_corta": {
     "concepto": "Estadía corta",
     "duracion_minima": "3 noches",
-    "precio_noche": "$180.000 / noche",
-    "precio_3_noches": "3 noches: $540.000",
+    "precio_noche": "$149.000 / noche",
+    "precio_3_noches": "3 noches: $298.000",
     "incluye": "Servicios, wifi, amoblado, acceso a zonas comunes",
     "reserva": "Confirmación en menos de 24 h",
     "documentos": "ID y pago online"
@@ -197,7 +197,7 @@
       "descripcion": "Un solo pago mensual"
     },
     "beneficio_3": {
-      "titulo": "⚡ Desde 3 noches",
+      "titulo": "⚡ Desde 2 noches",
       "descripcion": "Flexibilidad total"
     }
   },
@@ -557,7 +557,7 @@
   "questions": {
     "q1": {
       "question": "¿Puedo reservar por noches o por meses?",
-      "answer": "Sí. Puedes quedarte desde 3 noches (estancia corta) o elegir un plan coliving desde 1 mes."
+      "answer": "Sí. Puedes quedarte Desde 2 noches (estancia corta) o elegir un plan coliving desde 1 mes."
     },
     "q2": {
       "question": "¿Se aceptan mascotas?",
@@ -668,7 +668,7 @@
       "descripcion": "Espacio luminoso con balcón privado. Cocina privada, zona de trabajo independiente y cuarto auxiliar. Perfecto para estadías largas con ventanales amplios y vistas despejadas. Todo incluido: wifi, servicios, Smart TV. Sin codeudor.",
       "metros": "29m²",
       "imagen": "/images/estudios/jade/pixel-jade-room-004.webp",
-      "precio": "Desde 3 noches: $ 580.000 V/NOCHE: $ 190.000",
+      "precio": "Desde 2 noches: $ 580.000 V/NOCHE: $ 190.000",
       "galeria": [
         "/images/estudios/jade/pixel-jade-room-005.webp",
         "/images/estudios/jade/pixel-jade-room-001.webp",  
@@ -699,7 +699,7 @@
       "descripcion": "Diseñado para profesionales remotos con zona de trabajo optimizada. Cocina privada, escritorio amplio y ambiente que favorece la concentración. Ideal para combinar vida y trabajo con estilo. Todo incluido: wifi, servicios, mobiliario. Sin codeudor.",
       "metros": "29m²",
       "imagen":  "/images/estudios/zian/pixel-zian-room-009.webp",
-      "precio": "Desde 3 noches: $ 580.000 V/NOCHE: $ 190.000",
+      "precio": "Desde 2 noches: $ 580.000 V/NOCHE: $ 190.000",
       "galeria": [
         "/images/estudios/zian/pixel-zian-room-001.webp", 
         "/images/estudios/zian/pixel-zian-room-002.webp", 
@@ -732,7 +732,7 @@
       "descripcion": "Nuestro apartaestudio más espacioso con zona de estar separada del área de descanso. Cocina privada, balcón privado y ambiente acogedor para creativos y emprendedores. Todo incluido, sin codeudor.",
       "imagen": "/images/estudios/indigo/pixel-indigo-room-001.webp",
       "metros": "29m²", 
-      "precio": "Desde 3 noches: $ 580.000 V/NOCHE: $ 190.000",
+      "precio": "Desde 2 noches: $ 580.000 V/NOCHE: $ 190.000",
       "galeria": [
         "/images/estudios/indigo/pixel-indigo-room-002.webp", 
         "/images/estudios/indigo/pixel-indigo-room-003.webp", 
