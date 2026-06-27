@@ -19,8 +19,10 @@ export default defineConfig({
   },
       
   // 🔧 CONFIGURACIÓN DE BUILD
+  // 'always' incrusta el CSS en el HTML y elimina las peticiones de hojas de
+  // estilo que bloquean el render (mejora FCP/LCP). El CSS total es pequeño (~15 KB).
   build: {
-    inlineStylesheets: 'auto'
+    inlineStylesheets: 'always'
   },
     
   // 📁 CONFIGURACIÓN DE OUTPUT
