@@ -1,6 +1,7 @@
 ---
 // ZonasComunes.astro
 
+import { Image } from 'astro:assets';
 import { getLanguageFromUrl, t, setCurrentLanguage } from '../i18n/utils/translator';
 import LightboxModal from '../components/LightboxModal.astro';
 
@@ -114,11 +115,14 @@ const zonasLightboxData = {
         >
           <!-- Imagen + overlay de color -->
           <div class="relative h-64 overflow-hidden">
-            <img
-              src={z.cover.src}
+            <Image
+              src={z.cover}
               alt={z.titulo}
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              widths={[400, 800]}
+              sizes="(min-width: 768px) 50vw, 100vw"
               loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
             <div class={`absolute inset-0 ${z.color} opacity-85 transition-opacity duration-300 group-hover:opacity-75`}></div>
           </div>

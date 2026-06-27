@@ -622,5 +622,39 @@ ${datos.mensaje || 'Ninguno'}
       submitBtn.textContent = 'Enviar solicitud de reserva';
     }
   });
+
+  // 🔗 Pre-selección del tipo de estadía desde enlaces #reservas?tipo=short|coliving
+  function aplicarTipoEstadia(tipoParam) {
+    var valor = tipoParam === 'coliving' ? 'coliving'
+              : tipoParam === 'short' ? 'estadia-corta'
+              : null;
+    if (!valor) return;
+    radiosTipo.forEach(function (r) {
+      if (r.value === valor) r.checked = true;
+    });
+    actualizarVisibilidad();
+  }
+
+  function irAReservas(tipoParam) {
+    var seccion = document.getElementById('reservas');
+    if (seccion) seccion.scrollIntoView({ behavior: 'smooth' });
+    aplicarTipoEstadia(tipoParam);
+  }
+
+  document.addEventListener('click', function (e) {
+    if (!e.target || !e.target.closest) return;
+    var link = e.target.closest('a[href*="#reservas?tipo="]');
+    if (!link) return;
+    e.preventDefault();
+    var m = (link.getAttribute('href') || '').match(/tipo=([a-z-]+)/i);
+    irAReservas(m ? m[1] : null);
+    try { history.replaceState(null, '', '#reservas'); } catch (err) {}
+  });
+
+  // Si la URL ya llega con el parámetro (enlace externo / recarga)
+  (function () {
+    var m = (window.location.hash || '').match(/^#reservas(?:\?tipo=([a-z-]+))?/i);
+    if (m) irAReservas(m[1] || null);
+  })();
 })();
 </script>

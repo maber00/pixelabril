@@ -123,23 +123,50 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		
-		<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-KMNCWPVB');</script>
-		
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-G1041RMX9Z"></script>
 		<script is:inline>
+			// 🚀 Carga diferida de GTM + GA4: tras la primera interacción del usuario
+			// o a los 4s. Saca la analítica de la ruta crítica (mejora TBT/LCP) sin
+			// perder el seguimiento de los usuarios reales.
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
 			gtag('config', 'G-G1041RMX9Z');
+
+			(function () {
+				var loaded = false;
+				var events = ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'];
+
+				function loadAnalytics() {
+					if (loaded) return;
+					loaded = true;
+					events.forEach(function (ev) { window.removeEventListener(ev, loadAnalytics); });
+
+					(function (w, d, s, l, i) {
+						w[l] = w[l] || [];
+						w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+						var f = d.getElementsByTagName(s)[0],
+							j = d.createElement(s),
+							dl = l != 'dataLayer' ? '&l=' + l : '';
+						j.async = true;
+						j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+						f.parentNode.insertBefore(j, f);
+					})(window, document, 'script', 'dataLayer', 'GTM-KMNCWPVB');
+
+					var ga = document.createElement('script');
+					ga.async = true;
+					ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-G1041RMX9Z';
+					document.head.appendChild(ga);
+				}
+
+				events.forEach(function (ev) {
+					window.addEventListener(ev, loadAnalytics, { once: true, passive: true });
+				});
+				setTimeout(loadAnalytics, 4000);
+			})();
 		</script>
 		
 		<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
 		<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
 		
 		<link rel="dns-prefetch" href="https://maps.googleapis.com" />
@@ -222,9 +249,24 @@ const finalStructuredData = structuredData || defaultStructuredData;
 		<meta name="geo.position" content="4.7110;-74.0721" />
 		<meta name="ICBM" content="4.7110, -74.0721" />
 		
-		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cal+Sans:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-		
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" />
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cal+Sans:wght@400;500;600&display=swap" as="style" />
+		<script is:inline>
+			/* Carga no bloqueante de fuentes sin manejadores onload inline (compatible con CSP por hash) */
+			(function () {
+				var hrefs = [
+					'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap',
+					'https://fonts.googleapis.com/css2?family=Cal+Sans:wght@400;500;600&display=swap'
+				];
+				for (var i = 0; i < hrefs.length; i++) {
+					var l = document.createElement('link');
+					l.rel = 'stylesheet';
+					l.href = hrefs[i];
+					document.head.appendChild(l);
+				}
+			})();
+		</script>
+
 		<noscript>
 			<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 			<link href="https://fonts.googleapis.com/css2?family=Cal+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -281,6 +323,7 @@ const finalStructuredData = structuredData || defaultStructuredData;
 			}
 			
 			.skip-link:focus {
+				top: 0;
 				transform: translateY(0);
 				outline: 2px solid #ffd700;
 				outline-offset: 2px;

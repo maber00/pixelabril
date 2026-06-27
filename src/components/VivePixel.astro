@@ -8,6 +8,7 @@ import { getLanguageFromUrl, t, setCurrentLanguage } from '../i18n/utils/transla
 const currentLang = getLanguageFromUrl(Astro.url.pathname);
 setCurrentLanguage(currentLang);
 
+import { Image } from 'astro:assets';
 import imageBG from '../assets/PIXEL-LIVING.webp';
 ---
 
@@ -31,9 +32,12 @@ import imageBG from '../assets/PIXEL-LIVING.webp';
   <summary class="pixel-accordion-header">
     <div class="flex items-center">
       <div class="w-12 h-12 bg-pixel-orange rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-        <img 
-          src="/images/filosofia.svg" 
-          alt="Filosofía Pixel Living" 
+        <img
+          src="/images/filosofia.svg"
+          alt=""
+          width="32"
+          height="32"
+          loading="lazy"
           class="w-8 h-8 filter brightness-0 invert"
         />
       </div>
@@ -58,9 +62,13 @@ import imageBG from '../assets/PIXEL-LIVING.webp';
         </p>
       </div>
       <div class="order-first md:order-last">
-        <img
-          src={imageBG.src}
+        <Image
+          src={imageBG}
           alt="Pixel Living - Filosofía"
+          widths={[400, 800]}
+          sizes="(min-width: 768px) 400px, 100vw"
+          loading="lazy"
+          decoding="async"
           class="w-full h-64 object-cover rounded-lg shadow-lg"
         />
       </div>
@@ -72,9 +80,12 @@ import imageBG from '../assets/PIXEL-LIVING.webp';
           <summary class="pixel-accordion-header">
             <div class="flex items-center">
              <div class="w-12 h-12 bg-pixel-blue rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-        <img 
-          src="/images/unicos.svg" 
-          alt="Filosofía Pixel Living" 
+        <img
+          src="/images/unicos.svg"
+          alt=""
+          width="32"
+          height="32"
+          loading="lazy"
           class="w-8 h-8 filter brightness-0 invert"
         />
       </div>
@@ -161,9 +172,12 @@ import imageBG from '../assets/PIXEL-LIVING.webp';
           <summary class="pixel-accordion-header">
             <div class="flex items-center">
                <div class="w-12 h-12 bg-pixel-green rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-        <img 
-          src="/images/beneficio.svg" 
-          alt="Filosofía Pixel Living" 
+        <img
+          src="/images/beneficio.svg"
+          alt=""
+          width="32"
+          height="32"
+          loading="lazy"
           class="w-8 h-8 filter brightness-0 invert"
         />
       </div>

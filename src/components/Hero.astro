@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import heroImage1 from '../assets/pixel-frontal-002.webp';
 import heroImage2 from '../assets/pixel-room-01.webp';
 import heroImage3 from '../assets/fachada001.webp';
@@ -18,27 +19,27 @@ setCurrentLanguage(currentLang);
     <div class="carousel-container">
       <div class="carousel-slide active">
         <div class="zoom-wrapper">
-          <img src={heroImage1.src} alt="Pixel Living - Coliving moderno en Bogotá" class="zoom-image zoom-image-1" />
+          <Image src={heroImage1} alt="Pixel Living - Coliving moderno en Bogotá" class="zoom-image zoom-image-1" widths={[640, 1024, 1600]} sizes="(min-width: 1024px) 125vw, 150vw" loading="eager" fetchpriority="high" decoding="async" />
         </div>
       </div>
       <div class="carousel-slide">
         <div class="zoom-wrapper">
-          <img src={heroImage2.src} alt="Apartaestudios amoblados 29 m² en el norte de Bogotá" class="zoom-image zoom-image-2" />
+          <Image src={heroImage2} alt="Apartaestudios amoblados 29 m² en el norte de Bogotá" class="zoom-image zoom-image-2" widths={[640, 1024, 1600]} sizes="(min-width: 1024px) 125vw, 150vw" loading="lazy" decoding="async" />
         </div>
       </div>
       <div class="carousel-slide">
         <div class="zoom-wrapper">
-          <img src={heroImage3.src} alt="Coliving sin codeudor en Zona Rosa Bogotá" class="zoom-image zoom-image-3" />
+          <Image src={heroImage3} alt="Coliving sin codeudor en Zona Rosa Bogotá" class="zoom-image zoom-image-3" widths={[640, 1024, 1600]} sizes="(min-width: 1024px) 125vw, 150vw" loading="lazy" decoding="async" />
         </div>
       </div>
       <div class="carousel-slide">
         <div class="zoom-wrapper">
-          <img src={heroImage4.src} alt="Terraza Pixel Living - Espacios compartidos" class="zoom-image zoom-image-4" />
+          <Image src={heroImage4} alt="Terraza Pixel Living - Espacios compartidos" class="zoom-image zoom-image-4" widths={[640, 1024, 1600]} sizes="(min-width: 1024px) 125vw, 150vw" loading="lazy" decoding="async" />
         </div>
       </div>
       <div class="carousel-slide">
         <div class="zoom-wrapper">
-          <img src={heroImage5.src} alt="Habitaciones completamente equipadas Pixel Living" class="zoom-image zoom-image-5" />
+          <Image src={heroImage5} alt="Habitaciones completamente equipadas Pixel Living" class="zoom-image zoom-image-5" widths={[640, 1024, 1600]} sizes="(min-width: 1024px) 125vw, 150vw" loading="lazy" decoding="async" />
         </div>
       </div>
     </div>

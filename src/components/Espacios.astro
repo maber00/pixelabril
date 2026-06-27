@@ -272,18 +272,23 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
             aria-live="polite"
           >
             {estudios.map((estudio, index) => (
-              <article 
-                class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2 transition-opacity duration-300" 
-                data-slide-index={index} 
+              <article
+                id={`estudio-${index}`}
+                class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2 transition-opacity duration-300"
+                data-slide-index={index}
                 data-estudio-id={estudio.id}
                 aria-labelledby={`estudio-${estudio.id}-title`}
               >
                 <div class="bg-white rounded-lg overflow-hidden shadow-lg h-full flex flex-col transform transition duration-300 hover:-translate-y-2 hover:shadow-xl border-2 border-pixel-blue pixel-hover">
                   <div class="relative">
-                    <img 
-                      src={estudio.imagen} 
+                    <img
+                      src={estudio.imagen}
                       alt={`${estudio.nombre} - Vista principal del apartaestudio`}
-                      class="w-full h-64 object-cover main-image cursor-pointer" 
+                      width="400"
+                      height="256"
+                      loading="lazy"
+                      decoding="async"
+                      class="w-full h-64 object-cover main-image cursor-pointer"
                       data-estudio-id={estudio.id}
                       tabindex="0"
                       role="button"
@@ -316,7 +321,7 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
                         aria-label={`Ver imagen principal de ${estudio.nombre}`}
                         tabindex="0"
                       >
-                        <img src={estudio.imagen} alt="" class="w-full h-full object-cover" />
+                        <img src={estudio.imagen} alt="" width="32" height="32" loading="lazy" class="w-full h-full object-cover" />
                       </button>
                       
                       <!-- Imágenes de la galería (máximo 3 miniaturas adicionales) -->
@@ -328,7 +333,7 @@ const lightboxData: LightboxData = Object.values(estudiosCompletos).reduce((resu
                           aria-label={`Ver imagen ${imgIndex + 2} de ${estudio.nombre}`}
                           tabindex="0"
                         >
-                          <img src={img} alt="" class="w-full h-full object-cover" />
+                          <img src={img} alt="" width="32" height="32" loading="lazy" class="w-full h-full object-cover" />
                         </button>
                       ))}
                     </div>
@@ -998,9 +1003,11 @@ document.addEventListener('DOMContentLoaded', () => {
         thumb.setAttribute('data-index', index.toString());
         
         thumb.innerHTML = `
-          <img 
-            src="${image.src}" 
-            alt="" 
+          <img
+            src="${image.src}"
+            alt=""
+            width="64"
+            height="64"
             class="w-full h-full object-cover"
             loading="lazy"
           />

@@ -96,10 +96,15 @@ const whatsappMessage = t('estudio_detalle.acciones.whatsapp_mensaje').replace('
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
             <div class="relative overflow-hidden rounded-xl border-2 border-gray-200 mb-4 aspect-video">
-              <img 
+              <img
                 id="mainImage"
-                src={estudio.imagen} 
-                alt={estudio.nombre} 
+                src={estudio.imagen}
+                alt={estudio.nombre}
+                width="1280"
+                height="720"
+                fetchpriority="high"
+                loading="eager"
+                decoding="async"
                 class="w-full h-full object-cover cursor-pointer main-image"
                 data-estudio-id={studioId}
               />
@@ -113,7 +118,7 @@ const whatsappMessage = t('estudio_detalle.acciones.whatsapp_mensaje').replace('
                 <img 
                   src={estudio.imagen} 
                   alt={`${estudio.nombre} - ${t('estudio_detalle.galeria.imagen_principal')}`} 
-                  class="w-full h-20 object-cover thumbnail"
+                  width="80" height="80" loading="lazy" class="w-full h-20 object-cover thumbnail"
                   data-img-src={estudio.imagen}
                   data-index={-1}
                 />
@@ -124,7 +129,7 @@ const whatsappMessage = t('estudio_detalle.acciones.whatsapp_mensaje').replace('
                   <img 
                     src={img} 
                     alt={`${estudio.nombre} - Imagen ${imgIndex + 1}`} 
-                    class="w-full h-20 object-cover thumbnail"
+                    width="80" height="80" loading="lazy" class="w-full h-20 object-cover thumbnail"
                     data-img-src={img}
                     data-index={imgIndex}
                   />
@@ -394,7 +399,7 @@ const whatsappMessage = t('estudio_detalle.acciones.whatsapp_mensaje').replace('
           return (
             <div class="bg-white rounded-md overflow-hidden shadow-lg border-2 border-gray-200 transform transition duration-300 hover:-translate-y-2 hover:shadow-xl">
               <div class="relative">
-                <img src={otroEstudio.imagen} alt={otroEstudio.nombre} class="w-full h-48 object-cover" />
+                <img src={otroEstudio.imagen} alt={otroEstudio.nombre} width="400" height="192" loading="lazy" decoding="async" class="w-full h-48 object-cover" />
                 <div class={`absolute top-4 right-4 bg-white py-1 px-3 rounded-md shadow-md border ${otroColors.border}`}>
                   <span class="font-medium text-sm">{otroEstudio.metros}</span>
                 </div>

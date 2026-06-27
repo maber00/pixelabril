@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import image1 from '../assets/v5s.jpg';
 import image2 from '../assets/v4s.jpg';
 
@@ -8,8 +9,8 @@ const currentLang = getLanguageFromUrl(Astro.url.pathname);
 setCurrentLanguage(currentLang);
 
 const carouselImages = [
-  { src: image1.src, alt: t('coliving.carousel.image1_alt') },
-  { src: image2.src, alt: t('coliving.carousel.image2_alt') }
+  { src: image1, alt: t('coliving.carousel.image1_alt') },
+  { src: image2, alt: t('coliving.carousel.image2_alt') }
 ];
 ---
 
@@ -112,9 +113,13 @@ const carouselImages = [
             {carouselImages.map((image) => (
               <div class="w-full flex-shrink-0">
                 <div class="aspect-[4/5] md:aspect-square">
-                  <img
+                  <Image
                     src={image.src}
                     alt={image.alt}
+                    widths={[400, 800]}
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    loading="lazy"
+                    decoding="async"
                     class="w-full h-full object-cover"
                   />
                 </div>
@@ -141,6 +146,7 @@ const carouselImages = [
         <div class="flex justify-center items-center space-x-4 mt-4">
           <button
             id="coliving-prev"
+            aria-label="Imagen anterior"
             class="bg-white border border-pixel-purple/40 text-pixel-purple p-2 md:p-2.5 rounded-full shadow-sm hover:shadow-md hover:bg-pixel-purple hover:text-white transition"
           >
             <svg
@@ -157,6 +163,7 @@ const carouselImages = [
 
           <button
             id="coliving-next"
+            aria-label="Imagen siguiente"
             class="bg-white border border-pixel-purple/40 text-pixel-purple p-2 md:p-2.5 rounded-full shadow-sm hover:shadow-md hover:bg-pixel-purple hover:text-white transition"
           >
             <svg
